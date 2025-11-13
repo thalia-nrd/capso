@@ -3,16 +3,18 @@ import { Request, Response } from "express";
 import { authModel } from "./auth.model";
 import { hashPassword, comparePassword } from "../../utils/bcrypt";
 import { setAuthCookie, clearAuthCookie } from "../../utils/cookies";
+import { signupSchema, loginSchema } from "./auth.schema";
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 
 export const authController = {
   signup: async (req: Request, res: Response) => {
     try {
-      const { name, email, password } = req.body;
+      const parsed = signupSchema.safeParse(req.body);
+      if (!parsed.success)
+        return res.status(400).json({ errors: parsed.error.issues });
 
-      if (!name || !email || !password)
-        return res.status(400).json({ error: "All fields are required" });
+      const { name, email, password } = parsed.data;
 
       const existingUser = await authModel.findUserByEmail(email);
       if (existingUser)
@@ -21,12 +23,10 @@ export const authController = {
       const hashedPassword = await hashPassword(password);
       const newUser = await authModel.createUser(name, email, hashedPassword);
 
-      // JWT token
       const token = jwt.sign({ userId: newUser.id }, JWT_SECRET, {
         expiresIn: "7d",
       });
 
-      // set cookie
       setAuthCookie(res, token);
 
       res.status(201).json({
@@ -41,10 +41,11 @@ export const authController = {
 
   login: async (req: Request, res: Response) => {
     try {
-      const { email, password } = req.body;
+      const parsed = loginSchema.safeParse(req.body);
+      if (!parsed.success)
+        return res.status(400).json({ errors: parsed.error.issues });
 
-      if (!email || !password)
-        return res.status(400).json({ error: "All fields are required" });
+      const { email, password } = parsed.data;
 
       const user = await authModel.findUserByEmail(email);
       if (!user)
@@ -67,7 +68,6 @@ export const authController = {
   },
 
   logout: (_req: Request, res: Response) => {
-    // clear cookie
     clearAuthCookie(res);
     res.json({ message: "Logged out successfully" });
   },
