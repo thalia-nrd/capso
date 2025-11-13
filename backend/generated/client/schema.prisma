@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  cabinets  Cabinet[]
+}
+
+model Cabinet {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  owner     User     @relation(fields: [ownerId], references: [id])
+  ownerId   Int
+
+  layout     CabinetLayout?
+  chest      Chest?
+  journal    Journal?
+  photoFrame PhotoFrame[]
+  media      Media[]
+  checklist  Checklist[]
+  notes      Note[]
+  decorItems DecorItem[]
+}
+
+model CabinetLayout {
+  id        Int      @id @default(autoincrement())
+  layout    Json
+  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
+  cabinetId Int      @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Chest {
+  id        Int      @id @default(autoincrement())
+  passcode  String
+  position  Json?
+  items     Json?
+  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
+  cabinetId Int      @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Journal {
+  id        Int      @id @default(autoincrement())
+  passcode  String
+  position  Json?
+  entries   Json
+  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
+  cabinetId Int      @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PhotoFrame {
+  id        Int      @id @default(autoincrement())
+  position  Json?
+  url       String
+  caption   String?
+  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
+  cabinetId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Media {
+  id        Int      @id @default(autoincrement())
+  position  Json?
+  type      String
+  url       String
+  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
+  cabinetId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Checklist {
+  id        Int      @id @default(autoincrement())
+  position  Json?
+  title     String
+  items     Json
+  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
+  cabinetId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Note {
+  id        Int      @id @default(autoincrement())
+  position  Json?
+  content   String
+  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
+  cabinetId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DecorItem {
+  id        Int      @id @default(autoincrement())
+  position  Json?
+  type      String
+  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
+  cabinetId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
