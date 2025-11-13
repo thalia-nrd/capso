@@ -9,7 +9,7 @@ export const authModel = {
 
     createUser: async (name: string, email: string, hashedPassword: string) => {
         return await prisma.user.create({
-            data: { email, password: hashedPassword },
+            data: { name, email, password: hashedPassword },
         });
     },
 };
