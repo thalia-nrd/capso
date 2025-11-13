@@ -13,7 +13,7 @@ export const cabinetController = {
     }
   },
 
-    getCabinet: async (req: Request, res: Response) => {
+  getCabinet: async (req: Request, res: Response) => {
     try {
         const { ownerId } = req.query;
         const cabinet = await cabinetModel.getUserCabinet(Number(ownerId));
@@ -24,7 +24,7 @@ export const cabinetController = {
     }
   },
 
-    updateCabinet: async (req: Request, res: Response) => {
+  updateCabinet: async (req: Request, res: Response) => {
     try {
         const { cabinetId, title } = req.body;
         const updatedCabinet = await cabinetModel.updateCabinet(cabinetId, title);
@@ -34,8 +34,8 @@ export const cabinetController = {
         res.status(500).json({ error: "Server error" });
     }
   },
-  
-    deleteCabinet: async (req: Request, res: Response) => {
+
+  deleteCabinet: async (req: Request, res: Response) => {
     try {
         const { cabinetId } = req.body;
         await cabinetModel.deleteCabinet(cabinetId);

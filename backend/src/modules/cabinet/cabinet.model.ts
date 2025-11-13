@@ -1,15 +1,15 @@
 import { prisma } from "../../infrastructure/database/prisma";
 
 export const cabinetModel = {
-    getUserCabinet: async (ownerId: number) => {
-        return await prisma.cabinet.findUnique({
-        where: { ownerId },
-        });
-    },
-
     createCabinet: async (ownerId: number, title: string) => {
         return await prisma.cabinet.create({
             data: { ownerId, title },
+        });
+    },
+
+    getUserCabinet: async (ownerId: number) => {
+        return await prisma.cabinet.findUnique({
+        where: { ownerId },
         });
     },
 
