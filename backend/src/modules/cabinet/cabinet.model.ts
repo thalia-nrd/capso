@@ -3,7 +3,10 @@ import { prisma } from "../../infrastructure/database/prisma";
 export const cabinetModel = {
     createCabinet: async (ownerId: number, title: string) => {
         return await prisma.cabinet.create({
-            data: { ownerId, title },
+            data: { 
+                ownerId, 
+                title,
+            },
         });
     },
 
@@ -17,12 +20,6 @@ export const cabinetModel = {
         return await prisma.cabinet.update({
             where: { id: cabinetId },
             data: { title },
-        });
-    },
-
-    deleteCabinet: async (cabinetId: number) => {
-        return await prisma.cabinet.delete({
-            where: { id: cabinetId },
         });
     },
 };
