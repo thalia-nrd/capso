@@ -2918,6 +2918,7 @@ export namespace Prisma {
 
   export type CabinetMinAggregateOutputType = {
     id: number | null
+    title: string | null
     createdAt: Date | null
     updatedAt: Date | null
     ownerId: number | null
@@ -2925,6 +2926,7 @@ export namespace Prisma {
 
   export type CabinetMaxAggregateOutputType = {
     id: number | null
+    title: string | null
     createdAt: Date | null
     updatedAt: Date | null
     ownerId: number | null
@@ -2932,6 +2934,7 @@ export namespace Prisma {
 
   export type CabinetCountAggregateOutputType = {
     id: number
+    title: number
     createdAt: number
     updatedAt: number
     ownerId: number
@@ -2951,6 +2954,7 @@ export namespace Prisma {
 
   export type CabinetMinAggregateInputType = {
     id?: true
+    title?: true
     createdAt?: true
     updatedAt?: true
     ownerId?: true
@@ -2958,6 +2962,7 @@ export namespace Prisma {
 
   export type CabinetMaxAggregateInputType = {
     id?: true
+    title?: true
     createdAt?: true
     updatedAt?: true
     ownerId?: true
@@ -2965,6 +2970,7 @@ export namespace Prisma {
 
   export type CabinetCountAggregateInputType = {
     id?: true
+    title?: true
     createdAt?: true
     updatedAt?: true
     ownerId?: true
@@ -3059,6 +3065,7 @@ export namespace Prisma {
 
   export type CabinetGroupByOutputType = {
     id: number
+    title: string
     createdAt: Date
     updatedAt: Date
     ownerId: number
@@ -3085,6 +3092,7 @@ export namespace Prisma {
 
   export type CabinetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    title?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
@@ -3102,6 +3110,7 @@ export namespace Prisma {
 
   export type CabinetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    title?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
@@ -3110,6 +3119,7 @@ export namespace Prisma {
 
   export type CabinetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    title?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
@@ -3118,12 +3128,13 @@ export namespace Prisma {
 
   export type CabinetSelectScalar = {
     id?: boolean
+    title?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
   }
 
-  export type CabinetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "ownerId", ExtArgs["result"]["cabinet"]>
+  export type CabinetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "createdAt" | "updatedAt" | "ownerId", ExtArgs["result"]["cabinet"]>
   export type CabinetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
     layout?: boolean | Cabinet$layoutArgs<ExtArgs>
@@ -3158,6 +3169,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      title: string
       createdAt: Date
       updatedAt: Date
       ownerId: number
@@ -3594,6 +3606,7 @@ export namespace Prisma {
    */
   interface CabinetFieldRefs {
     readonly id: FieldRef<"Cabinet", 'Int'>
+    readonly title: FieldRef<"Cabinet", 'String'>
     readonly createdAt: FieldRef<"Cabinet", 'DateTime'>
     readonly updatedAt: FieldRef<"Cabinet", 'DateTime'>
     readonly ownerId: FieldRef<"Cabinet", 'Int'>
@@ -13096,6 +13109,7 @@ export namespace Prisma {
 
   export const CabinetScalarFieldEnum: {
     id: 'id',
+    title: 'title',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     ownerId: 'ownerId'
@@ -13397,6 +13411,7 @@ export namespace Prisma {
     OR?: CabinetWhereInput[]
     NOT?: CabinetWhereInput | CabinetWhereInput[]
     id?: IntFilter<"Cabinet"> | number
+    title?: StringFilter<"Cabinet"> | string
     createdAt?: DateTimeFilter<"Cabinet"> | Date | string
     updatedAt?: DateTimeFilter<"Cabinet"> | Date | string
     ownerId?: IntFilter<"Cabinet"> | number
@@ -13413,6 +13428,7 @@ export namespace Prisma {
 
   export type CabinetOrderByWithRelationInput = {
     id?: SortOrder
+    title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
@@ -13429,12 +13445,13 @@ export namespace Prisma {
 
   export type CabinetWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    ownerId?: number
     AND?: CabinetWhereInput | CabinetWhereInput[]
     OR?: CabinetWhereInput[]
     NOT?: CabinetWhereInput | CabinetWhereInput[]
+    title?: StringFilter<"Cabinet"> | string
     createdAt?: DateTimeFilter<"Cabinet"> | Date | string
     updatedAt?: DateTimeFilter<"Cabinet"> | Date | string
-    ownerId?: IntFilter<"Cabinet"> | number
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
     layout?: XOR<CabinetLayoutNullableScalarRelationFilter, CabinetLayoutWhereInput> | null
     chest?: XOR<ChestNullableScalarRelationFilter, ChestWhereInput> | null
@@ -13444,10 +13461,11 @@ export namespace Prisma {
     checklist?: ChecklistListRelationFilter
     notes?: NoteListRelationFilter
     decorItems?: DecorItemListRelationFilter
-  }, "id">
+  }, "id" | "ownerId">
 
   export type CabinetOrderByWithAggregationInput = {
     id?: SortOrder
+    title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
@@ -13463,6 +13481,7 @@ export namespace Prisma {
     OR?: CabinetScalarWhereWithAggregatesInput[]
     NOT?: CabinetScalarWhereWithAggregatesInput | CabinetScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Cabinet"> | number
+    title?: StringWithAggregatesFilter<"Cabinet"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Cabinet"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Cabinet"> | Date | string
     ownerId?: IntWithAggregatesFilter<"Cabinet"> | number
@@ -14049,6 +14068,7 @@ export namespace Prisma {
   }
 
   export type CabinetCreateInput = {
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
@@ -14064,6 +14084,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedCreateInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
@@ -14078,6 +14099,7 @@ export namespace Prisma {
   }
 
   export type CabinetUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
@@ -14093,6 +14115,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
@@ -14108,18 +14131,21 @@ export namespace Prisma {
 
   export type CabinetCreateManyInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
   }
 
   export type CabinetUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CabinetUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
@@ -14827,6 +14853,7 @@ export namespace Prisma {
 
   export type CabinetCountOrderByAggregateInput = {
     id?: SortOrder
+    title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
@@ -14839,6 +14866,7 @@ export namespace Prisma {
 
   export type CabinetMaxOrderByAggregateInput = {
     id?: SortOrder
+    title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
@@ -14846,6 +14874,7 @@ export namespace Prisma {
 
   export type CabinetMinOrderByAggregateInput = {
     id?: SortOrder
+    title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
@@ -15960,6 +15989,7 @@ export namespace Prisma {
   }
 
   export type CabinetCreateWithoutOwnerInput = {
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
@@ -15974,6 +16004,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedCreateWithoutOwnerInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
@@ -16017,6 +16048,7 @@ export namespace Prisma {
     OR?: CabinetScalarWhereInput[]
     NOT?: CabinetScalarWhereInput | CabinetScalarWhereInput[]
     id?: IntFilter<"Cabinet"> | number
+    title?: StringFilter<"Cabinet"> | string
     createdAt?: DateTimeFilter<"Cabinet"> | Date | string
     updatedAt?: DateTimeFilter<"Cabinet"> | Date | string
     ownerId?: IntFilter<"Cabinet"> | number
@@ -16489,6 +16521,7 @@ export namespace Prisma {
   }
 
   export type CabinetCreateWithoutLayoutInput = {
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
@@ -16503,6 +16536,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedCreateWithoutLayoutInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
@@ -16532,6 +16566,7 @@ export namespace Prisma {
   }
 
   export type CabinetUpdateWithoutLayoutInput = {
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
@@ -16546,6 +16581,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedUpdateWithoutLayoutInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
@@ -16559,6 +16595,7 @@ export namespace Prisma {
   }
 
   export type CabinetCreateWithoutChestInput = {
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
@@ -16573,6 +16610,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedCreateWithoutChestInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
@@ -16602,6 +16640,7 @@ export namespace Prisma {
   }
 
   export type CabinetUpdateWithoutChestInput = {
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
@@ -16616,6 +16655,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedUpdateWithoutChestInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
@@ -16629,6 +16669,7 @@ export namespace Prisma {
   }
 
   export type CabinetCreateWithoutJournalInput = {
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
@@ -16643,6 +16684,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedCreateWithoutJournalInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
@@ -16672,6 +16714,7 @@ export namespace Prisma {
   }
 
   export type CabinetUpdateWithoutJournalInput = {
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
@@ -16686,6 +16729,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedUpdateWithoutJournalInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
@@ -16699,6 +16743,7 @@ export namespace Prisma {
   }
 
   export type CabinetCreateWithoutPhotoFrameInput = {
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
@@ -16713,6 +16758,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedCreateWithoutPhotoFrameInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
@@ -16742,6 +16788,7 @@ export namespace Prisma {
   }
 
   export type CabinetUpdateWithoutPhotoFrameInput = {
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
@@ -16756,6 +16803,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedUpdateWithoutPhotoFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
@@ -16769,6 +16817,7 @@ export namespace Prisma {
   }
 
   export type CabinetCreateWithoutMediaInput = {
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
@@ -16783,6 +16832,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedCreateWithoutMediaInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
@@ -16812,6 +16862,7 @@ export namespace Prisma {
   }
 
   export type CabinetUpdateWithoutMediaInput = {
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
@@ -16826,6 +16877,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedUpdateWithoutMediaInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
@@ -16839,6 +16891,7 @@ export namespace Prisma {
   }
 
   export type CabinetCreateWithoutChecklistInput = {
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
@@ -16853,6 +16906,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedCreateWithoutChecklistInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
@@ -16882,6 +16936,7 @@ export namespace Prisma {
   }
 
   export type CabinetUpdateWithoutChecklistInput = {
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
@@ -16896,6 +16951,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedUpdateWithoutChecklistInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
@@ -16909,6 +16965,7 @@ export namespace Prisma {
   }
 
   export type CabinetCreateWithoutNotesInput = {
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
@@ -16923,6 +16980,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedCreateWithoutNotesInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
@@ -16952,6 +17010,7 @@ export namespace Prisma {
   }
 
   export type CabinetUpdateWithoutNotesInput = {
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
@@ -16966,6 +17025,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedUpdateWithoutNotesInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
@@ -16979,6 +17039,7 @@ export namespace Prisma {
   }
 
   export type CabinetCreateWithoutDecorItemsInput = {
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
@@ -16993,6 +17054,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedCreateWithoutDecorItemsInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
@@ -17022,6 +17084,7 @@ export namespace Prisma {
   }
 
   export type CabinetUpdateWithoutDecorItemsInput = {
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
@@ -17036,6 +17099,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedUpdateWithoutDecorItemsInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
@@ -17050,11 +17114,13 @@ export namespace Prisma {
 
   export type CabinetCreateManyOwnerInput = {
     id?: number
+    title: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type CabinetUpdateWithoutOwnerInput = {
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
@@ -17069,6 +17135,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedUpdateWithoutOwnerInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
@@ -17083,6 +17150,7 @@ export namespace Prisma {
 
   export type CabinetUncheckedUpdateManyWithoutOwnerInput = {
     id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
