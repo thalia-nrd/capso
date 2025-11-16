@@ -3,16 +3,25 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
+
 import authRoutes from "./modules/auth/auth.route";
 import cabinetRoutes from "./modules/cabinet/cabinet.route";
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true               
+}));
+
 app.use(express.json());
+app.use(cookieParser());
+
 app.use("/auth", authRoutes);
 app.use("/cabinet", cabinetRoutes);
 
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.send("Cabinna backend is running!");
 });
 
