@@ -5,8 +5,8 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import authRoutes from "./modules/auth/auth.route";
-import cabinetRoutes from "./modules/cabinet/cabinet.route";
+import authRoutes from "./modules/auth/auth.routes";
+import cabinetRoutes from "./modules/cabinet/cabinet.routes";
 import notesRoutes from "./modules/content/notes/notes.routes";
 
 const app = express();

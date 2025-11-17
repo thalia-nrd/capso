@@ -3,7 +3,7 @@ import { notesModel } from "./notes.model";
 
 export const notesController = {
   getNotes: async (req: Request, res: Response) => {
-    const cabinetId = Number(req.query.cabinetId);
+    const cabinetId = Number(req.params.cabinetId);
     const notes = await notesModel.getNotesByCabinetId(cabinetId);
     res.json(notes);
 
@@ -11,7 +11,7 @@ export const notesController = {
   },
 
   createNote: async (req: Request, res: Response) => {
-    const cabinetId = Number(req.query.cabinetId);
+    const cabinetId = Number(req.params.cabinetId);
     const { content } = req.body;
 
     const newNote = await notesModel.createNote(cabinetId, content);
