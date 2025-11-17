@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 
 import authRoutes from "./modules/auth/auth.route";
 import cabinetRoutes from "./modules/cabinet/cabinet.route";
+import notesRoutes from "./modules/content/notes/notes.routes";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(cookieParser());
 
 app.use("/auth", authRoutes);
 app.use("/cabinet", cabinetRoutes);
+app.use("/cabinet/:cabinetId/notes", notesRoutes);
 
 app.get("/", (_req, res) => {
   res.send("Cabinna backend is running!");
