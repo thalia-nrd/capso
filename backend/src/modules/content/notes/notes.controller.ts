@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { notesModel } from "./notes.model";
+import { noteSchema } from "./notes.schema";
 
 export const notesController = {
   getNotes: async (req: Request, res: Response) => {
@@ -11,6 +12,11 @@ export const notesController = {
   },
 
   createNote: async (req: Request, res: Response) => {
+    const parsedNote = noteSchema.safeParse(req.body);
+    if (!parsedNote.success) {
+      return res.status(400).json({ error: parsedNote.error.issues });
+    }
+
     const cabinetId = Number(req.params.cabinetId);
     const { content } = req.body;
 
@@ -19,6 +25,11 @@ export const notesController = {
   },
 
   updateNote: async (req: Request, res: Response) => {
+    const parsedNote = noteSchema.safeParse(req.body);
+    if (!parsedNote.success) {
+      return res.status(400).json({ error: parsedNote.error.issues });
+    }
+
     const noteId = Number(req.params.noteId);
     const { content } = req.body;
 
