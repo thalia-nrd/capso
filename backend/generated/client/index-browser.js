@@ -140,8 +140,17 @@ exports.Prisma.CabinetScalarFieldEnum = {
 
 exports.Prisma.CabinetLayoutScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   layout: 'layout',
   cabinetId: 'cabinetId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SystemItemScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  metadata: 'metadata',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -207,16 +216,6 @@ exports.Prisma.NoteScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.DecorItemScalarFieldEnum = {
-  id: 'id',
-  position: 'position',
-  metadata: 'metadata',
-  type: 'type',
-  cabinetId: 'cabinetId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -252,13 +251,13 @@ exports.Prisma.ModelName = {
   User: 'User',
   Cabinet: 'Cabinet',
   CabinetLayout: 'CabinetLayout',
+  SystemItem: 'SystemItem',
   Chest: 'Chest',
   Journal: 'Journal',
   PhotoFrame: 'PhotoFrame',
   Media: 'Media',
   Checklist: 'Checklist',
-  Note: 'Note',
-  DecorItem: 'DecorItem'
+  Note: 'Note'
 };
 
 /**

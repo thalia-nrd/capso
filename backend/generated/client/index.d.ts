@@ -15,54 +15,74 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 /**
  * Model User
- * 
+ * ----------------------
+ * USERS
+ * ----------------------
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
  * Model Cabinet
- * 
+ * ----------------------
+ * CABINETS
+ * ----------------------
  */
 export type Cabinet = $Result.DefaultSelection<Prisma.$CabinetPayload>
 /**
  * Model CabinetLayout
- * 
+ * ----------------------
+ * CABINET LAYOUT
+ * ----------------------
  */
 export type CabinetLayout = $Result.DefaultSelection<Prisma.$CabinetLayoutPayload>
 /**
+ * Model SystemItem
+ * ----------------------
+ * SYSTEM ITEMS (global decor / mirror / mp3)
+ * ----------------------
+ */
+export type SystemItem = $Result.DefaultSelection<Prisma.$SystemItemPayload>
+/**
  * Model Chest
- * 
+ * ----------------------
+ * CHEST
+ * ----------------------
  */
 export type Chest = $Result.DefaultSelection<Prisma.$ChestPayload>
 /**
  * Model Journal
- * 
+ * ----------------------
+ * JOURNAL
+ * ----------------------
  */
 export type Journal = $Result.DefaultSelection<Prisma.$JournalPayload>
 /**
  * Model PhotoFrame
- * 
+ * ----------------------
+ * PHOTO FRAME
+ * ----------------------
  */
 export type PhotoFrame = $Result.DefaultSelection<Prisma.$PhotoFramePayload>
 /**
  * Model Media
- * 
+ * ----------------------
+ * MEDIA
+ * ----------------------
  */
 export type Media = $Result.DefaultSelection<Prisma.$MediaPayload>
 /**
  * Model Checklist
- * 
+ * ----------------------
+ * CHECKLIST
+ * ----------------------
  */
 export type Checklist = $Result.DefaultSelection<Prisma.$ChecklistPayload>
 /**
  * Model Note
- * 
+ * ----------------------
+ * NOTE
+ * ----------------------
  */
 export type Note = $Result.DefaultSelection<Prisma.$NotePayload>
-/**
- * Model DecorItem
- * 
- */
-export type DecorItem = $Result.DefaultSelection<Prisma.$DecorItemPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -213,6 +233,16 @@ export class PrismaClient<
   get cabinetLayout(): Prisma.CabinetLayoutDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.systemItem`: Exposes CRUD operations for the **SystemItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SystemItems
+    * const systemItems = await prisma.systemItem.findMany()
+    * ```
+    */
+  get systemItem(): Prisma.SystemItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.chest`: Exposes CRUD operations for the **Chest** model.
     * Example usage:
     * ```ts
@@ -271,16 +301,6 @@ export class PrismaClient<
     * ```
     */
   get note(): Prisma.NoteDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.decorItem`: Exposes CRUD operations for the **DecorItem** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more DecorItems
-    * const decorItems = await prisma.decorItem.findMany()
-    * ```
-    */
-  get decorItem(): Prisma.DecorItemDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -725,13 +745,13 @@ export namespace Prisma {
     User: 'User',
     Cabinet: 'Cabinet',
     CabinetLayout: 'CabinetLayout',
+    SystemItem: 'SystemItem',
     Chest: 'Chest',
     Journal: 'Journal',
     PhotoFrame: 'PhotoFrame',
     Media: 'Media',
     Checklist: 'Checklist',
-    Note: 'Note',
-    DecorItem: 'DecorItem'
+    Note: 'Note'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -750,7 +770,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "cabinet" | "cabinetLayout" | "chest" | "journal" | "photoFrame" | "media" | "checklist" | "note" | "decorItem"
+      modelProps: "user" | "cabinet" | "cabinetLayout" | "systemItem" | "chest" | "journal" | "photoFrame" | "media" | "checklist" | "note"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -973,6 +993,80 @@ export namespace Prisma {
           count: {
             args: Prisma.CabinetLayoutCountArgs<ExtArgs>
             result: $Utils.Optional<CabinetLayoutCountAggregateOutputType> | number
+          }
+        }
+      }
+      SystemItem: {
+        payload: Prisma.$SystemItemPayload<ExtArgs>
+        fields: Prisma.SystemItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SystemItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SystemItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemItemPayload>
+          }
+          findFirst: {
+            args: Prisma.SystemItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SystemItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemItemPayload>
+          }
+          findMany: {
+            args: Prisma.SystemItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemItemPayload>[]
+          }
+          create: {
+            args: Prisma.SystemItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemItemPayload>
+          }
+          createMany: {
+            args: Prisma.SystemItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SystemItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemItemPayload>[]
+          }
+          delete: {
+            args: Prisma.SystemItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemItemPayload>
+          }
+          update: {
+            args: Prisma.SystemItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.SystemItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SystemItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SystemItemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemItemPayload>[]
+          }
+          upsert: {
+            args: Prisma.SystemItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemItemPayload>
+          }
+          aggregate: {
+            args: Prisma.SystemItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSystemItem>
+          }
+          groupBy: {
+            args: Prisma.SystemItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SystemItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SystemItemCountArgs<ExtArgs>
+            result: $Utils.Optional<SystemItemCountAggregateOutputType> | number
           }
         }
       }
@@ -1420,80 +1514,6 @@ export namespace Prisma {
           }
         }
       }
-      DecorItem: {
-        payload: Prisma.$DecorItemPayload<ExtArgs>
-        fields: Prisma.DecorItemFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.DecorItemFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DecorItemPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.DecorItemFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DecorItemPayload>
-          }
-          findFirst: {
-            args: Prisma.DecorItemFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DecorItemPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.DecorItemFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DecorItemPayload>
-          }
-          findMany: {
-            args: Prisma.DecorItemFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DecorItemPayload>[]
-          }
-          create: {
-            args: Prisma.DecorItemCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DecorItemPayload>
-          }
-          createMany: {
-            args: Prisma.DecorItemCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.DecorItemCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DecorItemPayload>[]
-          }
-          delete: {
-            args: Prisma.DecorItemDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DecorItemPayload>
-          }
-          update: {
-            args: Prisma.DecorItemUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DecorItemPayload>
-          }
-          deleteMany: {
-            args: Prisma.DecorItemDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.DecorItemUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.DecorItemUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DecorItemPayload>[]
-          }
-          upsert: {
-            args: Prisma.DecorItemUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$DecorItemPayload>
-          }
-          aggregate: {
-            args: Prisma.DecorItemAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDecorItem>
-          }
-          groupBy: {
-            args: Prisma.DecorItemGroupByArgs<ExtArgs>
-            result: $Utils.Optional<DecorItemGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.DecorItemCountArgs<ExtArgs>
-            result: $Utils.Optional<DecorItemCountAggregateOutputType> | number
-          }
-        }
-      }
     }
   } & {
     other: {
@@ -1593,13 +1613,13 @@ export namespace Prisma {
     user?: UserOmit
     cabinet?: CabinetOmit
     cabinetLayout?: CabinetLayoutOmit
+    systemItem?: SystemItemOmit
     chest?: ChestOmit
     journal?: JournalOmit
     photoFrame?: PhotoFrameOmit
     media?: MediaOmit
     checklist?: ChecklistOmit
     note?: NoteOmit
-    decorItem?: DecorItemOmit
   }
 
   /* Types for Logging */
@@ -1711,19 +1731,19 @@ export namespace Prisma {
    */
 
   export type CabinetCountOutputType = {
+    layout: number
     photoFrame: number
     media: number
     checklist: number
     notes: number
-    decorItems: number
   }
 
   export type CabinetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    layout?: boolean | CabinetCountOutputTypeCountLayoutArgs
     photoFrame?: boolean | CabinetCountOutputTypeCountPhotoFrameArgs
     media?: boolean | CabinetCountOutputTypeCountMediaArgs
     checklist?: boolean | CabinetCountOutputTypeCountChecklistArgs
     notes?: boolean | CabinetCountOutputTypeCountNotesArgs
-    decorItems?: boolean | CabinetCountOutputTypeCountDecorItemsArgs
   }
 
   // Custom InputTypes
@@ -1735,6 +1755,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the CabinetCountOutputType
      */
     select?: CabinetCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CabinetCountOutputType without action
+   */
+  export type CabinetCountOutputTypeCountLayoutArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CabinetLayoutWhereInput
   }
 
   /**
@@ -1763,13 +1790,6 @@ export namespace Prisma {
    */
   export type CabinetCountOutputTypeCountNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: NoteWhereInput
-  }
-
-  /**
-   * CabinetCountOutputType without action
-   */
-  export type CabinetCountOutputTypeCountDecorItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DecorItemWhereInput
   }
 
 
@@ -3104,7 +3124,6 @@ export namespace Prisma {
     media?: boolean | Cabinet$mediaArgs<ExtArgs>
     checklist?: boolean | Cabinet$checklistArgs<ExtArgs>
     notes?: boolean | Cabinet$notesArgs<ExtArgs>
-    decorItems?: boolean | Cabinet$decorItemsArgs<ExtArgs>
     _count?: boolean | CabinetCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cabinet"]>
 
@@ -3144,7 +3163,6 @@ export namespace Prisma {
     media?: boolean | Cabinet$mediaArgs<ExtArgs>
     checklist?: boolean | Cabinet$checklistArgs<ExtArgs>
     notes?: boolean | Cabinet$notesArgs<ExtArgs>
-    decorItems?: boolean | Cabinet$decorItemsArgs<ExtArgs>
     _count?: boolean | CabinetCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CabinetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3158,14 +3176,13 @@ export namespace Prisma {
     name: "Cabinet"
     objects: {
       owner: Prisma.$UserPayload<ExtArgs>
-      layout: Prisma.$CabinetLayoutPayload<ExtArgs> | null
+      layout: Prisma.$CabinetLayoutPayload<ExtArgs>[]
       chest: Prisma.$ChestPayload<ExtArgs> | null
       journal: Prisma.$JournalPayload<ExtArgs> | null
       photoFrame: Prisma.$PhotoFramePayload<ExtArgs>[]
       media: Prisma.$MediaPayload<ExtArgs>[]
       checklist: Prisma.$ChecklistPayload<ExtArgs>[]
       notes: Prisma.$NotePayload<ExtArgs>[]
-      decorItems: Prisma.$DecorItemPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3568,14 +3585,13 @@ export namespace Prisma {
   export interface Prisma__CabinetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     owner<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    layout<T extends Cabinet$layoutArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$layoutArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    layout<T extends Cabinet$layoutArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$layoutArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     chest<T extends Cabinet$chestArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$chestArgs<ExtArgs>>): Prisma__ChestClient<$Result.GetResult<Prisma.$ChestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     journal<T extends Cabinet$journalArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$journalArgs<ExtArgs>>): Prisma__JournalClient<$Result.GetResult<Prisma.$JournalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     photoFrame<T extends Cabinet$photoFrameArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$photoFrameArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     media<T extends Cabinet$mediaArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     checklist<T extends Cabinet$checklistArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$checklistArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChecklistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     notes<T extends Cabinet$notesArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    decorItems<T extends Cabinet$decorItemsArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$decorItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4022,6 +4038,11 @@ export namespace Prisma {
      */
     include?: CabinetLayoutInclude<ExtArgs> | null
     where?: CabinetLayoutWhereInput
+    orderBy?: CabinetLayoutOrderByWithRelationInput | CabinetLayoutOrderByWithRelationInput[]
+    cursor?: CabinetLayoutWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CabinetLayoutScalarFieldEnum | CabinetLayoutScalarFieldEnum[]
   }
 
   /**
@@ -4159,30 +4180,6 @@ export namespace Prisma {
   }
 
   /**
-   * Cabinet.decorItems
-   */
-  export type Cabinet$decorItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemInclude<ExtArgs> | null
-    where?: DecorItemWhereInput
-    orderBy?: DecorItemOrderByWithRelationInput | DecorItemOrderByWithRelationInput[]
-    cursor?: DecorItemWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: DecorItemScalarFieldEnum | DecorItemScalarFieldEnum[]
-  }
-
-  /**
    * Cabinet without action
    */
   export type CabinetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4225,6 +4222,7 @@ export namespace Prisma {
 
   export type CabinetLayoutMinAggregateOutputType = {
     id: number | null
+    name: string | null
     cabinetId: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4232,6 +4230,7 @@ export namespace Prisma {
 
   export type CabinetLayoutMaxAggregateOutputType = {
     id: number | null
+    name: string | null
     cabinetId: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4239,6 +4238,7 @@ export namespace Prisma {
 
   export type CabinetLayoutCountAggregateOutputType = {
     id: number
+    name: number
     layout: number
     cabinetId: number
     createdAt: number
@@ -4259,6 +4259,7 @@ export namespace Prisma {
 
   export type CabinetLayoutMinAggregateInputType = {
     id?: true
+    name?: true
     cabinetId?: true
     createdAt?: true
     updatedAt?: true
@@ -4266,6 +4267,7 @@ export namespace Prisma {
 
   export type CabinetLayoutMaxAggregateInputType = {
     id?: true
+    name?: true
     cabinetId?: true
     createdAt?: true
     updatedAt?: true
@@ -4273,6 +4275,7 @@ export namespace Prisma {
 
   export type CabinetLayoutCountAggregateInputType = {
     id?: true
+    name?: true
     layout?: true
     cabinetId?: true
     createdAt?: true
@@ -4368,6 +4371,7 @@ export namespace Prisma {
 
   export type CabinetLayoutGroupByOutputType = {
     id: number
+    name: string | null
     layout: JsonValue
     cabinetId: number
     createdAt: Date
@@ -4395,6 +4399,7 @@ export namespace Prisma {
 
   export type CabinetLayoutSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     layout?: boolean
     cabinetId?: boolean
     createdAt?: boolean
@@ -4404,6 +4409,7 @@ export namespace Prisma {
 
   export type CabinetLayoutSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     layout?: boolean
     cabinetId?: boolean
     createdAt?: boolean
@@ -4413,6 +4419,7 @@ export namespace Prisma {
 
   export type CabinetLayoutSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     layout?: boolean
     cabinetId?: boolean
     createdAt?: boolean
@@ -4422,13 +4429,14 @@ export namespace Prisma {
 
   export type CabinetLayoutSelectScalar = {
     id?: boolean
+    name?: boolean
     layout?: boolean
     cabinetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CabinetLayoutOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "layout" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["cabinetLayout"]>
+  export type CabinetLayoutOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "layout" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["cabinetLayout"]>
   export type CabinetLayoutInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
   }
@@ -4446,6 +4454,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      name: string | null
       layout: Prisma.JsonValue
       cabinetId: number
       createdAt: Date
@@ -4875,6 +4884,7 @@ export namespace Prisma {
    */
   interface CabinetLayoutFieldRefs {
     readonly id: FieldRef<"CabinetLayout", 'Int'>
+    readonly name: FieldRef<"CabinetLayout", 'String'>
     readonly layout: FieldRef<"CabinetLayout", 'Json'>
     readonly cabinetId: FieldRef<"CabinetLayout", 'Int'>
     readonly createdAt: FieldRef<"CabinetLayout", 'DateTime'>
@@ -5290,6 +5300,1031 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CabinetLayoutInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SystemItem
+   */
+
+  export type AggregateSystemItem = {
+    _count: SystemItemCountAggregateOutputType | null
+    _avg: SystemItemAvgAggregateOutputType | null
+    _sum: SystemItemSumAggregateOutputType | null
+    _min: SystemItemMinAggregateOutputType | null
+    _max: SystemItemMaxAggregateOutputType | null
+  }
+
+  export type SystemItemAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type SystemItemSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type SystemItemMinAggregateOutputType = {
+    id: number | null
+    type: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SystemItemMaxAggregateOutputType = {
+    id: number | null
+    type: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SystemItemCountAggregateOutputType = {
+    id: number
+    type: number
+    metadata: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SystemItemAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type SystemItemSumAggregateInputType = {
+    id?: true
+  }
+
+  export type SystemItemMinAggregateInputType = {
+    id?: true
+    type?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SystemItemMaxAggregateInputType = {
+    id?: true
+    type?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SystemItemCountAggregateInputType = {
+    id?: true
+    type?: true
+    metadata?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SystemItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SystemItem to aggregate.
+     */
+    where?: SystemItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SystemItems to fetch.
+     */
+    orderBy?: SystemItemOrderByWithRelationInput | SystemItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SystemItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SystemItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SystemItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SystemItems
+    **/
+    _count?: true | SystemItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SystemItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SystemItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SystemItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SystemItemMaxAggregateInputType
+  }
+
+  export type GetSystemItemAggregateType<T extends SystemItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateSystemItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSystemItem[P]>
+      : GetScalarType<T[P], AggregateSystemItem[P]>
+  }
+
+
+
+
+  export type SystemItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SystemItemWhereInput
+    orderBy?: SystemItemOrderByWithAggregationInput | SystemItemOrderByWithAggregationInput[]
+    by: SystemItemScalarFieldEnum[] | SystemItemScalarFieldEnum
+    having?: SystemItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SystemItemCountAggregateInputType | true
+    _avg?: SystemItemAvgAggregateInputType
+    _sum?: SystemItemSumAggregateInputType
+    _min?: SystemItemMinAggregateInputType
+    _max?: SystemItemMaxAggregateInputType
+  }
+
+  export type SystemItemGroupByOutputType = {
+    id: number
+    type: string
+    metadata: JsonValue | null
+    createdAt: Date
+    updatedAt: Date
+    _count: SystemItemCountAggregateOutputType | null
+    _avg: SystemItemAvgAggregateOutputType | null
+    _sum: SystemItemSumAggregateOutputType | null
+    _min: SystemItemMinAggregateOutputType | null
+    _max: SystemItemMaxAggregateOutputType | null
+  }
+
+  type GetSystemItemGroupByPayload<T extends SystemItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SystemItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SystemItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SystemItemGroupByOutputType[P]>
+            : GetScalarType<T[P], SystemItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SystemItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["systemItem"]>
+
+  export type SystemItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["systemItem"]>
+
+  export type SystemItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["systemItem"]>
+
+  export type SystemItemSelectScalar = {
+    id?: boolean
+    type?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SystemItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["systemItem"]>
+
+  export type $SystemItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SystemItem"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      type: string
+      metadata: Prisma.JsonValue | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["systemItem"]>
+    composites: {}
+  }
+
+  type SystemItemGetPayload<S extends boolean | null | undefined | SystemItemDefaultArgs> = $Result.GetResult<Prisma.$SystemItemPayload, S>
+
+  type SystemItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SystemItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SystemItemCountAggregateInputType | true
+    }
+
+  export interface SystemItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SystemItem'], meta: { name: 'SystemItem' } }
+    /**
+     * Find zero or one SystemItem that matches the filter.
+     * @param {SystemItemFindUniqueArgs} args - Arguments to find a SystemItem
+     * @example
+     * // Get one SystemItem
+     * const systemItem = await prisma.systemItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SystemItemFindUniqueArgs>(args: SelectSubset<T, SystemItemFindUniqueArgs<ExtArgs>>): Prisma__SystemItemClient<$Result.GetResult<Prisma.$SystemItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SystemItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SystemItemFindUniqueOrThrowArgs} args - Arguments to find a SystemItem
+     * @example
+     * // Get one SystemItem
+     * const systemItem = await prisma.systemItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SystemItemFindUniqueOrThrowArgs>(args: SelectSubset<T, SystemItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SystemItemClient<$Result.GetResult<Prisma.$SystemItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SystemItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SystemItemFindFirstArgs} args - Arguments to find a SystemItem
+     * @example
+     * // Get one SystemItem
+     * const systemItem = await prisma.systemItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SystemItemFindFirstArgs>(args?: SelectSubset<T, SystemItemFindFirstArgs<ExtArgs>>): Prisma__SystemItemClient<$Result.GetResult<Prisma.$SystemItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SystemItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SystemItemFindFirstOrThrowArgs} args - Arguments to find a SystemItem
+     * @example
+     * // Get one SystemItem
+     * const systemItem = await prisma.systemItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SystemItemFindFirstOrThrowArgs>(args?: SelectSubset<T, SystemItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__SystemItemClient<$Result.GetResult<Prisma.$SystemItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SystemItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SystemItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SystemItems
+     * const systemItems = await prisma.systemItem.findMany()
+     * 
+     * // Get first 10 SystemItems
+     * const systemItems = await prisma.systemItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const systemItemWithIdOnly = await prisma.systemItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SystemItemFindManyArgs>(args?: SelectSubset<T, SystemItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SystemItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SystemItem.
+     * @param {SystemItemCreateArgs} args - Arguments to create a SystemItem.
+     * @example
+     * // Create one SystemItem
+     * const SystemItem = await prisma.systemItem.create({
+     *   data: {
+     *     // ... data to create a SystemItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends SystemItemCreateArgs>(args: SelectSubset<T, SystemItemCreateArgs<ExtArgs>>): Prisma__SystemItemClient<$Result.GetResult<Prisma.$SystemItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SystemItems.
+     * @param {SystemItemCreateManyArgs} args - Arguments to create many SystemItems.
+     * @example
+     * // Create many SystemItems
+     * const systemItem = await prisma.systemItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SystemItemCreateManyArgs>(args?: SelectSubset<T, SystemItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SystemItems and returns the data saved in the database.
+     * @param {SystemItemCreateManyAndReturnArgs} args - Arguments to create many SystemItems.
+     * @example
+     * // Create many SystemItems
+     * const systemItem = await prisma.systemItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SystemItems and only return the `id`
+     * const systemItemWithIdOnly = await prisma.systemItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SystemItemCreateManyAndReturnArgs>(args?: SelectSubset<T, SystemItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SystemItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SystemItem.
+     * @param {SystemItemDeleteArgs} args - Arguments to delete one SystemItem.
+     * @example
+     * // Delete one SystemItem
+     * const SystemItem = await prisma.systemItem.delete({
+     *   where: {
+     *     // ... filter to delete one SystemItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SystemItemDeleteArgs>(args: SelectSubset<T, SystemItemDeleteArgs<ExtArgs>>): Prisma__SystemItemClient<$Result.GetResult<Prisma.$SystemItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SystemItem.
+     * @param {SystemItemUpdateArgs} args - Arguments to update one SystemItem.
+     * @example
+     * // Update one SystemItem
+     * const systemItem = await prisma.systemItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SystemItemUpdateArgs>(args: SelectSubset<T, SystemItemUpdateArgs<ExtArgs>>): Prisma__SystemItemClient<$Result.GetResult<Prisma.$SystemItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SystemItems.
+     * @param {SystemItemDeleteManyArgs} args - Arguments to filter SystemItems to delete.
+     * @example
+     * // Delete a few SystemItems
+     * const { count } = await prisma.systemItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SystemItemDeleteManyArgs>(args?: SelectSubset<T, SystemItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SystemItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SystemItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SystemItems
+     * const systemItem = await prisma.systemItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SystemItemUpdateManyArgs>(args: SelectSubset<T, SystemItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SystemItems and returns the data updated in the database.
+     * @param {SystemItemUpdateManyAndReturnArgs} args - Arguments to update many SystemItems.
+     * @example
+     * // Update many SystemItems
+     * const systemItem = await prisma.systemItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SystemItems and only return the `id`
+     * const systemItemWithIdOnly = await prisma.systemItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SystemItemUpdateManyAndReturnArgs>(args: SelectSubset<T, SystemItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SystemItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SystemItem.
+     * @param {SystemItemUpsertArgs} args - Arguments to update or create a SystemItem.
+     * @example
+     * // Update or create a SystemItem
+     * const systemItem = await prisma.systemItem.upsert({
+     *   create: {
+     *     // ... data to create a SystemItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SystemItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SystemItemUpsertArgs>(args: SelectSubset<T, SystemItemUpsertArgs<ExtArgs>>): Prisma__SystemItemClient<$Result.GetResult<Prisma.$SystemItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SystemItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SystemItemCountArgs} args - Arguments to filter SystemItems to count.
+     * @example
+     * // Count the number of SystemItems
+     * const count = await prisma.systemItem.count({
+     *   where: {
+     *     // ... the filter for the SystemItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends SystemItemCountArgs>(
+      args?: Subset<T, SystemItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SystemItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SystemItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SystemItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SystemItemAggregateArgs>(args: Subset<T, SystemItemAggregateArgs>): Prisma.PrismaPromise<GetSystemItemAggregateType<T>>
+
+    /**
+     * Group by SystemItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SystemItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SystemItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SystemItemGroupByArgs['orderBy'] }
+        : { orderBy?: SystemItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SystemItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSystemItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SystemItem model
+   */
+  readonly fields: SystemItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SystemItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SystemItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SystemItem model
+   */
+  interface SystemItemFieldRefs {
+    readonly id: FieldRef<"SystemItem", 'Int'>
+    readonly type: FieldRef<"SystemItem", 'String'>
+    readonly metadata: FieldRef<"SystemItem", 'Json'>
+    readonly createdAt: FieldRef<"SystemItem", 'DateTime'>
+    readonly updatedAt: FieldRef<"SystemItem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SystemItem findUnique
+   */
+  export type SystemItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
+    /**
+     * Filter, which SystemItem to fetch.
+     */
+    where: SystemItemWhereUniqueInput
+  }
+
+  /**
+   * SystemItem findUniqueOrThrow
+   */
+  export type SystemItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
+    /**
+     * Filter, which SystemItem to fetch.
+     */
+    where: SystemItemWhereUniqueInput
+  }
+
+  /**
+   * SystemItem findFirst
+   */
+  export type SystemItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
+    /**
+     * Filter, which SystemItem to fetch.
+     */
+    where?: SystemItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SystemItems to fetch.
+     */
+    orderBy?: SystemItemOrderByWithRelationInput | SystemItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SystemItems.
+     */
+    cursor?: SystemItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SystemItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SystemItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SystemItems.
+     */
+    distinct?: SystemItemScalarFieldEnum | SystemItemScalarFieldEnum[]
+  }
+
+  /**
+   * SystemItem findFirstOrThrow
+   */
+  export type SystemItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
+    /**
+     * Filter, which SystemItem to fetch.
+     */
+    where?: SystemItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SystemItems to fetch.
+     */
+    orderBy?: SystemItemOrderByWithRelationInput | SystemItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SystemItems.
+     */
+    cursor?: SystemItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SystemItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SystemItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SystemItems.
+     */
+    distinct?: SystemItemScalarFieldEnum | SystemItemScalarFieldEnum[]
+  }
+
+  /**
+   * SystemItem findMany
+   */
+  export type SystemItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
+    /**
+     * Filter, which SystemItems to fetch.
+     */
+    where?: SystemItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SystemItems to fetch.
+     */
+    orderBy?: SystemItemOrderByWithRelationInput | SystemItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SystemItems.
+     */
+    cursor?: SystemItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SystemItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SystemItems.
+     */
+    skip?: number
+    distinct?: SystemItemScalarFieldEnum | SystemItemScalarFieldEnum[]
+  }
+
+  /**
+   * SystemItem create
+   */
+  export type SystemItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
+    /**
+     * The data needed to create a SystemItem.
+     */
+    data: XOR<SystemItemCreateInput, SystemItemUncheckedCreateInput>
+  }
+
+  /**
+   * SystemItem createMany
+   */
+  export type SystemItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SystemItems.
+     */
+    data: SystemItemCreateManyInput | SystemItemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SystemItem createManyAndReturn
+   */
+  export type SystemItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
+    /**
+     * The data used to create many SystemItems.
+     */
+    data: SystemItemCreateManyInput | SystemItemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SystemItem update
+   */
+  export type SystemItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
+    /**
+     * The data needed to update a SystemItem.
+     */
+    data: XOR<SystemItemUpdateInput, SystemItemUncheckedUpdateInput>
+    /**
+     * Choose, which SystemItem to update.
+     */
+    where: SystemItemWhereUniqueInput
+  }
+
+  /**
+   * SystemItem updateMany
+   */
+  export type SystemItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SystemItems.
+     */
+    data: XOR<SystemItemUpdateManyMutationInput, SystemItemUncheckedUpdateManyInput>
+    /**
+     * Filter which SystemItems to update
+     */
+    where?: SystemItemWhereInput
+    /**
+     * Limit how many SystemItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SystemItem updateManyAndReturn
+   */
+  export type SystemItemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
+    /**
+     * The data used to update SystemItems.
+     */
+    data: XOR<SystemItemUpdateManyMutationInput, SystemItemUncheckedUpdateManyInput>
+    /**
+     * Filter which SystemItems to update
+     */
+    where?: SystemItemWhereInput
+    /**
+     * Limit how many SystemItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SystemItem upsert
+   */
+  export type SystemItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
+    /**
+     * The filter to search for the SystemItem to update in case it exists.
+     */
+    where: SystemItemWhereUniqueInput
+    /**
+     * In case the SystemItem found by the `where` argument doesn't exist, create a new SystemItem with this data.
+     */
+    create: XOR<SystemItemCreateInput, SystemItemUncheckedCreateInput>
+    /**
+     * In case the SystemItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SystemItemUpdateInput, SystemItemUncheckedUpdateInput>
+  }
+
+  /**
+   * SystemItem delete
+   */
+  export type SystemItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
+    /**
+     * Filter which SystemItem to delete.
+     */
+    where: SystemItemWhereUniqueInput
+  }
+
+  /**
+   * SystemItem deleteMany
+   */
+  export type SystemItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SystemItems to delete
+     */
+    where?: SystemItemWhereInput
+    /**
+     * Limit how many SystemItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SystemItem without action
+   */
+  export type SystemItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemItem
+     */
+    select?: SystemItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemItem
+     */
+    omit?: SystemItemOmit<ExtArgs> | null
   }
 
 
@@ -11995,1120 +13030,6 @@ export namespace Prisma {
 
 
   /**
-   * Model DecorItem
-   */
-
-  export type AggregateDecorItem = {
-    _count: DecorItemCountAggregateOutputType | null
-    _avg: DecorItemAvgAggregateOutputType | null
-    _sum: DecorItemSumAggregateOutputType | null
-    _min: DecorItemMinAggregateOutputType | null
-    _max: DecorItemMaxAggregateOutputType | null
-  }
-
-  export type DecorItemAvgAggregateOutputType = {
-    id: number | null
-    cabinetId: number | null
-  }
-
-  export type DecorItemSumAggregateOutputType = {
-    id: number | null
-    cabinetId: number | null
-  }
-
-  export type DecorItemMinAggregateOutputType = {
-    id: number | null
-    type: string | null
-    cabinetId: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type DecorItemMaxAggregateOutputType = {
-    id: number | null
-    type: string | null
-    cabinetId: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type DecorItemCountAggregateOutputType = {
-    id: number
-    position: number
-    metadata: number
-    type: number
-    cabinetId: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type DecorItemAvgAggregateInputType = {
-    id?: true
-    cabinetId?: true
-  }
-
-  export type DecorItemSumAggregateInputType = {
-    id?: true
-    cabinetId?: true
-  }
-
-  export type DecorItemMinAggregateInputType = {
-    id?: true
-    type?: true
-    cabinetId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type DecorItemMaxAggregateInputType = {
-    id?: true
-    type?: true
-    cabinetId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type DecorItemCountAggregateInputType = {
-    id?: true
-    position?: true
-    metadata?: true
-    type?: true
-    cabinetId?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type DecorItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which DecorItem to aggregate.
-     */
-    where?: DecorItemWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of DecorItems to fetch.
-     */
-    orderBy?: DecorItemOrderByWithRelationInput | DecorItemOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: DecorItemWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` DecorItems from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` DecorItems.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned DecorItems
-    **/
-    _count?: true | DecorItemCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: DecorItemAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: DecorItemSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: DecorItemMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: DecorItemMaxAggregateInputType
-  }
-
-  export type GetDecorItemAggregateType<T extends DecorItemAggregateArgs> = {
-        [P in keyof T & keyof AggregateDecorItem]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateDecorItem[P]>
-      : GetScalarType<T[P], AggregateDecorItem[P]>
-  }
-
-
-
-
-  export type DecorItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DecorItemWhereInput
-    orderBy?: DecorItemOrderByWithAggregationInput | DecorItemOrderByWithAggregationInput[]
-    by: DecorItemScalarFieldEnum[] | DecorItemScalarFieldEnum
-    having?: DecorItemScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: DecorItemCountAggregateInputType | true
-    _avg?: DecorItemAvgAggregateInputType
-    _sum?: DecorItemSumAggregateInputType
-    _min?: DecorItemMinAggregateInputType
-    _max?: DecorItemMaxAggregateInputType
-  }
-
-  export type DecorItemGroupByOutputType = {
-    id: number
-    position: JsonValue | null
-    metadata: JsonValue | null
-    type: string
-    cabinetId: number
-    createdAt: Date
-    updatedAt: Date
-    _count: DecorItemCountAggregateOutputType | null
-    _avg: DecorItemAvgAggregateOutputType | null
-    _sum: DecorItemSumAggregateOutputType | null
-    _min: DecorItemMinAggregateOutputType | null
-    _max: DecorItemMaxAggregateOutputType | null
-  }
-
-  type GetDecorItemGroupByPayload<T extends DecorItemGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<DecorItemGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof DecorItemGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
-            : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type DecorItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    position?: boolean
-    metadata?: boolean
-    type?: boolean
-    cabinetId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["decorItem"]>
-
-  export type DecorItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    position?: boolean
-    metadata?: boolean
-    type?: boolean
-    cabinetId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["decorItem"]>
-
-  export type DecorItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    position?: boolean
-    metadata?: boolean
-    type?: boolean
-    cabinetId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["decorItem"]>
-
-  export type DecorItemSelectScalar = {
-    id?: boolean
-    position?: boolean
-    metadata?: boolean
-    type?: boolean
-    cabinetId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type DecorItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "metadata" | "type" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["decorItem"]>
-  export type DecorItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }
-  export type DecorItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }
-  export type DecorItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }
-
-  export type $DecorItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "DecorItem"
-    objects: {
-      cabinet: Prisma.$CabinetPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      position: Prisma.JsonValue | null
-      metadata: Prisma.JsonValue | null
-      type: string
-      cabinetId: number
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["decorItem"]>
-    composites: {}
-  }
-
-  type DecorItemGetPayload<S extends boolean | null | undefined | DecorItemDefaultArgs> = $Result.GetResult<Prisma.$DecorItemPayload, S>
-
-  type DecorItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<DecorItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: DecorItemCountAggregateInputType | true
-    }
-
-  export interface DecorItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DecorItem'], meta: { name: 'DecorItem' } }
-    /**
-     * Find zero or one DecorItem that matches the filter.
-     * @param {DecorItemFindUniqueArgs} args - Arguments to find a DecorItem
-     * @example
-     * // Get one DecorItem
-     * const decorItem = await prisma.decorItem.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends DecorItemFindUniqueArgs>(args: SelectSubset<T, DecorItemFindUniqueArgs<ExtArgs>>): Prisma__DecorItemClient<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one DecorItem that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {DecorItemFindUniqueOrThrowArgs} args - Arguments to find a DecorItem
-     * @example
-     * // Get one DecorItem
-     * const decorItem = await prisma.decorItem.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends DecorItemFindUniqueOrThrowArgs>(args: SelectSubset<T, DecorItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DecorItemClient<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first DecorItem that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DecorItemFindFirstArgs} args - Arguments to find a DecorItem
-     * @example
-     * // Get one DecorItem
-     * const decorItem = await prisma.decorItem.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends DecorItemFindFirstArgs>(args?: SelectSubset<T, DecorItemFindFirstArgs<ExtArgs>>): Prisma__DecorItemClient<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first DecorItem that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DecorItemFindFirstOrThrowArgs} args - Arguments to find a DecorItem
-     * @example
-     * // Get one DecorItem
-     * const decorItem = await prisma.decorItem.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends DecorItemFindFirstOrThrowArgs>(args?: SelectSubset<T, DecorItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__DecorItemClient<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more DecorItems that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DecorItemFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all DecorItems
-     * const decorItems = await prisma.decorItem.findMany()
-     * 
-     * // Get first 10 DecorItems
-     * const decorItems = await prisma.decorItem.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const decorItemWithIdOnly = await prisma.decorItem.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends DecorItemFindManyArgs>(args?: SelectSubset<T, DecorItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a DecorItem.
-     * @param {DecorItemCreateArgs} args - Arguments to create a DecorItem.
-     * @example
-     * // Create one DecorItem
-     * const DecorItem = await prisma.decorItem.create({
-     *   data: {
-     *     // ... data to create a DecorItem
-     *   }
-     * })
-     * 
-     */
-    create<T extends DecorItemCreateArgs>(args: SelectSubset<T, DecorItemCreateArgs<ExtArgs>>): Prisma__DecorItemClient<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many DecorItems.
-     * @param {DecorItemCreateManyArgs} args - Arguments to create many DecorItems.
-     * @example
-     * // Create many DecorItems
-     * const decorItem = await prisma.decorItem.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends DecorItemCreateManyArgs>(args?: SelectSubset<T, DecorItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many DecorItems and returns the data saved in the database.
-     * @param {DecorItemCreateManyAndReturnArgs} args - Arguments to create many DecorItems.
-     * @example
-     * // Create many DecorItems
-     * const decorItem = await prisma.decorItem.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many DecorItems and only return the `id`
-     * const decorItemWithIdOnly = await prisma.decorItem.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends DecorItemCreateManyAndReturnArgs>(args?: SelectSubset<T, DecorItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a DecorItem.
-     * @param {DecorItemDeleteArgs} args - Arguments to delete one DecorItem.
-     * @example
-     * // Delete one DecorItem
-     * const DecorItem = await prisma.decorItem.delete({
-     *   where: {
-     *     // ... filter to delete one DecorItem
-     *   }
-     * })
-     * 
-     */
-    delete<T extends DecorItemDeleteArgs>(args: SelectSubset<T, DecorItemDeleteArgs<ExtArgs>>): Prisma__DecorItemClient<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one DecorItem.
-     * @param {DecorItemUpdateArgs} args - Arguments to update one DecorItem.
-     * @example
-     * // Update one DecorItem
-     * const decorItem = await prisma.decorItem.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends DecorItemUpdateArgs>(args: SelectSubset<T, DecorItemUpdateArgs<ExtArgs>>): Prisma__DecorItemClient<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more DecorItems.
-     * @param {DecorItemDeleteManyArgs} args - Arguments to filter DecorItems to delete.
-     * @example
-     * // Delete a few DecorItems
-     * const { count } = await prisma.decorItem.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends DecorItemDeleteManyArgs>(args?: SelectSubset<T, DecorItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more DecorItems.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DecorItemUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many DecorItems
-     * const decorItem = await prisma.decorItem.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends DecorItemUpdateManyArgs>(args: SelectSubset<T, DecorItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more DecorItems and returns the data updated in the database.
-     * @param {DecorItemUpdateManyAndReturnArgs} args - Arguments to update many DecorItems.
-     * @example
-     * // Update many DecorItems
-     * const decorItem = await prisma.decorItem.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more DecorItems and only return the `id`
-     * const decorItemWithIdOnly = await prisma.decorItem.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends DecorItemUpdateManyAndReturnArgs>(args: SelectSubset<T, DecorItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one DecorItem.
-     * @param {DecorItemUpsertArgs} args - Arguments to update or create a DecorItem.
-     * @example
-     * // Update or create a DecorItem
-     * const decorItem = await prisma.decorItem.upsert({
-     *   create: {
-     *     // ... data to create a DecorItem
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the DecorItem we want to update
-     *   }
-     * })
-     */
-    upsert<T extends DecorItemUpsertArgs>(args: SelectSubset<T, DecorItemUpsertArgs<ExtArgs>>): Prisma__DecorItemClient<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of DecorItems.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DecorItemCountArgs} args - Arguments to filter DecorItems to count.
-     * @example
-     * // Count the number of DecorItems
-     * const count = await prisma.decorItem.count({
-     *   where: {
-     *     // ... the filter for the DecorItems we want to count
-     *   }
-     * })
-    **/
-    count<T extends DecorItemCountArgs>(
-      args?: Subset<T, DecorItemCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], DecorItemCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a DecorItem.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DecorItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends DecorItemAggregateArgs>(args: Subset<T, DecorItemAggregateArgs>): Prisma.PrismaPromise<GetDecorItemAggregateType<T>>
-
-    /**
-     * Group by DecorItem.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {DecorItemGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends DecorItemGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DecorItemGroupByArgs['orderBy'] }
-        : { orderBy?: DecorItemGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, DecorItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDecorItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the DecorItem model
-   */
-  readonly fields: DecorItemFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for DecorItem.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__DecorItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    cabinet<T extends CabinetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CabinetDefaultArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the DecorItem model
-   */
-  interface DecorItemFieldRefs {
-    readonly id: FieldRef<"DecorItem", 'Int'>
-    readonly position: FieldRef<"DecorItem", 'Json'>
-    readonly metadata: FieldRef<"DecorItem", 'Json'>
-    readonly type: FieldRef<"DecorItem", 'String'>
-    readonly cabinetId: FieldRef<"DecorItem", 'Int'>
-    readonly createdAt: FieldRef<"DecorItem", 'DateTime'>
-    readonly updatedAt: FieldRef<"DecorItem", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * DecorItem findUnique
-   */
-  export type DecorItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemInclude<ExtArgs> | null
-    /**
-     * Filter, which DecorItem to fetch.
-     */
-    where: DecorItemWhereUniqueInput
-  }
-
-  /**
-   * DecorItem findUniqueOrThrow
-   */
-  export type DecorItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemInclude<ExtArgs> | null
-    /**
-     * Filter, which DecorItem to fetch.
-     */
-    where: DecorItemWhereUniqueInput
-  }
-
-  /**
-   * DecorItem findFirst
-   */
-  export type DecorItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemInclude<ExtArgs> | null
-    /**
-     * Filter, which DecorItem to fetch.
-     */
-    where?: DecorItemWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of DecorItems to fetch.
-     */
-    orderBy?: DecorItemOrderByWithRelationInput | DecorItemOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for DecorItems.
-     */
-    cursor?: DecorItemWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` DecorItems from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` DecorItems.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of DecorItems.
-     */
-    distinct?: DecorItemScalarFieldEnum | DecorItemScalarFieldEnum[]
-  }
-
-  /**
-   * DecorItem findFirstOrThrow
-   */
-  export type DecorItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemInclude<ExtArgs> | null
-    /**
-     * Filter, which DecorItem to fetch.
-     */
-    where?: DecorItemWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of DecorItems to fetch.
-     */
-    orderBy?: DecorItemOrderByWithRelationInput | DecorItemOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for DecorItems.
-     */
-    cursor?: DecorItemWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` DecorItems from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` DecorItems.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of DecorItems.
-     */
-    distinct?: DecorItemScalarFieldEnum | DecorItemScalarFieldEnum[]
-  }
-
-  /**
-   * DecorItem findMany
-   */
-  export type DecorItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemInclude<ExtArgs> | null
-    /**
-     * Filter, which DecorItems to fetch.
-     */
-    where?: DecorItemWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of DecorItems to fetch.
-     */
-    orderBy?: DecorItemOrderByWithRelationInput | DecorItemOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing DecorItems.
-     */
-    cursor?: DecorItemWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` DecorItems from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` DecorItems.
-     */
-    skip?: number
-    distinct?: DecorItemScalarFieldEnum | DecorItemScalarFieldEnum[]
-  }
-
-  /**
-   * DecorItem create
-   */
-  export type DecorItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemInclude<ExtArgs> | null
-    /**
-     * The data needed to create a DecorItem.
-     */
-    data: XOR<DecorItemCreateInput, DecorItemUncheckedCreateInput>
-  }
-
-  /**
-   * DecorItem createMany
-   */
-  export type DecorItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many DecorItems.
-     */
-    data: DecorItemCreateManyInput | DecorItemCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * DecorItem createManyAndReturn
-   */
-  export type DecorItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * The data used to create many DecorItems.
-     */
-    data: DecorItemCreateManyInput | DecorItemCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * DecorItem update
-   */
-  export type DecorItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemInclude<ExtArgs> | null
-    /**
-     * The data needed to update a DecorItem.
-     */
-    data: XOR<DecorItemUpdateInput, DecorItemUncheckedUpdateInput>
-    /**
-     * Choose, which DecorItem to update.
-     */
-    where: DecorItemWhereUniqueInput
-  }
-
-  /**
-   * DecorItem updateMany
-   */
-  export type DecorItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update DecorItems.
-     */
-    data: XOR<DecorItemUpdateManyMutationInput, DecorItemUncheckedUpdateManyInput>
-    /**
-     * Filter which DecorItems to update
-     */
-    where?: DecorItemWhereInput
-    /**
-     * Limit how many DecorItems to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * DecorItem updateManyAndReturn
-   */
-  export type DecorItemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * The data used to update DecorItems.
-     */
-    data: XOR<DecorItemUpdateManyMutationInput, DecorItemUncheckedUpdateManyInput>
-    /**
-     * Filter which DecorItems to update
-     */
-    where?: DecorItemWhereInput
-    /**
-     * Limit how many DecorItems to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * DecorItem upsert
-   */
-  export type DecorItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemInclude<ExtArgs> | null
-    /**
-     * The filter to search for the DecorItem to update in case it exists.
-     */
-    where: DecorItemWhereUniqueInput
-    /**
-     * In case the DecorItem found by the `where` argument doesn't exist, create a new DecorItem with this data.
-     */
-    create: XOR<DecorItemCreateInput, DecorItemUncheckedCreateInput>
-    /**
-     * In case the DecorItem was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<DecorItemUpdateInput, DecorItemUncheckedUpdateInput>
-  }
-
-  /**
-   * DecorItem delete
-   */
-  export type DecorItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemInclude<ExtArgs> | null
-    /**
-     * Filter which DecorItem to delete.
-     */
-    where: DecorItemWhereUniqueInput
-  }
-
-  /**
-   * DecorItem deleteMany
-   */
-  export type DecorItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which DecorItems to delete
-     */
-    where?: DecorItemWhereInput
-    /**
-     * Limit how many DecorItems to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * DecorItem without action
-   */
-  export type DecorItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the DecorItem
-     */
-    select?: DecorItemSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the DecorItem
-     */
-    omit?: DecorItemOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DecorItemInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Enums
    */
 
@@ -13147,6 +13068,7 @@ export namespace Prisma {
 
   export const CabinetLayoutScalarFieldEnum: {
     id: 'id',
+    name: 'name',
     layout: 'layout',
     cabinetId: 'cabinetId',
     createdAt: 'createdAt',
@@ -13154,6 +13076,17 @@ export namespace Prisma {
   };
 
   export type CabinetLayoutScalarFieldEnum = (typeof CabinetLayoutScalarFieldEnum)[keyof typeof CabinetLayoutScalarFieldEnum]
+
+
+  export const SystemItemScalarFieldEnum: {
+    id: 'id',
+    type: 'type',
+    metadata: 'metadata',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SystemItemScalarFieldEnum = (typeof SystemItemScalarFieldEnum)[keyof typeof SystemItemScalarFieldEnum]
 
 
   export const ChestScalarFieldEnum: {
@@ -13233,19 +13166,6 @@ export namespace Prisma {
   };
 
   export type NoteScalarFieldEnum = (typeof NoteScalarFieldEnum)[keyof typeof NoteScalarFieldEnum]
-
-
-  export const DecorItemScalarFieldEnum: {
-    id: 'id',
-    position: 'position',
-    metadata: 'metadata',
-    type: 'type',
-    cabinetId: 'cabinetId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type DecorItemScalarFieldEnum = (typeof DecorItemScalarFieldEnum)[keyof typeof DecorItemScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -13446,14 +13366,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Cabinet"> | Date | string
     ownerId?: IntFilter<"Cabinet"> | number
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
-    layout?: XOR<CabinetLayoutNullableScalarRelationFilter, CabinetLayoutWhereInput> | null
+    layout?: CabinetLayoutListRelationFilter
     chest?: XOR<ChestNullableScalarRelationFilter, ChestWhereInput> | null
     journal?: XOR<JournalNullableScalarRelationFilter, JournalWhereInput> | null
     photoFrame?: PhotoFrameListRelationFilter
     media?: MediaListRelationFilter
     checklist?: ChecklistListRelationFilter
     notes?: NoteListRelationFilter
-    decorItems?: DecorItemListRelationFilter
   }
 
   export type CabinetOrderByWithRelationInput = {
@@ -13463,14 +13382,13 @@ export namespace Prisma {
     updatedAt?: SortOrder
     ownerId?: SortOrder
     owner?: UserOrderByWithRelationInput
-    layout?: CabinetLayoutOrderByWithRelationInput
+    layout?: CabinetLayoutOrderByRelationAggregateInput
     chest?: ChestOrderByWithRelationInput
     journal?: JournalOrderByWithRelationInput
     photoFrame?: PhotoFrameOrderByRelationAggregateInput
     media?: MediaOrderByRelationAggregateInput
     checklist?: ChecklistOrderByRelationAggregateInput
     notes?: NoteOrderByRelationAggregateInput
-    decorItems?: DecorItemOrderByRelationAggregateInput
   }
 
   export type CabinetWhereUniqueInput = Prisma.AtLeast<{
@@ -13483,14 +13401,13 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Cabinet"> | Date | string
     updatedAt?: DateTimeFilter<"Cabinet"> | Date | string
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
-    layout?: XOR<CabinetLayoutNullableScalarRelationFilter, CabinetLayoutWhereInput> | null
+    layout?: CabinetLayoutListRelationFilter
     chest?: XOR<ChestNullableScalarRelationFilter, ChestWhereInput> | null
     journal?: XOR<JournalNullableScalarRelationFilter, JournalWhereInput> | null
     photoFrame?: PhotoFrameListRelationFilter
     media?: MediaListRelationFilter
     checklist?: ChecklistListRelationFilter
     notes?: NoteListRelationFilter
-    decorItems?: DecorItemListRelationFilter
   }, "id" | "ownerId">
 
   export type CabinetOrderByWithAggregationInput = {
@@ -13522,6 +13439,7 @@ export namespace Prisma {
     OR?: CabinetLayoutWhereInput[]
     NOT?: CabinetLayoutWhereInput | CabinetLayoutWhereInput[]
     id?: IntFilter<"CabinetLayout"> | number
+    name?: StringNullableFilter<"CabinetLayout"> | string | null
     layout?: JsonFilter<"CabinetLayout">
     cabinetId?: IntFilter<"CabinetLayout"> | number
     createdAt?: DateTimeFilter<"CabinetLayout"> | Date | string
@@ -13531,6 +13449,7 @@ export namespace Prisma {
 
   export type CabinetLayoutOrderByWithRelationInput = {
     id?: SortOrder
+    name?: SortOrderInput | SortOrder
     layout?: SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
@@ -13540,18 +13459,20 @@ export namespace Prisma {
 
   export type CabinetLayoutWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    cabinetId?: number
     AND?: CabinetLayoutWhereInput | CabinetLayoutWhereInput[]
     OR?: CabinetLayoutWhereInput[]
     NOT?: CabinetLayoutWhereInput | CabinetLayoutWhereInput[]
+    name?: StringNullableFilter<"CabinetLayout"> | string | null
     layout?: JsonFilter<"CabinetLayout">
+    cabinetId?: IntFilter<"CabinetLayout"> | number
     createdAt?: DateTimeFilter<"CabinetLayout"> | Date | string
     updatedAt?: DateTimeFilter<"CabinetLayout"> | Date | string
     cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
-  }, "id" | "cabinetId">
+  }, "id">
 
   export type CabinetLayoutOrderByWithAggregationInput = {
     id?: SortOrder
+    name?: SortOrderInput | SortOrder
     layout?: SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
@@ -13568,10 +13489,65 @@ export namespace Prisma {
     OR?: CabinetLayoutScalarWhereWithAggregatesInput[]
     NOT?: CabinetLayoutScalarWhereWithAggregatesInput | CabinetLayoutScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"CabinetLayout"> | number
+    name?: StringNullableWithAggregatesFilter<"CabinetLayout"> | string | null
     layout?: JsonWithAggregatesFilter<"CabinetLayout">
     cabinetId?: IntWithAggregatesFilter<"CabinetLayout"> | number
     createdAt?: DateTimeWithAggregatesFilter<"CabinetLayout"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CabinetLayout"> | Date | string
+  }
+
+  export type SystemItemWhereInput = {
+    AND?: SystemItemWhereInput | SystemItemWhereInput[]
+    OR?: SystemItemWhereInput[]
+    NOT?: SystemItemWhereInput | SystemItemWhereInput[]
+    id?: IntFilter<"SystemItem"> | number
+    type?: StringFilter<"SystemItem"> | string
+    metadata?: JsonNullableFilter<"SystemItem">
+    createdAt?: DateTimeFilter<"SystemItem"> | Date | string
+    updatedAt?: DateTimeFilter<"SystemItem"> | Date | string
+  }
+
+  export type SystemItemOrderByWithRelationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SystemItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: SystemItemWhereInput | SystemItemWhereInput[]
+    OR?: SystemItemWhereInput[]
+    NOT?: SystemItemWhereInput | SystemItemWhereInput[]
+    type?: StringFilter<"SystemItem"> | string
+    metadata?: JsonNullableFilter<"SystemItem">
+    createdAt?: DateTimeFilter<"SystemItem"> | Date | string
+    updatedAt?: DateTimeFilter<"SystemItem"> | Date | string
+  }, "id">
+
+  export type SystemItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SystemItemCountOrderByAggregateInput
+    _avg?: SystemItemAvgOrderByAggregateInput
+    _max?: SystemItemMaxOrderByAggregateInput
+    _min?: SystemItemMinOrderByAggregateInput
+    _sum?: SystemItemSumOrderByAggregateInput
+  }
+
+  export type SystemItemScalarWhereWithAggregatesInput = {
+    AND?: SystemItemScalarWhereWithAggregatesInput | SystemItemScalarWhereWithAggregatesInput[]
+    OR?: SystemItemScalarWhereWithAggregatesInput[]
+    NOT?: SystemItemScalarWhereWithAggregatesInput | SystemItemScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"SystemItem"> | number
+    type?: StringWithAggregatesFilter<"SystemItem"> | string
+    metadata?: JsonNullableWithAggregatesFilter<"SystemItem">
+    createdAt?: DateTimeWithAggregatesFilter<"SystemItem"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"SystemItem"> | Date | string
   }
 
   export type ChestWhereInput = {
@@ -13981,73 +13957,6 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Note"> | Date | string
   }
 
-  export type DecorItemWhereInput = {
-    AND?: DecorItemWhereInput | DecorItemWhereInput[]
-    OR?: DecorItemWhereInput[]
-    NOT?: DecorItemWhereInput | DecorItemWhereInput[]
-    id?: IntFilter<"DecorItem"> | number
-    position?: JsonNullableFilter<"DecorItem">
-    metadata?: JsonNullableFilter<"DecorItem">
-    type?: StringFilter<"DecorItem"> | string
-    cabinetId?: IntFilter<"DecorItem"> | number
-    createdAt?: DateTimeFilter<"DecorItem"> | Date | string
-    updatedAt?: DateTimeFilter<"DecorItem"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
-  }
-
-  export type DecorItemOrderByWithRelationInput = {
-    id?: SortOrder
-    position?: SortOrderInput | SortOrder
-    metadata?: SortOrderInput | SortOrder
-    type?: SortOrder
-    cabinetId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    cabinet?: CabinetOrderByWithRelationInput
-  }
-
-  export type DecorItemWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: DecorItemWhereInput | DecorItemWhereInput[]
-    OR?: DecorItemWhereInput[]
-    NOT?: DecorItemWhereInput | DecorItemWhereInput[]
-    position?: JsonNullableFilter<"DecorItem">
-    metadata?: JsonNullableFilter<"DecorItem">
-    type?: StringFilter<"DecorItem"> | string
-    cabinetId?: IntFilter<"DecorItem"> | number
-    createdAt?: DateTimeFilter<"DecorItem"> | Date | string
-    updatedAt?: DateTimeFilter<"DecorItem"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
-  }, "id">
-
-  export type DecorItemOrderByWithAggregationInput = {
-    id?: SortOrder
-    position?: SortOrderInput | SortOrder
-    metadata?: SortOrderInput | SortOrder
-    type?: SortOrder
-    cabinetId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: DecorItemCountOrderByAggregateInput
-    _avg?: DecorItemAvgOrderByAggregateInput
-    _max?: DecorItemMaxOrderByAggregateInput
-    _min?: DecorItemMinOrderByAggregateInput
-    _sum?: DecorItemSumOrderByAggregateInput
-  }
-
-  export type DecorItemScalarWhereWithAggregatesInput = {
-    AND?: DecorItemScalarWhereWithAggregatesInput | DecorItemScalarWhereWithAggregatesInput[]
-    OR?: DecorItemScalarWhereWithAggregatesInput[]
-    NOT?: DecorItemScalarWhereWithAggregatesInput | DecorItemScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"DecorItem"> | number
-    position?: JsonNullableWithAggregatesFilter<"DecorItem">
-    metadata?: JsonNullableWithAggregatesFilter<"DecorItem">
-    type?: StringWithAggregatesFilter<"DecorItem"> | string
-    cabinetId?: IntWithAggregatesFilter<"DecorItem"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"DecorItem"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"DecorItem"> | Date | string
-  }
-
   export type UserCreateInput = {
     name: string
     email: string
@@ -14117,14 +14026,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutCreateNestedManyWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetUncheckedCreateInput = {
@@ -14133,14 +14041,13 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutUncheckedCreateNestedManyWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetUpdateInput = {
@@ -14148,14 +14055,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUpdateManyWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetUncheckedUpdateInput = {
@@ -14164,14 +14070,13 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUncheckedUpdateManyWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetCreateManyInput = {
@@ -14197,6 +14102,7 @@ export namespace Prisma {
   }
 
   export type CabinetLayoutCreateInput = {
+    name?: string | null
     layout: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14205,6 +14111,7 @@ export namespace Prisma {
 
   export type CabinetLayoutUncheckedCreateInput = {
     id?: number
+    name?: string | null
     layout: JsonNullValueInput | InputJsonValue
     cabinetId: number
     createdAt?: Date | string
@@ -14212,6 +14119,7 @@ export namespace Prisma {
   }
 
   export type CabinetLayoutUpdateInput = {
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     layout?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14220,6 +14128,7 @@ export namespace Prisma {
 
   export type CabinetLayoutUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     layout?: JsonNullValueInput | InputJsonValue
     cabinetId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14228,6 +14137,7 @@ export namespace Prisma {
 
   export type CabinetLayoutCreateManyInput = {
     id?: number
+    name?: string | null
     layout: JsonNullValueInput | InputJsonValue
     cabinetId: number
     createdAt?: Date | string
@@ -14235,6 +14145,7 @@ export namespace Prisma {
   }
 
   export type CabinetLayoutUpdateManyMutationInput = {
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     layout?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14242,8 +14153,62 @@ export namespace Prisma {
 
   export type CabinetLayoutUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
     layout?: JsonNullValueInput | InputJsonValue
     cabinetId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SystemItemCreateInput = {
+    type: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SystemItemUncheckedCreateInput = {
+    id?: number
+    type: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SystemItemUpdateInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SystemItemUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SystemItemCreateManyInput = {
+    id?: number
+    type: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SystemItemUpdateManyMutationInput = {
+    type?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SystemItemUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14651,72 +14616,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DecorItemCreateInput = {
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    cabinet: CabinetCreateNestedOneWithoutDecorItemsInput
-  }
-
-  export type DecorItemUncheckedCreateInput = {
-    id?: number
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type: string
-    cabinetId: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type DecorItemUpdateInput = {
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinet?: CabinetUpdateOneRequiredWithoutDecorItemsNestedInput
-  }
-
-  export type DecorItemUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type?: StringFieldUpdateOperationsInput | string
-    cabinetId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type DecorItemCreateManyInput = {
-    id?: number
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type: string
-    cabinetId: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type DecorItemUpdateManyMutationInput = {
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type DecorItemUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type?: StringFieldUpdateOperationsInput | string
-    cabinetId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -14852,9 +14751,10 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type CabinetLayoutNullableScalarRelationFilter = {
-    is?: CabinetLayoutWhereInput | null
-    isNot?: CabinetLayoutWhereInput | null
+  export type CabinetLayoutListRelationFilter = {
+    every?: CabinetLayoutWhereInput
+    some?: CabinetLayoutWhereInput
+    none?: CabinetLayoutWhereInput
   }
 
   export type ChestNullableScalarRelationFilter = {
@@ -14891,10 +14791,8 @@ export namespace Prisma {
     none?: NoteWhereInput
   }
 
-  export type DecorItemListRelationFilter = {
-    every?: DecorItemWhereInput
-    some?: DecorItemWhereInput
-    none?: DecorItemWhereInput
+  export type CabinetLayoutOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type PhotoFrameOrderByRelationAggregateInput = {
@@ -14910,10 +14808,6 @@ export namespace Prisma {
   }
 
   export type NoteOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type DecorItemOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -14950,6 +14844,21 @@ export namespace Prisma {
     id?: SortOrder
     ownerId?: SortOrder
   }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -14979,8 +14888,14 @@ export namespace Prisma {
     isNot?: CabinetWhereInput
   }
 
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type CabinetLayoutCountOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     layout?: SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
@@ -14994,6 +14909,7 @@ export namespace Prisma {
 
   export type CabinetLayoutMaxOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15001,6 +14917,7 @@ export namespace Prisma {
 
   export type CabinetLayoutMinOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15009,6 +14926,24 @@ export namespace Prisma {
   export type CabinetLayoutSumOrderByAggregateInput = {
     id?: SortOrder
     cabinetId?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -15060,9 +14995,60 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
+  export type SystemItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    metadata?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SystemItemAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type SystemItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SystemItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SystemItemSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type ChestCountOrderByAggregateInput = {
@@ -15100,32 +15086,6 @@ export namespace Prisma {
     id?: SortOrder
     cabinetId?: SortOrder
   }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
-  }
 
   export type JournalCountOrderByAggregateInput = {
     id?: SortOrder
@@ -15161,21 +15121,6 @@ export namespace Prisma {
   export type JournalSumOrderByAggregateInput = {
     id?: SortOrder
     cabinetId?: SortOrder
-  }
-
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type PhotoFrameCountOrderByAggregateInput = {
@@ -15215,24 +15160,6 @@ export namespace Prisma {
   export type PhotoFrameSumOrderByAggregateInput = {
     id?: SortOrder
     cabinetId?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type MediaCountOrderByAggregateInput = {
@@ -15345,42 +15272,6 @@ export namespace Prisma {
     cabinetId?: SortOrder
   }
 
-  export type DecorItemCountOrderByAggregateInput = {
-    id?: SortOrder
-    position?: SortOrder
-    metadata?: SortOrder
-    type?: SortOrder
-    cabinetId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type DecorItemAvgOrderByAggregateInput = {
-    id?: SortOrder
-    cabinetId?: SortOrder
-  }
-
-  export type DecorItemMaxOrderByAggregateInput = {
-    id?: SortOrder
-    type?: SortOrder
-    cabinetId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type DecorItemMinOrderByAggregateInput = {
-    id?: SortOrder
-    type?: SortOrder
-    cabinetId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type DecorItemSumOrderByAggregateInput = {
-    id?: SortOrder
-    cabinetId?: SortOrder
-  }
-
   export type CabinetCreateNestedManyWithoutOwnerInput = {
     create?: XOR<CabinetCreateWithoutOwnerInput, CabinetUncheckedCreateWithoutOwnerInput> | CabinetCreateWithoutOwnerInput[] | CabinetUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: CabinetCreateOrConnectWithoutOwnerInput | CabinetCreateOrConnectWithoutOwnerInput[]
@@ -15445,10 +15336,11 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type CabinetLayoutCreateNestedOneWithoutCabinetInput = {
-    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput
-    connect?: CabinetLayoutWhereUniqueInput
+  export type CabinetLayoutCreateNestedManyWithoutCabinetInput = {
+    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput> | CabinetLayoutCreateWithoutCabinetInput[] | CabinetLayoutUncheckedCreateWithoutCabinetInput[]
+    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput | CabinetLayoutCreateOrConnectWithoutCabinetInput[]
+    createMany?: CabinetLayoutCreateManyCabinetInputEnvelope
+    connect?: CabinetLayoutWhereUniqueInput | CabinetLayoutWhereUniqueInput[]
   }
 
   export type ChestCreateNestedOneWithoutCabinetInput = {
@@ -15491,17 +15383,11 @@ export namespace Prisma {
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
   }
 
-  export type DecorItemCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput> | DecorItemCreateWithoutCabinetInput[] | DecorItemUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: DecorItemCreateOrConnectWithoutCabinetInput | DecorItemCreateOrConnectWithoutCabinetInput[]
-    createMany?: DecorItemCreateManyCabinetInputEnvelope
-    connect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-  }
-
-  export type CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput = {
-    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput
-    connect?: CabinetLayoutWhereUniqueInput
+  export type CabinetLayoutUncheckedCreateNestedManyWithoutCabinetInput = {
+    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput> | CabinetLayoutCreateWithoutCabinetInput[] | CabinetLayoutUncheckedCreateWithoutCabinetInput[]
+    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput | CabinetLayoutCreateOrConnectWithoutCabinetInput[]
+    createMany?: CabinetLayoutCreateManyCabinetInputEnvelope
+    connect?: CabinetLayoutWhereUniqueInput | CabinetLayoutWhereUniqueInput[]
   }
 
   export type ChestUncheckedCreateNestedOneWithoutCabinetInput = {
@@ -15544,13 +15430,6 @@ export namespace Prisma {
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
   }
 
-  export type DecorItemUncheckedCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput> | DecorItemCreateWithoutCabinetInput[] | DecorItemUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: DecorItemCreateOrConnectWithoutCabinetInput | DecorItemCreateOrConnectWithoutCabinetInput[]
-    createMany?: DecorItemCreateManyCabinetInputEnvelope
-    connect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-  }
-
   export type UserUpdateOneRequiredWithoutCabinetsNestedInput = {
     create?: XOR<UserCreateWithoutCabinetsInput, UserUncheckedCreateWithoutCabinetsInput>
     connectOrCreate?: UserCreateOrConnectWithoutCabinetsInput
@@ -15559,14 +15438,18 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCabinetsInput, UserUpdateWithoutCabinetsInput>, UserUncheckedUpdateWithoutCabinetsInput>
   }
 
-  export type CabinetLayoutUpdateOneWithoutCabinetNestedInput = {
-    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput
-    upsert?: CabinetLayoutUpsertWithoutCabinetInput
-    disconnect?: CabinetLayoutWhereInput | boolean
-    delete?: CabinetLayoutWhereInput | boolean
-    connect?: CabinetLayoutWhereUniqueInput
-    update?: XOR<XOR<CabinetLayoutUpdateToOneWithWhereWithoutCabinetInput, CabinetLayoutUpdateWithoutCabinetInput>, CabinetLayoutUncheckedUpdateWithoutCabinetInput>
+  export type CabinetLayoutUpdateManyWithoutCabinetNestedInput = {
+    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput> | CabinetLayoutCreateWithoutCabinetInput[] | CabinetLayoutUncheckedCreateWithoutCabinetInput[]
+    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput | CabinetLayoutCreateOrConnectWithoutCabinetInput[]
+    upsert?: CabinetLayoutUpsertWithWhereUniqueWithoutCabinetInput | CabinetLayoutUpsertWithWhereUniqueWithoutCabinetInput[]
+    createMany?: CabinetLayoutCreateManyCabinetInputEnvelope
+    set?: CabinetLayoutWhereUniqueInput | CabinetLayoutWhereUniqueInput[]
+    disconnect?: CabinetLayoutWhereUniqueInput | CabinetLayoutWhereUniqueInput[]
+    delete?: CabinetLayoutWhereUniqueInput | CabinetLayoutWhereUniqueInput[]
+    connect?: CabinetLayoutWhereUniqueInput | CabinetLayoutWhereUniqueInput[]
+    update?: CabinetLayoutUpdateWithWhereUniqueWithoutCabinetInput | CabinetLayoutUpdateWithWhereUniqueWithoutCabinetInput[]
+    updateMany?: CabinetLayoutUpdateManyWithWhereWithoutCabinetInput | CabinetLayoutUpdateManyWithWhereWithoutCabinetInput[]
+    deleteMany?: CabinetLayoutScalarWhereInput | CabinetLayoutScalarWhereInput[]
   }
 
   export type ChestUpdateOneWithoutCabinetNestedInput = {
@@ -15645,28 +15528,18 @@ export namespace Prisma {
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
   }
 
-  export type DecorItemUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput> | DecorItemCreateWithoutCabinetInput[] | DecorItemUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: DecorItemCreateOrConnectWithoutCabinetInput | DecorItemCreateOrConnectWithoutCabinetInput[]
-    upsert?: DecorItemUpsertWithWhereUniqueWithoutCabinetInput | DecorItemUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: DecorItemCreateManyCabinetInputEnvelope
-    set?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-    disconnect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-    delete?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-    connect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-    update?: DecorItemUpdateWithWhereUniqueWithoutCabinetInput | DecorItemUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: DecorItemUpdateManyWithWhereWithoutCabinetInput | DecorItemUpdateManyWithWhereWithoutCabinetInput[]
-    deleteMany?: DecorItemScalarWhereInput | DecorItemScalarWhereInput[]
-  }
-
-  export type CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput = {
-    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput
-    upsert?: CabinetLayoutUpsertWithoutCabinetInput
-    disconnect?: CabinetLayoutWhereInput | boolean
-    delete?: CabinetLayoutWhereInput | boolean
-    connect?: CabinetLayoutWhereUniqueInput
-    update?: XOR<XOR<CabinetLayoutUpdateToOneWithWhereWithoutCabinetInput, CabinetLayoutUpdateWithoutCabinetInput>, CabinetLayoutUncheckedUpdateWithoutCabinetInput>
+  export type CabinetLayoutUncheckedUpdateManyWithoutCabinetNestedInput = {
+    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput> | CabinetLayoutCreateWithoutCabinetInput[] | CabinetLayoutUncheckedCreateWithoutCabinetInput[]
+    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput | CabinetLayoutCreateOrConnectWithoutCabinetInput[]
+    upsert?: CabinetLayoutUpsertWithWhereUniqueWithoutCabinetInput | CabinetLayoutUpsertWithWhereUniqueWithoutCabinetInput[]
+    createMany?: CabinetLayoutCreateManyCabinetInputEnvelope
+    set?: CabinetLayoutWhereUniqueInput | CabinetLayoutWhereUniqueInput[]
+    disconnect?: CabinetLayoutWhereUniqueInput | CabinetLayoutWhereUniqueInput[]
+    delete?: CabinetLayoutWhereUniqueInput | CabinetLayoutWhereUniqueInput[]
+    connect?: CabinetLayoutWhereUniqueInput | CabinetLayoutWhereUniqueInput[]
+    update?: CabinetLayoutUpdateWithWhereUniqueWithoutCabinetInput | CabinetLayoutUpdateWithWhereUniqueWithoutCabinetInput[]
+    updateMany?: CabinetLayoutUpdateManyWithWhereWithoutCabinetInput | CabinetLayoutUpdateManyWithWhereWithoutCabinetInput[]
+    deleteMany?: CabinetLayoutScalarWhereInput | CabinetLayoutScalarWhereInput[]
   }
 
   export type ChestUncheckedUpdateOneWithoutCabinetNestedInput = {
@@ -15745,24 +15618,14 @@ export namespace Prisma {
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
   }
 
-  export type DecorItemUncheckedUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput> | DecorItemCreateWithoutCabinetInput[] | DecorItemUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: DecorItemCreateOrConnectWithoutCabinetInput | DecorItemCreateOrConnectWithoutCabinetInput[]
-    upsert?: DecorItemUpsertWithWhereUniqueWithoutCabinetInput | DecorItemUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: DecorItemCreateManyCabinetInputEnvelope
-    set?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-    disconnect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-    delete?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-    connect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-    update?: DecorItemUpdateWithWhereUniqueWithoutCabinetInput | DecorItemUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: DecorItemUpdateManyWithWhereWithoutCabinetInput | DecorItemUpdateManyWithWhereWithoutCabinetInput[]
-    deleteMany?: DecorItemScalarWhereInput | DecorItemScalarWhereInput[]
-  }
-
   export type CabinetCreateNestedOneWithoutLayoutInput = {
     create?: XOR<CabinetCreateWithoutLayoutInput, CabinetUncheckedCreateWithoutLayoutInput>
     connectOrCreate?: CabinetCreateOrConnectWithoutLayoutInput
     connect?: CabinetWhereUniqueInput
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type CabinetUpdateOneRequiredWithoutLayoutNestedInput = {
@@ -15805,10 +15668,6 @@ export namespace Prisma {
     create?: XOR<CabinetCreateWithoutPhotoFrameInput, CabinetUncheckedCreateWithoutPhotoFrameInput>
     connectOrCreate?: CabinetCreateOrConnectWithoutPhotoFrameInput
     connect?: CabinetWhereUniqueInput
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type CabinetUpdateOneRequiredWithoutPhotoFrameNestedInput = {
@@ -15859,20 +15718,6 @@ export namespace Prisma {
     upsert?: CabinetUpsertWithoutNotesInput
     connect?: CabinetWhereUniqueInput
     update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutNotesInput, CabinetUpdateWithoutNotesInput>, CabinetUncheckedUpdateWithoutNotesInput>
-  }
-
-  export type CabinetCreateNestedOneWithoutDecorItemsInput = {
-    create?: XOR<CabinetCreateWithoutDecorItemsInput, CabinetUncheckedCreateWithoutDecorItemsInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutDecorItemsInput
-    connect?: CabinetWhereUniqueInput
-  }
-
-  export type CabinetUpdateOneRequiredWithoutDecorItemsNestedInput = {
-    create?: XOR<CabinetCreateWithoutDecorItemsInput, CabinetUncheckedCreateWithoutDecorItemsInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutDecorItemsInput
-    upsert?: CabinetUpsertWithoutDecorItemsInput
-    connect?: CabinetWhereUniqueInput
-    update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutDecorItemsInput, CabinetUpdateWithoutDecorItemsInput>, CabinetUncheckedUpdateWithoutDecorItemsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -15968,63 +15813,6 @@ export namespace Prisma {
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
-  export type NestedJsonFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-  export type NestedJsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
@@ -16057,18 +15845,74 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+  export type NestedJsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
   export type CabinetCreateWithoutOwnerInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutCreateNestedManyWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetUncheckedCreateWithoutOwnerInput = {
@@ -16076,14 +15920,13 @@ export namespace Prisma {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutUncheckedCreateNestedManyWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetCreateOrConnectWithoutOwnerInput = {
@@ -16146,6 +15989,7 @@ export namespace Prisma {
   }
 
   export type CabinetLayoutCreateWithoutCabinetInput = {
+    name?: string | null
     layout: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16153,6 +15997,7 @@ export namespace Prisma {
 
   export type CabinetLayoutUncheckedCreateWithoutCabinetInput = {
     id?: number
+    name?: string | null
     layout: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16161,6 +16006,11 @@ export namespace Prisma {
   export type CabinetLayoutCreateOrConnectWithoutCabinetInput = {
     where: CabinetLayoutWhereUniqueInput
     create: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
+  }
+
+  export type CabinetLayoutCreateManyCabinetInputEnvelope = {
+    data: CabinetLayoutCreateManyCabinetInput | CabinetLayoutCreateManyCabinetInput[]
+    skipDuplicates?: boolean
   }
 
   export type ChestCreateWithoutCabinetInput = {
@@ -16317,33 +16167,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type DecorItemCreateWithoutCabinetInput = {
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type DecorItemUncheckedCreateWithoutCabinetInput = {
-    id?: number
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type DecorItemCreateOrConnectWithoutCabinetInput = {
-    where: DecorItemWhereUniqueInput
-    create: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput>
-  }
-
-  export type DecorItemCreateManyCabinetInputEnvelope = {
-    data: DecorItemCreateManyCabinetInput | DecorItemCreateManyCabinetInput[]
-    skipDuplicates?: boolean
-  }
-
   export type UserUpsertWithoutCabinetsInput = {
     update: XOR<UserUpdateWithoutCabinetsInput, UserUncheckedUpdateWithoutCabinetsInput>
     create: XOR<UserCreateWithoutCabinetsInput, UserUncheckedCreateWithoutCabinetsInput>
@@ -16372,28 +16195,32 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CabinetLayoutUpsertWithoutCabinetInput = {
+  export type CabinetLayoutUpsertWithWhereUniqueWithoutCabinetInput = {
+    where: CabinetLayoutWhereUniqueInput
     update: XOR<CabinetLayoutUpdateWithoutCabinetInput, CabinetLayoutUncheckedUpdateWithoutCabinetInput>
     create: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
-    where?: CabinetLayoutWhereInput
   }
 
-  export type CabinetLayoutUpdateToOneWithWhereWithoutCabinetInput = {
-    where?: CabinetLayoutWhereInput
+  export type CabinetLayoutUpdateWithWhereUniqueWithoutCabinetInput = {
+    where: CabinetLayoutWhereUniqueInput
     data: XOR<CabinetLayoutUpdateWithoutCabinetInput, CabinetLayoutUncheckedUpdateWithoutCabinetInput>
   }
 
-  export type CabinetLayoutUpdateWithoutCabinetInput = {
-    layout?: JsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type CabinetLayoutUpdateManyWithWhereWithoutCabinetInput = {
+    where: CabinetLayoutScalarWhereInput
+    data: XOR<CabinetLayoutUpdateManyMutationInput, CabinetLayoutUncheckedUpdateManyWithoutCabinetInput>
   }
 
-  export type CabinetLayoutUncheckedUpdateWithoutCabinetInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    layout?: JsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type CabinetLayoutScalarWhereInput = {
+    AND?: CabinetLayoutScalarWhereInput | CabinetLayoutScalarWhereInput[]
+    OR?: CabinetLayoutScalarWhereInput[]
+    NOT?: CabinetLayoutScalarWhereInput | CabinetLayoutScalarWhereInput[]
+    id?: IntFilter<"CabinetLayout"> | number
+    name?: StringNullableFilter<"CabinetLayout"> | string | null
+    layout?: JsonFilter<"CabinetLayout">
+    cabinetId?: IntFilter<"CabinetLayout"> | number
+    createdAt?: DateTimeFilter<"CabinetLayout"> | Date | string
+    updatedAt?: DateTimeFilter<"CabinetLayout"> | Date | string
   }
 
   export type ChestUpsertWithoutCabinetInput = {
@@ -16569,35 +16396,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Note"> | Date | string
   }
 
-  export type DecorItemUpsertWithWhereUniqueWithoutCabinetInput = {
-    where: DecorItemWhereUniqueInput
-    update: XOR<DecorItemUpdateWithoutCabinetInput, DecorItemUncheckedUpdateWithoutCabinetInput>
-    create: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput>
-  }
-
-  export type DecorItemUpdateWithWhereUniqueWithoutCabinetInput = {
-    where: DecorItemWhereUniqueInput
-    data: XOR<DecorItemUpdateWithoutCabinetInput, DecorItemUncheckedUpdateWithoutCabinetInput>
-  }
-
-  export type DecorItemUpdateManyWithWhereWithoutCabinetInput = {
-    where: DecorItemScalarWhereInput
-    data: XOR<DecorItemUpdateManyMutationInput, DecorItemUncheckedUpdateManyWithoutCabinetInput>
-  }
-
-  export type DecorItemScalarWhereInput = {
-    AND?: DecorItemScalarWhereInput | DecorItemScalarWhereInput[]
-    OR?: DecorItemScalarWhereInput[]
-    NOT?: DecorItemScalarWhereInput | DecorItemScalarWhereInput[]
-    id?: IntFilter<"DecorItem"> | number
-    position?: JsonNullableFilter<"DecorItem">
-    metadata?: JsonNullableFilter<"DecorItem">
-    type?: StringFilter<"DecorItem"> | string
-    cabinetId?: IntFilter<"DecorItem"> | number
-    createdAt?: DateTimeFilter<"DecorItem"> | Date | string
-    updatedAt?: DateTimeFilter<"DecorItem"> | Date | string
-  }
-
   export type CabinetCreateWithoutLayoutInput = {
     title: string
     createdAt?: Date | string
@@ -16609,7 +16407,6 @@ export namespace Prisma {
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetUncheckedCreateWithoutLayoutInput = {
@@ -16624,7 +16421,6 @@ export namespace Prisma {
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetCreateOrConnectWithoutLayoutInput = {
@@ -16654,7 +16450,6 @@ export namespace Prisma {
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetUncheckedUpdateWithoutLayoutInput = {
@@ -16669,7 +16464,6 @@ export namespace Prisma {
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetCreateWithoutChestInput = {
@@ -16677,13 +16471,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutCreateNestedManyWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetUncheckedCreateWithoutChestInput = {
@@ -16692,13 +16485,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutUncheckedCreateNestedManyWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetCreateOrConnectWithoutChestInput = {
@@ -16722,13 +16514,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUpdateManyWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetUncheckedUpdateWithoutChestInput = {
@@ -16737,13 +16528,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUncheckedUpdateManyWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetCreateWithoutJournalInput = {
@@ -16751,13 +16541,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutCreateNestedManyWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetUncheckedCreateWithoutJournalInput = {
@@ -16766,13 +16555,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutUncheckedCreateNestedManyWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetCreateOrConnectWithoutJournalInput = {
@@ -16796,13 +16584,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUpdateManyWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetUncheckedUpdateWithoutJournalInput = {
@@ -16811,13 +16598,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUncheckedUpdateManyWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetCreateWithoutPhotoFrameInput = {
@@ -16825,13 +16611,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutCreateNestedManyWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetUncheckedCreateWithoutPhotoFrameInput = {
@@ -16840,13 +16625,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutUncheckedCreateNestedManyWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetCreateOrConnectWithoutPhotoFrameInput = {
@@ -16870,13 +16654,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUpdateManyWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetUncheckedUpdateWithoutPhotoFrameInput = {
@@ -16885,13 +16668,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUncheckedUpdateManyWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetCreateWithoutMediaInput = {
@@ -16899,13 +16681,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutCreateNestedManyWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetUncheckedCreateWithoutMediaInput = {
@@ -16914,13 +16695,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutUncheckedCreateNestedManyWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetCreateOrConnectWithoutMediaInput = {
@@ -16944,13 +16724,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUpdateManyWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetUncheckedUpdateWithoutMediaInput = {
@@ -16959,13 +16738,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUncheckedUpdateManyWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetCreateWithoutChecklistInput = {
@@ -16973,13 +16751,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutCreateNestedManyWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetUncheckedCreateWithoutChecklistInput = {
@@ -16988,13 +16765,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutUncheckedCreateNestedManyWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetCreateOrConnectWithoutChecklistInput = {
@@ -17018,13 +16794,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUpdateManyWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetUncheckedUpdateWithoutChecklistInput = {
@@ -17033,13 +16808,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUncheckedUpdateManyWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetCreateWithoutNotesInput = {
@@ -17047,13 +16821,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutCreateNestedManyWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetUncheckedCreateWithoutNotesInput = {
@@ -17062,13 +16835,12 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
+    layout?: CabinetLayoutUncheckedCreateNestedManyWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
     photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
   }
 
   export type CabinetCreateOrConnectWithoutNotesInput = {
@@ -17092,13 +16864,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUpdateManyWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetUncheckedUpdateWithoutNotesInput = {
@@ -17107,87 +16878,12 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUncheckedUpdateManyWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
-  }
-
-  export type CabinetCreateWithoutDecorItemsInput = {
-    title: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
-    chest?: ChestCreateNestedOneWithoutCabinetInput
-    journal?: JournalCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
-    media?: MediaCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistCreateNestedManyWithoutCabinetInput
-    notes?: NoteCreateNestedManyWithoutCabinetInput
-  }
-
-  export type CabinetUncheckedCreateWithoutDecorItemsInput = {
-    id?: number
-    title: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
-    chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
-    journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
-    media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
-    notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-  }
-
-  export type CabinetCreateOrConnectWithoutDecorItemsInput = {
-    where: CabinetWhereUniqueInput
-    create: XOR<CabinetCreateWithoutDecorItemsInput, CabinetUncheckedCreateWithoutDecorItemsInput>
-  }
-
-  export type CabinetUpsertWithoutDecorItemsInput = {
-    update: XOR<CabinetUpdateWithoutDecorItemsInput, CabinetUncheckedUpdateWithoutDecorItemsInput>
-    create: XOR<CabinetCreateWithoutDecorItemsInput, CabinetUncheckedCreateWithoutDecorItemsInput>
-    where?: CabinetWhereInput
-  }
-
-  export type CabinetUpdateToOneWithWhereWithoutDecorItemsInput = {
-    where?: CabinetWhereInput
-    data: XOR<CabinetUpdateWithoutDecorItemsInput, CabinetUncheckedUpdateWithoutDecorItemsInput>
-  }
-
-  export type CabinetUpdateWithoutDecorItemsInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
-    media?: MediaUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUpdateManyWithoutCabinetNestedInput
-  }
-
-  export type CabinetUncheckedUpdateWithoutDecorItemsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
-    media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetCreateManyOwnerInput = {
@@ -17201,14 +16897,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUpdateManyWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetUncheckedUpdateWithoutOwnerInput = {
@@ -17216,14 +16911,13 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
+    layout?: CabinetLayoutUncheckedUpdateManyWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
     photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
   }
 
   export type CabinetUncheckedUpdateManyWithoutOwnerInput = {
@@ -17231,6 +16925,14 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CabinetLayoutCreateManyCabinetInput = {
+    id?: number
+    name?: string | null
+    layout: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PhotoFrameCreateManyCabinetInput = {
@@ -17270,13 +16972,27 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type DecorItemCreateManyCabinetInput = {
-    id?: number
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
+  export type CabinetLayoutUpdateWithoutCabinetInput = {
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    layout?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CabinetLayoutUncheckedUpdateWithoutCabinetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    layout?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CabinetLayoutUncheckedUpdateManyWithoutCabinetInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    layout?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PhotoFrameUpdateWithoutCabinetInput = {
@@ -17382,32 +17098,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     content?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type DecorItemUpdateWithoutCabinetInput = {
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type DecorItemUncheckedUpdateWithoutCabinetInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type DecorItemUncheckedUpdateManyWithoutCabinetInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    position?: NullableJsonNullValueInput | InputJsonValue
-    metadata?: NullableJsonNullValueInput | InputJsonValue
-    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

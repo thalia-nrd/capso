@@ -9,6 +9,9 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+/// ----------------------
+/// USERS
+/// ----------------------
 model User {
   id        Int       @id @default(autoincrement())
   name      String
@@ -19,6 +22,9 @@ model User {
   cabinets  Cabinet[]
 }
 
+/// ----------------------
+/// CABINETS
+/// ----------------------
 model Cabinet {
   id        Int      @id @default(autoincrement())
   title     String
@@ -27,36 +33,56 @@ model Cabinet {
   owner     User     @relation(fields: [ownerId], references: [id])
   ownerId   Int      @unique
 
-  layout     CabinetLayout?
+  layout     CabinetLayout[]
   chest      Chest?
   journal    Journal?
   photoFrame PhotoFrame[]
   media      Media[]
   checklist  Checklist[]
   notes      Note[]
-  decorItems DecorItem[]
 }
 
+/// ----------------------
+/// CABINET LAYOUT
+/// ----------------------
 model CabinetLayout {
   id        Int      @id @default(autoincrement())
-  layout    Json
+  name      String? // optional: name/version of layout
+  layout    Json // array of objects {itemType, itemId, position}
   cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
-  cabinetId Int      @unique
+  cabinetId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
+/// ----------------------
+/// SYSTEM ITEMS (global decor / mirror / mp3)
+/// ----------------------
+model SystemItem {
+  id        Int      @id @default(autoincrement())
+  type      String // "mirror", "mp3", "lamp", "image", etc.
+  metadata  Json? // dynamic data like cover image, API info
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/// ----------------------
+/// CHEST
+/// ----------------------
 model Chest {
   id        Int      @id @default(autoincrement())
   passcode  String
   position  Json?
-  items     Json?
+  items     Json? // could hold IDs of media / photoFrame etc inside chest
   cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
   cabinetId Int      @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
+/// ----------------------
+/// JOURNAL
+/// ----------------------
 model Journal {
   id        Int      @id @default(autoincrement())
   passcode  String
@@ -68,30 +94,39 @@ model Journal {
   updatedAt DateTime @updatedAt
 }
 
+/// ----------------------
+/// PHOTO FRAME
+/// ----------------------
 model PhotoFrame {
   id        Int      @id @default(autoincrement())
   position  Json?
   url       String
   caption   String?
-  metadata  Json?
+  metadata  Json? // dynamic info like effects
   cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
   cabinetId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
+/// ----------------------
+/// MEDIA
+/// ----------------------
 model Media {
   id        Int      @id @default(autoincrement())
   position  Json?
   type      String
   url       String
-  metadata  Json?
+  metadata  Json? // dynamic info, e.g., song/playlist data
   cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
   cabinetId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
+/// ----------------------
+/// CHECKLIST
+/// ----------------------
 model Checklist {
   id        Int      @id @default(autoincrement())
   position  Json?
@@ -103,21 +138,13 @@ model Checklist {
   updatedAt DateTime @updatedAt
 }
 
+/// ----------------------
+/// NOTE
+/// ----------------------
 model Note {
   id        Int      @id @default(autoincrement())
   position  Json?
   content   String
-  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
-  cabinetId Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model DecorItem {
-  id        Int      @id @default(autoincrement())
-  position  Json?
-  metadata  Json?
-  type      String
   cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
   cabinetId Int
   createdAt DateTime @default(now())
