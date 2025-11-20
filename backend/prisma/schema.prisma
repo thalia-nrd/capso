@@ -73,6 +73,7 @@ model PhotoFrame {
   position  Json?
   url       String
   caption   String?
+  metadata  Json?
   cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
   cabinetId Int      
   createdAt DateTime @default(now())
@@ -84,6 +85,7 @@ model Media {
   position  Json?
   type      String
   url       String
+  metadata  Json?
   cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
   cabinetId Int      
   createdAt DateTime @default(now())
@@ -114,6 +116,7 @@ model Note {
 model DecorItem {
   id        Int      @id @default(autoincrement())
   position  Json?
+  metadata  Json?
   type      String
   cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
   cabinetId Int      

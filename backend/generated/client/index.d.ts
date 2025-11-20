@@ -7566,6 +7566,7 @@ export namespace Prisma {
     position: number
     url: number
     caption: number
+    metadata: number
     cabinetId: number
     createdAt: number
     updatedAt: number
@@ -7606,6 +7607,7 @@ export namespace Prisma {
     position?: true
     url?: true
     caption?: true
+    metadata?: true
     cabinetId?: true
     createdAt?: true
     updatedAt?: true
@@ -7703,6 +7705,7 @@ export namespace Prisma {
     position: JsonValue | null
     url: string
     caption: string | null
+    metadata: JsonValue | null
     cabinetId: number
     createdAt: Date
     updatedAt: Date
@@ -7732,6 +7735,7 @@ export namespace Prisma {
     position?: boolean
     url?: boolean
     caption?: boolean
+    metadata?: boolean
     cabinetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7743,6 +7747,7 @@ export namespace Prisma {
     position?: boolean
     url?: boolean
     caption?: boolean
+    metadata?: boolean
     cabinetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7754,6 +7759,7 @@ export namespace Prisma {
     position?: boolean
     url?: boolean
     caption?: boolean
+    metadata?: boolean
     cabinetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7765,12 +7771,13 @@ export namespace Prisma {
     position?: boolean
     url?: boolean
     caption?: boolean
+    metadata?: boolean
     cabinetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PhotoFrameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "url" | "caption" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["photoFrame"]>
+  export type PhotoFrameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "url" | "caption" | "metadata" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["photoFrame"]>
   export type PhotoFrameInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
   }
@@ -7791,6 +7798,7 @@ export namespace Prisma {
       position: Prisma.JsonValue | null
       url: string
       caption: string | null
+      metadata: Prisma.JsonValue | null
       cabinetId: number
       createdAt: Date
       updatedAt: Date
@@ -8222,6 +8230,7 @@ export namespace Prisma {
     readonly position: FieldRef<"PhotoFrame", 'Json'>
     readonly url: FieldRef<"PhotoFrame", 'String'>
     readonly caption: FieldRef<"PhotoFrame", 'String'>
+    readonly metadata: FieldRef<"PhotoFrame", 'Json'>
     readonly cabinetId: FieldRef<"PhotoFrame", 'Int'>
     readonly createdAt: FieldRef<"PhotoFrame", 'DateTime'>
     readonly updatedAt: FieldRef<"PhotoFrame", 'DateTime'>
@@ -8684,6 +8693,7 @@ export namespace Prisma {
     position: number
     type: number
     url: number
+    metadata: number
     cabinetId: number
     createdAt: number
     updatedAt: number
@@ -8724,6 +8734,7 @@ export namespace Prisma {
     position?: true
     type?: true
     url?: true
+    metadata?: true
     cabinetId?: true
     createdAt?: true
     updatedAt?: true
@@ -8821,6 +8832,7 @@ export namespace Prisma {
     position: JsonValue | null
     type: string
     url: string
+    metadata: JsonValue | null
     cabinetId: number
     createdAt: Date
     updatedAt: Date
@@ -8850,6 +8862,7 @@ export namespace Prisma {
     position?: boolean
     type?: boolean
     url?: boolean
+    metadata?: boolean
     cabinetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8861,6 +8874,7 @@ export namespace Prisma {
     position?: boolean
     type?: boolean
     url?: boolean
+    metadata?: boolean
     cabinetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8872,6 +8886,7 @@ export namespace Prisma {
     position?: boolean
     type?: boolean
     url?: boolean
+    metadata?: boolean
     cabinetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -8883,12 +8898,13 @@ export namespace Prisma {
     position?: boolean
     type?: boolean
     url?: boolean
+    metadata?: boolean
     cabinetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type MediaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "type" | "url" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["media"]>
+  export type MediaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "type" | "url" | "metadata" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["media"]>
   export type MediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
   }
@@ -8909,6 +8925,7 @@ export namespace Prisma {
       position: Prisma.JsonValue | null
       type: string
       url: string
+      metadata: Prisma.JsonValue | null
       cabinetId: number
       createdAt: Date
       updatedAt: Date
@@ -9340,6 +9357,7 @@ export namespace Prisma {
     readonly position: FieldRef<"Media", 'Json'>
     readonly type: FieldRef<"Media", 'String'>
     readonly url: FieldRef<"Media", 'String'>
+    readonly metadata: FieldRef<"Media", 'Json'>
     readonly cabinetId: FieldRef<"Media", 'Int'>
     readonly createdAt: FieldRef<"Media", 'DateTime'>
     readonly updatedAt: FieldRef<"Media", 'DateTime'>
@@ -12017,6 +12035,7 @@ export namespace Prisma {
   export type DecorItemCountAggregateOutputType = {
     id: number
     position: number
+    metadata: number
     type: number
     cabinetId: number
     createdAt: number
@@ -12054,6 +12073,7 @@ export namespace Prisma {
   export type DecorItemCountAggregateInputType = {
     id?: true
     position?: true
+    metadata?: true
     type?: true
     cabinetId?: true
     createdAt?: true
@@ -12150,6 +12170,7 @@ export namespace Prisma {
   export type DecorItemGroupByOutputType = {
     id: number
     position: JsonValue | null
+    metadata: JsonValue | null
     type: string
     cabinetId: number
     createdAt: Date
@@ -12178,6 +12199,7 @@ export namespace Prisma {
   export type DecorItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
+    metadata?: boolean
     type?: boolean
     cabinetId?: boolean
     createdAt?: boolean
@@ -12188,6 +12210,7 @@ export namespace Prisma {
   export type DecorItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
+    metadata?: boolean
     type?: boolean
     cabinetId?: boolean
     createdAt?: boolean
@@ -12198,6 +12221,7 @@ export namespace Prisma {
   export type DecorItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
+    metadata?: boolean
     type?: boolean
     cabinetId?: boolean
     createdAt?: boolean
@@ -12208,13 +12232,14 @@ export namespace Prisma {
   export type DecorItemSelectScalar = {
     id?: boolean
     position?: boolean
+    metadata?: boolean
     type?: boolean
     cabinetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type DecorItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "type" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["decorItem"]>
+  export type DecorItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "metadata" | "type" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["decorItem"]>
   export type DecorItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
   }
@@ -12233,6 +12258,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       position: Prisma.JsonValue | null
+      metadata: Prisma.JsonValue | null
       type: string
       cabinetId: number
       createdAt: Date
@@ -12663,6 +12689,7 @@ export namespace Prisma {
   interface DecorItemFieldRefs {
     readonly id: FieldRef<"DecorItem", 'Int'>
     readonly position: FieldRef<"DecorItem", 'Json'>
+    readonly metadata: FieldRef<"DecorItem", 'Json'>
     readonly type: FieldRef<"DecorItem", 'String'>
     readonly cabinetId: FieldRef<"DecorItem", 'Int'>
     readonly createdAt: FieldRef<"DecorItem", 'DateTime'>
@@ -13160,6 +13187,7 @@ export namespace Prisma {
     position: 'position',
     url: 'url',
     caption: 'caption',
+    metadata: 'metadata',
     cabinetId: 'cabinetId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -13173,6 +13201,7 @@ export namespace Prisma {
     position: 'position',
     type: 'type',
     url: 'url',
+    metadata: 'metadata',
     cabinetId: 'cabinetId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -13209,6 +13238,7 @@ export namespace Prisma {
   export const DecorItemScalarFieldEnum: {
     id: 'id',
     position: 'position',
+    metadata: 'metadata',
     type: 'type',
     cabinetId: 'cabinetId',
     createdAt: 'createdAt',
@@ -13686,6 +13716,7 @@ export namespace Prisma {
     position?: JsonNullableFilter<"PhotoFrame">
     url?: StringFilter<"PhotoFrame"> | string
     caption?: StringNullableFilter<"PhotoFrame"> | string | null
+    metadata?: JsonNullableFilter<"PhotoFrame">
     cabinetId?: IntFilter<"PhotoFrame"> | number
     createdAt?: DateTimeFilter<"PhotoFrame"> | Date | string
     updatedAt?: DateTimeFilter<"PhotoFrame"> | Date | string
@@ -13697,6 +13728,7 @@ export namespace Prisma {
     position?: SortOrderInput | SortOrder
     url?: SortOrder
     caption?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13711,6 +13743,7 @@ export namespace Prisma {
     position?: JsonNullableFilter<"PhotoFrame">
     url?: StringFilter<"PhotoFrame"> | string
     caption?: StringNullableFilter<"PhotoFrame"> | string | null
+    metadata?: JsonNullableFilter<"PhotoFrame">
     cabinetId?: IntFilter<"PhotoFrame"> | number
     createdAt?: DateTimeFilter<"PhotoFrame"> | Date | string
     updatedAt?: DateTimeFilter<"PhotoFrame"> | Date | string
@@ -13722,6 +13755,7 @@ export namespace Prisma {
     position?: SortOrderInput | SortOrder
     url?: SortOrder
     caption?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13740,6 +13774,7 @@ export namespace Prisma {
     position?: JsonNullableWithAggregatesFilter<"PhotoFrame">
     url?: StringWithAggregatesFilter<"PhotoFrame"> | string
     caption?: StringNullableWithAggregatesFilter<"PhotoFrame"> | string | null
+    metadata?: JsonNullableWithAggregatesFilter<"PhotoFrame">
     cabinetId?: IntWithAggregatesFilter<"PhotoFrame"> | number
     createdAt?: DateTimeWithAggregatesFilter<"PhotoFrame"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"PhotoFrame"> | Date | string
@@ -13753,6 +13788,7 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Media">
     type?: StringFilter<"Media"> | string
     url?: StringFilter<"Media"> | string
+    metadata?: JsonNullableFilter<"Media">
     cabinetId?: IntFilter<"Media"> | number
     createdAt?: DateTimeFilter<"Media"> | Date | string
     updatedAt?: DateTimeFilter<"Media"> | Date | string
@@ -13764,6 +13800,7 @@ export namespace Prisma {
     position?: SortOrderInput | SortOrder
     type?: SortOrder
     url?: SortOrder
+    metadata?: SortOrderInput | SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13778,6 +13815,7 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Media">
     type?: StringFilter<"Media"> | string
     url?: StringFilter<"Media"> | string
+    metadata?: JsonNullableFilter<"Media">
     cabinetId?: IntFilter<"Media"> | number
     createdAt?: DateTimeFilter<"Media"> | Date | string
     updatedAt?: DateTimeFilter<"Media"> | Date | string
@@ -13789,6 +13827,7 @@ export namespace Prisma {
     position?: SortOrderInput | SortOrder
     type?: SortOrder
     url?: SortOrder
+    metadata?: SortOrderInput | SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13807,6 +13846,7 @@ export namespace Prisma {
     position?: JsonNullableWithAggregatesFilter<"Media">
     type?: StringWithAggregatesFilter<"Media"> | string
     url?: StringWithAggregatesFilter<"Media"> | string
+    metadata?: JsonNullableWithAggregatesFilter<"Media">
     cabinetId?: IntWithAggregatesFilter<"Media"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Media"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Media"> | Date | string
@@ -13947,6 +13987,7 @@ export namespace Prisma {
     NOT?: DecorItemWhereInput | DecorItemWhereInput[]
     id?: IntFilter<"DecorItem"> | number
     position?: JsonNullableFilter<"DecorItem">
+    metadata?: JsonNullableFilter<"DecorItem">
     type?: StringFilter<"DecorItem"> | string
     cabinetId?: IntFilter<"DecorItem"> | number
     createdAt?: DateTimeFilter<"DecorItem"> | Date | string
@@ -13957,6 +13998,7 @@ export namespace Prisma {
   export type DecorItemOrderByWithRelationInput = {
     id?: SortOrder
     position?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
     type?: SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
@@ -13970,6 +14012,7 @@ export namespace Prisma {
     OR?: DecorItemWhereInput[]
     NOT?: DecorItemWhereInput | DecorItemWhereInput[]
     position?: JsonNullableFilter<"DecorItem">
+    metadata?: JsonNullableFilter<"DecorItem">
     type?: StringFilter<"DecorItem"> | string
     cabinetId?: IntFilter<"DecorItem"> | number
     createdAt?: DateTimeFilter<"DecorItem"> | Date | string
@@ -13980,6 +14023,7 @@ export namespace Prisma {
   export type DecorItemOrderByWithAggregationInput = {
     id?: SortOrder
     position?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
     type?: SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
@@ -13997,6 +14041,7 @@ export namespace Prisma {
     NOT?: DecorItemScalarWhereWithAggregatesInput | DecorItemScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"DecorItem"> | number
     position?: JsonNullableWithAggregatesFilter<"DecorItem">
+    metadata?: JsonNullableWithAggregatesFilter<"DecorItem">
     type?: StringWithAggregatesFilter<"DecorItem"> | string
     cabinetId?: IntWithAggregatesFilter<"DecorItem"> | number
     createdAt?: DateTimeWithAggregatesFilter<"DecorItem"> | Date | string
@@ -14339,6 +14384,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
     caption?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     cabinet: CabinetCreateNestedOneWithoutPhotoFrameInput
@@ -14349,6 +14395,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
     caption?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     cabinetId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14358,6 +14405,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cabinet?: CabinetUpdateOneRequiredWithoutPhotoFrameNestedInput
@@ -14368,6 +14416,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     cabinetId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14378,6 +14427,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
     caption?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     cabinetId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14387,6 +14437,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14396,6 +14447,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     cabinetId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14405,6 +14457,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
     url: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     cabinet: CabinetCreateNestedOneWithoutMediaInput
@@ -14415,6 +14468,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
     url: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     cabinetId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14424,6 +14478,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cabinet?: CabinetUpdateOneRequiredWithoutMediaNestedInput
@@ -14434,6 +14489,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     cabinetId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14444,6 +14500,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
     url: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     cabinetId: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14453,6 +14510,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14462,6 +14520,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     cabinetId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14594,6 +14653,7 @@ export namespace Prisma {
 
   export type DecorItemCreateInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -14603,6 +14663,7 @@ export namespace Prisma {
   export type DecorItemUncheckedCreateInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type: string
     cabinetId: number
     createdAt?: Date | string
@@ -14611,6 +14672,7 @@ export namespace Prisma {
 
   export type DecorItemUpdateInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14620,6 +14682,7 @@ export namespace Prisma {
   export type DecorItemUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     cabinetId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14629,6 +14692,7 @@ export namespace Prisma {
   export type DecorItemCreateManyInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type: string
     cabinetId: number
     createdAt?: Date | string
@@ -14637,6 +14701,7 @@ export namespace Prisma {
 
   export type DecorItemUpdateManyMutationInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14645,6 +14710,7 @@ export namespace Prisma {
   export type DecorItemUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     cabinetId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15117,6 +15183,7 @@ export namespace Prisma {
     position?: SortOrder
     url?: SortOrder
     caption?: SortOrder
+    metadata?: SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15173,6 +15240,7 @@ export namespace Prisma {
     position?: SortOrder
     type?: SortOrder
     url?: SortOrder
+    metadata?: SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15280,6 +15348,7 @@ export namespace Prisma {
   export type DecorItemCountOrderByAggregateInput = {
     id?: SortOrder
     position?: SortOrder
+    metadata?: SortOrder
     type?: SortOrder
     cabinetId?: SortOrder
     createdAt?: SortOrder
@@ -16142,6 +16211,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
     caption?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -16151,6 +16221,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
     caption?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -16169,6 +16240,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
     url: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -16178,6 +16250,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
     url: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -16246,6 +16319,7 @@ export namespace Prisma {
 
   export type DecorItemCreateWithoutCabinetInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16254,6 +16328,7 @@ export namespace Prisma {
   export type DecorItemUncheckedCreateWithoutCabinetInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16401,6 +16476,7 @@ export namespace Prisma {
     position?: JsonNullableFilter<"PhotoFrame">
     url?: StringFilter<"PhotoFrame"> | string
     caption?: StringNullableFilter<"PhotoFrame"> | string | null
+    metadata?: JsonNullableFilter<"PhotoFrame">
     cabinetId?: IntFilter<"PhotoFrame"> | number
     createdAt?: DateTimeFilter<"PhotoFrame"> | Date | string
     updatedAt?: DateTimeFilter<"PhotoFrame"> | Date | string
@@ -16430,6 +16506,7 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Media">
     type?: StringFilter<"Media"> | string
     url?: StringFilter<"Media"> | string
+    metadata?: JsonNullableFilter<"Media">
     cabinetId?: IntFilter<"Media"> | number
     createdAt?: DateTimeFilter<"Media"> | Date | string
     updatedAt?: DateTimeFilter<"Media"> | Date | string
@@ -16514,6 +16591,7 @@ export namespace Prisma {
     NOT?: DecorItemScalarWhereInput | DecorItemScalarWhereInput[]
     id?: IntFilter<"DecorItem"> | number
     position?: JsonNullableFilter<"DecorItem">
+    metadata?: JsonNullableFilter<"DecorItem">
     type?: StringFilter<"DecorItem"> | string
     cabinetId?: IntFilter<"DecorItem"> | number
     createdAt?: DateTimeFilter<"DecorItem"> | Date | string
@@ -17160,6 +17238,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
     caption?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -17169,6 +17248,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
     url: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -17193,6 +17273,7 @@ export namespace Prisma {
   export type DecorItemCreateManyCabinetInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17202,6 +17283,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17211,6 +17293,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17220,6 +17303,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17228,6 +17312,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17237,6 +17322,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17246,6 +17332,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -17301,6 +17388,7 @@ export namespace Prisma {
 
   export type DecorItemUpdateWithoutCabinetInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17309,6 +17397,7 @@ export namespace Prisma {
   export type DecorItemUncheckedUpdateWithoutCabinetInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17317,6 +17406,7 @@ export namespace Prisma {
   export type DecorItemUncheckedUpdateManyWithoutCabinetInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

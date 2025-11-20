@@ -171,6 +171,7 @@ exports.Prisma.PhotoFrameScalarFieldEnum = {
   position: 'position',
   url: 'url',
   caption: 'caption',
+  metadata: 'metadata',
   cabinetId: 'cabinetId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -181,6 +182,7 @@ exports.Prisma.MediaScalarFieldEnum = {
   position: 'position',
   type: 'type',
   url: 'url',
+  metadata: 'metadata',
   cabinetId: 'cabinetId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -208,6 +210,7 @@ exports.Prisma.NoteScalarFieldEnum = {
 exports.Prisma.DecorItemScalarFieldEnum = {
   id: 'id',
   position: 'position',
+  metadata: 'metadata',
   type: 'type',
   cabinetId: 'cabinetId',
   createdAt: 'createdAt',
