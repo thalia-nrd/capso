@@ -1,6 +1,6 @@
 import express from 'express';
 import { cabinetController } from './cabinet.controller';
-import { requireAuth } from "../auth/middleware/auth.middleware";
+import { requireAuth } from '../auth/middleware/auth.middleware';
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import { notesModel } from "./notes.model";
-import { noteSchema } from "./notes.schema";
+import { Request, Response } from 'express';
+import { notesModel } from './notes.model';
+import { noteSchema } from './notes.schema';
 
 export const notesController = {
   getNotes: async (req: Request, res: Response) => {

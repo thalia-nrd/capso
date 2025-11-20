@@ -1,32 +1,34 @@
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 dotenv.config();
 
-import express from "express";
-import cors from "cors";
-import cookieParser from "cookie-parser";
+import express from 'express';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
-import authRoutes from "./modules/auth/auth.routes";
-import cabinetRoutes from "./modules/cabinet/cabinet.routes";
-import notesRoutes from "./modules/content/notes/notes.routes";
-import checklistRoutes from "./modules/content/checklist/checklist.routes";
+import authRoutes from './modules/auth/auth.routes';
+import cabinetRoutes from './modules/cabinet/cabinet.routes';
+import notesRoutes from './modules/content/notes/notes.routes';
+import checklistRoutes from './modules/content/checklist/checklist.routes';
 
 const app = express();
 
-app.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true               
-}));
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/auth", authRoutes);
-app.use("/cabinet", cabinetRoutes);
-app.use("/cabinet/:cabinetId/notes", notesRoutes);
-app.use("/cabinet/:cabinetId/checklists", checklistRoutes);
+app.use('/auth', authRoutes);
+app.use('/cabinet', cabinetRoutes);
+app.use('/cabinet/:cabinetId/notes', notesRoutes);
+app.use('/cabinet/:cabinetId/checklists', checklistRoutes);
 
-app.get("/", (_req, res) => {
-  res.send("Cabinna backend is running!");
+app.get('/', (_req, res) => {
+  res.send('Cabinna backend is running!');
 });
 
 const PORT = process.env.PORT || 5000;

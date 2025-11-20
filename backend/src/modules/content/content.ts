@@ -1,4 +1,4 @@
-import { notesController } from "./notes/notes.controller";
+import { notesController } from './notes/notes.controller';
 
 // get notes
 // get checklits

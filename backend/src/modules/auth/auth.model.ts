@@ -1,16 +1,15 @@
-import { prisma } from "../../infrastructure/database/prisma";
+import { prisma } from '../../infrastructure/database/prisma';
 
 export const authModel = {
-    findUserByEmail: async (email: string) => {
-        return await prisma.user.findUnique({
-            where: { email },
-        });
-    },
+  findUserByEmail: async (email: string) => {
+    return await prisma.user.findUnique({
+      where: { email },
+    });
+  },
 
-    createUser: async (name: string, email: string, hashedPassword: string) => {
-        return await prisma.user.create({
-            data: { name, email, password: hashedPassword },
-        });
-    },
+  createUser: async (name: string, email: string, hashedPassword: string) => {
+    return await prisma.user.create({
+      data: { name, email, password: hashedPassword },
+    });
+  },
 };
-    
