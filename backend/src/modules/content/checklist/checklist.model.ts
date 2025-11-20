@@ -11,10 +11,17 @@ export const checklistModel = {
             data: { cabinetId, title, items: items } 
         });
     },
-    updateChecklist: async (checklistId: number, title: string, items: string[]) => {
-        return await prisma.checklist.update({ 
-            where: { id: checklistId }, 
-            data: { title, items: items } 
+    updateChecklist: async (
+        checklistId: number,
+        title?: string,
+        items?: string[]
+    ) => {
+        return await prisma.checklist.update({
+            where: { id: checklistId },
+            data: {
+                ...(title !== undefined && { title }),
+                ...(items !== undefined && { items }),
+            },
         });
     },
     deleteChecklist: async (checklistId: number) => {

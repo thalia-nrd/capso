@@ -6,6 +6,6 @@ export const checklistSchema = z.object({
 });
 
 export const checklistUpdateSchema = z.object({
-  title: z.string().min(1, "Title is required"),
+  title: z.string().optional(),
   items: z.array(z.string()).optional(),
 });
