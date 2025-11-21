@@ -6,10 +6,6 @@ import { hashPassword } from "../../../utils/bcrypt";
 export const journalController = {
   getJournal: async (req: Request, res: Response) => {
     try {
-      if (!req.user) {
-        return res.status(401).json({ error: "Unauthorized" });
-      }
-
       const cabinetId = Number(req.params.cabinetId);
       const journal = await journalModel.getByCabinetId(cabinetId);
 
@@ -40,7 +36,10 @@ export const journalController = {
       const newJournal = await journalModel.createJournal({
         cabinetId,
         hashedPasscode,
-        entries: entries ?? [],
+        entries: (entries ?? []).map(entry => ({
+          ...entry,
+          createdAt: entry.createdAt ?? new Date().toISOString()
+        })),
       });
 
       res.json(newJournal);
@@ -73,7 +72,12 @@ export const journalController = {
         return res.status(400).json({ error: "Entries must be an array" });
       }
 
-      const updated = await journalModel.updateEntries(journal.id, entries);
+      const updatedEntries = entries.map(entry => ({
+        ...entry,
+        createdAt: entry.createdAt ?? new Date().toISOString(),
+        }));
+
+        const updated = await journalModel.updateEntries(journal.id, updatedEntries);
 
       res.json(updated);
     } catch (err) {

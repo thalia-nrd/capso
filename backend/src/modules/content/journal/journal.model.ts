@@ -1,4 +1,5 @@
 import { prisma } from "../../../infrastructure/database/prisma";
+import type { JournalEntry } from "./types/journal.types";
 
 export const journalModel = {
   getByCabinetId: async (cabinetId: number) => {
@@ -12,7 +13,7 @@ export const journalModel = {
   }: {
     cabinetId: number;
     hashedPasscode: string;
-    entries: any[];
+    entries: JournalEntry[];
   }) => {
     return prisma.journal.create({
       data: {
@@ -23,7 +24,7 @@ export const journalModel = {
     });
   },
 
-  updateEntries: async (journalId: number, entries: any[]) => {
+  updateEntries: async (journalId: number, entries: JournalEntry[]) => {
     return prisma.journal.update({
       where: { id: journalId },
       data: { entries },
