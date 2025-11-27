@@ -9,7 +9,7 @@ export const ChestModel = {
 
   async createChest(cabinetId: number, hashedPasscode: string, items?: any[]) {
     return await prisma.chest.create({
-        data: { cabinetId, passcode: hashedPasscode, items: items ? items : [] },
+        data: { cabinetId, passcode: hashedPasscode, items: items ?? [] },
     });
   },
 
