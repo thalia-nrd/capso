@@ -62,7 +62,7 @@ export const ChestController = {
             items: chest.items,
         });
     } catch (err) {
-      console.error("OPEN journal error:", err);
+      console.error("OPEN chest error:", err);
       res.status(500).json({ error: "Server error" });
     }
   },
