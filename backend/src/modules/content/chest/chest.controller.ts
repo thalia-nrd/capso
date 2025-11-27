@@ -72,8 +72,11 @@ export const ChestController = {
           const { cabinetId } = req.params;
           const { items } = req.body;
           const chest = await ChestModel.getChestByCabinetId(Number(cabinetId));
+          if (!chest) {
+            return res.status(404).json({ error: "Chest not found" });
+          }
           const updatedChest = await ChestModel.addChestContent(
-            chest!.id, 
+            chest.id, 
             items
           );
           res.json(updatedChest);
