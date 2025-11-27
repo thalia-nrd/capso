@@ -37,7 +37,7 @@ export const ChestController = {
     
      const { passcode } = req.body;
       if (!passcode) {
-        return res.status(400).json({ message: "Passcode is required" });
+        return res.status(400).json({ error: "Passcode is required" });
       }
       const hashedPasscode = await bcrypt.hash(passcode, 10);
 
