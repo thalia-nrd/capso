@@ -11,6 +11,10 @@ import notesRoutes from './modules/content/notes/notes.routes';
 import checklistRoutes from './modules/content/checklist/checklist.routes';
 import journalRoutes from './modules/content/journal/journal.routes';
 import frameRoutes from './modules/content/frame/frame.routes';
+import chestRoutes from './modules/content/chest/chest.routes';
+
+import { verifyCabinetOwnership } from './modules/cabinet/middleware/cabinet.middleware';
+import { requireAuth } from './modules/auth/middleware/auth.middleware';
 
 const app = express();
 
@@ -24,12 +28,20 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+// public
 app.use('/auth', authRoutes);
+
+app.use('/cabinet', requireAuth);
+
+app.use('/cabinet/:cabinetId', verifyCabinetOwnership);
+
+// routes
 app.use('/cabinet', cabinetRoutes);
 app.use('/cabinet/:cabinetId/notes', notesRoutes);
 app.use('/cabinet/:cabinetId/checklists', checklistRoutes);
 app.use('/cabinet/:cabinetId/journal', journalRoutes);
 app.use('/cabinet/:cabinetId/frame', frameRoutes);
+app.use('/cabinet/:cabinetId/chest', chestRoutes);
 
 app.get('/', (_req, res) => {
   res.send('Cabinna backend is running!');
