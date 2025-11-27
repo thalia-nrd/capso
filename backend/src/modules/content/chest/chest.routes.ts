@@ -4,6 +4,8 @@ import { verifyChestAccess } from "./middleware/chest.middleware";
 
 const router = Router();
 
+router.get("/signature", ChestController.getUploadSignature);
+
 router.post("/", ChestController.createChest);
 router.get("/", ChestController.getChest);
 router.post("/open", verifyChestAccess, ChestController.openChest);
