@@ -12,6 +12,7 @@ import checklistRoutes from './modules/content/checklist/checklist.routes';
 import journalRoutes from './modules/content/journal/journal.routes';
 import frameRoutes from './modules/content/frame/frame.routes';
 import chestRoutes from './modules/content/chest/chest.routes';
+import mirrorRoutes from './modules/content/mirror/mirror.routes';
 
 import { verifyCabinetOwnership } from './modules/cabinet/middleware/cabinet.middleware';
 import { requireAuth } from './modules/auth/middleware/auth.middleware';
@@ -42,6 +43,7 @@ app.use('/cabinet/:cabinetId/checklists', checklistRoutes);
 app.use('/cabinet/:cabinetId/journal', journalRoutes);
 app.use('/cabinet/:cabinetId/frame', frameRoutes);
 app.use('/cabinet/:cabinetId/chest', chestRoutes);
+app.use('/cabinet/:cabinetId/mirror', mirrorRoutes);
 
 app.get('/', (_req, res) => {
   res.send('Cabinna backend is running!');
