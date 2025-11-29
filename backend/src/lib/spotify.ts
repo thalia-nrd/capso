@@ -7,22 +7,29 @@ const REDIRECT_URI = process.env.SPOTIFY_REDIRECT_URI!;
 const BASE_SPOTIFY_TOKEN = "https://accounts.spotify.com/api/token";
 const AUTH_BASE = "https://accounts.spotify.com/authorize";
 
-export function getAuthorizationUrl(state?: string, scopes = [
-  "user-read-private",
-  "user-read-email",
-  "playlist-read-private",
-  "streaming",
-  "user-modify-playback-state",
-  "user-read-playback-state"
-]) {
-  const query = qs.stringify({
+export function getAuthorizationUrl(
+  state?: string,
+  scopes = [
+    "user-read-private",
+    "user-read-email",
+    "playlist-read-private",
+    "streaming",
+    "user-modify-playback-state",
+    "user-read-playback-state"
+  ],
+  showDialog?: boolean
+) {
+  const queryObj: any = {
     client_id: CLIENT_ID,
     response_type: "code",
     redirect_uri: REDIRECT_URI,
     scope: scopes.join(" "),
     state,
-    show_dialog: true
-  });
+  };
+  if (showDialog) {
+    queryObj.show_dialog = true;
+  }
+  const query = qs.stringify(queryObj);
   return `${AUTH_BASE}?${query}`;
 }
 
