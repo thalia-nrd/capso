@@ -214,6 +214,17 @@ exports.Prisma.DecorItemScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.SpotifyAccountScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  accessToken: 'accessToken',
+  refreshToken: 'refreshToken',
+  scope: 'scope',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -255,7 +266,8 @@ exports.Prisma.ModelName = {
   Media: 'Media',
   Checklist: 'Checklist',
   Note: 'Note',
-  DecorItem: 'DecorItem'
+  DecorItem: 'DecorItem',
+  SpotifyAccount: 'SpotifyAccount'
 };
 
 /**
