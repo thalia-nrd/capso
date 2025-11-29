@@ -13,7 +13,15 @@ export const spotifyController = {
   // spotify will call this with ?code=...&state=...
   callback: async (req: Request, res: Response) => {
     try {
-      const { code } = req.query;
+      const { code, error } = req.query;
+      // Handle error returned by Spotify (e.g., access_denied)
+      if (error) {
+        console.error("Spotify callback error parameter:", error);
+        return res.status(400).send(`Spotify authorization error: ${error}`);
+      }
+      if (!code) {
+        return res.status(400).send("Missing authorization code from Spotify.");
+      }
       // You must identify which local user is connecting. This example assumes you have req.user from requireAuth middleware.
       const user = (req as any).user;
       if (!user) return res.status(401).send("Not authenticated");
