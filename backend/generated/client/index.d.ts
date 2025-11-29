@@ -63,6 +63,11 @@ export type Note = $Result.DefaultSelection<Prisma.$NotePayload>
  * 
  */
 export type DecorItem = $Result.DefaultSelection<Prisma.$DecorItemPayload>
+/**
+ * Model SpotifyAccount
+ * 
+ */
+export type SpotifyAccount = $Result.DefaultSelection<Prisma.$SpotifyAccountPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -281,6 +286,16 @@ export class PrismaClient<
     * ```
     */
   get decorItem(): Prisma.DecorItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.spotifyAccount`: Exposes CRUD operations for the **SpotifyAccount** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SpotifyAccounts
+    * const spotifyAccounts = await prisma.spotifyAccount.findMany()
+    * ```
+    */
+  get spotifyAccount(): Prisma.SpotifyAccountDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -731,7 +746,8 @@ export namespace Prisma {
     Media: 'Media',
     Checklist: 'Checklist',
     Note: 'Note',
-    DecorItem: 'DecorItem'
+    DecorItem: 'DecorItem',
+    SpotifyAccount: 'SpotifyAccount'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -750,7 +766,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "cabinet" | "cabinetLayout" | "chest" | "journal" | "photoFrame" | "media" | "checklist" | "note" | "decorItem"
+      modelProps: "user" | "cabinet" | "cabinetLayout" | "chest" | "journal" | "photoFrame" | "media" | "checklist" | "note" | "decorItem" | "spotifyAccount"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1494,6 +1510,80 @@ export namespace Prisma {
           }
         }
       }
+      SpotifyAccount: {
+        payload: Prisma.$SpotifyAccountPayload<ExtArgs>
+        fields: Prisma.SpotifyAccountFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SpotifyAccountFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SpotifyAccountFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
+          }
+          findFirst: {
+            args: Prisma.SpotifyAccountFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SpotifyAccountFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
+          }
+          findMany: {
+            args: Prisma.SpotifyAccountFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>[]
+          }
+          create: {
+            args: Prisma.SpotifyAccountCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
+          }
+          createMany: {
+            args: Prisma.SpotifyAccountCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SpotifyAccountCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>[]
+          }
+          delete: {
+            args: Prisma.SpotifyAccountDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
+          }
+          update: {
+            args: Prisma.SpotifyAccountUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
+          }
+          deleteMany: {
+            args: Prisma.SpotifyAccountDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SpotifyAccountUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SpotifyAccountUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>[]
+          }
+          upsert: {
+            args: Prisma.SpotifyAccountUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
+          }
+          aggregate: {
+            args: Prisma.SpotifyAccountAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSpotifyAccount>
+          }
+          groupBy: {
+            args: Prisma.SpotifyAccountGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SpotifyAccountGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SpotifyAccountCountArgs<ExtArgs>
+            result: $Utils.Optional<SpotifyAccountCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1600,6 +1690,7 @@ export namespace Prisma {
     checklist?: ChecklistOmit
     note?: NoteOmit
     decorItem?: DecorItemOmit
+    spotifyAccount?: SpotifyAccountOmit
   }
 
   /* Types for Logging */
@@ -1984,6 +2075,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     cabinets?: boolean | User$cabinetsArgs<ExtArgs>
+    spotifyAccount?: boolean | User$spotifyAccountArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2017,6 +2109,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cabinets?: boolean | User$cabinetsArgs<ExtArgs>
+    spotifyAccount?: boolean | User$spotifyAccountArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2026,6 +2119,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       cabinets: Prisma.$CabinetPayload<ExtArgs>[]
+      spotifyAccount: Prisma.$SpotifyAccountPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2429,6 +2523,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     cabinets<T extends User$cabinetsArgs<ExtArgs> = {}>(args?: Subset<T, User$cabinetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    spotifyAccount<T extends User$spotifyAccountArgs<ExtArgs> = {}>(args?: Subset<T, User$spotifyAccountArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2873,6 +2968,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CabinetScalarFieldEnum | CabinetScalarFieldEnum[]
+  }
+
+  /**
+   * User.spotifyAccount
+   */
+  export type User$spotifyAccountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountInclude<ExtArgs> | null
+    where?: SpotifyAccountWhereInput
   }
 
   /**
@@ -13082,6 +13196,1141 @@ export namespace Prisma {
 
 
   /**
+   * Model SpotifyAccount
+   */
+
+  export type AggregateSpotifyAccount = {
+    _count: SpotifyAccountCountAggregateOutputType | null
+    _avg: SpotifyAccountAvgAggregateOutputType | null
+    _sum: SpotifyAccountSumAggregateOutputType | null
+    _min: SpotifyAccountMinAggregateOutputType | null
+    _max: SpotifyAccountMaxAggregateOutputType | null
+  }
+
+  export type SpotifyAccountAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type SpotifyAccountSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+  }
+
+  export type SpotifyAccountMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    accessToken: string | null
+    refreshToken: string | null
+    scope: string | null
+    expiresAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SpotifyAccountMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    accessToken: string | null
+    refreshToken: string | null
+    scope: string | null
+    expiresAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SpotifyAccountCountAggregateOutputType = {
+    id: number
+    userId: number
+    accessToken: number
+    refreshToken: number
+    scope: number
+    expiresAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SpotifyAccountAvgAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type SpotifyAccountSumAggregateInputType = {
+    id?: true
+    userId?: true
+  }
+
+  export type SpotifyAccountMinAggregateInputType = {
+    id?: true
+    userId?: true
+    accessToken?: true
+    refreshToken?: true
+    scope?: true
+    expiresAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SpotifyAccountMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    accessToken?: true
+    refreshToken?: true
+    scope?: true
+    expiresAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SpotifyAccountCountAggregateInputType = {
+    id?: true
+    userId?: true
+    accessToken?: true
+    refreshToken?: true
+    scope?: true
+    expiresAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SpotifyAccountAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SpotifyAccount to aggregate.
+     */
+    where?: SpotifyAccountWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SpotifyAccounts to fetch.
+     */
+    orderBy?: SpotifyAccountOrderByWithRelationInput | SpotifyAccountOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SpotifyAccountWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SpotifyAccounts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SpotifyAccounts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SpotifyAccounts
+    **/
+    _count?: true | SpotifyAccountCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SpotifyAccountAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SpotifyAccountSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SpotifyAccountMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SpotifyAccountMaxAggregateInputType
+  }
+
+  export type GetSpotifyAccountAggregateType<T extends SpotifyAccountAggregateArgs> = {
+        [P in keyof T & keyof AggregateSpotifyAccount]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSpotifyAccount[P]>
+      : GetScalarType<T[P], AggregateSpotifyAccount[P]>
+  }
+
+
+
+
+  export type SpotifyAccountGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SpotifyAccountWhereInput
+    orderBy?: SpotifyAccountOrderByWithAggregationInput | SpotifyAccountOrderByWithAggregationInput[]
+    by: SpotifyAccountScalarFieldEnum[] | SpotifyAccountScalarFieldEnum
+    having?: SpotifyAccountScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SpotifyAccountCountAggregateInputType | true
+    _avg?: SpotifyAccountAvgAggregateInputType
+    _sum?: SpotifyAccountSumAggregateInputType
+    _min?: SpotifyAccountMinAggregateInputType
+    _max?: SpotifyAccountMaxAggregateInputType
+  }
+
+  export type SpotifyAccountGroupByOutputType = {
+    id: number
+    userId: number
+    accessToken: string
+    refreshToken: string
+    scope: string | null
+    expiresAt: Date
+    createdAt: Date
+    updatedAt: Date
+    _count: SpotifyAccountCountAggregateOutputType | null
+    _avg: SpotifyAccountAvgAggregateOutputType | null
+    _sum: SpotifyAccountSumAggregateOutputType | null
+    _min: SpotifyAccountMinAggregateOutputType | null
+    _max: SpotifyAccountMaxAggregateOutputType | null
+  }
+
+  type GetSpotifyAccountGroupByPayload<T extends SpotifyAccountGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SpotifyAccountGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SpotifyAccountGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
+            : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SpotifyAccountSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    accessToken?: boolean
+    refreshToken?: boolean
+    scope?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["spotifyAccount"]>
+
+  export type SpotifyAccountSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    accessToken?: boolean
+    refreshToken?: boolean
+    scope?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["spotifyAccount"]>
+
+  export type SpotifyAccountSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    accessToken?: boolean
+    refreshToken?: boolean
+    scope?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["spotifyAccount"]>
+
+  export type SpotifyAccountSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    accessToken?: boolean
+    refreshToken?: boolean
+    scope?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SpotifyAccountOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "accessToken" | "refreshToken" | "scope" | "expiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["spotifyAccount"]>
+  export type SpotifyAccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type SpotifyAccountIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type SpotifyAccountIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $SpotifyAccountPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SpotifyAccount"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      accessToken: string
+      refreshToken: string
+      scope: string | null
+      expiresAt: Date
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["spotifyAccount"]>
+    composites: {}
+  }
+
+  type SpotifyAccountGetPayload<S extends boolean | null | undefined | SpotifyAccountDefaultArgs> = $Result.GetResult<Prisma.$SpotifyAccountPayload, S>
+
+  type SpotifyAccountCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SpotifyAccountFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SpotifyAccountCountAggregateInputType | true
+    }
+
+  export interface SpotifyAccountDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SpotifyAccount'], meta: { name: 'SpotifyAccount' } }
+    /**
+     * Find zero or one SpotifyAccount that matches the filter.
+     * @param {SpotifyAccountFindUniqueArgs} args - Arguments to find a SpotifyAccount
+     * @example
+     * // Get one SpotifyAccount
+     * const spotifyAccount = await prisma.spotifyAccount.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SpotifyAccountFindUniqueArgs>(args: SelectSubset<T, SpotifyAccountFindUniqueArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SpotifyAccount that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SpotifyAccountFindUniqueOrThrowArgs} args - Arguments to find a SpotifyAccount
+     * @example
+     * // Get one SpotifyAccount
+     * const spotifyAccount = await prisma.spotifyAccount.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SpotifyAccountFindUniqueOrThrowArgs>(args: SelectSubset<T, SpotifyAccountFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SpotifyAccount that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpotifyAccountFindFirstArgs} args - Arguments to find a SpotifyAccount
+     * @example
+     * // Get one SpotifyAccount
+     * const spotifyAccount = await prisma.spotifyAccount.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SpotifyAccountFindFirstArgs>(args?: SelectSubset<T, SpotifyAccountFindFirstArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SpotifyAccount that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpotifyAccountFindFirstOrThrowArgs} args - Arguments to find a SpotifyAccount
+     * @example
+     * // Get one SpotifyAccount
+     * const spotifyAccount = await prisma.spotifyAccount.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SpotifyAccountFindFirstOrThrowArgs>(args?: SelectSubset<T, SpotifyAccountFindFirstOrThrowArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SpotifyAccounts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpotifyAccountFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SpotifyAccounts
+     * const spotifyAccounts = await prisma.spotifyAccount.findMany()
+     * 
+     * // Get first 10 SpotifyAccounts
+     * const spotifyAccounts = await prisma.spotifyAccount.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const spotifyAccountWithIdOnly = await prisma.spotifyAccount.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SpotifyAccountFindManyArgs>(args?: SelectSubset<T, SpotifyAccountFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SpotifyAccount.
+     * @param {SpotifyAccountCreateArgs} args - Arguments to create a SpotifyAccount.
+     * @example
+     * // Create one SpotifyAccount
+     * const SpotifyAccount = await prisma.spotifyAccount.create({
+     *   data: {
+     *     // ... data to create a SpotifyAccount
+     *   }
+     * })
+     * 
+     */
+    create<T extends SpotifyAccountCreateArgs>(args: SelectSubset<T, SpotifyAccountCreateArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SpotifyAccounts.
+     * @param {SpotifyAccountCreateManyArgs} args - Arguments to create many SpotifyAccounts.
+     * @example
+     * // Create many SpotifyAccounts
+     * const spotifyAccount = await prisma.spotifyAccount.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SpotifyAccountCreateManyArgs>(args?: SelectSubset<T, SpotifyAccountCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SpotifyAccounts and returns the data saved in the database.
+     * @param {SpotifyAccountCreateManyAndReturnArgs} args - Arguments to create many SpotifyAccounts.
+     * @example
+     * // Create many SpotifyAccounts
+     * const spotifyAccount = await prisma.spotifyAccount.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SpotifyAccounts and only return the `id`
+     * const spotifyAccountWithIdOnly = await prisma.spotifyAccount.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SpotifyAccountCreateManyAndReturnArgs>(args?: SelectSubset<T, SpotifyAccountCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SpotifyAccount.
+     * @param {SpotifyAccountDeleteArgs} args - Arguments to delete one SpotifyAccount.
+     * @example
+     * // Delete one SpotifyAccount
+     * const SpotifyAccount = await prisma.spotifyAccount.delete({
+     *   where: {
+     *     // ... filter to delete one SpotifyAccount
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SpotifyAccountDeleteArgs>(args: SelectSubset<T, SpotifyAccountDeleteArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SpotifyAccount.
+     * @param {SpotifyAccountUpdateArgs} args - Arguments to update one SpotifyAccount.
+     * @example
+     * // Update one SpotifyAccount
+     * const spotifyAccount = await prisma.spotifyAccount.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SpotifyAccountUpdateArgs>(args: SelectSubset<T, SpotifyAccountUpdateArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SpotifyAccounts.
+     * @param {SpotifyAccountDeleteManyArgs} args - Arguments to filter SpotifyAccounts to delete.
+     * @example
+     * // Delete a few SpotifyAccounts
+     * const { count } = await prisma.spotifyAccount.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SpotifyAccountDeleteManyArgs>(args?: SelectSubset<T, SpotifyAccountDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SpotifyAccounts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpotifyAccountUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SpotifyAccounts
+     * const spotifyAccount = await prisma.spotifyAccount.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SpotifyAccountUpdateManyArgs>(args: SelectSubset<T, SpotifyAccountUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SpotifyAccounts and returns the data updated in the database.
+     * @param {SpotifyAccountUpdateManyAndReturnArgs} args - Arguments to update many SpotifyAccounts.
+     * @example
+     * // Update many SpotifyAccounts
+     * const spotifyAccount = await prisma.spotifyAccount.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SpotifyAccounts and only return the `id`
+     * const spotifyAccountWithIdOnly = await prisma.spotifyAccount.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SpotifyAccountUpdateManyAndReturnArgs>(args: SelectSubset<T, SpotifyAccountUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SpotifyAccount.
+     * @param {SpotifyAccountUpsertArgs} args - Arguments to update or create a SpotifyAccount.
+     * @example
+     * // Update or create a SpotifyAccount
+     * const spotifyAccount = await prisma.spotifyAccount.upsert({
+     *   create: {
+     *     // ... data to create a SpotifyAccount
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SpotifyAccount we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SpotifyAccountUpsertArgs>(args: SelectSubset<T, SpotifyAccountUpsertArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SpotifyAccounts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpotifyAccountCountArgs} args - Arguments to filter SpotifyAccounts to count.
+     * @example
+     * // Count the number of SpotifyAccounts
+     * const count = await prisma.spotifyAccount.count({
+     *   where: {
+     *     // ... the filter for the SpotifyAccounts we want to count
+     *   }
+     * })
+    **/
+    count<T extends SpotifyAccountCountArgs>(
+      args?: Subset<T, SpotifyAccountCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SpotifyAccountCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SpotifyAccount.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpotifyAccountAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SpotifyAccountAggregateArgs>(args: Subset<T, SpotifyAccountAggregateArgs>): Prisma.PrismaPromise<GetSpotifyAccountAggregateType<T>>
+
+    /**
+     * Group by SpotifyAccount.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SpotifyAccountGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SpotifyAccountGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SpotifyAccountGroupByArgs['orderBy'] }
+        : { orderBy?: SpotifyAccountGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SpotifyAccountGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpotifyAccountGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SpotifyAccount model
+   */
+  readonly fields: SpotifyAccountFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SpotifyAccount.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SpotifyAccountClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SpotifyAccount model
+   */
+  interface SpotifyAccountFieldRefs {
+    readonly id: FieldRef<"SpotifyAccount", 'Int'>
+    readonly userId: FieldRef<"SpotifyAccount", 'Int'>
+    readonly accessToken: FieldRef<"SpotifyAccount", 'String'>
+    readonly refreshToken: FieldRef<"SpotifyAccount", 'String'>
+    readonly scope: FieldRef<"SpotifyAccount", 'String'>
+    readonly expiresAt: FieldRef<"SpotifyAccount", 'DateTime'>
+    readonly createdAt: FieldRef<"SpotifyAccount", 'DateTime'>
+    readonly updatedAt: FieldRef<"SpotifyAccount", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SpotifyAccount findUnique
+   */
+  export type SpotifyAccountFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountInclude<ExtArgs> | null
+    /**
+     * Filter, which SpotifyAccount to fetch.
+     */
+    where: SpotifyAccountWhereUniqueInput
+  }
+
+  /**
+   * SpotifyAccount findUniqueOrThrow
+   */
+  export type SpotifyAccountFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountInclude<ExtArgs> | null
+    /**
+     * Filter, which SpotifyAccount to fetch.
+     */
+    where: SpotifyAccountWhereUniqueInput
+  }
+
+  /**
+   * SpotifyAccount findFirst
+   */
+  export type SpotifyAccountFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountInclude<ExtArgs> | null
+    /**
+     * Filter, which SpotifyAccount to fetch.
+     */
+    where?: SpotifyAccountWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SpotifyAccounts to fetch.
+     */
+    orderBy?: SpotifyAccountOrderByWithRelationInput | SpotifyAccountOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SpotifyAccounts.
+     */
+    cursor?: SpotifyAccountWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SpotifyAccounts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SpotifyAccounts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SpotifyAccounts.
+     */
+    distinct?: SpotifyAccountScalarFieldEnum | SpotifyAccountScalarFieldEnum[]
+  }
+
+  /**
+   * SpotifyAccount findFirstOrThrow
+   */
+  export type SpotifyAccountFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountInclude<ExtArgs> | null
+    /**
+     * Filter, which SpotifyAccount to fetch.
+     */
+    where?: SpotifyAccountWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SpotifyAccounts to fetch.
+     */
+    orderBy?: SpotifyAccountOrderByWithRelationInput | SpotifyAccountOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SpotifyAccounts.
+     */
+    cursor?: SpotifyAccountWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SpotifyAccounts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SpotifyAccounts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SpotifyAccounts.
+     */
+    distinct?: SpotifyAccountScalarFieldEnum | SpotifyAccountScalarFieldEnum[]
+  }
+
+  /**
+   * SpotifyAccount findMany
+   */
+  export type SpotifyAccountFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountInclude<ExtArgs> | null
+    /**
+     * Filter, which SpotifyAccounts to fetch.
+     */
+    where?: SpotifyAccountWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SpotifyAccounts to fetch.
+     */
+    orderBy?: SpotifyAccountOrderByWithRelationInput | SpotifyAccountOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SpotifyAccounts.
+     */
+    cursor?: SpotifyAccountWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SpotifyAccounts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SpotifyAccounts.
+     */
+    skip?: number
+    distinct?: SpotifyAccountScalarFieldEnum | SpotifyAccountScalarFieldEnum[]
+  }
+
+  /**
+   * SpotifyAccount create
+   */
+  export type SpotifyAccountCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SpotifyAccount.
+     */
+    data: XOR<SpotifyAccountCreateInput, SpotifyAccountUncheckedCreateInput>
+  }
+
+  /**
+   * SpotifyAccount createMany
+   */
+  export type SpotifyAccountCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SpotifyAccounts.
+     */
+    data: SpotifyAccountCreateManyInput | SpotifyAccountCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SpotifyAccount createManyAndReturn
+   */
+  export type SpotifyAccountCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * The data used to create many SpotifyAccounts.
+     */
+    data: SpotifyAccountCreateManyInput | SpotifyAccountCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SpotifyAccount update
+   */
+  export type SpotifyAccountUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SpotifyAccount.
+     */
+    data: XOR<SpotifyAccountUpdateInput, SpotifyAccountUncheckedUpdateInput>
+    /**
+     * Choose, which SpotifyAccount to update.
+     */
+    where: SpotifyAccountWhereUniqueInput
+  }
+
+  /**
+   * SpotifyAccount updateMany
+   */
+  export type SpotifyAccountUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SpotifyAccounts.
+     */
+    data: XOR<SpotifyAccountUpdateManyMutationInput, SpotifyAccountUncheckedUpdateManyInput>
+    /**
+     * Filter which SpotifyAccounts to update
+     */
+    where?: SpotifyAccountWhereInput
+    /**
+     * Limit how many SpotifyAccounts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SpotifyAccount updateManyAndReturn
+   */
+  export type SpotifyAccountUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * The data used to update SpotifyAccounts.
+     */
+    data: XOR<SpotifyAccountUpdateManyMutationInput, SpotifyAccountUncheckedUpdateManyInput>
+    /**
+     * Filter which SpotifyAccounts to update
+     */
+    where?: SpotifyAccountWhereInput
+    /**
+     * Limit how many SpotifyAccounts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SpotifyAccount upsert
+   */
+  export type SpotifyAccountUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SpotifyAccount to update in case it exists.
+     */
+    where: SpotifyAccountWhereUniqueInput
+    /**
+     * In case the SpotifyAccount found by the `where` argument doesn't exist, create a new SpotifyAccount with this data.
+     */
+    create: XOR<SpotifyAccountCreateInput, SpotifyAccountUncheckedCreateInput>
+    /**
+     * In case the SpotifyAccount was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SpotifyAccountUpdateInput, SpotifyAccountUncheckedUpdateInput>
+  }
+
+  /**
+   * SpotifyAccount delete
+   */
+  export type SpotifyAccountDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountInclude<ExtArgs> | null
+    /**
+     * Filter which SpotifyAccount to delete.
+     */
+    where: SpotifyAccountWhereUniqueInput
+  }
+
+  /**
+   * SpotifyAccount deleteMany
+   */
+  export type SpotifyAccountDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SpotifyAccounts to delete
+     */
+    where?: SpotifyAccountWhereInput
+    /**
+     * Limit how many SpotifyAccounts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SpotifyAccount without action
+   */
+  export type SpotifyAccountDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpotifyAccount
+     */
+    select?: SpotifyAccountSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpotifyAccount
+     */
+    omit?: SpotifyAccountOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpotifyAccountInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -13216,6 +14465,20 @@ export namespace Prisma {
   };
 
   export type DecorItemScalarFieldEnum = (typeof DecorItemScalarFieldEnum)[keyof typeof DecorItemScalarFieldEnum]
+
+
+  export const SpotifyAccountScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    accessToken: 'accessToken',
+    refreshToken: 'refreshToken',
+    scope: 'scope',
+    expiresAt: 'expiresAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SpotifyAccountScalarFieldEnum = (typeof SpotifyAccountScalarFieldEnum)[keyof typeof SpotifyAccountScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -13355,6 +14618,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     cabinets?: CabinetListRelationFilter
+    spotifyAccount?: XOR<SpotifyAccountNullableScalarRelationFilter, SpotifyAccountWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -13365,6 +14629,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     cabinets?: CabinetOrderByRelationAggregateInput
+    spotifyAccount?: SpotifyAccountOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -13378,6 +14643,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     cabinets?: CabinetListRelationFilter
+    spotifyAccount?: XOR<SpotifyAccountNullableScalarRelationFilter, SpotifyAccountWhereInput> | null
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -14003,6 +15269,78 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"DecorItem"> | Date | string
   }
 
+  export type SpotifyAccountWhereInput = {
+    AND?: SpotifyAccountWhereInput | SpotifyAccountWhereInput[]
+    OR?: SpotifyAccountWhereInput[]
+    NOT?: SpotifyAccountWhereInput | SpotifyAccountWhereInput[]
+    id?: IntFilter<"SpotifyAccount"> | number
+    userId?: IntFilter<"SpotifyAccount"> | number
+    accessToken?: StringFilter<"SpotifyAccount"> | string
+    refreshToken?: StringFilter<"SpotifyAccount"> | string
+    scope?: StringNullableFilter<"SpotifyAccount"> | string | null
+    expiresAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
+    createdAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
+    updatedAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type SpotifyAccountOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    accessToken?: SortOrder
+    refreshToken?: SortOrder
+    scope?: SortOrderInput | SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type SpotifyAccountWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    userId?: number
+    AND?: SpotifyAccountWhereInput | SpotifyAccountWhereInput[]
+    OR?: SpotifyAccountWhereInput[]
+    NOT?: SpotifyAccountWhereInput | SpotifyAccountWhereInput[]
+    accessToken?: StringFilter<"SpotifyAccount"> | string
+    refreshToken?: StringFilter<"SpotifyAccount"> | string
+    scope?: StringNullableFilter<"SpotifyAccount"> | string | null
+    expiresAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
+    createdAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
+    updatedAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId">
+
+  export type SpotifyAccountOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    accessToken?: SortOrder
+    refreshToken?: SortOrder
+    scope?: SortOrderInput | SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SpotifyAccountCountOrderByAggregateInput
+    _avg?: SpotifyAccountAvgOrderByAggregateInput
+    _max?: SpotifyAccountMaxOrderByAggregateInput
+    _min?: SpotifyAccountMinOrderByAggregateInput
+    _sum?: SpotifyAccountSumOrderByAggregateInput
+  }
+
+  export type SpotifyAccountScalarWhereWithAggregatesInput = {
+    AND?: SpotifyAccountScalarWhereWithAggregatesInput | SpotifyAccountScalarWhereWithAggregatesInput[]
+    OR?: SpotifyAccountScalarWhereWithAggregatesInput[]
+    NOT?: SpotifyAccountScalarWhereWithAggregatesInput | SpotifyAccountScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"SpotifyAccount"> | number
+    userId?: IntWithAggregatesFilter<"SpotifyAccount"> | number
+    accessToken?: StringWithAggregatesFilter<"SpotifyAccount"> | string
+    refreshToken?: StringWithAggregatesFilter<"SpotifyAccount"> | string
+    scope?: StringNullableWithAggregatesFilter<"SpotifyAccount"> | string | null
+    expiresAt?: DateTimeWithAggregatesFilter<"SpotifyAccount"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"SpotifyAccount"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"SpotifyAccount"> | Date | string
+  }
+
   export type UserCreateInput = {
     name: string
     email: string
@@ -14010,6 +15348,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     cabinets?: CabinetCreateNestedManyWithoutOwnerInput
+    spotifyAccount?: SpotifyAccountCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -14020,6 +15359,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     cabinets?: CabinetUncheckedCreateNestedManyWithoutOwnerInput
+    spotifyAccount?: SpotifyAccountUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -14029,6 +15369,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cabinets?: CabinetUpdateManyWithoutOwnerNestedInput
+    spotifyAccount?: SpotifyAccountUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -14039,6 +15380,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     cabinets?: CabinetUncheckedUpdateManyWithoutOwnerNestedInput
+    spotifyAccount?: SpotifyAccountUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -14651,6 +15993,79 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type SpotifyAccountCreateInput = {
+    accessToken: string
+    refreshToken: string
+    scope?: string | null
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutSpotifyAccountInput
+  }
+
+  export type SpotifyAccountUncheckedCreateInput = {
+    id?: number
+    userId: number
+    accessToken: string
+    refreshToken: string
+    scope?: string | null
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SpotifyAccountUpdateInput = {
+    accessToken?: StringFieldUpdateOperationsInput | string
+    refreshToken?: StringFieldUpdateOperationsInput | string
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSpotifyAccountNestedInput
+  }
+
+  export type SpotifyAccountUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    accessToken?: StringFieldUpdateOperationsInput | string
+    refreshToken?: StringFieldUpdateOperationsInput | string
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SpotifyAccountCreateManyInput = {
+    id?: number
+    userId: number
+    accessToken: string
+    refreshToken: string
+    scope?: string | null
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SpotifyAccountUpdateManyMutationInput = {
+    accessToken?: StringFieldUpdateOperationsInput | string
+    refreshToken?: StringFieldUpdateOperationsInput | string
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SpotifyAccountUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    accessToken?: StringFieldUpdateOperationsInput | string
+    refreshToken?: StringFieldUpdateOperationsInput | string
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -14692,6 +16107,11 @@ export namespace Prisma {
     every?: CabinetWhereInput
     some?: CabinetWhereInput
     none?: CabinetWhereInput
+  }
+
+  export type SpotifyAccountNullableScalarRelationFilter = {
+    is?: SpotifyAccountWhereInput | null
+    isNot?: SpotifyAccountWhereInput | null
   }
 
   export type CabinetOrderByRelationAggregateInput = {
@@ -15312,6 +16732,49 @@ export namespace Prisma {
     cabinetId?: SortOrder
   }
 
+  export type SpotifyAccountCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    accessToken?: SortOrder
+    refreshToken?: SortOrder
+    scope?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SpotifyAccountAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type SpotifyAccountMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    accessToken?: SortOrder
+    refreshToken?: SortOrder
+    scope?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SpotifyAccountMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    accessToken?: SortOrder
+    refreshToken?: SortOrder
+    scope?: SortOrder
+    expiresAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SpotifyAccountSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+  }
+
   export type CabinetCreateNestedManyWithoutOwnerInput = {
     create?: XOR<CabinetCreateWithoutOwnerInput, CabinetUncheckedCreateWithoutOwnerInput> | CabinetCreateWithoutOwnerInput[] | CabinetUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: CabinetCreateOrConnectWithoutOwnerInput | CabinetCreateOrConnectWithoutOwnerInput[]
@@ -15319,11 +16782,23 @@ export namespace Prisma {
     connect?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
   }
 
+  export type SpotifyAccountCreateNestedOneWithoutUserInput = {
+    create?: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
+    connectOrCreate?: SpotifyAccountCreateOrConnectWithoutUserInput
+    connect?: SpotifyAccountWhereUniqueInput
+  }
+
   export type CabinetUncheckedCreateNestedManyWithoutOwnerInput = {
     create?: XOR<CabinetCreateWithoutOwnerInput, CabinetUncheckedCreateWithoutOwnerInput> | CabinetCreateWithoutOwnerInput[] | CabinetUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: CabinetCreateOrConnectWithoutOwnerInput | CabinetCreateOrConnectWithoutOwnerInput[]
     createMany?: CabinetCreateManyOwnerInputEnvelope
     connect?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
+  }
+
+  export type SpotifyAccountUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
+    connectOrCreate?: SpotifyAccountCreateOrConnectWithoutUserInput
+    connect?: SpotifyAccountWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -15348,6 +16823,16 @@ export namespace Prisma {
     deleteMany?: CabinetScalarWhereInput | CabinetScalarWhereInput[]
   }
 
+  export type SpotifyAccountUpdateOneWithoutUserNestedInput = {
+    create?: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
+    connectOrCreate?: SpotifyAccountCreateOrConnectWithoutUserInput
+    upsert?: SpotifyAccountUpsertWithoutUserInput
+    disconnect?: SpotifyAccountWhereInput | boolean
+    delete?: SpotifyAccountWhereInput | boolean
+    connect?: SpotifyAccountWhereUniqueInput
+    update?: XOR<XOR<SpotifyAccountUpdateToOneWithWhereWithoutUserInput, SpotifyAccountUpdateWithoutUserInput>, SpotifyAccountUncheckedUpdateWithoutUserInput>
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -15368,6 +16853,16 @@ export namespace Prisma {
     update?: CabinetUpdateWithWhereUniqueWithoutOwnerInput | CabinetUpdateWithWhereUniqueWithoutOwnerInput[]
     updateMany?: CabinetUpdateManyWithWhereWithoutOwnerInput | CabinetUpdateManyWithWhereWithoutOwnerInput[]
     deleteMany?: CabinetScalarWhereInput | CabinetScalarWhereInput[]
+  }
+
+  export type SpotifyAccountUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
+    connectOrCreate?: SpotifyAccountCreateOrConnectWithoutUserInput
+    upsert?: SpotifyAccountUpsertWithoutUserInput
+    disconnect?: SpotifyAccountWhereInput | boolean
+    delete?: SpotifyAccountWhereInput | boolean
+    connect?: SpotifyAccountWhereUniqueInput
+    update?: XOR<XOR<SpotifyAccountUpdateToOneWithWhereWithoutUserInput, SpotifyAccountUpdateWithoutUserInput>, SpotifyAccountUncheckedUpdateWithoutUserInput>
   }
 
   export type UserCreateNestedOneWithoutCabinetsInput = {
@@ -15806,6 +17301,20 @@ export namespace Prisma {
     update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutDecorItemsInput, CabinetUpdateWithoutDecorItemsInput>, CabinetUncheckedUpdateWithoutDecorItemsInput>
   }
 
+  export type UserCreateNestedOneWithoutSpotifyAccountInput = {
+    create?: XOR<UserCreateWithoutSpotifyAccountInput, UserUncheckedCreateWithoutSpotifyAccountInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSpotifyAccountInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutSpotifyAccountNestedInput = {
+    create?: XOR<UserCreateWithoutSpotifyAccountInput, UserUncheckedCreateWithoutSpotifyAccountInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSpotifyAccountInput
+    upsert?: UserUpsertWithoutSpotifyAccountInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSpotifyAccountInput, UserUpdateWithoutSpotifyAccountInput>, UserUncheckedUpdateWithoutSpotifyAccountInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -16027,6 +17536,30 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type SpotifyAccountCreateWithoutUserInput = {
+    accessToken: string
+    refreshToken: string
+    scope?: string | null
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SpotifyAccountUncheckedCreateWithoutUserInput = {
+    id?: number
+    accessToken: string
+    refreshToken: string
+    scope?: string | null
+    expiresAt: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SpotifyAccountCreateOrConnectWithoutUserInput = {
+    where: SpotifyAccountWhereUniqueInput
+    create: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
+  }
+
   export type CabinetUpsertWithWhereUniqueWithoutOwnerInput = {
     where: CabinetWhereUniqueInput
     update: XOR<CabinetUpdateWithoutOwnerInput, CabinetUncheckedUpdateWithoutOwnerInput>
@@ -16054,12 +17587,43 @@ export namespace Prisma {
     ownerId?: IntFilter<"Cabinet"> | number
   }
 
+  export type SpotifyAccountUpsertWithoutUserInput = {
+    update: XOR<SpotifyAccountUpdateWithoutUserInput, SpotifyAccountUncheckedUpdateWithoutUserInput>
+    create: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
+    where?: SpotifyAccountWhereInput
+  }
+
+  export type SpotifyAccountUpdateToOneWithWhereWithoutUserInput = {
+    where?: SpotifyAccountWhereInput
+    data: XOR<SpotifyAccountUpdateWithoutUserInput, SpotifyAccountUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SpotifyAccountUpdateWithoutUserInput = {
+    accessToken?: StringFieldUpdateOperationsInput | string
+    refreshToken?: StringFieldUpdateOperationsInput | string
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SpotifyAccountUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    accessToken?: StringFieldUpdateOperationsInput | string
+    refreshToken?: StringFieldUpdateOperationsInput | string
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateWithoutCabinetsInput = {
     name: string
     email: string
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    spotifyAccount?: SpotifyAccountCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCabinetsInput = {
@@ -16069,6 +17633,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    spotifyAccount?: SpotifyAccountUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCabinetsInput = {
@@ -16286,6 +17851,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    spotifyAccount?: SpotifyAccountUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCabinetsInput = {
@@ -16295,6 +17861,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    spotifyAccount?: SpotifyAccountUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type CabinetLayoutUpsertWithoutCabinetInput = {
@@ -17110,6 +18677,60 @@ export namespace Prisma {
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
+  }
+
+  export type UserCreateWithoutSpotifyAccountInput = {
+    name: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cabinets?: CabinetCreateNestedManyWithoutOwnerInput
+  }
+
+  export type UserUncheckedCreateWithoutSpotifyAccountInput = {
+    id?: number
+    name: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    cabinets?: CabinetUncheckedCreateNestedManyWithoutOwnerInput
+  }
+
+  export type UserCreateOrConnectWithoutSpotifyAccountInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSpotifyAccountInput, UserUncheckedCreateWithoutSpotifyAccountInput>
+  }
+
+  export type UserUpsertWithoutSpotifyAccountInput = {
+    update: XOR<UserUpdateWithoutSpotifyAccountInput, UserUncheckedUpdateWithoutSpotifyAccountInput>
+    create: XOR<UserCreateWithoutSpotifyAccountInput, UserUncheckedCreateWithoutSpotifyAccountInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSpotifyAccountInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSpotifyAccountInput, UserUncheckedUpdateWithoutSpotifyAccountInput>
+  }
+
+  export type UserUpdateWithoutSpotifyAccountInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cabinets?: CabinetUpdateManyWithoutOwnerNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSpotifyAccountInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    cabinets?: CabinetUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type CabinetCreateManyOwnerInput = {
