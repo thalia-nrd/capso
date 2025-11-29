@@ -23,7 +23,7 @@ export const mp3Controller = {
       const { playlistId } = req.params;
       if (!playlistId) return res.status(400).json({ error: "Playlist ID required" });
       const tracks = await getPlaylistTracks(user.id, playlistId);
-      res.json(tracks);
+      res.json({ tracks });
     } catch (err: any) {
       console.error("getPlaylistTracks", err);
       res.status(500).json({ error: err.message || "Server error" });
