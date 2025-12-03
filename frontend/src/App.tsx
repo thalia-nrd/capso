@@ -1,13 +1,13 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import Register from './app/pages/RegisterPage';
+import Login from './app/pages/LoginPage';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <Register />
       </header>
     </div>
   );
