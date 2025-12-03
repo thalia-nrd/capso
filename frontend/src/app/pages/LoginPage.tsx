@@ -28,24 +28,26 @@ const Login: React.FC = () => {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(submitLogin)} className="form">
-        <img className="form-image" src="../ui/flowerSticker3.png" alt="" />
-        <h1 className="form-title">Login</h1>
+      <div className="wrapper">
+        <form onSubmit={form.handleSubmit(submitLogin)} className="form">
+            <img className="form-image" src="../ui/flowerSticker3.png" alt="" />
+            <h1 className="form-title">Login</h1>
 
-        <div className="form-group">
-          <label className="form-label">email</label>
-          <input type="email" className="form-input" {...form.register('email')} />
-        </div>
+            <div className="form-group">
+            <label className="form-label">email</label>
+            <input type="email" className="form-input" {...form.register('email')} />
+            </div>
 
-        <div className="form-group">
-          <label className="form-label">password</label>
-          <input type="password" className="form-input" {...form.register('password')} />
-        </div>
+            <div className="form-group">
+            <label className="form-label">password</label>
+            <input type="password" className="form-input" {...form.register('password')} />
+            </div>
 
-        <div className="form-group">
-          <button type="submit" className="form-button">Login</button>
-        </div>
-      </form>
+            <div>
+            <button type="submit" className="form-button">Login</button>
+            </div>
+        </form>
+      </div>
     </FormProvider>
   );
 };

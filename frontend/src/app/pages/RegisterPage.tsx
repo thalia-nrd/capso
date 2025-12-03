@@ -30,29 +30,31 @@ const Register: React.FC = () => {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(submitRegister)} className="form">
-        <img className="form-image" src="../ui/flowerSticker.png" alt="" />
-        <h1 className="form-title">Register</h1>
+      <div className="wrapper">
+        <form onSubmit={form.handleSubmit(submitRegister)} className="form">
+          <img className="form-image" src="../ui/flowerSticker.png" alt="" />
+          <h1 className="form-title">Register</h1>
 
-        <div className="form-group">
-          <label className="form-label">name</label>
-          <input type="text" className="form-input" {...form.register('name')} />
-        </div>
+          <div className="form-group">
+            <label className="form-label">name</label>
+            <input type="text" className="form-input" {...form.register('name')} />
+          </div>
 
-        <div className="form-group">
-          <label className="form-label">email</label>
-          <input type="email" className="form-input" {...form.register('email')} />
-        </div>
+          <div className="form-group">
+            <label className="form-label">email</label>
+            <input type="email" className="form-input" {...form.register('email')} />
+          </div>
 
-        <div className="form-group">
-          <label className="form-label">password</label>
-          <input type="password" className="form-input" {...form.register('password')} />
-        </div>
+          <div className="form-group">
+            <label className="form-label">password</label>
+            <input type="password" className="form-input" {...form.register('password')} />
+          </div>
 
-        <div className="form-group">
-          <button type="submit" className="form-button">Register</button>
-        </div>
-      </form>
+          <div>
+            <button type="submit" className="form-button">Register</button>
+          </div>
+        </form>
+      </div>
     </FormProvider>
   );
 }
