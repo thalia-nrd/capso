@@ -1,5 +1,5 @@
-import { loginSchemaType } from "../app/pages/LoginPage";
-import { registerSchemaType } from "../app/pages/RegisterPage";
+import { loginSchemaType } from "../app/pages/auth/LoginPage";
+import { registerSchemaType } from "../app/pages/auth/RegisterPage";
 
 const API_URL = process.env.REACT_APP_API_URL || "";
 

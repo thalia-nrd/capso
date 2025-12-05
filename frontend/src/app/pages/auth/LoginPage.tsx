@@ -1,8 +1,9 @@
 import React from 'react';
 import * as z from 'zod';
-import { login } from '../../services/authService';
+import { login } from '../../../services/authService';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigate } from 'react-router-dom';
 import './Auth.scss';
 
 export const loginSchema = z.object({
@@ -13,14 +14,17 @@ export const loginSchema = z.object({
 export type loginSchemaType = z.infer<typeof loginSchema>;
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
+
   const form = useForm<loginSchemaType>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: '', password: '' },
   });
 
-  const submitLogin = (data: loginSchemaType) => {
+  const submitLogin = async (data: loginSchemaType) => {
     try {
-      login(data);
+      await login(data);
+      navigate('/');
     } catch (error) {
       console.error('Login failed:', error);
     }

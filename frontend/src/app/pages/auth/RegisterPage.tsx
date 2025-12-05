@@ -1,8 +1,9 @@
 import React from 'react';
 import * as z from 'zod';
-import { register } from '../../services/authService';
+import { register } from '../../../services/authService';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigate } from 'react-router-dom';
 import './Auth.scss';
 
 export const registerSchema = z.object({
@@ -14,15 +15,17 @@ export const registerSchema = z.object({
 export type registerSchemaType = z.infer<typeof registerSchema>;
 
 const Register: React.FC = () => {
+  const navigate = useNavigate();
 
   const form = useForm<registerSchemaType>({
     resolver: zodResolver(registerSchema),
     defaultValues: { name: '', email: '', password: '' },
   });
 
-  const submitRegister = (data: registerSchemaType) => {
+  const submitRegister = async (data: registerSchemaType) => {
     try {
-      register(data);
+      await register(data);
+      navigate('/login');
     } catch (error) {
       console.error('Registration failed:', error);
     }
