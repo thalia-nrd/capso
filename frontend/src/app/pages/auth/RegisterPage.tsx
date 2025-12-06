@@ -14,28 +14,33 @@ export const registerSchema = z.object({
 
 export type registerSchemaType = z.infer<typeof registerSchema>;
 
-const Register: React.FC = () => {
+const Register = () => {
   const navigate = useNavigate();
 
-  const form = useForm<registerSchemaType>({
+  const form = useForm({
     resolver: zodResolver(registerSchema),
-    defaultValues: { name: '', email: '', password: '' },
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
   });
 
-  const submitRegister = async (data: registerSchemaType) => {
+  const submitRegister = async (data: any) => {
     try {
-      await register(data);
-      navigate('/login');
-    } catch (error) {
-      console.error('Registration failed:', error);
+      const newUser = await register(data);
+      navigate(`/main/${newUser.userId}`);
+    } catch (err: any) {
+      console.error(err);
+      alert(err.message || "Registration failed");
     }
-  }
+  };
 
   return (
     <FormProvider {...form}>
       <div className="wrapper">
         <form onSubmit={form.handleSubmit(submitRegister)} className="form">
-          <img className="form-image" src="../ui/flowerSticker.png" alt="" />
+          <img className="form-image" src='/ui/flowerSticker.png' alt="Flower Sticker" />
           <h1 className="form-title">Register</h1>
 
           <div className="form-group">

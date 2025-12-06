@@ -23,8 +23,17 @@ const Login: React.FC = () => {
 
   const submitLogin = async (data: loginSchemaType) => {
     try {
-      await login(data);
-      navigate('/');
+      const res = await login(data);
+
+      console.log("Login response:", res); // DEBUG: See exactly what backend returns
+
+      const cabinetId = res.cabinet?.id;
+      if (!cabinetId) {
+        console.error("Cabinet ID not returned by backend");
+        return;
+      }
+
+      navigate(`/cabinet/${cabinetId}`);
     } catch (error) {
       console.error('Login failed:', error);
     }
@@ -34,22 +43,22 @@ const Login: React.FC = () => {
     <FormProvider {...form}>
       <div className="wrapper">
         <form onSubmit={form.handleSubmit(submitLogin)} className="form">
-            <img className="form-image" src="../ui/flowerSticker3.png" alt="" />
-            <h1 className="form-title">Login</h1>
+          <img className="form-image" src="/ui/flowerSticker3.png" alt="" />
+          <h1 className="form-title">Login</h1>
 
-            <div className="form-group">
+          <div className="form-group">
             <label className="form-label">email</label>
             <input type="email" className="form-input" {...form.register('email')} />
-            </div>
+          </div>
 
-            <div className="form-group">
+          <div className="form-group">
             <label className="form-label">password</label>
             <input type="password" className="form-input" {...form.register('password')} />
-            </div>
+          </div>
 
-            <div>
+          <div>
             <button type="submit" className="form-button">Login</button>
-            </div>
+          </div>
         </form>
       </div>
     </FormProvider>
