@@ -1,53 +1,19 @@
 import React, { useState } from "react";
 
 interface MirrorModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  initialItems?: string[];
-  onSave: (items: string[]) => void;
+  quote: string;
 }
 
 const MirrorModal: React.FC<MirrorModalProps> = ({
-  isOpen,
-  onClose,
-  initialItems = [],
-  onSave
+  quote
 }) => {
-  const [items, setItems] = useState(initialItems);
-
-  if (!isOpen) return null;
-
-  const updateItem = (i: number, value: string) => {
-    const newItems = [...items];
-    newItems[i] = value;
-    setItems(newItems);
-  };
-
-  const addItem = () => setItems([...items, ""]);
+  const getQuote = () => {
+    return quote;
+  }
 
   return (
-    <div style={styles.overlay}>
-      <div style={styles.modal}>
-        <h2>Mirror</h2>
-
-        {items.map((item, idx) => (
-          <input
-            key={idx}
-            value={item}
-            onChange={(e) => updateItem(idx, e.target.value)}
-            style={styles.input}
-          />
-        ))}
-
-        <button onClick={addItem}>Add</button>
-
-        <div style={{ marginTop: "20px" }}>
-          <button onClick={() => onSave(items)}>Save</button>
-          <button onClick={onClose} style={{ marginLeft: "10px" }}>
-            Close
-          </button>
-        </div>
-      </div>
+    <div>
+        <button onClick={getQuote}>mirror mirror on the wall...</button>
     </div>
   );
 };
