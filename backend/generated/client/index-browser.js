@@ -166,7 +166,7 @@ exports.Prisma.JournalScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.PhotoFrameScalarFieldEnum = {
+exports.Prisma.PolaroidScalarFieldEnum = {
   id: 'id',
   position: 'position',
   url: 'url',
@@ -262,7 +262,7 @@ exports.Prisma.ModelName = {
   CabinetLayout: 'CabinetLayout',
   Chest: 'Chest',
   Journal: 'Journal',
-  PhotoFrame: 'PhotoFrame',
+  Polaroid: 'Polaroid',
   Media: 'Media',
   Checklist: 'Checklist',
   Note: 'Note',

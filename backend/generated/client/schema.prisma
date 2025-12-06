@@ -31,7 +31,7 @@ model Cabinet {
   layout     CabinetLayout?
   chest      Chest?
   journal    Journal?
-  photoFrame PhotoFrame[]
+  polaroid   Polaroid[]
   media      Media[]
   checklist  Checklist[]
   notes      Note[]
@@ -69,7 +69,7 @@ model Journal {
   updatedAt DateTime @updatedAt
 }
 
-model PhotoFrame {
+model Polaroid {
   id        Int      @id @default(autoincrement())
   position  Json?
   url       String

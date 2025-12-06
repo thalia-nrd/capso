@@ -39,10 +39,10 @@ export type Chest = $Result.DefaultSelection<Prisma.$ChestPayload>
  */
 export type Journal = $Result.DefaultSelection<Prisma.$JournalPayload>
 /**
- * Model PhotoFrame
+ * Model Polaroid
  * 
  */
-export type PhotoFrame = $Result.DefaultSelection<Prisma.$PhotoFramePayload>
+export type Polaroid = $Result.DefaultSelection<Prisma.$PolaroidPayload>
 /**
  * Model Media
  * 
@@ -238,14 +238,14 @@ export class PrismaClient<
   get journal(): Prisma.JournalDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.photoFrame`: Exposes CRUD operations for the **PhotoFrame** model.
+   * `prisma.polaroid`: Exposes CRUD operations for the **Polaroid** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more PhotoFrames
-    * const photoFrames = await prisma.photoFrame.findMany()
+    * // Fetch zero or more Polaroids
+    * const polaroids = await prisma.polaroid.findMany()
     * ```
     */
-  get photoFrame(): Prisma.PhotoFrameDelegate<ExtArgs, ClientOptions>;
+  get polaroid(): Prisma.PolaroidDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.media`: Exposes CRUD operations for the **Media** model.
@@ -742,7 +742,7 @@ export namespace Prisma {
     CabinetLayout: 'CabinetLayout',
     Chest: 'Chest',
     Journal: 'Journal',
-    PhotoFrame: 'PhotoFrame',
+    Polaroid: 'Polaroid',
     Media: 'Media',
     Checklist: 'Checklist',
     Note: 'Note',
@@ -766,7 +766,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "cabinet" | "cabinetLayout" | "chest" | "journal" | "photoFrame" | "media" | "checklist" | "note" | "decorItem" | "spotifyAccount"
+      modelProps: "user" | "cabinet" | "cabinetLayout" | "chest" | "journal" | "polaroid" | "media" | "checklist" | "note" | "decorItem" | "spotifyAccount"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1140,77 +1140,77 @@ export namespace Prisma {
           }
         }
       }
-      PhotoFrame: {
-        payload: Prisma.$PhotoFramePayload<ExtArgs>
-        fields: Prisma.PhotoFrameFieldRefs
+      Polaroid: {
+        payload: Prisma.$PolaroidPayload<ExtArgs>
+        fields: Prisma.PolaroidFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.PhotoFrameFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PhotoFramePayload> | null
+            args: Prisma.PolaroidFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PolaroidPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.PhotoFrameFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PhotoFramePayload>
+            args: Prisma.PolaroidFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PolaroidPayload>
           }
           findFirst: {
-            args: Prisma.PhotoFrameFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PhotoFramePayload> | null
+            args: Prisma.PolaroidFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PolaroidPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.PhotoFrameFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PhotoFramePayload>
+            args: Prisma.PolaroidFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PolaroidPayload>
           }
           findMany: {
-            args: Prisma.PhotoFrameFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PhotoFramePayload>[]
+            args: Prisma.PolaroidFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PolaroidPayload>[]
           }
           create: {
-            args: Prisma.PhotoFrameCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PhotoFramePayload>
+            args: Prisma.PolaroidCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PolaroidPayload>
           }
           createMany: {
-            args: Prisma.PhotoFrameCreateManyArgs<ExtArgs>
+            args: Prisma.PolaroidCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.PhotoFrameCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PhotoFramePayload>[]
+            args: Prisma.PolaroidCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PolaroidPayload>[]
           }
           delete: {
-            args: Prisma.PhotoFrameDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PhotoFramePayload>
+            args: Prisma.PolaroidDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PolaroidPayload>
           }
           update: {
-            args: Prisma.PhotoFrameUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PhotoFramePayload>
+            args: Prisma.PolaroidUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PolaroidPayload>
           }
           deleteMany: {
-            args: Prisma.PhotoFrameDeleteManyArgs<ExtArgs>
+            args: Prisma.PolaroidDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.PhotoFrameUpdateManyArgs<ExtArgs>
+            args: Prisma.PolaroidUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.PhotoFrameUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PhotoFramePayload>[]
+            args: Prisma.PolaroidUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PolaroidPayload>[]
           }
           upsert: {
-            args: Prisma.PhotoFrameUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PhotoFramePayload>
+            args: Prisma.PolaroidUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PolaroidPayload>
           }
           aggregate: {
-            args: Prisma.PhotoFrameAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePhotoFrame>
+            args: Prisma.PolaroidAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePolaroid>
           }
           groupBy: {
-            args: Prisma.PhotoFrameGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PhotoFrameGroupByOutputType>[]
+            args: Prisma.PolaroidGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PolaroidGroupByOutputType>[]
           }
           count: {
-            args: Prisma.PhotoFrameCountArgs<ExtArgs>
-            result: $Utils.Optional<PhotoFrameCountAggregateOutputType> | number
+            args: Prisma.PolaroidCountArgs<ExtArgs>
+            result: $Utils.Optional<PolaroidCountAggregateOutputType> | number
           }
         }
       }
@@ -1685,7 +1685,7 @@ export namespace Prisma {
     cabinetLayout?: CabinetLayoutOmit
     chest?: ChestOmit
     journal?: JournalOmit
-    photoFrame?: PhotoFrameOmit
+    polaroid?: PolaroidOmit
     media?: MediaOmit
     checklist?: ChecklistOmit
     note?: NoteOmit
@@ -1802,7 +1802,7 @@ export namespace Prisma {
    */
 
   export type CabinetCountOutputType = {
-    photoFrame: number
+    polaroid: number
     media: number
     checklist: number
     notes: number
@@ -1810,7 +1810,7 @@ export namespace Prisma {
   }
 
   export type CabinetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    photoFrame?: boolean | CabinetCountOutputTypeCountPhotoFrameArgs
+    polaroid?: boolean | CabinetCountOutputTypeCountPolaroidArgs
     media?: boolean | CabinetCountOutputTypeCountMediaArgs
     checklist?: boolean | CabinetCountOutputTypeCountChecklistArgs
     notes?: boolean | CabinetCountOutputTypeCountNotesArgs
@@ -1831,8 +1831,8 @@ export namespace Prisma {
   /**
    * CabinetCountOutputType without action
    */
-  export type CabinetCountOutputTypeCountPhotoFrameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PhotoFrameWhereInput
+  export type CabinetCountOutputTypeCountPolaroidArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PolaroidWhereInput
   }
 
   /**
@@ -3214,7 +3214,7 @@ export namespace Prisma {
     layout?: boolean | Cabinet$layoutArgs<ExtArgs>
     chest?: boolean | Cabinet$chestArgs<ExtArgs>
     journal?: boolean | Cabinet$journalArgs<ExtArgs>
-    photoFrame?: boolean | Cabinet$photoFrameArgs<ExtArgs>
+    polaroid?: boolean | Cabinet$polaroidArgs<ExtArgs>
     media?: boolean | Cabinet$mediaArgs<ExtArgs>
     checklist?: boolean | Cabinet$checklistArgs<ExtArgs>
     notes?: boolean | Cabinet$notesArgs<ExtArgs>
@@ -3254,7 +3254,7 @@ export namespace Prisma {
     layout?: boolean | Cabinet$layoutArgs<ExtArgs>
     chest?: boolean | Cabinet$chestArgs<ExtArgs>
     journal?: boolean | Cabinet$journalArgs<ExtArgs>
-    photoFrame?: boolean | Cabinet$photoFrameArgs<ExtArgs>
+    polaroid?: boolean | Cabinet$polaroidArgs<ExtArgs>
     media?: boolean | Cabinet$mediaArgs<ExtArgs>
     checklist?: boolean | Cabinet$checklistArgs<ExtArgs>
     notes?: boolean | Cabinet$notesArgs<ExtArgs>
@@ -3275,7 +3275,7 @@ export namespace Prisma {
       layout: Prisma.$CabinetLayoutPayload<ExtArgs> | null
       chest: Prisma.$ChestPayload<ExtArgs> | null
       journal: Prisma.$JournalPayload<ExtArgs> | null
-      photoFrame: Prisma.$PhotoFramePayload<ExtArgs>[]
+      polaroid: Prisma.$PolaroidPayload<ExtArgs>[]
       media: Prisma.$MediaPayload<ExtArgs>[]
       checklist: Prisma.$ChecklistPayload<ExtArgs>[]
       notes: Prisma.$NotePayload<ExtArgs>[]
@@ -3685,7 +3685,7 @@ export namespace Prisma {
     layout<T extends Cabinet$layoutArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$layoutArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     chest<T extends Cabinet$chestArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$chestArgs<ExtArgs>>): Prisma__ChestClient<$Result.GetResult<Prisma.$ChestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     journal<T extends Cabinet$journalArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$journalArgs<ExtArgs>>): Prisma__JournalClient<$Result.GetResult<Prisma.$JournalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    photoFrame<T extends Cabinet$photoFrameArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$photoFrameArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    polaroid<T extends Cabinet$polaroidArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$polaroidArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     media<T extends Cabinet$mediaArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     checklist<T extends Cabinet$checklistArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$checklistArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChecklistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     notes<T extends Cabinet$notesArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -4177,27 +4177,27 @@ export namespace Prisma {
   }
 
   /**
-   * Cabinet.photoFrame
+   * Cabinet.polaroid
    */
-  export type Cabinet$photoFrameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Cabinet$polaroidArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelect<ExtArgs> | null
+    select?: PolaroidSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameInclude<ExtArgs> | null
-    where?: PhotoFrameWhereInput
-    orderBy?: PhotoFrameOrderByWithRelationInput | PhotoFrameOrderByWithRelationInput[]
-    cursor?: PhotoFrameWhereUniqueInput
+    include?: PolaroidInclude<ExtArgs> | null
+    where?: PolaroidWhereInput
+    orderBy?: PolaroidOrderByWithRelationInput | PolaroidOrderByWithRelationInput[]
+    cursor?: PolaroidWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PhotoFrameScalarFieldEnum | PhotoFrameScalarFieldEnum[]
+    distinct?: PolaroidScalarFieldEnum | PolaroidScalarFieldEnum[]
   }
 
   /**
@@ -7636,37 +7636,28 @@ export namespace Prisma {
 
 
   /**
-   * Model PhotoFrame
+   * Model Polaroid
    */
 
-  export type AggregatePhotoFrame = {
-    _count: PhotoFrameCountAggregateOutputType | null
-    _avg: PhotoFrameAvgAggregateOutputType | null
-    _sum: PhotoFrameSumAggregateOutputType | null
-    _min: PhotoFrameMinAggregateOutputType | null
-    _max: PhotoFrameMaxAggregateOutputType | null
+  export type AggregatePolaroid = {
+    _count: PolaroidCountAggregateOutputType | null
+    _avg: PolaroidAvgAggregateOutputType | null
+    _sum: PolaroidSumAggregateOutputType | null
+    _min: PolaroidMinAggregateOutputType | null
+    _max: PolaroidMaxAggregateOutputType | null
   }
 
-  export type PhotoFrameAvgAggregateOutputType = {
+  export type PolaroidAvgAggregateOutputType = {
     id: number | null
     cabinetId: number | null
   }
 
-  export type PhotoFrameSumAggregateOutputType = {
+  export type PolaroidSumAggregateOutputType = {
     id: number | null
     cabinetId: number | null
   }
 
-  export type PhotoFrameMinAggregateOutputType = {
-    id: number | null
-    url: string | null
-    caption: string | null
-    cabinetId: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type PhotoFrameMaxAggregateOutputType = {
+  export type PolaroidMinAggregateOutputType = {
     id: number | null
     url: string | null
     caption: string | null
@@ -7675,7 +7666,16 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type PhotoFrameCountAggregateOutputType = {
+  export type PolaroidMaxAggregateOutputType = {
+    id: number | null
+    url: string | null
+    caption: string | null
+    cabinetId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PolaroidCountAggregateOutputType = {
     id: number
     position: number
     url: number
@@ -7687,26 +7687,17 @@ export namespace Prisma {
   }
 
 
-  export type PhotoFrameAvgAggregateInputType = {
+  export type PolaroidAvgAggregateInputType = {
     id?: true
     cabinetId?: true
   }
 
-  export type PhotoFrameSumAggregateInputType = {
+  export type PolaroidSumAggregateInputType = {
     id?: true
     cabinetId?: true
   }
 
-  export type PhotoFrameMinAggregateInputType = {
-    id?: true
-    url?: true
-    caption?: true
-    cabinetId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type PhotoFrameMaxAggregateInputType = {
+  export type PolaroidMinAggregateInputType = {
     id?: true
     url?: true
     caption?: true
@@ -7715,7 +7706,16 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type PhotoFrameCountAggregateInputType = {
+  export type PolaroidMaxAggregateInputType = {
+    id?: true
+    url?: true
+    caption?: true
+    cabinetId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PolaroidCountAggregateInputType = {
     id?: true
     position?: true
     url?: true
@@ -7726,93 +7726,93 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type PhotoFrameAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which PhotoFrame to aggregate.
+     * Filter which Polaroid to aggregate.
      */
-    where?: PhotoFrameWhereInput
+    where?: PolaroidWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PhotoFrames to fetch.
+     * Determine the order of Polaroids to fetch.
      */
-    orderBy?: PhotoFrameOrderByWithRelationInput | PhotoFrameOrderByWithRelationInput[]
+    orderBy?: PolaroidOrderByWithRelationInput | PolaroidOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: PhotoFrameWhereUniqueInput
+    cursor?: PolaroidWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PhotoFrames from the position of the cursor.
+     * Take `±n` Polaroids from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PhotoFrames.
+     * Skip the first `n` Polaroids.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned PhotoFrames
+     * Count returned Polaroids
     **/
-    _count?: true | PhotoFrameCountAggregateInputType
+    _count?: true | PolaroidCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: PhotoFrameAvgAggregateInputType
+    _avg?: PolaroidAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: PhotoFrameSumAggregateInputType
+    _sum?: PolaroidSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: PhotoFrameMinAggregateInputType
+    _min?: PolaroidMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: PhotoFrameMaxAggregateInputType
+    _max?: PolaroidMaxAggregateInputType
   }
 
-  export type GetPhotoFrameAggregateType<T extends PhotoFrameAggregateArgs> = {
-        [P in keyof T & keyof AggregatePhotoFrame]: P extends '_count' | 'count'
+  export type GetPolaroidAggregateType<T extends PolaroidAggregateArgs> = {
+        [P in keyof T & keyof AggregatePolaroid]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregatePhotoFrame[P]>
-      : GetScalarType<T[P], AggregatePhotoFrame[P]>
+        : GetScalarType<T[P], AggregatePolaroid[P]>
+      : GetScalarType<T[P], AggregatePolaroid[P]>
   }
 
 
 
 
-  export type PhotoFrameGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PhotoFrameWhereInput
-    orderBy?: PhotoFrameOrderByWithAggregationInput | PhotoFrameOrderByWithAggregationInput[]
-    by: PhotoFrameScalarFieldEnum[] | PhotoFrameScalarFieldEnum
-    having?: PhotoFrameScalarWhereWithAggregatesInput
+  export type PolaroidGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PolaroidWhereInput
+    orderBy?: PolaroidOrderByWithAggregationInput | PolaroidOrderByWithAggregationInput[]
+    by: PolaroidScalarFieldEnum[] | PolaroidScalarFieldEnum
+    having?: PolaroidScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: PhotoFrameCountAggregateInputType | true
-    _avg?: PhotoFrameAvgAggregateInputType
-    _sum?: PhotoFrameSumAggregateInputType
-    _min?: PhotoFrameMinAggregateInputType
-    _max?: PhotoFrameMaxAggregateInputType
+    _count?: PolaroidCountAggregateInputType | true
+    _avg?: PolaroidAvgAggregateInputType
+    _sum?: PolaroidSumAggregateInputType
+    _min?: PolaroidMinAggregateInputType
+    _max?: PolaroidMaxAggregateInputType
   }
 
-  export type PhotoFrameGroupByOutputType = {
+  export type PolaroidGroupByOutputType = {
     id: number
     position: JsonValue | null
     url: string
@@ -7820,28 +7820,28 @@ export namespace Prisma {
     cabinetId: number
     createdAt: Date
     updatedAt: Date
-    _count: PhotoFrameCountAggregateOutputType | null
-    _avg: PhotoFrameAvgAggregateOutputType | null
-    _sum: PhotoFrameSumAggregateOutputType | null
-    _min: PhotoFrameMinAggregateOutputType | null
-    _max: PhotoFrameMaxAggregateOutputType | null
+    _count: PolaroidCountAggregateOutputType | null
+    _avg: PolaroidAvgAggregateOutputType | null
+    _sum: PolaroidSumAggregateOutputType | null
+    _min: PolaroidMinAggregateOutputType | null
+    _max: PolaroidMaxAggregateOutputType | null
   }
 
-  type GetPhotoFrameGroupByPayload<T extends PhotoFrameGroupByArgs> = Prisma.PrismaPromise<
+  type GetPolaroidGroupByPayload<T extends PolaroidGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<PhotoFrameGroupByOutputType, T['by']> &
+      PickEnumerable<PolaroidGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof PhotoFrameGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof PolaroidGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], PhotoFrameGroupByOutputType[P]>
-            : GetScalarType<T[P], PhotoFrameGroupByOutputType[P]>
+              : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
+            : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type PhotoFrameSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PolaroidSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
     url?: boolean
@@ -7850,9 +7850,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["photoFrame"]>
+  }, ExtArgs["result"]["polaroid"]>
 
-  export type PhotoFrameSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PolaroidSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
     url?: boolean
@@ -7861,9 +7861,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["photoFrame"]>
+  }, ExtArgs["result"]["polaroid"]>
 
-  export type PhotoFrameSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PolaroidSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
     url?: boolean
@@ -7872,9 +7872,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["photoFrame"]>
+  }, ExtArgs["result"]["polaroid"]>
 
-  export type PhotoFrameSelectScalar = {
+  export type PolaroidSelectScalar = {
     id?: boolean
     position?: boolean
     url?: boolean
@@ -7884,19 +7884,19 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PhotoFrameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "url" | "caption" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["photoFrame"]>
-  export type PhotoFrameInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "url" | "caption" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["polaroid"]>
+  export type PolaroidInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
   }
-  export type PhotoFrameIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
   }
-  export type PhotoFrameIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
   }
 
-  export type $PhotoFramePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "PhotoFrame"
+  export type $PolaroidPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Polaroid"
     objects: {
       cabinet: Prisma.$CabinetPayload<ExtArgs>
     }
@@ -7908,136 +7908,136 @@ export namespace Prisma {
       cabinetId: number
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["photoFrame"]>
+    }, ExtArgs["result"]["polaroid"]>
     composites: {}
   }
 
-  type PhotoFrameGetPayload<S extends boolean | null | undefined | PhotoFrameDefaultArgs> = $Result.GetResult<Prisma.$PhotoFramePayload, S>
+  type PolaroidGetPayload<S extends boolean | null | undefined | PolaroidDefaultArgs> = $Result.GetResult<Prisma.$PolaroidPayload, S>
 
-  type PhotoFrameCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PhotoFrameFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PhotoFrameCountAggregateInputType | true
+  type PolaroidCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PolaroidFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PolaroidCountAggregateInputType | true
     }
 
-  export interface PhotoFrameDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PhotoFrame'], meta: { name: 'PhotoFrame' } }
+  export interface PolaroidDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Polaroid'], meta: { name: 'Polaroid' } }
     /**
-     * Find zero or one PhotoFrame that matches the filter.
-     * @param {PhotoFrameFindUniqueArgs} args - Arguments to find a PhotoFrame
+     * Find zero or one Polaroid that matches the filter.
+     * @param {PolaroidFindUniqueArgs} args - Arguments to find a Polaroid
      * @example
-     * // Get one PhotoFrame
-     * const photoFrame = await prisma.photoFrame.findUnique({
+     * // Get one Polaroid
+     * const polaroid = await prisma.polaroid.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends PhotoFrameFindUniqueArgs>(args: SelectSubset<T, PhotoFrameFindUniqueArgs<ExtArgs>>): Prisma__PhotoFrameClient<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends PolaroidFindUniqueArgs>(args: SelectSubset<T, PolaroidFindUniqueArgs<ExtArgs>>): Prisma__PolaroidClient<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one PhotoFrame that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Polaroid that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {PhotoFrameFindUniqueOrThrowArgs} args - Arguments to find a PhotoFrame
+     * @param {PolaroidFindUniqueOrThrowArgs} args - Arguments to find a Polaroid
      * @example
-     * // Get one PhotoFrame
-     * const photoFrame = await prisma.photoFrame.findUniqueOrThrow({
+     * // Get one Polaroid
+     * const polaroid = await prisma.polaroid.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends PhotoFrameFindUniqueOrThrowArgs>(args: SelectSubset<T, PhotoFrameFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PhotoFrameClient<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends PolaroidFindUniqueOrThrowArgs>(args: SelectSubset<T, PolaroidFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PolaroidClient<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first PhotoFrame that matches the filter.
+     * Find the first Polaroid that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PhotoFrameFindFirstArgs} args - Arguments to find a PhotoFrame
+     * @param {PolaroidFindFirstArgs} args - Arguments to find a Polaroid
      * @example
-     * // Get one PhotoFrame
-     * const photoFrame = await prisma.photoFrame.findFirst({
+     * // Get one Polaroid
+     * const polaroid = await prisma.polaroid.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends PhotoFrameFindFirstArgs>(args?: SelectSubset<T, PhotoFrameFindFirstArgs<ExtArgs>>): Prisma__PhotoFrameClient<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends PolaroidFindFirstArgs>(args?: SelectSubset<T, PolaroidFindFirstArgs<ExtArgs>>): Prisma__PolaroidClient<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first PhotoFrame that matches the filter or
+     * Find the first Polaroid that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PhotoFrameFindFirstOrThrowArgs} args - Arguments to find a PhotoFrame
+     * @param {PolaroidFindFirstOrThrowArgs} args - Arguments to find a Polaroid
      * @example
-     * // Get one PhotoFrame
-     * const photoFrame = await prisma.photoFrame.findFirstOrThrow({
+     * // Get one Polaroid
+     * const polaroid = await prisma.polaroid.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends PhotoFrameFindFirstOrThrowArgs>(args?: SelectSubset<T, PhotoFrameFindFirstOrThrowArgs<ExtArgs>>): Prisma__PhotoFrameClient<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends PolaroidFindFirstOrThrowArgs>(args?: SelectSubset<T, PolaroidFindFirstOrThrowArgs<ExtArgs>>): Prisma__PolaroidClient<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more PhotoFrames that matches the filter.
+     * Find zero or more Polaroids that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PhotoFrameFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {PolaroidFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all PhotoFrames
-     * const photoFrames = await prisma.photoFrame.findMany()
+     * // Get all Polaroids
+     * const polaroids = await prisma.polaroid.findMany()
      * 
-     * // Get first 10 PhotoFrames
-     * const photoFrames = await prisma.photoFrame.findMany({ take: 10 })
+     * // Get first 10 Polaroids
+     * const polaroids = await prisma.polaroid.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const photoFrameWithIdOnly = await prisma.photoFrame.findMany({ select: { id: true } })
+     * const polaroidWithIdOnly = await prisma.polaroid.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends PhotoFrameFindManyArgs>(args?: SelectSubset<T, PhotoFrameFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends PolaroidFindManyArgs>(args?: SelectSubset<T, PolaroidFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a PhotoFrame.
-     * @param {PhotoFrameCreateArgs} args - Arguments to create a PhotoFrame.
+     * Create a Polaroid.
+     * @param {PolaroidCreateArgs} args - Arguments to create a Polaroid.
      * @example
-     * // Create one PhotoFrame
-     * const PhotoFrame = await prisma.photoFrame.create({
+     * // Create one Polaroid
+     * const Polaroid = await prisma.polaroid.create({
      *   data: {
-     *     // ... data to create a PhotoFrame
+     *     // ... data to create a Polaroid
      *   }
      * })
      * 
      */
-    create<T extends PhotoFrameCreateArgs>(args: SelectSubset<T, PhotoFrameCreateArgs<ExtArgs>>): Prisma__PhotoFrameClient<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends PolaroidCreateArgs>(args: SelectSubset<T, PolaroidCreateArgs<ExtArgs>>): Prisma__PolaroidClient<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many PhotoFrames.
-     * @param {PhotoFrameCreateManyArgs} args - Arguments to create many PhotoFrames.
+     * Create many Polaroids.
+     * @param {PolaroidCreateManyArgs} args - Arguments to create many Polaroids.
      * @example
-     * // Create many PhotoFrames
-     * const photoFrame = await prisma.photoFrame.createMany({
+     * // Create many Polaroids
+     * const polaroid = await prisma.polaroid.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends PhotoFrameCreateManyArgs>(args?: SelectSubset<T, PhotoFrameCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends PolaroidCreateManyArgs>(args?: SelectSubset<T, PolaroidCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many PhotoFrames and returns the data saved in the database.
-     * @param {PhotoFrameCreateManyAndReturnArgs} args - Arguments to create many PhotoFrames.
+     * Create many Polaroids and returns the data saved in the database.
+     * @param {PolaroidCreateManyAndReturnArgs} args - Arguments to create many Polaroids.
      * @example
-     * // Create many PhotoFrames
-     * const photoFrame = await prisma.photoFrame.createManyAndReturn({
+     * // Create many Polaroids
+     * const polaroid = await prisma.polaroid.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many PhotoFrames and only return the `id`
-     * const photoFrameWithIdOnly = await prisma.photoFrame.createManyAndReturn({
+     * // Create many Polaroids and only return the `id`
+     * const polaroidWithIdOnly = await prisma.polaroid.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -8047,28 +8047,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends PhotoFrameCreateManyAndReturnArgs>(args?: SelectSubset<T, PhotoFrameCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends PolaroidCreateManyAndReturnArgs>(args?: SelectSubset<T, PolaroidCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a PhotoFrame.
-     * @param {PhotoFrameDeleteArgs} args - Arguments to delete one PhotoFrame.
+     * Delete a Polaroid.
+     * @param {PolaroidDeleteArgs} args - Arguments to delete one Polaroid.
      * @example
-     * // Delete one PhotoFrame
-     * const PhotoFrame = await prisma.photoFrame.delete({
+     * // Delete one Polaroid
+     * const Polaroid = await prisma.polaroid.delete({
      *   where: {
-     *     // ... filter to delete one PhotoFrame
+     *     // ... filter to delete one Polaroid
      *   }
      * })
      * 
      */
-    delete<T extends PhotoFrameDeleteArgs>(args: SelectSubset<T, PhotoFrameDeleteArgs<ExtArgs>>): Prisma__PhotoFrameClient<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends PolaroidDeleteArgs>(args: SelectSubset<T, PolaroidDeleteArgs<ExtArgs>>): Prisma__PolaroidClient<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one PhotoFrame.
-     * @param {PhotoFrameUpdateArgs} args - Arguments to update one PhotoFrame.
+     * Update one Polaroid.
+     * @param {PolaroidUpdateArgs} args - Arguments to update one Polaroid.
      * @example
-     * // Update one PhotoFrame
-     * const photoFrame = await prisma.photoFrame.update({
+     * // Update one Polaroid
+     * const polaroid = await prisma.polaroid.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8078,30 +8078,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends PhotoFrameUpdateArgs>(args: SelectSubset<T, PhotoFrameUpdateArgs<ExtArgs>>): Prisma__PhotoFrameClient<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends PolaroidUpdateArgs>(args: SelectSubset<T, PolaroidUpdateArgs<ExtArgs>>): Prisma__PolaroidClient<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more PhotoFrames.
-     * @param {PhotoFrameDeleteManyArgs} args - Arguments to filter PhotoFrames to delete.
+     * Delete zero or more Polaroids.
+     * @param {PolaroidDeleteManyArgs} args - Arguments to filter Polaroids to delete.
      * @example
-     * // Delete a few PhotoFrames
-     * const { count } = await prisma.photoFrame.deleteMany({
+     * // Delete a few Polaroids
+     * const { count } = await prisma.polaroid.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends PhotoFrameDeleteManyArgs>(args?: SelectSubset<T, PhotoFrameDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends PolaroidDeleteManyArgs>(args?: SelectSubset<T, PolaroidDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more PhotoFrames.
+     * Update zero or more Polaroids.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PhotoFrameUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {PolaroidUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many PhotoFrames
-     * const photoFrame = await prisma.photoFrame.updateMany({
+     * // Update many Polaroids
+     * const polaroid = await prisma.polaroid.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8111,14 +8111,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends PhotoFrameUpdateManyArgs>(args: SelectSubset<T, PhotoFrameUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends PolaroidUpdateManyArgs>(args: SelectSubset<T, PolaroidUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more PhotoFrames and returns the data updated in the database.
-     * @param {PhotoFrameUpdateManyAndReturnArgs} args - Arguments to update many PhotoFrames.
+     * Update zero or more Polaroids and returns the data updated in the database.
+     * @param {PolaroidUpdateManyAndReturnArgs} args - Arguments to update many Polaroids.
      * @example
-     * // Update many PhotoFrames
-     * const photoFrame = await prisma.photoFrame.updateManyAndReturn({
+     * // Update many Polaroids
+     * const polaroid = await prisma.polaroid.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8127,8 +8127,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more PhotoFrames and only return the `id`
-     * const photoFrameWithIdOnly = await prisma.photoFrame.updateManyAndReturn({
+     * // Update zero or more Polaroids and only return the `id`
+     * const polaroidWithIdOnly = await prisma.polaroid.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -8141,56 +8141,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends PhotoFrameUpdateManyAndReturnArgs>(args: SelectSubset<T, PhotoFrameUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends PolaroidUpdateManyAndReturnArgs>(args: SelectSubset<T, PolaroidUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one PhotoFrame.
-     * @param {PhotoFrameUpsertArgs} args - Arguments to update or create a PhotoFrame.
+     * Create or update one Polaroid.
+     * @param {PolaroidUpsertArgs} args - Arguments to update or create a Polaroid.
      * @example
-     * // Update or create a PhotoFrame
-     * const photoFrame = await prisma.photoFrame.upsert({
+     * // Update or create a Polaroid
+     * const polaroid = await prisma.polaroid.upsert({
      *   create: {
-     *     // ... data to create a PhotoFrame
+     *     // ... data to create a Polaroid
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the PhotoFrame we want to update
+     *     // ... the filter for the Polaroid we want to update
      *   }
      * })
      */
-    upsert<T extends PhotoFrameUpsertArgs>(args: SelectSubset<T, PhotoFrameUpsertArgs<ExtArgs>>): Prisma__PhotoFrameClient<$Result.GetResult<Prisma.$PhotoFramePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends PolaroidUpsertArgs>(args: SelectSubset<T, PolaroidUpsertArgs<ExtArgs>>): Prisma__PolaroidClient<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of PhotoFrames.
+     * Count the number of Polaroids.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PhotoFrameCountArgs} args - Arguments to filter PhotoFrames to count.
+     * @param {PolaroidCountArgs} args - Arguments to filter Polaroids to count.
      * @example
-     * // Count the number of PhotoFrames
-     * const count = await prisma.photoFrame.count({
+     * // Count the number of Polaroids
+     * const count = await prisma.polaroid.count({
      *   where: {
-     *     // ... the filter for the PhotoFrames we want to count
+     *     // ... the filter for the Polaroids we want to count
      *   }
      * })
     **/
-    count<T extends PhotoFrameCountArgs>(
-      args?: Subset<T, PhotoFrameCountArgs>,
+    count<T extends PolaroidCountArgs>(
+      args?: Subset<T, PolaroidCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], PhotoFrameCountAggregateOutputType>
+          : GetScalarType<T['select'], PolaroidCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a PhotoFrame.
+     * Allows you to perform aggregations operations on a Polaroid.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PhotoFrameAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {PolaroidAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -8210,13 +8210,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends PhotoFrameAggregateArgs>(args: Subset<T, PhotoFrameAggregateArgs>): Prisma.PrismaPromise<GetPhotoFrameAggregateType<T>>
+    aggregate<T extends PolaroidAggregateArgs>(args: Subset<T, PolaroidAggregateArgs>): Prisma.PrismaPromise<GetPolaroidAggregateType<T>>
 
     /**
-     * Group by PhotoFrame.
+     * Group by Polaroid.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PhotoFrameGroupByArgs} args - Group by arguments.
+     * @param {PolaroidGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -8231,14 +8231,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends PhotoFrameGroupByArgs,
+      T extends PolaroidGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PhotoFrameGroupByArgs['orderBy'] }
-        : { orderBy?: PhotoFrameGroupByArgs['orderBy'] },
+        ? { orderBy: PolaroidGroupByArgs['orderBy'] }
+        : { orderBy?: PolaroidGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -8287,20 +8287,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, PhotoFrameGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPhotoFrameGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, PolaroidGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPolaroidGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the PhotoFrame model
+   * Fields of the Polaroid model
    */
-  readonly fields: PhotoFrameFieldRefs;
+  readonly fields: PolaroidFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for PhotoFrame.
+   * The delegate class that acts as a "Promise-like" for Polaroid.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__PhotoFrameClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PolaroidClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     cabinet<T extends CabinetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CabinetDefaultArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -8329,427 +8329,427 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the PhotoFrame model
+   * Fields of the Polaroid model
    */
-  interface PhotoFrameFieldRefs {
-    readonly id: FieldRef<"PhotoFrame", 'Int'>
-    readonly position: FieldRef<"PhotoFrame", 'Json'>
-    readonly url: FieldRef<"PhotoFrame", 'String'>
-    readonly caption: FieldRef<"PhotoFrame", 'String'>
-    readonly cabinetId: FieldRef<"PhotoFrame", 'Int'>
-    readonly createdAt: FieldRef<"PhotoFrame", 'DateTime'>
-    readonly updatedAt: FieldRef<"PhotoFrame", 'DateTime'>
+  interface PolaroidFieldRefs {
+    readonly id: FieldRef<"Polaroid", 'Int'>
+    readonly position: FieldRef<"Polaroid", 'Json'>
+    readonly url: FieldRef<"Polaroid", 'String'>
+    readonly caption: FieldRef<"Polaroid", 'String'>
+    readonly cabinetId: FieldRef<"Polaroid", 'Int'>
+    readonly createdAt: FieldRef<"Polaroid", 'DateTime'>
+    readonly updatedAt: FieldRef<"Polaroid", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * PhotoFrame findUnique
+   * Polaroid findUnique
    */
-  export type PhotoFrameFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelect<ExtArgs> | null
+    select?: PolaroidSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameInclude<ExtArgs> | null
+    include?: PolaroidInclude<ExtArgs> | null
     /**
-     * Filter, which PhotoFrame to fetch.
+     * Filter, which Polaroid to fetch.
      */
-    where: PhotoFrameWhereUniqueInput
+    where: PolaroidWhereUniqueInput
   }
 
   /**
-   * PhotoFrame findUniqueOrThrow
+   * Polaroid findUniqueOrThrow
    */
-  export type PhotoFrameFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelect<ExtArgs> | null
+    select?: PolaroidSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameInclude<ExtArgs> | null
+    include?: PolaroidInclude<ExtArgs> | null
     /**
-     * Filter, which PhotoFrame to fetch.
+     * Filter, which Polaroid to fetch.
      */
-    where: PhotoFrameWhereUniqueInput
+    where: PolaroidWhereUniqueInput
   }
 
   /**
-   * PhotoFrame findFirst
+   * Polaroid findFirst
    */
-  export type PhotoFrameFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelect<ExtArgs> | null
+    select?: PolaroidSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameInclude<ExtArgs> | null
+    include?: PolaroidInclude<ExtArgs> | null
     /**
-     * Filter, which PhotoFrame to fetch.
+     * Filter, which Polaroid to fetch.
      */
-    where?: PhotoFrameWhereInput
+    where?: PolaroidWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PhotoFrames to fetch.
+     * Determine the order of Polaroids to fetch.
      */
-    orderBy?: PhotoFrameOrderByWithRelationInput | PhotoFrameOrderByWithRelationInput[]
+    orderBy?: PolaroidOrderByWithRelationInput | PolaroidOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for PhotoFrames.
+     * Sets the position for searching for Polaroids.
      */
-    cursor?: PhotoFrameWhereUniqueInput
+    cursor?: PolaroidWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PhotoFrames from the position of the cursor.
+     * Take `±n` Polaroids from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PhotoFrames.
+     * Skip the first `n` Polaroids.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of PhotoFrames.
+     * Filter by unique combinations of Polaroids.
      */
-    distinct?: PhotoFrameScalarFieldEnum | PhotoFrameScalarFieldEnum[]
+    distinct?: PolaroidScalarFieldEnum | PolaroidScalarFieldEnum[]
   }
 
   /**
-   * PhotoFrame findFirstOrThrow
+   * Polaroid findFirstOrThrow
    */
-  export type PhotoFrameFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelect<ExtArgs> | null
+    select?: PolaroidSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameInclude<ExtArgs> | null
+    include?: PolaroidInclude<ExtArgs> | null
     /**
-     * Filter, which PhotoFrame to fetch.
+     * Filter, which Polaroid to fetch.
      */
-    where?: PhotoFrameWhereInput
+    where?: PolaroidWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PhotoFrames to fetch.
+     * Determine the order of Polaroids to fetch.
      */
-    orderBy?: PhotoFrameOrderByWithRelationInput | PhotoFrameOrderByWithRelationInput[]
+    orderBy?: PolaroidOrderByWithRelationInput | PolaroidOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for PhotoFrames.
+     * Sets the position for searching for Polaroids.
      */
-    cursor?: PhotoFrameWhereUniqueInput
+    cursor?: PolaroidWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PhotoFrames from the position of the cursor.
+     * Take `±n` Polaroids from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PhotoFrames.
+     * Skip the first `n` Polaroids.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of PhotoFrames.
+     * Filter by unique combinations of Polaroids.
      */
-    distinct?: PhotoFrameScalarFieldEnum | PhotoFrameScalarFieldEnum[]
+    distinct?: PolaroidScalarFieldEnum | PolaroidScalarFieldEnum[]
   }
 
   /**
-   * PhotoFrame findMany
+   * Polaroid findMany
    */
-  export type PhotoFrameFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelect<ExtArgs> | null
+    select?: PolaroidSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameInclude<ExtArgs> | null
+    include?: PolaroidInclude<ExtArgs> | null
     /**
-     * Filter, which PhotoFrames to fetch.
+     * Filter, which Polaroids to fetch.
      */
-    where?: PhotoFrameWhereInput
+    where?: PolaroidWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of PhotoFrames to fetch.
+     * Determine the order of Polaroids to fetch.
      */
-    orderBy?: PhotoFrameOrderByWithRelationInput | PhotoFrameOrderByWithRelationInput[]
+    orderBy?: PolaroidOrderByWithRelationInput | PolaroidOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing PhotoFrames.
+     * Sets the position for listing Polaroids.
      */
-    cursor?: PhotoFrameWhereUniqueInput
+    cursor?: PolaroidWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` PhotoFrames from the position of the cursor.
+     * Take `±n` Polaroids from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` PhotoFrames.
+     * Skip the first `n` Polaroids.
      */
     skip?: number
-    distinct?: PhotoFrameScalarFieldEnum | PhotoFrameScalarFieldEnum[]
+    distinct?: PolaroidScalarFieldEnum | PolaroidScalarFieldEnum[]
   }
 
   /**
-   * PhotoFrame create
+   * Polaroid create
    */
-  export type PhotoFrameCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelect<ExtArgs> | null
+    select?: PolaroidSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameInclude<ExtArgs> | null
+    include?: PolaroidInclude<ExtArgs> | null
     /**
-     * The data needed to create a PhotoFrame.
+     * The data needed to create a Polaroid.
      */
-    data: XOR<PhotoFrameCreateInput, PhotoFrameUncheckedCreateInput>
+    data: XOR<PolaroidCreateInput, PolaroidUncheckedCreateInput>
   }
 
   /**
-   * PhotoFrame createMany
+   * Polaroid createMany
    */
-  export type PhotoFrameCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many PhotoFrames.
+     * The data used to create many Polaroids.
      */
-    data: PhotoFrameCreateManyInput | PhotoFrameCreateManyInput[]
+    data: PolaroidCreateManyInput | PolaroidCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * PhotoFrame createManyAndReturn
+   * Polaroid createManyAndReturn
    */
-  export type PhotoFrameCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelectCreateManyAndReturn<ExtArgs> | null
+    select?: PolaroidSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
-     * The data used to create many PhotoFrames.
+     * The data used to create many Polaroids.
      */
-    data: PhotoFrameCreateManyInput | PhotoFrameCreateManyInput[]
+    data: PolaroidCreateManyInput | PolaroidCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: PolaroidIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * PhotoFrame update
+   * Polaroid update
    */
-  export type PhotoFrameUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelect<ExtArgs> | null
+    select?: PolaroidSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameInclude<ExtArgs> | null
+    include?: PolaroidInclude<ExtArgs> | null
     /**
-     * The data needed to update a PhotoFrame.
+     * The data needed to update a Polaroid.
      */
-    data: XOR<PhotoFrameUpdateInput, PhotoFrameUncheckedUpdateInput>
+    data: XOR<PolaroidUpdateInput, PolaroidUncheckedUpdateInput>
     /**
-     * Choose, which PhotoFrame to update.
+     * Choose, which Polaroid to update.
      */
-    where: PhotoFrameWhereUniqueInput
+    where: PolaroidWhereUniqueInput
   }
 
   /**
-   * PhotoFrame updateMany
+   * Polaroid updateMany
    */
-  export type PhotoFrameUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update PhotoFrames.
+     * The data used to update Polaroids.
      */
-    data: XOR<PhotoFrameUpdateManyMutationInput, PhotoFrameUncheckedUpdateManyInput>
+    data: XOR<PolaroidUpdateManyMutationInput, PolaroidUncheckedUpdateManyInput>
     /**
-     * Filter which PhotoFrames to update
+     * Filter which Polaroids to update
      */
-    where?: PhotoFrameWhereInput
+    where?: PolaroidWhereInput
     /**
-     * Limit how many PhotoFrames to update.
+     * Limit how many Polaroids to update.
      */
     limit?: number
   }
 
   /**
-   * PhotoFrame updateManyAndReturn
+   * Polaroid updateManyAndReturn
    */
-  export type PhotoFrameUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: PolaroidSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
-     * The data used to update PhotoFrames.
+     * The data used to update Polaroids.
      */
-    data: XOR<PhotoFrameUpdateManyMutationInput, PhotoFrameUncheckedUpdateManyInput>
+    data: XOR<PolaroidUpdateManyMutationInput, PolaroidUncheckedUpdateManyInput>
     /**
-     * Filter which PhotoFrames to update
+     * Filter which Polaroids to update
      */
-    where?: PhotoFrameWhereInput
+    where?: PolaroidWhereInput
     /**
-     * Limit how many PhotoFrames to update.
+     * Limit how many Polaroids to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: PolaroidIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * PhotoFrame upsert
+   * Polaroid upsert
    */
-  export type PhotoFrameUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelect<ExtArgs> | null
+    select?: PolaroidSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameInclude<ExtArgs> | null
+    include?: PolaroidInclude<ExtArgs> | null
     /**
-     * The filter to search for the PhotoFrame to update in case it exists.
+     * The filter to search for the Polaroid to update in case it exists.
      */
-    where: PhotoFrameWhereUniqueInput
+    where: PolaroidWhereUniqueInput
     /**
-     * In case the PhotoFrame found by the `where` argument doesn't exist, create a new PhotoFrame with this data.
+     * In case the Polaroid found by the `where` argument doesn't exist, create a new Polaroid with this data.
      */
-    create: XOR<PhotoFrameCreateInput, PhotoFrameUncheckedCreateInput>
+    create: XOR<PolaroidCreateInput, PolaroidUncheckedCreateInput>
     /**
-     * In case the PhotoFrame was found with the provided `where` argument, update it with this data.
+     * In case the Polaroid was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<PhotoFrameUpdateInput, PhotoFrameUncheckedUpdateInput>
+    update: XOR<PolaroidUpdateInput, PolaroidUncheckedUpdateInput>
   }
 
   /**
-   * PhotoFrame delete
+   * Polaroid delete
    */
-  export type PhotoFrameDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelect<ExtArgs> | null
+    select?: PolaroidSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameInclude<ExtArgs> | null
+    include?: PolaroidInclude<ExtArgs> | null
     /**
-     * Filter which PhotoFrame to delete.
+     * Filter which Polaroid to delete.
      */
-    where: PhotoFrameWhereUniqueInput
+    where: PolaroidWhereUniqueInput
   }
 
   /**
-   * PhotoFrame deleteMany
+   * Polaroid deleteMany
    */
-  export type PhotoFrameDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which PhotoFrames to delete
+     * Filter which Polaroids to delete
      */
-    where?: PhotoFrameWhereInput
+    where?: PolaroidWhereInput
     /**
-     * Limit how many PhotoFrames to delete.
+     * Limit how many Polaroids to delete.
      */
     limit?: number
   }
 
   /**
-   * PhotoFrame without action
+   * Polaroid without action
    */
-  export type PhotoFrameDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PolaroidDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PhotoFrame
+     * Select specific fields to fetch from the Polaroid
      */
-    select?: PhotoFrameSelect<ExtArgs> | null
+    select?: PolaroidSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the PhotoFrame
+     * Omit specific fields from the Polaroid
      */
-    omit?: PhotoFrameOmit<ExtArgs> | null
+    omit?: PolaroidOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PhotoFrameInclude<ExtArgs> | null
+    include?: PolaroidInclude<ExtArgs> | null
   }
 
 
@@ -14404,7 +14404,7 @@ export namespace Prisma {
   export type JournalScalarFieldEnum = (typeof JournalScalarFieldEnum)[keyof typeof JournalScalarFieldEnum]
 
 
-  export const PhotoFrameScalarFieldEnum: {
+  export const PolaroidScalarFieldEnum: {
     id: 'id',
     position: 'position',
     url: 'url',
@@ -14414,7 +14414,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type PhotoFrameScalarFieldEnum = (typeof PhotoFrameScalarFieldEnum)[keyof typeof PhotoFrameScalarFieldEnum]
+  export type PolaroidScalarFieldEnum = (typeof PolaroidScalarFieldEnum)[keyof typeof PolaroidScalarFieldEnum]
 
 
   export const MediaScalarFieldEnum: {
@@ -14685,7 +14685,7 @@ export namespace Prisma {
     layout?: XOR<CabinetLayoutNullableScalarRelationFilter, CabinetLayoutWhereInput> | null
     chest?: XOR<ChestNullableScalarRelationFilter, ChestWhereInput> | null
     journal?: XOR<JournalNullableScalarRelationFilter, JournalWhereInput> | null
-    photoFrame?: PhotoFrameListRelationFilter
+    polaroid?: PolaroidListRelationFilter
     media?: MediaListRelationFilter
     checklist?: ChecklistListRelationFilter
     notes?: NoteListRelationFilter
@@ -14702,7 +14702,7 @@ export namespace Prisma {
     layout?: CabinetLayoutOrderByWithRelationInput
     chest?: ChestOrderByWithRelationInput
     journal?: JournalOrderByWithRelationInput
-    photoFrame?: PhotoFrameOrderByRelationAggregateInput
+    polaroid?: PolaroidOrderByRelationAggregateInput
     media?: MediaOrderByRelationAggregateInput
     checklist?: ChecklistOrderByRelationAggregateInput
     notes?: NoteOrderByRelationAggregateInput
@@ -14722,7 +14722,7 @@ export namespace Prisma {
     layout?: XOR<CabinetLayoutNullableScalarRelationFilter, CabinetLayoutWhereInput> | null
     chest?: XOR<ChestNullableScalarRelationFilter, ChestWhereInput> | null
     journal?: XOR<JournalNullableScalarRelationFilter, JournalWhereInput> | null
-    photoFrame?: PhotoFrameListRelationFilter
+    polaroid?: PolaroidListRelationFilter
     media?: MediaListRelationFilter
     checklist?: ChecklistListRelationFilter
     notes?: NoteListRelationFilter
@@ -14944,21 +14944,21 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Journal"> | Date | string
   }
 
-  export type PhotoFrameWhereInput = {
-    AND?: PhotoFrameWhereInput | PhotoFrameWhereInput[]
-    OR?: PhotoFrameWhereInput[]
-    NOT?: PhotoFrameWhereInput | PhotoFrameWhereInput[]
-    id?: IntFilter<"PhotoFrame"> | number
-    position?: JsonNullableFilter<"PhotoFrame">
-    url?: StringFilter<"PhotoFrame"> | string
-    caption?: StringNullableFilter<"PhotoFrame"> | string | null
-    cabinetId?: IntFilter<"PhotoFrame"> | number
-    createdAt?: DateTimeFilter<"PhotoFrame"> | Date | string
-    updatedAt?: DateTimeFilter<"PhotoFrame"> | Date | string
+  export type PolaroidWhereInput = {
+    AND?: PolaroidWhereInput | PolaroidWhereInput[]
+    OR?: PolaroidWhereInput[]
+    NOT?: PolaroidWhereInput | PolaroidWhereInput[]
+    id?: IntFilter<"Polaroid"> | number
+    position?: JsonNullableFilter<"Polaroid">
+    url?: StringFilter<"Polaroid"> | string
+    caption?: StringNullableFilter<"Polaroid"> | string | null
+    cabinetId?: IntFilter<"Polaroid"> | number
+    createdAt?: DateTimeFilter<"Polaroid"> | Date | string
+    updatedAt?: DateTimeFilter<"Polaroid"> | Date | string
     cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
   }
 
-  export type PhotoFrameOrderByWithRelationInput = {
+  export type PolaroidOrderByWithRelationInput = {
     id?: SortOrder
     position?: SortOrderInput | SortOrder
     url?: SortOrder
@@ -14969,21 +14969,21 @@ export namespace Prisma {
     cabinet?: CabinetOrderByWithRelationInput
   }
 
-  export type PhotoFrameWhereUniqueInput = Prisma.AtLeast<{
+  export type PolaroidWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: PhotoFrameWhereInput | PhotoFrameWhereInput[]
-    OR?: PhotoFrameWhereInput[]
-    NOT?: PhotoFrameWhereInput | PhotoFrameWhereInput[]
-    position?: JsonNullableFilter<"PhotoFrame">
-    url?: StringFilter<"PhotoFrame"> | string
-    caption?: StringNullableFilter<"PhotoFrame"> | string | null
-    cabinetId?: IntFilter<"PhotoFrame"> | number
-    createdAt?: DateTimeFilter<"PhotoFrame"> | Date | string
-    updatedAt?: DateTimeFilter<"PhotoFrame"> | Date | string
+    AND?: PolaroidWhereInput | PolaroidWhereInput[]
+    OR?: PolaroidWhereInput[]
+    NOT?: PolaroidWhereInput | PolaroidWhereInput[]
+    position?: JsonNullableFilter<"Polaroid">
+    url?: StringFilter<"Polaroid"> | string
+    caption?: StringNullableFilter<"Polaroid"> | string | null
+    cabinetId?: IntFilter<"Polaroid"> | number
+    createdAt?: DateTimeFilter<"Polaroid"> | Date | string
+    updatedAt?: DateTimeFilter<"Polaroid"> | Date | string
     cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
   }, "id">
 
-  export type PhotoFrameOrderByWithAggregationInput = {
+  export type PolaroidOrderByWithAggregationInput = {
     id?: SortOrder
     position?: SortOrderInput | SortOrder
     url?: SortOrder
@@ -14991,24 +14991,24 @@ export namespace Prisma {
     cabinetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: PhotoFrameCountOrderByAggregateInput
-    _avg?: PhotoFrameAvgOrderByAggregateInput
-    _max?: PhotoFrameMaxOrderByAggregateInput
-    _min?: PhotoFrameMinOrderByAggregateInput
-    _sum?: PhotoFrameSumOrderByAggregateInput
+    _count?: PolaroidCountOrderByAggregateInput
+    _avg?: PolaroidAvgOrderByAggregateInput
+    _max?: PolaroidMaxOrderByAggregateInput
+    _min?: PolaroidMinOrderByAggregateInput
+    _sum?: PolaroidSumOrderByAggregateInput
   }
 
-  export type PhotoFrameScalarWhereWithAggregatesInput = {
-    AND?: PhotoFrameScalarWhereWithAggregatesInput | PhotoFrameScalarWhereWithAggregatesInput[]
-    OR?: PhotoFrameScalarWhereWithAggregatesInput[]
-    NOT?: PhotoFrameScalarWhereWithAggregatesInput | PhotoFrameScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"PhotoFrame"> | number
-    position?: JsonNullableWithAggregatesFilter<"PhotoFrame">
-    url?: StringWithAggregatesFilter<"PhotoFrame"> | string
-    caption?: StringNullableWithAggregatesFilter<"PhotoFrame"> | string | null
-    cabinetId?: IntWithAggregatesFilter<"PhotoFrame"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"PhotoFrame"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"PhotoFrame"> | Date | string
+  export type PolaroidScalarWhereWithAggregatesInput = {
+    AND?: PolaroidScalarWhereWithAggregatesInput | PolaroidScalarWhereWithAggregatesInput[]
+    OR?: PolaroidScalarWhereWithAggregatesInput[]
+    NOT?: PolaroidScalarWhereWithAggregatesInput | PolaroidScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Polaroid"> | number
+    position?: JsonNullableWithAggregatesFilter<"Polaroid">
+    url?: StringWithAggregatesFilter<"Polaroid"> | string
+    caption?: StringNullableWithAggregatesFilter<"Polaroid"> | string | null
+    cabinetId?: IntWithAggregatesFilter<"Polaroid"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Polaroid"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Polaroid"> | Date | string
   }
 
   export type MediaWhereInput = {
@@ -15417,7 +15417,7 @@ export namespace Prisma {
     layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
@@ -15433,7 +15433,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
@@ -15448,7 +15448,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
@@ -15464,7 +15464,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
@@ -15677,16 +15677,16 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PhotoFrameCreateInput = {
+  export type PolaroidCreateInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
     caption?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinet: CabinetCreateNestedOneWithoutPhotoFrameInput
+    cabinet: CabinetCreateNestedOneWithoutPolaroidInput
   }
 
-  export type PhotoFrameUncheckedCreateInput = {
+  export type PolaroidUncheckedCreateInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
@@ -15696,16 +15696,16 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PhotoFrameUpdateInput = {
+  export type PolaroidUpdateInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinet?: CabinetUpdateOneRequiredWithoutPhotoFrameNestedInput
+    cabinet?: CabinetUpdateOneRequiredWithoutPolaroidNestedInput
   }
 
-  export type PhotoFrameUncheckedUpdateInput = {
+  export type PolaroidUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
@@ -15715,7 +15715,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PhotoFrameCreateManyInput = {
+  export type PolaroidCreateManyInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
@@ -15725,7 +15725,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PhotoFrameUpdateManyMutationInput = {
+  export type PolaroidUpdateManyMutationInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15733,7 +15733,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PhotoFrameUncheckedUpdateManyInput = {
+  export type PolaroidUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
@@ -16221,10 +16221,10 @@ export namespace Prisma {
     isNot?: JournalWhereInput | null
   }
 
-  export type PhotoFrameListRelationFilter = {
-    every?: PhotoFrameWhereInput
-    some?: PhotoFrameWhereInput
-    none?: PhotoFrameWhereInput
+  export type PolaroidListRelationFilter = {
+    every?: PolaroidWhereInput
+    some?: PolaroidWhereInput
+    none?: PolaroidWhereInput
   }
 
   export type MediaListRelationFilter = {
@@ -16251,7 +16251,7 @@ export namespace Prisma {
     none?: DecorItemWhereInput
   }
 
-  export type PhotoFrameOrderByRelationAggregateInput = {
+  export type PolaroidOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -16532,7 +16532,7 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type PhotoFrameCountOrderByAggregateInput = {
+  export type PolaroidCountOrderByAggregateInput = {
     id?: SortOrder
     position?: SortOrder
     url?: SortOrder
@@ -16542,21 +16542,12 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PhotoFrameAvgOrderByAggregateInput = {
+  export type PolaroidAvgOrderByAggregateInput = {
     id?: SortOrder
     cabinetId?: SortOrder
   }
 
-  export type PhotoFrameMaxOrderByAggregateInput = {
-    id?: SortOrder
-    url?: SortOrder
-    caption?: SortOrder
-    cabinetId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type PhotoFrameMinOrderByAggregateInput = {
+  export type PolaroidMaxOrderByAggregateInput = {
     id?: SortOrder
     url?: SortOrder
     caption?: SortOrder
@@ -16565,7 +16556,16 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PhotoFrameSumOrderByAggregateInput = {
+  export type PolaroidMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    caption?: SortOrder
+    cabinetId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PolaroidSumOrderByAggregateInput = {
     id?: SortOrder
     cabinetId?: SortOrder
   }
@@ -16889,11 +16889,11 @@ export namespace Prisma {
     connect?: JournalWhereUniqueInput
   }
 
-  export type PhotoFrameCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<PhotoFrameCreateWithoutCabinetInput, PhotoFrameUncheckedCreateWithoutCabinetInput> | PhotoFrameCreateWithoutCabinetInput[] | PhotoFrameUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: PhotoFrameCreateOrConnectWithoutCabinetInput | PhotoFrameCreateOrConnectWithoutCabinetInput[]
-    createMany?: PhotoFrameCreateManyCabinetInputEnvelope
-    connect?: PhotoFrameWhereUniqueInput | PhotoFrameWhereUniqueInput[]
+  export type PolaroidCreateNestedManyWithoutCabinetInput = {
+    create?: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput> | PolaroidCreateWithoutCabinetInput[] | PolaroidUncheckedCreateWithoutCabinetInput[]
+    connectOrCreate?: PolaroidCreateOrConnectWithoutCabinetInput | PolaroidCreateOrConnectWithoutCabinetInput[]
+    createMany?: PolaroidCreateManyCabinetInputEnvelope
+    connect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
   }
 
   export type MediaCreateNestedManyWithoutCabinetInput = {
@@ -16942,11 +16942,11 @@ export namespace Prisma {
     connect?: JournalWhereUniqueInput
   }
 
-  export type PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<PhotoFrameCreateWithoutCabinetInput, PhotoFrameUncheckedCreateWithoutCabinetInput> | PhotoFrameCreateWithoutCabinetInput[] | PhotoFrameUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: PhotoFrameCreateOrConnectWithoutCabinetInput | PhotoFrameCreateOrConnectWithoutCabinetInput[]
-    createMany?: PhotoFrameCreateManyCabinetInputEnvelope
-    connect?: PhotoFrameWhereUniqueInput | PhotoFrameWhereUniqueInput[]
+  export type PolaroidUncheckedCreateNestedManyWithoutCabinetInput = {
+    create?: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput> | PolaroidCreateWithoutCabinetInput[] | PolaroidUncheckedCreateWithoutCabinetInput[]
+    connectOrCreate?: PolaroidCreateOrConnectWithoutCabinetInput | PolaroidCreateOrConnectWithoutCabinetInput[]
+    createMany?: PolaroidCreateManyCabinetInputEnvelope
+    connect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
   }
 
   export type MediaUncheckedCreateNestedManyWithoutCabinetInput = {
@@ -17015,18 +17015,18 @@ export namespace Prisma {
     update?: XOR<XOR<JournalUpdateToOneWithWhereWithoutCabinetInput, JournalUpdateWithoutCabinetInput>, JournalUncheckedUpdateWithoutCabinetInput>
   }
 
-  export type PhotoFrameUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<PhotoFrameCreateWithoutCabinetInput, PhotoFrameUncheckedCreateWithoutCabinetInput> | PhotoFrameCreateWithoutCabinetInput[] | PhotoFrameUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: PhotoFrameCreateOrConnectWithoutCabinetInput | PhotoFrameCreateOrConnectWithoutCabinetInput[]
-    upsert?: PhotoFrameUpsertWithWhereUniqueWithoutCabinetInput | PhotoFrameUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: PhotoFrameCreateManyCabinetInputEnvelope
-    set?: PhotoFrameWhereUniqueInput | PhotoFrameWhereUniqueInput[]
-    disconnect?: PhotoFrameWhereUniqueInput | PhotoFrameWhereUniqueInput[]
-    delete?: PhotoFrameWhereUniqueInput | PhotoFrameWhereUniqueInput[]
-    connect?: PhotoFrameWhereUniqueInput | PhotoFrameWhereUniqueInput[]
-    update?: PhotoFrameUpdateWithWhereUniqueWithoutCabinetInput | PhotoFrameUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: PhotoFrameUpdateManyWithWhereWithoutCabinetInput | PhotoFrameUpdateManyWithWhereWithoutCabinetInput[]
-    deleteMany?: PhotoFrameScalarWhereInput | PhotoFrameScalarWhereInput[]
+  export type PolaroidUpdateManyWithoutCabinetNestedInput = {
+    create?: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput> | PolaroidCreateWithoutCabinetInput[] | PolaroidUncheckedCreateWithoutCabinetInput[]
+    connectOrCreate?: PolaroidCreateOrConnectWithoutCabinetInput | PolaroidCreateOrConnectWithoutCabinetInput[]
+    upsert?: PolaroidUpsertWithWhereUniqueWithoutCabinetInput | PolaroidUpsertWithWhereUniqueWithoutCabinetInput[]
+    createMany?: PolaroidCreateManyCabinetInputEnvelope
+    set?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
+    disconnect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
+    delete?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
+    connect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
+    update?: PolaroidUpdateWithWhereUniqueWithoutCabinetInput | PolaroidUpdateWithWhereUniqueWithoutCabinetInput[]
+    updateMany?: PolaroidUpdateManyWithWhereWithoutCabinetInput | PolaroidUpdateManyWithWhereWithoutCabinetInput[]
+    deleteMany?: PolaroidScalarWhereInput | PolaroidScalarWhereInput[]
   }
 
   export type MediaUpdateManyWithoutCabinetNestedInput = {
@@ -17115,18 +17115,18 @@ export namespace Prisma {
     update?: XOR<XOR<JournalUpdateToOneWithWhereWithoutCabinetInput, JournalUpdateWithoutCabinetInput>, JournalUncheckedUpdateWithoutCabinetInput>
   }
 
-  export type PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<PhotoFrameCreateWithoutCabinetInput, PhotoFrameUncheckedCreateWithoutCabinetInput> | PhotoFrameCreateWithoutCabinetInput[] | PhotoFrameUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: PhotoFrameCreateOrConnectWithoutCabinetInput | PhotoFrameCreateOrConnectWithoutCabinetInput[]
-    upsert?: PhotoFrameUpsertWithWhereUniqueWithoutCabinetInput | PhotoFrameUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: PhotoFrameCreateManyCabinetInputEnvelope
-    set?: PhotoFrameWhereUniqueInput | PhotoFrameWhereUniqueInput[]
-    disconnect?: PhotoFrameWhereUniqueInput | PhotoFrameWhereUniqueInput[]
-    delete?: PhotoFrameWhereUniqueInput | PhotoFrameWhereUniqueInput[]
-    connect?: PhotoFrameWhereUniqueInput | PhotoFrameWhereUniqueInput[]
-    update?: PhotoFrameUpdateWithWhereUniqueWithoutCabinetInput | PhotoFrameUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: PhotoFrameUpdateManyWithWhereWithoutCabinetInput | PhotoFrameUpdateManyWithWhereWithoutCabinetInput[]
-    deleteMany?: PhotoFrameScalarWhereInput | PhotoFrameScalarWhereInput[]
+  export type PolaroidUncheckedUpdateManyWithoutCabinetNestedInput = {
+    create?: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput> | PolaroidCreateWithoutCabinetInput[] | PolaroidUncheckedCreateWithoutCabinetInput[]
+    connectOrCreate?: PolaroidCreateOrConnectWithoutCabinetInput | PolaroidCreateOrConnectWithoutCabinetInput[]
+    upsert?: PolaroidUpsertWithWhereUniqueWithoutCabinetInput | PolaroidUpsertWithWhereUniqueWithoutCabinetInput[]
+    createMany?: PolaroidCreateManyCabinetInputEnvelope
+    set?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
+    disconnect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
+    delete?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
+    connect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
+    update?: PolaroidUpdateWithWhereUniqueWithoutCabinetInput | PolaroidUpdateWithWhereUniqueWithoutCabinetInput[]
+    updateMany?: PolaroidUpdateManyWithWhereWithoutCabinetInput | PolaroidUpdateManyWithWhereWithoutCabinetInput[]
+    deleteMany?: PolaroidScalarWhereInput | PolaroidScalarWhereInput[]
   }
 
   export type MediaUncheckedUpdateManyWithoutCabinetNestedInput = {
@@ -17227,9 +17227,9 @@ export namespace Prisma {
     update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutJournalInput, CabinetUpdateWithoutJournalInput>, CabinetUncheckedUpdateWithoutJournalInput>
   }
 
-  export type CabinetCreateNestedOneWithoutPhotoFrameInput = {
-    create?: XOR<CabinetCreateWithoutPhotoFrameInput, CabinetUncheckedCreateWithoutPhotoFrameInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutPhotoFrameInput
+  export type CabinetCreateNestedOneWithoutPolaroidInput = {
+    create?: XOR<CabinetCreateWithoutPolaroidInput, CabinetUncheckedCreateWithoutPolaroidInput>
+    connectOrCreate?: CabinetCreateOrConnectWithoutPolaroidInput
     connect?: CabinetWhereUniqueInput
   }
 
@@ -17237,12 +17237,12 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type CabinetUpdateOneRequiredWithoutPhotoFrameNestedInput = {
-    create?: XOR<CabinetCreateWithoutPhotoFrameInput, CabinetUncheckedCreateWithoutPhotoFrameInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutPhotoFrameInput
-    upsert?: CabinetUpsertWithoutPhotoFrameInput
+  export type CabinetUpdateOneRequiredWithoutPolaroidNestedInput = {
+    create?: XOR<CabinetCreateWithoutPolaroidInput, CabinetUncheckedCreateWithoutPolaroidInput>
+    connectOrCreate?: CabinetCreateOrConnectWithoutPolaroidInput
+    upsert?: CabinetUpsertWithoutPolaroidInput
     connect?: CabinetWhereUniqueInput
-    update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutPhotoFrameInput, CabinetUpdateWithoutPhotoFrameInput>, CabinetUncheckedUpdateWithoutPhotoFrameInput>
+    update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutPolaroidInput, CabinetUpdateWithoutPolaroidInput>, CabinetUncheckedUpdateWithoutPolaroidInput>
   }
 
   export type CabinetCreateNestedOneWithoutMediaInput = {
@@ -17504,7 +17504,7 @@ export namespace Prisma {
     layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
@@ -17519,7 +17519,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
@@ -17703,7 +17703,7 @@ export namespace Prisma {
     create: XOR<JournalCreateWithoutCabinetInput, JournalUncheckedCreateWithoutCabinetInput>
   }
 
-  export type PhotoFrameCreateWithoutCabinetInput = {
+  export type PolaroidCreateWithoutCabinetInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
     caption?: string | null
@@ -17711,7 +17711,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PhotoFrameUncheckedCreateWithoutCabinetInput = {
+  export type PolaroidUncheckedCreateWithoutCabinetInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
@@ -17720,13 +17720,13 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PhotoFrameCreateOrConnectWithoutCabinetInput = {
-    where: PhotoFrameWhereUniqueInput
-    create: XOR<PhotoFrameCreateWithoutCabinetInput, PhotoFrameUncheckedCreateWithoutCabinetInput>
+  export type PolaroidCreateOrConnectWithoutCabinetInput = {
+    where: PolaroidWhereUniqueInput
+    create: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput>
   }
 
-  export type PhotoFrameCreateManyCabinetInputEnvelope = {
-    data: PhotoFrameCreateManyCabinetInput | PhotoFrameCreateManyCabinetInput[]
+  export type PolaroidCreateManyCabinetInputEnvelope = {
+    data: PolaroidCreateManyCabinetInput | PolaroidCreateManyCabinetInput[]
     skipDuplicates?: boolean
   }
 
@@ -17944,33 +17944,33 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PhotoFrameUpsertWithWhereUniqueWithoutCabinetInput = {
-    where: PhotoFrameWhereUniqueInput
-    update: XOR<PhotoFrameUpdateWithoutCabinetInput, PhotoFrameUncheckedUpdateWithoutCabinetInput>
-    create: XOR<PhotoFrameCreateWithoutCabinetInput, PhotoFrameUncheckedCreateWithoutCabinetInput>
+  export type PolaroidUpsertWithWhereUniqueWithoutCabinetInput = {
+    where: PolaroidWhereUniqueInput
+    update: XOR<PolaroidUpdateWithoutCabinetInput, PolaroidUncheckedUpdateWithoutCabinetInput>
+    create: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput>
   }
 
-  export type PhotoFrameUpdateWithWhereUniqueWithoutCabinetInput = {
-    where: PhotoFrameWhereUniqueInput
-    data: XOR<PhotoFrameUpdateWithoutCabinetInput, PhotoFrameUncheckedUpdateWithoutCabinetInput>
+  export type PolaroidUpdateWithWhereUniqueWithoutCabinetInput = {
+    where: PolaroidWhereUniqueInput
+    data: XOR<PolaroidUpdateWithoutCabinetInput, PolaroidUncheckedUpdateWithoutCabinetInput>
   }
 
-  export type PhotoFrameUpdateManyWithWhereWithoutCabinetInput = {
-    where: PhotoFrameScalarWhereInput
-    data: XOR<PhotoFrameUpdateManyMutationInput, PhotoFrameUncheckedUpdateManyWithoutCabinetInput>
+  export type PolaroidUpdateManyWithWhereWithoutCabinetInput = {
+    where: PolaroidScalarWhereInput
+    data: XOR<PolaroidUpdateManyMutationInput, PolaroidUncheckedUpdateManyWithoutCabinetInput>
   }
 
-  export type PhotoFrameScalarWhereInput = {
-    AND?: PhotoFrameScalarWhereInput | PhotoFrameScalarWhereInput[]
-    OR?: PhotoFrameScalarWhereInput[]
-    NOT?: PhotoFrameScalarWhereInput | PhotoFrameScalarWhereInput[]
-    id?: IntFilter<"PhotoFrame"> | number
-    position?: JsonNullableFilter<"PhotoFrame">
-    url?: StringFilter<"PhotoFrame"> | string
-    caption?: StringNullableFilter<"PhotoFrame"> | string | null
-    cabinetId?: IntFilter<"PhotoFrame"> | number
-    createdAt?: DateTimeFilter<"PhotoFrame"> | Date | string
-    updatedAt?: DateTimeFilter<"PhotoFrame"> | Date | string
+  export type PolaroidScalarWhereInput = {
+    AND?: PolaroidScalarWhereInput | PolaroidScalarWhereInput[]
+    OR?: PolaroidScalarWhereInput[]
+    NOT?: PolaroidScalarWhereInput | PolaroidScalarWhereInput[]
+    id?: IntFilter<"Polaroid"> | number
+    position?: JsonNullableFilter<"Polaroid">
+    url?: StringFilter<"Polaroid"> | string
+    caption?: StringNullableFilter<"Polaroid"> | string | null
+    cabinetId?: IntFilter<"Polaroid"> | number
+    createdAt?: DateTimeFilter<"Polaroid"> | Date | string
+    updatedAt?: DateTimeFilter<"Polaroid"> | Date | string
   }
 
   export type MediaUpsertWithWhereUniqueWithoutCabinetInput = {
@@ -18094,7 +18094,7 @@ export namespace Prisma {
     owner: UserCreateNestedOneWithoutCabinetsInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
@@ -18109,7 +18109,7 @@ export namespace Prisma {
     ownerId: number
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
@@ -18139,7 +18139,7 @@ export namespace Prisma {
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
@@ -18154,7 +18154,7 @@ export namespace Prisma {
     ownerId?: IntFieldUpdateOperationsInput | number
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
@@ -18168,7 +18168,7 @@ export namespace Prisma {
     owner: UserCreateNestedOneWithoutCabinetsInput
     layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
@@ -18183,7 +18183,7 @@ export namespace Prisma {
     ownerId: number
     layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
@@ -18213,7 +18213,7 @@ export namespace Prisma {
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
     layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
@@ -18228,7 +18228,7 @@ export namespace Prisma {
     ownerId?: IntFieldUpdateOperationsInput | number
     layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
@@ -18242,7 +18242,7 @@ export namespace Prisma {
     owner: UserCreateNestedOneWithoutCabinetsInput
     layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
@@ -18257,7 +18257,7 @@ export namespace Prisma {
     ownerId: number
     layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
@@ -18287,7 +18287,7 @@ export namespace Prisma {
     owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
     layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
@@ -18302,14 +18302,14 @@ export namespace Prisma {
     ownerId?: IntFieldUpdateOperationsInput | number
     layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
     decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
   }
 
-  export type CabinetCreateWithoutPhotoFrameInput = {
+  export type CabinetCreateWithoutPolaroidInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -18323,7 +18323,7 @@ export namespace Prisma {
     decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
   }
 
-  export type CabinetUncheckedCreateWithoutPhotoFrameInput = {
+  export type CabinetUncheckedCreateWithoutPolaroidInput = {
     id?: number
     title: string
     createdAt?: Date | string
@@ -18338,23 +18338,23 @@ export namespace Prisma {
     decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
   }
 
-  export type CabinetCreateOrConnectWithoutPhotoFrameInput = {
+  export type CabinetCreateOrConnectWithoutPolaroidInput = {
     where: CabinetWhereUniqueInput
-    create: XOR<CabinetCreateWithoutPhotoFrameInput, CabinetUncheckedCreateWithoutPhotoFrameInput>
+    create: XOR<CabinetCreateWithoutPolaroidInput, CabinetUncheckedCreateWithoutPolaroidInput>
   }
 
-  export type CabinetUpsertWithoutPhotoFrameInput = {
-    update: XOR<CabinetUpdateWithoutPhotoFrameInput, CabinetUncheckedUpdateWithoutPhotoFrameInput>
-    create: XOR<CabinetCreateWithoutPhotoFrameInput, CabinetUncheckedCreateWithoutPhotoFrameInput>
+  export type CabinetUpsertWithoutPolaroidInput = {
+    update: XOR<CabinetUpdateWithoutPolaroidInput, CabinetUncheckedUpdateWithoutPolaroidInput>
+    create: XOR<CabinetCreateWithoutPolaroidInput, CabinetUncheckedCreateWithoutPolaroidInput>
     where?: CabinetWhereInput
   }
 
-  export type CabinetUpdateToOneWithWhereWithoutPhotoFrameInput = {
+  export type CabinetUpdateToOneWithWhereWithoutPolaroidInput = {
     where?: CabinetWhereInput
-    data: XOR<CabinetUpdateWithoutPhotoFrameInput, CabinetUncheckedUpdateWithoutPhotoFrameInput>
+    data: XOR<CabinetUpdateWithoutPolaroidInput, CabinetUncheckedUpdateWithoutPolaroidInput>
   }
 
-  export type CabinetUpdateWithoutPhotoFrameInput = {
+  export type CabinetUpdateWithoutPolaroidInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18368,7 +18368,7 @@ export namespace Prisma {
     decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
   }
 
-  export type CabinetUncheckedUpdateWithoutPhotoFrameInput = {
+  export type CabinetUncheckedUpdateWithoutPolaroidInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18391,7 +18391,7 @@ export namespace Prisma {
     layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
     decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
@@ -18406,7 +18406,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
     decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
@@ -18436,7 +18436,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
     decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
@@ -18451,7 +18451,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
     decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
@@ -18465,7 +18465,7 @@ export namespace Prisma {
     layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
     decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
@@ -18480,7 +18480,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
     decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
@@ -18510,7 +18510,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
     decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
@@ -18525,7 +18525,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
     decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
@@ -18539,7 +18539,7 @@ export namespace Prisma {
     layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
@@ -18554,7 +18554,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
@@ -18584,7 +18584,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
@@ -18599,7 +18599,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
@@ -18613,7 +18613,7 @@ export namespace Prisma {
     layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
     chest?: ChestCreateNestedOneWithoutCabinetInput
     journal?: JournalCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
     media?: MediaCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistCreateNestedManyWithoutCabinetInput
     notes?: NoteCreateNestedManyWithoutCabinetInput
@@ -18628,7 +18628,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
     chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
     journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    photoFrame?: PhotoFrameUncheckedCreateNestedManyWithoutCabinetInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
     media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
     checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
     notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
@@ -18658,7 +18658,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
@@ -18673,7 +18673,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
@@ -18747,7 +18747,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
     chest?: ChestUpdateOneWithoutCabinetNestedInput
     journal?: JournalUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
     media?: MediaUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
     notes?: NoteUpdateManyWithoutCabinetNestedInput
@@ -18762,7 +18762,7 @@ export namespace Prisma {
     layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
     chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
     journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    photoFrame?: PhotoFrameUncheckedUpdateManyWithoutCabinetNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
     media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
     notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
@@ -18776,7 +18776,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PhotoFrameCreateManyCabinetInput = {
+  export type PolaroidCreateManyCabinetInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
@@ -18819,7 +18819,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PhotoFrameUpdateWithoutCabinetInput = {
+  export type PolaroidUpdateWithoutCabinetInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18827,7 +18827,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PhotoFrameUncheckedUpdateWithoutCabinetInput = {
+  export type PolaroidUncheckedUpdateWithoutCabinetInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
@@ -18836,7 +18836,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PhotoFrameUncheckedUpdateManyWithoutCabinetInput = {
+  export type PolaroidUncheckedUpdateManyWithoutCabinetInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
