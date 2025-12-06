@@ -10,7 +10,7 @@ import cabinetRoutes from './modules/cabinet/cabinet.routes';
 import notesRoutes from './modules/content/notes/notes.routes';
 import checklistRoutes from './modules/content/checklist/checklist.routes';
 import journalRoutes from './modules/content/journal/journal.routes';
-import frameRoutes from './modules/content/frame/frame.routes';
+import frameRoutes from './modules/content/polaroid/polaroid.routes';
 import chestRoutes from './modules/content/chest/chest.routes';
 import mirrorRoutes from './modules/content/mirror/mirror.routes';
 import mp3Routes from './modules/content/mp3/mp3.routes';
