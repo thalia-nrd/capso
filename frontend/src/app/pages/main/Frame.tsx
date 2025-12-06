@@ -18,8 +18,8 @@ const Frame: React.FC = () => {
     <div
       style={{
         position: "relative",
-        width: 600,
-        height: 800,
+        width: 700,
+        height: 900,
         backgroundImage: "url('/cabinet/cabinet.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -43,6 +43,7 @@ const Frame: React.FC = () => {
       <Slot x={350} y={200} width={120} height={140}>
         <NoteItem onOpen={() => alert("Note opened!")} />
       </Slot>
+
       <Slot x={120} y={400} width={120} height={140}>
         <EnvelopeItem onOpen={() => alert("Envelope opened!")} />
       </Slot>
