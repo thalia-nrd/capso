@@ -9,6 +9,7 @@ import KeyItem from "../../../items/key/component/KeyItem";
 import PolaroidItem from "../../../items/polaroid/component/PolaroidItem";
 import CDItem from "../../../items/cd/component/CDItem";
 import MirrorItem from "../../../items/mirror/component/MirrorItem";
+import MirrorModal from "../../../items/mirror/modal/MirrorModal";
 
 const Frame: React.FC = () => {
   const [checklist, setChecklist] = useState<string[]>([]);
@@ -57,8 +58,9 @@ const Frame: React.FC = () => {
         <CDItem onOpen={() => alert("CD opened!")} />
       </Slot>
       <Slot x={400} y={600} width={120} height={140}>
-        <MirrorItem onOpen={() => alert("Mirror opened!")} />
+        <MirrorItem />
       </Slot>
+
     </div>
   );
 };

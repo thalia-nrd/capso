@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import MirrorModal from "../modal/MirrorModal";
 
-interface MirrorItemProps {
-  onOpen: () => void;
-}
+const MirrorItem: React.FC = () => {
+  const [open, setOpen] = useState(false);
 
-const MirrorItem: React.FC<MirrorItemProps> = ({ onOpen }) => {
   return (
-    <img
-      src="content/Mirror.png"
-      alt="Mirror"
-      style={{
-        width: "100%",
-        height: "100%",
-        cursor: "pointer",
-      }}
-      onClick={onOpen}
-    />
+    <>
+      <img
+        src="content/Mirror.png"
+        alt="Mirror"
+        style={{
+          width: "100%",
+          height: "100%",
+          cursor: "pointer",
+        }}
+        onClick={() => setOpen(true)}
+      />
+
+      {open && (
+        <MirrorModal quote="yo mama" />
+      )}
+    </>
   );
 };
 

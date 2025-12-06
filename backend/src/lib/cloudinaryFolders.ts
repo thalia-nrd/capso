@@ -1,4 +1,4 @@
 export enum CloudinaryFolders {
-  FRAMES = "photo_frame",
-  CHEST = "chest_items",
+  POLAROID = "polaroid",
+  KEY = "key_items",
 }

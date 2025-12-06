@@ -11,7 +11,7 @@ export const ChestController = {
       const folder = req.query.folder as string;
       const upload_preset = req.query.upload_preset as string;
 
-      const payload: CloudinarySignature = generateUploadSignature(CloudinaryFolders.CHEST, upload_preset);
+      const payload: CloudinarySignature = generateUploadSignature(CloudinaryFolders.KEY, upload_preset);
 
       res.json(payload);
     } catch (err) {

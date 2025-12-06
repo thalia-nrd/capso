@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
-import { frameModel } from "./frame.model";
+import { polaroidModel } from "./polaroid.model";
 import { generateUploadSignature } from "../../../lib/cloudinary";
 import type { CloudinarySignature } from "../../../types/cloudinary.types";
-import type { CreateFrameDTO, UpdateFrameDTO } from "./types/frame.types";
+import type { CreatePolaroidDTO, UpdatePolaroidDTO } from "./types/polaroid.types";
 import { CloudinaryFolders } from "../../../lib/cloudinaryFolders";
 
-export const frameController = {
+export const polaroidController = {
     getUploadSignature: async (req: Request, res: Response) => {
         try {
         const folder = req.query.folder as string;
         const upload_preset = req.query.upload_preset as string;
 
-        const payload: CloudinarySignature = generateUploadSignature(CloudinaryFolders.FRAMES, upload_preset);
+        const payload: CloudinarySignature = generateUploadSignature(CloudinaryFolders.POLAROID, upload_preset);
 
         res.json(payload);
         } catch (err) {
@@ -20,46 +20,46 @@ export const frameController = {
         }
     },
     
-    getFrame: async (req: Request, res: Response) => {
+    getPolaroid: async (req: Request, res: Response) => {
         try {
             const cabinetId = Number(req.params.cabinetId);
-            const frame = await frameModel.getFrameByCabinetId(cabinetId);
+            const polaroid = await polaroidModel.getPolaroidByCabinetId(cabinetId);
 
-            res.json(frame)
+            res.json(polaroid)
         }
         catch (err) {
-            console.error("GET frame error:", err);
+            console.error("GET polaroid error:", err);
             res.status(500).json({ error: "Server error" });
         }
     },
 
-    createFrame: async (req: Request, res: Response) => {
+    createPolaroid: async (req: Request, res: Response) => {
         try {
             const cabinetId = Number(req.params.cabinetId);
 
-            const newFrame = await frameModel.createFrame(
+            const newPolaroid = await polaroidModel.createPolaroid(
                 cabinetId,
-                req.body.imageUrl as CreateFrameDTO["imageUrl"]
+                req.body.imageUrl as CreatePolaroidDTO["imageUrl"]
             );
-            res.json(newFrame);
+            res.json(newPolaroid);
         }
         catch (err) {
-            console.error("CREATE frame error:", err);
+            console.error("CREATE polaroid error:", err);
             res.status(500).json({ error: "Server error" });
         }
     },
 
-    updateFrame: async (req: Request, res: Response) => {
+    updatePolaroid: async (req: Request, res: Response) => {
         try {
-            const frameId = Number(req.params.frameId);
-            const updatedFrame = await frameModel.updateFrame(
-                frameId,
-                req.body.imageUrl as UpdateFrameDTO["imageUrl"]
+            const polaroidId = Number(req.params.polaroidId);
+            const updatedPolaroid = await polaroidModel.updatePolaroid(
+                polaroidId,
+                req.body.imageUrl as UpdatePolaroidDTO["imageUrl"]
             );
-            res.json(updatedFrame);
+            res.json(updatedPolaroid);
         }
         catch (err) {
-            console.error("UPDATE frame error:", err);
+            console.error("UPDATE polaroid error:", err);
             res.status(500).json({ error: "Server error" });
         }
     },
