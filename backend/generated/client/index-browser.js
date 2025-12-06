@@ -130,7 +130,7 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.CabinetScalarFieldEnum = {
+exports.Prisma.FrameScalarFieldEnum = {
   id: 'id',
   title: 'title',
   createdAt: 'createdAt',
@@ -141,7 +141,7 @@ exports.Prisma.CabinetScalarFieldEnum = {
 exports.Prisma.CabinetLayoutScalarFieldEnum = {
   id: 'id',
   layout: 'layout',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -151,7 +151,7 @@ exports.Prisma.ChestScalarFieldEnum = {
   passcode: 'passcode',
   position: 'position',
   items: 'items',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -161,7 +161,7 @@ exports.Prisma.JournalScalarFieldEnum = {
   passcode: 'passcode',
   position: 'position',
   entries: 'entries',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -171,7 +171,7 @@ exports.Prisma.PolaroidScalarFieldEnum = {
   position: 'position',
   url: 'url',
   caption: 'caption',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -181,7 +181,7 @@ exports.Prisma.MediaScalarFieldEnum = {
   position: 'position',
   type: 'type',
   url: 'url',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -191,7 +191,7 @@ exports.Prisma.ChecklistScalarFieldEnum = {
   position: 'position',
   title: 'title',
   items: 'items',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -200,7 +200,7 @@ exports.Prisma.NoteScalarFieldEnum = {
   id: 'id',
   position: 'position',
   content: 'content',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -209,7 +209,7 @@ exports.Prisma.DecorItemScalarFieldEnum = {
   id: 'id',
   position: 'position',
   type: 'type',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -258,7 +258,7 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Cabinet: 'Cabinet',
+  Frame: 'Frame',
   CabinetLayout: 'CabinetLayout',
   Chest: 'Chest',
   Journal: 'Journal',
