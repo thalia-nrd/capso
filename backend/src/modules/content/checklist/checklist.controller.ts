@@ -4,13 +4,13 @@ import { checklistSchema, checklistUpdateSchema } from './checklist.schema';
 
 export const checklistController = {
   getChecklists: async (req: Request, res: Response) => {
-    const cabinetId = Number(req.params.cabinetId);
-    const checklists = await checklistModel.getChecklistsByCabinetId(cabinetId);
+    const frameId = Number(req.params.frameId);
+    const checklists = await checklistModel.getChecklistsByFrameId(frameId);
     res.json(checklists);
   },
 
   createChecklist: async (req: Request, res: Response) => {
-    const cabinetId = Number(req.params.cabinetId);
+    const frameId = Number(req.params.frameId);
 
     const parsed = checklistSchema.safeParse(req.body);
     if (!parsed.success) {
@@ -18,7 +18,7 @@ export const checklistController = {
     }
 
     const { title, items } = parsed.data;
-    const newChecklist = await checklistModel.createChecklist(cabinetId, title, items);
+    const newChecklist = await checklistModel.createChecklist(frameId, title, items);
     res.json(newChecklist);
   },
 

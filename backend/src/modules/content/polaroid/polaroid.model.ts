@@ -1,13 +1,13 @@
 import { prisma } from "../../../infrastructure/database/prisma";
 
 export const polaroidModel = {
-  getPolaroidByCabinetId: async (cabinetId: number) => {
-    return prisma.polaroid.findMany({ where: { cabinetId } });
+  getPolaroidByFrameId: async (frameId: number) => {
+    return prisma.polaroid.findMany({ where: { frameId } });
   },
 
-  createPolaroid: async (cabinetId: number, imageUrl: string) => {
+  createPolaroid: async (frameId: number, imageUrl: string) => {
     return await prisma.polaroid.create({
-      data: { cabinetId, url: imageUrl },
+      data: { frameId, url: imageUrl },
     });
   },
 

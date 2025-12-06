@@ -8,22 +8,22 @@ import { CloudinaryFolders } from "../../../lib/cloudinaryFolders";
 export const polaroidController = {
     getUploadSignature: async (req: Request, res: Response) => {
         try {
-        const folder = req.query.folder as string;
-        const upload_preset = req.query.upload_preset as string;
+            const folder = req.query.folder as string;
+            const upload_preset = req.query.upload_preset as string;
 
-        const payload: CloudinarySignature = generateUploadSignature(CloudinaryFolders.POLAROID, upload_preset);
+            const payload: CloudinarySignature = generateUploadSignature(CloudinaryFolders.POLAROID, upload_preset);
 
-        res.json(payload);
+            res.json(payload);
         } catch (err) {
-        console.error("GET upload signature error:", err);
-        res.status(500).json({ error: "Server error" });
+            console.error("GET upload signature error:", err);
+            res.status(500).json({ error: "Server error" });
         }
     },
-    
+
     getPolaroid: async (req: Request, res: Response) => {
         try {
-            const cabinetId = Number(req.params.cabinetId);
-            const polaroid = await polaroidModel.getPolaroidByCabinetId(cabinetId);
+            const frameId = Number(req.params.frameId);
+            const polaroid = await polaroidModel.getPolaroidByFrameId(frameId);
 
             res.json(polaroid)
         }
@@ -35,10 +35,10 @@ export const polaroidController = {
 
     createPolaroid: async (req: Request, res: Response) => {
         try {
-            const cabinetId = Number(req.params.cabinetId);
+            const frameId = Number(req.params.frameId);
 
             const newPolaroid = await polaroidModel.createPolaroid(
-                cabinetId,
+                frameId,
                 req.body.imageUrl as CreatePolaroidDTO["imageUrl"]
             );
             res.json(newPolaroid);

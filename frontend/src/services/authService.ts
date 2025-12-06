@@ -45,14 +45,14 @@ async function request<T>(endpoint: string, data: any): Promise<T> {
 }
 
 export const login = (loginData: loginSchemaType) => {
-  return request<{ message: string; userId: string; cabinet: { id: string } }>(
+  return request<{ message: string; userId: string; frame: { id: string } }>(
     "/auth/login",
     loginData
   );
 };
 
 export const register = (registerData: registerSchemaType) => {
-  return request<{ message: string; userId: string; cabinet: any }>(
+  return request<{ message: string; userId: string; frame: any }>(
     "/auth/signup",
     registerData
   );

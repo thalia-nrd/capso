@@ -33,27 +33,32 @@ Prisma.PrismaClientKnownRequestError = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`PrismaClientKnownRequestError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)};
+  )
+};
 Prisma.PrismaClientUnknownRequestError = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`PrismaClientUnknownRequestError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+  )
+}
 Prisma.PrismaClientRustPanicError = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`PrismaClientRustPanicError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+  )
+}
 Prisma.PrismaClientInitializationError = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`PrismaClientInitializationError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+  )
+}
 Prisma.PrismaClientValidationError = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`PrismaClientValidationError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+  )
+}
 Prisma.Decimal = Decimal
 
 /**
@@ -63,22 +68,26 @@ Prisma.sql = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`sqltag is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+  )
+}
 Prisma.empty = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`empty is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+  )
+}
 Prisma.join = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`join is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+  )
+}
 Prisma.raw = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`raw is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+  )
+}
 Prisma.validator = Public.validator
 
 /**
@@ -88,12 +97,14 @@ Prisma.getExtensionContext = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`Extensions.getExtensionContext is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+  )
+}
 Prisma.defineExtension = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`Extensions.defineExtension is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
+  )
+}
 
 /**
  * Shorthand utilities for JSON filtering
@@ -130,7 +141,7 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.CabinetScalarFieldEnum = {
+exports.Prisma.FrameScalarFieldEnum = {
   id: 'id',
   title: 'title',
   createdAt: 'createdAt',
@@ -138,10 +149,10 @@ exports.Prisma.CabinetScalarFieldEnum = {
   ownerId: 'ownerId'
 };
 
-exports.Prisma.CabinetLayoutScalarFieldEnum = {
+exports.Prisma.FrameLayoutScalarFieldEnum = {
   id: 'id',
   layout: 'layout',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -151,7 +162,7 @@ exports.Prisma.ChestScalarFieldEnum = {
   passcode: 'passcode',
   position: 'position',
   items: 'items',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -161,7 +172,7 @@ exports.Prisma.JournalScalarFieldEnum = {
   passcode: 'passcode',
   position: 'position',
   entries: 'entries',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -171,7 +182,7 @@ exports.Prisma.PolaroidScalarFieldEnum = {
   position: 'position',
   url: 'url',
   caption: 'caption',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -181,7 +192,7 @@ exports.Prisma.MediaScalarFieldEnum = {
   position: 'position',
   type: 'type',
   url: 'url',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -191,7 +202,7 @@ exports.Prisma.ChecklistScalarFieldEnum = {
   position: 'position',
   title: 'title',
   items: 'items',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -200,7 +211,7 @@ exports.Prisma.NoteScalarFieldEnum = {
   id: 'id',
   position: 'position',
   content: 'content',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -209,7 +220,7 @@ exports.Prisma.DecorItemScalarFieldEnum = {
   id: 'id',
   position: 'position',
   type: 'type',
-  cabinetId: 'cabinetId',
+  frameId: 'frameId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -258,8 +269,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Cabinet: 'Cabinet',
-  CabinetLayout: 'CabinetLayout',
+  Frame: 'Frame',
+  FrameLayout: 'FrameLayout',
   Chest: 'Chest',
   Journal: 'Journal',
   Polaroid: 'Polaroid',

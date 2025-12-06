@@ -16,11 +16,11 @@ model User {
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  cabinets  Cabinet[]
+  frame     Frame[]
   spotifyAccount SpotifyAccount?
 }
 
-model Cabinet {
+model Frame {
   id          Int      @id @default(autoincrement())
   title       String
   createdAt   DateTime @default(now())
@@ -28,21 +28,21 @@ model Cabinet {
   owner       User     @relation(fields: [ownerId], references: [id])
   ownerId     Int      @unique
 
-  layout      CabinetLayout?
+  layout      FrameLayout?
   chest       Chest?
   journal     Journal?
-  polaroid   Polaroid[]
+  polaroid    Polaroid[]
   media       Media[]
   checklist   Checklist[]
   notes       Note[]
   decorItems  DecorItem[]
 }
 
-model CabinetLayout {
+model FrameLayout {
   id        Int      @id @default(autoincrement())
   layout    Json
-  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
-  cabinetId Int      @unique
+  frame     Frame  @relation(fields: [frameId], references: [id])
+  frameId   Int      @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -52,8 +52,8 @@ model Chest {
   passcode  String
   position  Json?
   items     Json?
-  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
-  cabinetId Int      @unique
+  frame     Frame  @relation(fields: [frameId], references: [id])
+  frameId   Int      @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -63,8 +63,8 @@ model Journal {
   passcode  String
   position  Json?
   entries   Json
-  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
-  cabinetId Int      @unique
+  frame     Frame  @relation(fields: [frameId], references: [id])
+  frameId Int      @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -74,8 +74,8 @@ model Polaroid {
   position  Json?
   url       String
   caption   String?
-  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
-  cabinetId Int      
+  frame     Frame  @relation(fields: [frameId], references: [id])
+  frameId   Int      
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -85,8 +85,8 @@ model Media {
   position  Json?
   type      String
   url       String
-  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
-  cabinetId Int      
+  frame     Frame  @relation(fields: [frameId], references: [id])
+  frameId   Int      
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -96,8 +96,8 @@ model Checklist {
   position  Json?
   title     String
   items     Json
-  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
-  cabinetId Int      
+  frame     Frame  @relation(fields: [frameId], references: [id])
+  frameId Int      
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -106,8 +106,8 @@ model Note {
   id        Int      @id @default(autoincrement())
   position  Json?
   content   String
-  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
-  cabinetId Int      
+  frame     Frame  @relation(fields: [frameId], references: [id])
+  frameId   Int      
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -116,8 +116,8 @@ model DecorItem {
   id        Int      @id @default(autoincrement())
   position  Json?
   type      String
-  cabinet   Cabinet  @relation(fields: [cabinetId], references: [id])
-  cabinetId Int      
+  frame     Frame  @relation(fields: [frameId], references: [id])
+  frameId   Int      
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

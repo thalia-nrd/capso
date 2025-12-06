@@ -2,22 +2,22 @@ import { prisma } from "../../../infrastructure/database/prisma";
 import type { JournalEntry } from "./types/journal.types";
 
 export const journalModel = {
-  getByCabinetId: async (cabinetId: number) => {
-    return prisma.journal.findUnique({ where: { cabinetId } });
+  getByFrameId: async (frameId: number) => {
+    return prisma.journal.findUnique({ where: { frameId } });
   },
 
   createJournal: async ({
-    cabinetId,
+    frameId,
     hashedPasscode,
     entries,
   }: {
-    cabinetId: number;
+    frameId: number;
     hashedPasscode: string;
     entries: JournalEntry[];
   }) => {
     return prisma.journal.create({
       data: {
-        cabinetId,
+        frameId,
         passcode: hashedPasscode,
         entries,
       },

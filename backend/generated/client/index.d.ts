@@ -19,15 +19,15 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
- * Model Cabinet
+ * Model Frame
  * 
  */
-export type Cabinet = $Result.DefaultSelection<Prisma.$CabinetPayload>
+export type Frame = $Result.DefaultSelection<Prisma.$FramePayload>
 /**
- * Model CabinetLayout
+ * Model FrameLayout
  * 
  */
-export type CabinetLayout = $Result.DefaultSelection<Prisma.$CabinetLayoutPayload>
+export type FrameLayout = $Result.DefaultSelection<Prisma.$FrameLayoutPayload>
 /**
  * Model Chest
  * 
@@ -90,22 +90,22 @@ export class PrismaClient<
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
 
-    /**
-   * ##  Prisma Client ʲˢ
-   *
-   * Type-safe database client for TypeScript & Node.js
-   * @example
-   * ```
-   * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
-   * ```
-   *
-   *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
-   */
+  /**
+ * ##  Prisma Client ʲˢ
+ *
+ * Type-safe database client for TypeScript & Node.js
+ * @example
+ * ```
+ * const prisma = new PrismaClient()
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
+ * ```
+ *
+ *
+ * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+ */
 
-  constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
+  constructor(optionsArg?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
   $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
 
   /**
@@ -118,15 +118,15 @@ export class PrismaClient<
    */
   $disconnect(): $Utils.JsPromise<void>;
 
-/**
-   * Executes a prepared raw query and returns the number of affected rows.
-   * @example
-   * ```
-   * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
-   * ```
-   *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
-   */
+  /**
+     * Executes a prepared raw query and returns the number of affected rows.
+     * @example
+     * ```
+     * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
+     * ```
+     *
+     * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+     */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
 
   /**
@@ -187,35 +187,35 @@ export class PrismaClient<
     extArgs: ExtArgs
   }>>
 
-      /**
-   * `prisma.user`: Exposes CRUD operations for the **User** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Users
-    * const users = await prisma.user.findMany()
-    * ```
-    */
+  /**
+* `prisma.user`: Exposes CRUD operations for the **User** model.
+* Example usage:
+* ```ts
+* // Fetch zero or more Users
+* const users = await prisma.user.findMany()
+* ```
+*/
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.cabinet`: Exposes CRUD operations for the **Cabinet** model.
+   * `prisma.frame`: Exposes CRUD operations for the **Frame** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Cabinets
-    * const cabinets = await prisma.cabinet.findMany()
+    * // Fetch zero or more Frames
+    * const frames = await prisma.frame.findMany()
     * ```
     */
-  get cabinet(): Prisma.CabinetDelegate<ExtArgs, ClientOptions>;
+  get frame(): Prisma.FrameDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.cabinetLayout`: Exposes CRUD operations for the **CabinetLayout** model.
+   * `prisma.frameLayout`: Exposes CRUD operations for the **FrameLayout** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more CabinetLayouts
-    * const cabinetLayouts = await prisma.cabinetLayout.findMany()
+    * // Fetch zero or more FrameLayouts
+    * const frameLayouts = await prisma.frameLayout.findMany()
     * ```
     */
-  get cabinetLayout(): Prisma.CabinetLayoutDelegate<ExtArgs, ClientOptions>;
+  get frameLayout(): Prisma.FrameLayoutDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.chest`: Exposes CRUD operations for the **Chest** model.
@@ -464,7 +464,7 @@ export namespace Prisma {
    * From T, pick a set of properties whose keys are in the union K
    */
   type Prisma__Pick<T, K extends keyof T> = {
-      [P in K]: T[P];
+    [P in K]: T[P];
   };
 
 
@@ -499,8 +499,8 @@ export namespace Prisma {
     (T extends SelectAndInclude
       ? 'Please either choose `select` or `include`.'
       : T extends SelectAndOmit
-        ? 'Please either choose `select` or `omit`.'
-        : {})
+      ? 'Please either choose `select` or `omit`.'
+      : {})
 
   /**
    * Subset + Intersection
@@ -520,7 +520,7 @@ export namespace Prisma {
   type XOR<T, U> =
     T extends object ?
     U extends object ?
-      (Without<T, U> & U) | (Without<U, T> & T)
+    (Without<T, U> & U) | (Without<U, T> & T)
     : U : T
 
 
@@ -528,16 +528,16 @@ export namespace Prisma {
    * Is T a Record?
    */
   type IsObject<T extends any> = T extends Array<any>
-  ? False
-  : T extends Date
-  ? False
-  : T extends Uint8Array
-  ? False
-  : T extends BigInt
-  ? False
-  : T extends object
-  ? True
-  : False
+    ? False
+    : T extends Date
+    ? False
+    : T extends Uint8Array
+    ? False
+    : T extends BigInt
+    ? False
+    : T extends object
+    ? True
+    : False
 
 
   /**
@@ -588,11 +588,11 @@ export namespace Prisma {
     : never
 
   export type Overwrite<O extends object, O1 extends object> = {
-      [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
+    [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
   } & {};
 
   type _Merge<U extends object> = IntersectOf<Overwrite<U, {
-      [K in keyof U]-?: At<U, K>;
+    [K in keyof U]-?: At<U, K>;
   }>>;
 
   type Key = string | number | symbol;
@@ -600,8 +600,8 @@ export namespace Prisma {
   type AtStrict<O extends object, K extends Key> = O[K & keyof O];
   type AtLoose<O extends object, K extends Key> = O extends unknown ? AtStrict<O, K> : never;
   export type At<O extends object, K extends Key, strict extends Boolean = 1> = {
-      1: AtStrict<O, K>;
-      0: AtLoose<O, K>;
+    1: AtStrict<O, K>;
+    0: AtLoose<O, K>;
   }[strict];
 
   export type ComputeRaw<A extends any> = A extends Function ? A : {
@@ -623,7 +623,7 @@ export namespace Prisma {
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
     ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
+    | { [P in keyof O as P extends K ? P : never]-?: O[P] } & O
     : never>;
 
   type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
@@ -688,8 +688,8 @@ export namespace Prisma {
 
   export type GetScalarType<T, O> = O extends object ? {
     [P in keyof T]: P extends keyof O
-      ? O[P]
-      : never
+    ? O[P]
+    : never
   } : never
 
   type FieldPaths<
@@ -702,15 +702,15 @@ export namespace Prisma {
       Or<Extends<'OR', K>, Extends<'AND', K>>,
       Extends<'NOT', K>
     > extends True
-      ? // infer is only needed to not hit TS limit
-        // based on the brilliant idea of Pierre-Antoine Mills
-        // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
-        T[K] extends infer TK
-        ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
-        : never
-      : {} extends FieldPaths<T[K]>
-      ? never
-      : K
+    ? // infer is only needed to not hit TS limit
+    // based on the brilliant idea of Pierre-Antoine Mills
+    // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
+    T[K] extends infer TK
+    ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
+    : never
+    : {} extends FieldPaths<T[K]>
+    ? never
+    : K
   }[keyof T]
 
   /**
@@ -738,8 +738,8 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    Cabinet: 'Cabinet',
-    CabinetLayout: 'CabinetLayout',
+    Frame: 'Frame',
+    FrameLayout: 'FrameLayout',
     Chest: 'Chest',
     Journal: 'Journal',
     Polaroid: 'Polaroid',
@@ -757,7 +757,7 @@ export namespace Prisma {
     db?: Datasource
   }
 
-  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
+  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{ extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
     returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
   }
 
@@ -766,7 +766,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "cabinet" | "cabinetLayout" | "chest" | "journal" | "polaroid" | "media" | "checklist" | "note" | "decorItem" | "spotifyAccount"
+      modelProps: "user" | "frame" | "frameLayout" | "chest" | "journal" | "polaroid" | "media" | "checklist" | "note" | "decorItem" | "spotifyAccount"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -844,151 +844,151 @@ export namespace Prisma {
           }
         }
       }
-      Cabinet: {
-        payload: Prisma.$CabinetPayload<ExtArgs>
-        fields: Prisma.CabinetFieldRefs
+      Frame: {
+        payload: Prisma.$FramePayload<ExtArgs>
+        fields: Prisma.FrameFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CabinetFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetPayload> | null
+            args: Prisma.FrameFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FramePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CabinetFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetPayload>
+            args: Prisma.FrameFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FramePayload>
           }
           findFirst: {
-            args: Prisma.CabinetFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetPayload> | null
+            args: Prisma.FrameFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FramePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CabinetFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetPayload>
+            args: Prisma.FrameFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FramePayload>
           }
           findMany: {
-            args: Prisma.CabinetFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetPayload>[]
+            args: Prisma.FrameFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FramePayload>[]
           }
           create: {
-            args: Prisma.CabinetCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetPayload>
+            args: Prisma.FrameCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FramePayload>
           }
           createMany: {
-            args: Prisma.CabinetCreateManyArgs<ExtArgs>
+            args: Prisma.FrameCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.CabinetCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetPayload>[]
+            args: Prisma.FrameCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FramePayload>[]
           }
           delete: {
-            args: Prisma.CabinetDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetPayload>
+            args: Prisma.FrameDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FramePayload>
           }
           update: {
-            args: Prisma.CabinetUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetPayload>
+            args: Prisma.FrameUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FramePayload>
           }
           deleteMany: {
-            args: Prisma.CabinetDeleteManyArgs<ExtArgs>
+            args: Prisma.FrameDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.CabinetUpdateManyArgs<ExtArgs>
+            args: Prisma.FrameUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.CabinetUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetPayload>[]
+            args: Prisma.FrameUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FramePayload>[]
           }
           upsert: {
-            args: Prisma.CabinetUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetPayload>
+            args: Prisma.FrameUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FramePayload>
           }
           aggregate: {
-            args: Prisma.CabinetAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCabinet>
+            args: Prisma.FrameAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFrame>
           }
           groupBy: {
-            args: Prisma.CabinetGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CabinetGroupByOutputType>[]
+            args: Prisma.FrameGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FrameGroupByOutputType>[]
           }
           count: {
-            args: Prisma.CabinetCountArgs<ExtArgs>
-            result: $Utils.Optional<CabinetCountAggregateOutputType> | number
+            args: Prisma.FrameCountArgs<ExtArgs>
+            result: $Utils.Optional<FrameCountAggregateOutputType> | number
           }
         }
       }
-      CabinetLayout: {
-        payload: Prisma.$CabinetLayoutPayload<ExtArgs>
-        fields: Prisma.CabinetLayoutFieldRefs
+      FrameLayout: {
+        payload: Prisma.$FrameLayoutPayload<ExtArgs>
+        fields: Prisma.FrameLayoutFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CabinetLayoutFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload> | null
+            args: Prisma.FrameLayoutFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CabinetLayoutFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           findFirst: {
-            args: Prisma.CabinetLayoutFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload> | null
+            args: Prisma.FrameLayoutFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CabinetLayoutFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           findMany: {
-            args: Prisma.CabinetLayoutFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>[]
+            args: Prisma.FrameLayoutFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>[]
           }
           create: {
-            args: Prisma.CabinetLayoutCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           createMany: {
-            args: Prisma.CabinetLayoutCreateManyArgs<ExtArgs>
+            args: Prisma.FrameLayoutCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.CabinetLayoutCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>[]
+            args: Prisma.FrameLayoutCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>[]
           }
           delete: {
-            args: Prisma.CabinetLayoutDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           update: {
-            args: Prisma.CabinetLayoutUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           deleteMany: {
-            args: Prisma.CabinetLayoutDeleteManyArgs<ExtArgs>
+            args: Prisma.FrameLayoutDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.CabinetLayoutUpdateManyArgs<ExtArgs>
+            args: Prisma.FrameLayoutUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.CabinetLayoutUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>[]
+            args: Prisma.FrameLayoutUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>[]
           }
           upsert: {
-            args: Prisma.CabinetLayoutUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           aggregate: {
-            args: Prisma.CabinetLayoutAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCabinetLayout>
+            args: Prisma.FrameLayoutAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFrameLayout>
           }
           groupBy: {
-            args: Prisma.CabinetLayoutGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CabinetLayoutGroupByOutputType>[]
+            args: Prisma.FrameLayoutGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FrameLayoutGroupByOutputType>[]
           }
           count: {
-            args: Prisma.CabinetLayoutCountArgs<ExtArgs>
-            result: $Utils.Optional<CabinetLayoutCountAggregateOutputType> | number
+            args: Prisma.FrameLayoutCountArgs<ExtArgs>
+            result: $Utils.Optional<FrameLayoutCountAggregateOutputType> | number
           }
         }
       }
@@ -1681,8 +1681,8 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
-    cabinet?: CabinetOmit
-    cabinetLayout?: CabinetLayoutOmit
+    frame?: FrameOmit
+    frameLayout?: FrameLayoutOmit
     chest?: ChestOmit
     journal?: JournalOmit
     polaroid?: PolaroidOmit
@@ -1771,11 +1771,11 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    cabinets: number
+    frame: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinets?: boolean | UserCountOutputTypeCountCabinetsArgs
+    frame?: boolean | UserCountOutputTypeCountFrameArgs
   }
 
   // Custom InputTypes
@@ -1792,16 +1792,16 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountCabinetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CabinetWhereInput
+  export type UserCountOutputTypeCountFrameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FrameWhereInput
   }
 
 
   /**
-   * Count Type CabinetCountOutputType
+   * Count Type FrameCountOutputType
    */
 
-  export type CabinetCountOutputType = {
+  export type FrameCountOutputType = {
     polaroid: number
     media: number
     checklist: number
@@ -1809,57 +1809,57 @@ export namespace Prisma {
     decorItems: number
   }
 
-  export type CabinetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    polaroid?: boolean | CabinetCountOutputTypeCountPolaroidArgs
-    media?: boolean | CabinetCountOutputTypeCountMediaArgs
-    checklist?: boolean | CabinetCountOutputTypeCountChecklistArgs
-    notes?: boolean | CabinetCountOutputTypeCountNotesArgs
-    decorItems?: boolean | CabinetCountOutputTypeCountDecorItemsArgs
+  export type FrameCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    polaroid?: boolean | FrameCountOutputTypeCountPolaroidArgs
+    media?: boolean | FrameCountOutputTypeCountMediaArgs
+    checklist?: boolean | FrameCountOutputTypeCountChecklistArgs
+    notes?: boolean | FrameCountOutputTypeCountNotesArgs
+    decorItems?: boolean | FrameCountOutputTypeCountDecorItemsArgs
   }
 
   // Custom InputTypes
   /**
-   * CabinetCountOutputType without action
+   * FrameCountOutputType without action
    */
-  export type CabinetCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetCountOutputType
+     * Select specific fields to fetch from the FrameCountOutputType
      */
-    select?: CabinetCountOutputTypeSelect<ExtArgs> | null
+    select?: FrameCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * CabinetCountOutputType without action
+   * FrameCountOutputType without action
    */
-  export type CabinetCountOutputTypeCountPolaroidArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameCountOutputTypeCountPolaroidArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PolaroidWhereInput
   }
 
   /**
-   * CabinetCountOutputType without action
+   * FrameCountOutputType without action
    */
-  export type CabinetCountOutputTypeCountMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameCountOutputTypeCountMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MediaWhereInput
   }
 
   /**
-   * CabinetCountOutputType without action
+   * FrameCountOutputType without action
    */
-  export type CabinetCountOutputTypeCountChecklistArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameCountOutputTypeCountChecklistArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ChecklistWhereInput
   }
 
   /**
-   * CabinetCountOutputType without action
+   * FrameCountOutputType without action
    */
-  export type CabinetCountOutputTypeCountNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameCountOutputTypeCountNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: NoteWhereInput
   }
 
   /**
-   * CabinetCountOutputType without action
+   * FrameCountOutputType without action
    */
-  export type CabinetCountOutputTypeCountDecorItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameCountOutputTypeCountDecorItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DecorItemWhereInput
   }
 
@@ -2015,11 +2015,11 @@ export namespace Prisma {
   }
 
   export type GetUserAggregateType<T extends UserAggregateArgs> = {
-        [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateUser[P]>
-      : GetScalarType<T[P], AggregateUser[P]>
+    [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateUser[P]>
+    : GetScalarType<T[P], AggregateUser[P]>
   }
 
 
@@ -2056,15 +2056,15 @@ export namespace Prisma {
   type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<UserGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], UserGroupByOutputType[P]>
-            : GetScalarType<T[P], UserGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], UserGroupByOutputType[P]>
+        : GetScalarType<T[P], UserGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2074,7 +2074,7 @@ export namespace Prisma {
     password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinets?: boolean | User$cabinetsArgs<ExtArgs>
+    frame?: boolean | User$frameArgs<ExtArgs>
     spotifyAccount?: boolean | User$spotifyAccountArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -2108,7 +2108,7 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinets?: boolean | User$cabinetsArgs<ExtArgs>
+    frame?: boolean | User$frameArgs<ExtArgs>
     spotifyAccount?: boolean | User$spotifyAccountArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -2118,7 +2118,7 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      cabinets: Prisma.$CabinetPayload<ExtArgs>[]
+      frame: Prisma.$FramePayload<ExtArgs>[]
       spotifyAccount: Prisma.$SpotifyAccountPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2400,10 +2400,10 @@ export namespace Prisma {
       args?: Subset<T, UserCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], UserCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], UserCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -2457,8 +2457,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserGroupByArgs['orderBy'] }
-        : { orderBy?: UserGroupByArgs['orderBy'] },
+      ? { orderBy: UserGroupByArgs['orderBy'] }
+      : { orderBy?: UserGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2469,49 +2469,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, UserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the User model
-   */
-  readonly fields: UserFieldRefs;
+    /**
+     * Fields of the User model
+     */
+    readonly fields: UserFieldRefs;
   }
 
   /**
@@ -2522,7 +2522,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cabinets<T extends User$cabinetsArgs<ExtArgs> = {}>(args?: Subset<T, User$cabinetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    frame<T extends User$frameArgs<ExtArgs> = {}>(args?: Subset<T, User$frameArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     spotifyAccount<T extends User$spotifyAccountArgs<ExtArgs> = {}>(args?: Subset<T, User$spotifyAccountArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2560,7 +2560,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -2947,27 +2947,27 @@ export namespace Prisma {
   }
 
   /**
-   * User.cabinets
+   * User.frame
    */
-  export type User$cabinetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$frameArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelect<ExtArgs> | null
+    select?: FrameSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetInclude<ExtArgs> | null
-    where?: CabinetWhereInput
-    orderBy?: CabinetOrderByWithRelationInput | CabinetOrderByWithRelationInput[]
-    cursor?: CabinetWhereUniqueInput
+    include?: FrameInclude<ExtArgs> | null
+    where?: FrameWhereInput
+    orderBy?: FrameOrderByWithRelationInput | FrameOrderByWithRelationInput[]
+    cursor?: FrameWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: CabinetScalarFieldEnum | CabinetScalarFieldEnum[]
+    distinct?: FrameScalarFieldEnum | FrameScalarFieldEnum[]
   }
 
   /**
@@ -3009,36 +3009,28 @@ export namespace Prisma {
 
 
   /**
-   * Model Cabinet
+   * Model Frame
    */
 
-  export type AggregateCabinet = {
-    _count: CabinetCountAggregateOutputType | null
-    _avg: CabinetAvgAggregateOutputType | null
-    _sum: CabinetSumAggregateOutputType | null
-    _min: CabinetMinAggregateOutputType | null
-    _max: CabinetMaxAggregateOutputType | null
+  export type AggregateFrame = {
+    _count: FrameCountAggregateOutputType | null
+    _avg: FrameAvgAggregateOutputType | null
+    _sum: FrameSumAggregateOutputType | null
+    _min: FrameMinAggregateOutputType | null
+    _max: FrameMaxAggregateOutputType | null
   }
 
-  export type CabinetAvgAggregateOutputType = {
+  export type FrameAvgAggregateOutputType = {
     id: number | null
     ownerId: number | null
   }
 
-  export type CabinetSumAggregateOutputType = {
+  export type FrameSumAggregateOutputType = {
     id: number | null
     ownerId: number | null
   }
 
-  export type CabinetMinAggregateOutputType = {
-    id: number | null
-    title: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    ownerId: number | null
-  }
-
-  export type CabinetMaxAggregateOutputType = {
+  export type FrameMinAggregateOutputType = {
     id: number | null
     title: string | null
     createdAt: Date | null
@@ -3046,7 +3038,15 @@ export namespace Prisma {
     ownerId: number | null
   }
 
-  export type CabinetCountAggregateOutputType = {
+  export type FrameMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    ownerId: number | null
+  }
+
+  export type FrameCountAggregateOutputType = {
     id: number
     title: number
     createdAt: number
@@ -3056,25 +3056,17 @@ export namespace Prisma {
   }
 
 
-  export type CabinetAvgAggregateInputType = {
+  export type FrameAvgAggregateInputType = {
     id?: true
     ownerId?: true
   }
 
-  export type CabinetSumAggregateInputType = {
+  export type FrameSumAggregateInputType = {
     id?: true
     ownerId?: true
   }
 
-  export type CabinetMinAggregateInputType = {
-    id?: true
-    title?: true
-    createdAt?: true
-    updatedAt?: true
-    ownerId?: true
-  }
-
-  export type CabinetMaxAggregateInputType = {
+  export type FrameMinAggregateInputType = {
     id?: true
     title?: true
     createdAt?: true
@@ -3082,7 +3074,15 @@ export namespace Prisma {
     ownerId?: true
   }
 
-  export type CabinetCountAggregateInputType = {
+  export type FrameMaxAggregateInputType = {
+    id?: true
+    title?: true
+    createdAt?: true
+    updatedAt?: true
+    ownerId?: true
+  }
+
+  export type FrameCountAggregateInputType = {
     id?: true
     title?: true
     createdAt?: true
@@ -3091,156 +3091,156 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type CabinetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Cabinet to aggregate.
+     * Filter which Frame to aggregate.
      */
-    where?: CabinetWhereInput
+    where?: FrameWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Cabinets to fetch.
+     * Determine the order of Frames to fetch.
      */
-    orderBy?: CabinetOrderByWithRelationInput | CabinetOrderByWithRelationInput[]
+    orderBy?: FrameOrderByWithRelationInput | FrameOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CabinetWhereUniqueInput
+    cursor?: FrameWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Cabinets from the position of the cursor.
+     * Take `±n` Frames from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Cabinets.
+     * Skip the first `n` Frames.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Cabinets
+     * Count returned Frames
     **/
-    _count?: true | CabinetCountAggregateInputType
+    _count?: true | FrameCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: CabinetAvgAggregateInputType
+    _avg?: FrameAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: CabinetSumAggregateInputType
+    _sum?: FrameSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CabinetMinAggregateInputType
+    _min?: FrameMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CabinetMaxAggregateInputType
+    _max?: FrameMaxAggregateInputType
   }
 
-  export type GetCabinetAggregateType<T extends CabinetAggregateArgs> = {
-        [P in keyof T & keyof AggregateCabinet]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCabinet[P]>
-      : GetScalarType<T[P], AggregateCabinet[P]>
+  export type GetFrameAggregateType<T extends FrameAggregateArgs> = {
+    [P in keyof T & keyof AggregateFrame]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateFrame[P]>
+    : GetScalarType<T[P], AggregateFrame[P]>
   }
 
 
 
 
-  export type CabinetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CabinetWhereInput
-    orderBy?: CabinetOrderByWithAggregationInput | CabinetOrderByWithAggregationInput[]
-    by: CabinetScalarFieldEnum[] | CabinetScalarFieldEnum
-    having?: CabinetScalarWhereWithAggregatesInput
+  export type FrameGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FrameWhereInput
+    orderBy?: FrameOrderByWithAggregationInput | FrameOrderByWithAggregationInput[]
+    by: FrameScalarFieldEnum[] | FrameScalarFieldEnum
+    having?: FrameScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CabinetCountAggregateInputType | true
-    _avg?: CabinetAvgAggregateInputType
-    _sum?: CabinetSumAggregateInputType
-    _min?: CabinetMinAggregateInputType
-    _max?: CabinetMaxAggregateInputType
+    _count?: FrameCountAggregateInputType | true
+    _avg?: FrameAvgAggregateInputType
+    _sum?: FrameSumAggregateInputType
+    _min?: FrameMinAggregateInputType
+    _max?: FrameMaxAggregateInputType
   }
 
-  export type CabinetGroupByOutputType = {
+  export type FrameGroupByOutputType = {
     id: number
     title: string
     createdAt: Date
     updatedAt: Date
     ownerId: number
-    _count: CabinetCountAggregateOutputType | null
-    _avg: CabinetAvgAggregateOutputType | null
-    _sum: CabinetSumAggregateOutputType | null
-    _min: CabinetMinAggregateOutputType | null
-    _max: CabinetMaxAggregateOutputType | null
+    _count: FrameCountAggregateOutputType | null
+    _avg: FrameAvgAggregateOutputType | null
+    _sum: FrameSumAggregateOutputType | null
+    _min: FrameMinAggregateOutputType | null
+    _max: FrameMaxAggregateOutputType | null
   }
 
-  type GetCabinetGroupByPayload<T extends CabinetGroupByArgs> = Prisma.PrismaPromise<
+  type GetFrameGroupByPayload<T extends FrameGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CabinetGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CabinetGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CabinetGroupByOutputType[P]>
-            : GetScalarType<T[P], CabinetGroupByOutputType[P]>
-        }
-      >
+      PickEnumerable<FrameGroupByOutputType, T['by']> &
+      {
+        [P in ((keyof T) & (keyof FrameGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], FrameGroupByOutputType[P]>
+        : GetScalarType<T[P], FrameGroupByOutputType[P]>
+      }
     >
+  >
 
 
-  export type CabinetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FrameSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
     owner?: boolean | UserDefaultArgs<ExtArgs>
-    layout?: boolean | Cabinet$layoutArgs<ExtArgs>
-    chest?: boolean | Cabinet$chestArgs<ExtArgs>
-    journal?: boolean | Cabinet$journalArgs<ExtArgs>
-    polaroid?: boolean | Cabinet$polaroidArgs<ExtArgs>
-    media?: boolean | Cabinet$mediaArgs<ExtArgs>
-    checklist?: boolean | Cabinet$checklistArgs<ExtArgs>
-    notes?: boolean | Cabinet$notesArgs<ExtArgs>
-    decorItems?: boolean | Cabinet$decorItemsArgs<ExtArgs>
-    _count?: boolean | CabinetCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["cabinet"]>
+    layout?: boolean | Frame$layoutArgs<ExtArgs>
+    chest?: boolean | Frame$chestArgs<ExtArgs>
+    journal?: boolean | Frame$journalArgs<ExtArgs>
+    polaroid?: boolean | Frame$polaroidArgs<ExtArgs>
+    media?: boolean | Frame$mediaArgs<ExtArgs>
+    checklist?: boolean | Frame$checklistArgs<ExtArgs>
+    notes?: boolean | Frame$notesArgs<ExtArgs>
+    decorItems?: boolean | Frame$decorItemsArgs<ExtArgs>
+    _count?: boolean | FrameCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["frame"]>
 
-  export type CabinetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FrameSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
     owner?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["cabinet"]>
+  }, ExtArgs["result"]["frame"]>
 
-  export type CabinetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FrameSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
     owner?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["cabinet"]>
+  }, ExtArgs["result"]["frame"]>
 
-  export type CabinetSelectScalar = {
+  export type FrameSelectScalar = {
     id?: boolean
     title?: boolean
     createdAt?: boolean
@@ -3248,31 +3248,31 @@ export namespace Prisma {
     ownerId?: boolean
   }
 
-  export type CabinetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "createdAt" | "updatedAt" | "ownerId", ExtArgs["result"]["cabinet"]>
-  export type CabinetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "createdAt" | "updatedAt" | "ownerId", ExtArgs["result"]["frame"]>
+  export type FrameInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
-    layout?: boolean | Cabinet$layoutArgs<ExtArgs>
-    chest?: boolean | Cabinet$chestArgs<ExtArgs>
-    journal?: boolean | Cabinet$journalArgs<ExtArgs>
-    polaroid?: boolean | Cabinet$polaroidArgs<ExtArgs>
-    media?: boolean | Cabinet$mediaArgs<ExtArgs>
-    checklist?: boolean | Cabinet$checklistArgs<ExtArgs>
-    notes?: boolean | Cabinet$notesArgs<ExtArgs>
-    decorItems?: boolean | Cabinet$decorItemsArgs<ExtArgs>
-    _count?: boolean | CabinetCountOutputTypeDefaultArgs<ExtArgs>
+    layout?: boolean | Frame$layoutArgs<ExtArgs>
+    chest?: boolean | Frame$chestArgs<ExtArgs>
+    journal?: boolean | Frame$journalArgs<ExtArgs>
+    polaroid?: boolean | Frame$polaroidArgs<ExtArgs>
+    media?: boolean | Frame$mediaArgs<ExtArgs>
+    checklist?: boolean | Frame$checklistArgs<ExtArgs>
+    notes?: boolean | Frame$notesArgs<ExtArgs>
+    decorItems?: boolean | Frame$decorItemsArgs<ExtArgs>
+    _count?: boolean | FrameCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type CabinetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type CabinetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | UserDefaultArgs<ExtArgs>
   }
 
-  export type $CabinetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Cabinet"
+  export type $FramePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Frame"
     objects: {
       owner: Prisma.$UserPayload<ExtArgs>
-      layout: Prisma.$CabinetLayoutPayload<ExtArgs> | null
+      layout: Prisma.$FrameLayoutPayload<ExtArgs> | null
       chest: Prisma.$ChestPayload<ExtArgs> | null
       journal: Prisma.$JournalPayload<ExtArgs> | null
       polaroid: Prisma.$PolaroidPayload<ExtArgs>[]
@@ -3287,136 +3287,136 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date
       ownerId: number
-    }, ExtArgs["result"]["cabinet"]>
+    }, ExtArgs["result"]["frame"]>
     composites: {}
   }
 
-  type CabinetGetPayload<S extends boolean | null | undefined | CabinetDefaultArgs> = $Result.GetResult<Prisma.$CabinetPayload, S>
+  type FrameGetPayload<S extends boolean | null | undefined | FrameDefaultArgs> = $Result.GetResult<Prisma.$FramePayload, S>
 
-  type CabinetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CabinetFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CabinetCountAggregateInputType | true
+  type FrameCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FrameFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FrameCountAggregateInputType | true
     }
 
-  export interface CabinetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Cabinet'], meta: { name: 'Cabinet' } }
+  export interface FrameDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Frame'], meta: { name: 'Frame' } }
     /**
-     * Find zero or one Cabinet that matches the filter.
-     * @param {CabinetFindUniqueArgs} args - Arguments to find a Cabinet
+     * Find zero or one Frame that matches the filter.
+     * @param {FrameFindUniqueArgs} args - Arguments to find a Frame
      * @example
-     * // Get one Cabinet
-     * const cabinet = await prisma.cabinet.findUnique({
+     * // Get one Frame
+     * const frame = await prisma.frame.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CabinetFindUniqueArgs>(args: SelectSubset<T, CabinetFindUniqueArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends FrameFindUniqueArgs>(args: SelectSubset<T, FrameFindUniqueArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Cabinet that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Frame that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {CabinetFindUniqueOrThrowArgs} args - Arguments to find a Cabinet
+     * @param {FrameFindUniqueOrThrowArgs} args - Arguments to find a Frame
      * @example
-     * // Get one Cabinet
-     * const cabinet = await prisma.cabinet.findUniqueOrThrow({
+     * // Get one Frame
+     * const frame = await prisma.frame.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CabinetFindUniqueOrThrowArgs>(args: SelectSubset<T, CabinetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends FrameFindUniqueOrThrowArgs>(args: SelectSubset<T, FrameFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Cabinet that matches the filter.
+     * Find the first Frame that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetFindFirstArgs} args - Arguments to find a Cabinet
+     * @param {FrameFindFirstArgs} args - Arguments to find a Frame
      * @example
-     * // Get one Cabinet
-     * const cabinet = await prisma.cabinet.findFirst({
+     * // Get one Frame
+     * const frame = await prisma.frame.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CabinetFindFirstArgs>(args?: SelectSubset<T, CabinetFindFirstArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends FrameFindFirstArgs>(args?: SelectSubset<T, FrameFindFirstArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Cabinet that matches the filter or
+     * Find the first Frame that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetFindFirstOrThrowArgs} args - Arguments to find a Cabinet
+     * @param {FrameFindFirstOrThrowArgs} args - Arguments to find a Frame
      * @example
-     * // Get one Cabinet
-     * const cabinet = await prisma.cabinet.findFirstOrThrow({
+     * // Get one Frame
+     * const frame = await prisma.frame.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CabinetFindFirstOrThrowArgs>(args?: SelectSubset<T, CabinetFindFirstOrThrowArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends FrameFindFirstOrThrowArgs>(args?: SelectSubset<T, FrameFindFirstOrThrowArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Cabinets that matches the filter.
+     * Find zero or more Frames that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {FrameFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Cabinets
-     * const cabinets = await prisma.cabinet.findMany()
+     * // Get all Frames
+     * const frames = await prisma.frame.findMany()
      * 
-     * // Get first 10 Cabinets
-     * const cabinets = await prisma.cabinet.findMany({ take: 10 })
+     * // Get first 10 Frames
+     * const frames = await prisma.frame.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const cabinetWithIdOnly = await prisma.cabinet.findMany({ select: { id: true } })
+     * const frameWithIdOnly = await prisma.frame.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CabinetFindManyArgs>(args?: SelectSubset<T, CabinetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends FrameFindManyArgs>(args?: SelectSubset<T, FrameFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Cabinet.
-     * @param {CabinetCreateArgs} args - Arguments to create a Cabinet.
+     * Create a Frame.
+     * @param {FrameCreateArgs} args - Arguments to create a Frame.
      * @example
-     * // Create one Cabinet
-     * const Cabinet = await prisma.cabinet.create({
+     * // Create one Frame
+     * const Frame = await prisma.frame.create({
      *   data: {
-     *     // ... data to create a Cabinet
+     *     // ... data to create a Frame
      *   }
      * })
      * 
      */
-    create<T extends CabinetCreateArgs>(args: SelectSubset<T, CabinetCreateArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends FrameCreateArgs>(args: SelectSubset<T, FrameCreateArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Cabinets.
-     * @param {CabinetCreateManyArgs} args - Arguments to create many Cabinets.
+     * Create many Frames.
+     * @param {FrameCreateManyArgs} args - Arguments to create many Frames.
      * @example
-     * // Create many Cabinets
-     * const cabinet = await prisma.cabinet.createMany({
+     * // Create many Frames
+     * const frame = await prisma.frame.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends CabinetCreateManyArgs>(args?: SelectSubset<T, CabinetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends FrameCreateManyArgs>(args?: SelectSubset<T, FrameCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Cabinets and returns the data saved in the database.
-     * @param {CabinetCreateManyAndReturnArgs} args - Arguments to create many Cabinets.
+     * Create many Frames and returns the data saved in the database.
+     * @param {FrameCreateManyAndReturnArgs} args - Arguments to create many Frames.
      * @example
-     * // Create many Cabinets
-     * const cabinet = await prisma.cabinet.createManyAndReturn({
+     * // Create many Frames
+     * const frame = await prisma.frame.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Cabinets and only return the `id`
-     * const cabinetWithIdOnly = await prisma.cabinet.createManyAndReturn({
+     * // Create many Frames and only return the `id`
+     * const frameWithIdOnly = await prisma.frame.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3426,28 +3426,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CabinetCreateManyAndReturnArgs>(args?: SelectSubset<T, CabinetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends FrameCreateManyAndReturnArgs>(args?: SelectSubset<T, FrameCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Cabinet.
-     * @param {CabinetDeleteArgs} args - Arguments to delete one Cabinet.
+     * Delete a Frame.
+     * @param {FrameDeleteArgs} args - Arguments to delete one Frame.
      * @example
-     * // Delete one Cabinet
-     * const Cabinet = await prisma.cabinet.delete({
+     * // Delete one Frame
+     * const Frame = await prisma.frame.delete({
      *   where: {
-     *     // ... filter to delete one Cabinet
+     *     // ... filter to delete one Frame
      *   }
      * })
      * 
      */
-    delete<T extends CabinetDeleteArgs>(args: SelectSubset<T, CabinetDeleteArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends FrameDeleteArgs>(args: SelectSubset<T, FrameDeleteArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Cabinet.
-     * @param {CabinetUpdateArgs} args - Arguments to update one Cabinet.
+     * Update one Frame.
+     * @param {FrameUpdateArgs} args - Arguments to update one Frame.
      * @example
-     * // Update one Cabinet
-     * const cabinet = await prisma.cabinet.update({
+     * // Update one Frame
+     * const frame = await prisma.frame.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3457,30 +3457,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CabinetUpdateArgs>(args: SelectSubset<T, CabinetUpdateArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends FrameUpdateArgs>(args: SelectSubset<T, FrameUpdateArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Cabinets.
-     * @param {CabinetDeleteManyArgs} args - Arguments to filter Cabinets to delete.
+     * Delete zero or more Frames.
+     * @param {FrameDeleteManyArgs} args - Arguments to filter Frames to delete.
      * @example
-     * // Delete a few Cabinets
-     * const { count } = await prisma.cabinet.deleteMany({
+     * // Delete a few Frames
+     * const { count } = await prisma.frame.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends CabinetDeleteManyArgs>(args?: SelectSubset<T, CabinetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends FrameDeleteManyArgs>(args?: SelectSubset<T, FrameDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Cabinets.
+     * Update zero or more Frames.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {FrameUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Cabinets
-     * const cabinet = await prisma.cabinet.updateMany({
+     * // Update many Frames
+     * const frame = await prisma.frame.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3490,14 +3490,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends CabinetUpdateManyArgs>(args: SelectSubset<T, CabinetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends FrameUpdateManyArgs>(args: SelectSubset<T, FrameUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Cabinets and returns the data updated in the database.
-     * @param {CabinetUpdateManyAndReturnArgs} args - Arguments to update many Cabinets.
+     * Update zero or more Frames and returns the data updated in the database.
+     * @param {FrameUpdateManyAndReturnArgs} args - Arguments to update many Frames.
      * @example
-     * // Update many Cabinets
-     * const cabinet = await prisma.cabinet.updateManyAndReturn({
+     * // Update many Frames
+     * const frame = await prisma.frame.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3506,8 +3506,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Cabinets and only return the `id`
-     * const cabinetWithIdOnly = await prisma.cabinet.updateManyAndReturn({
+     * // Update zero or more Frames and only return the `id`
+     * const frameWithIdOnly = await prisma.frame.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -3520,56 +3520,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends CabinetUpdateManyAndReturnArgs>(args: SelectSubset<T, CabinetUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends FrameUpdateManyAndReturnArgs>(args: SelectSubset<T, FrameUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Cabinet.
-     * @param {CabinetUpsertArgs} args - Arguments to update or create a Cabinet.
+     * Create or update one Frame.
+     * @param {FrameUpsertArgs} args - Arguments to update or create a Frame.
      * @example
-     * // Update or create a Cabinet
-     * const cabinet = await prisma.cabinet.upsert({
+     * // Update or create a Frame
+     * const frame = await prisma.frame.upsert({
      *   create: {
-     *     // ... data to create a Cabinet
+     *     // ... data to create a Frame
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Cabinet we want to update
+     *     // ... the filter for the Frame we want to update
      *   }
      * })
      */
-    upsert<T extends CabinetUpsertArgs>(args: SelectSubset<T, CabinetUpsertArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends FrameUpsertArgs>(args: SelectSubset<T, FrameUpsertArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Cabinets.
+     * Count the number of Frames.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetCountArgs} args - Arguments to filter Cabinets to count.
+     * @param {FrameCountArgs} args - Arguments to filter Frames to count.
      * @example
-     * // Count the number of Cabinets
-     * const count = await prisma.cabinet.count({
+     * // Count the number of Frames
+     * const count = await prisma.frame.count({
      *   where: {
-     *     // ... the filter for the Cabinets we want to count
+     *     // ... the filter for the Frames we want to count
      *   }
      * })
     **/
-    count<T extends CabinetCountArgs>(
-      args?: Subset<T, CabinetCountArgs>,
+    count<T extends FrameCountArgs>(
+      args?: Subset<T, FrameCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CabinetCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], FrameCountAggregateOutputType>
+      : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Cabinet.
+     * Allows you to perform aggregations operations on a Frame.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {FrameAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3589,13 +3589,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CabinetAggregateArgs>(args: Subset<T, CabinetAggregateArgs>): Prisma.PrismaPromise<GetCabinetAggregateType<T>>
+    aggregate<T extends FrameAggregateArgs>(args: Subset<T, FrameAggregateArgs>): Prisma.PrismaPromise<GetFrameAggregateType<T>>
 
     /**
-     * Group by Cabinet.
+     * Group by Frame.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetGroupByArgs} args - Group by arguments.
+     * @param {FrameGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3610,14 +3610,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CabinetGroupByArgs,
+      T extends FrameGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CabinetGroupByArgs['orderBy'] }
-        : { orderBy?: CabinetGroupByArgs['orderBy'] },
+      ? { orderBy: FrameGroupByArgs['orderBy'] }
+      : { orderBy?: FrameGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3628,68 +3628,68 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, CabinetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCabinetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Cabinet model
-   */
-  readonly fields: CabinetFieldRefs;
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+    >(args: SubsetIntersection<T, FrameGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFrameGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    /**
+     * Fields of the Frame model
+     */
+    readonly fields: FrameFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Cabinet.
+   * The delegate class that acts as a "Promise-like" for Frame.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CabinetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__FrameClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     owner<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    layout<T extends Cabinet$layoutArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$layoutArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    chest<T extends Cabinet$chestArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$chestArgs<ExtArgs>>): Prisma__ChestClient<$Result.GetResult<Prisma.$ChestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    journal<T extends Cabinet$journalArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$journalArgs<ExtArgs>>): Prisma__JournalClient<$Result.GetResult<Prisma.$JournalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    polaroid<T extends Cabinet$polaroidArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$polaroidArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    media<T extends Cabinet$mediaArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    checklist<T extends Cabinet$checklistArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$checklistArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChecklistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    notes<T extends Cabinet$notesArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    decorItems<T extends Cabinet$decorItemsArgs<ExtArgs> = {}>(args?: Subset<T, Cabinet$decorItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    layout<T extends Frame$layoutArgs<ExtArgs> = {}>(args?: Subset<T, Frame$layoutArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    chest<T extends Frame$chestArgs<ExtArgs> = {}>(args?: Subset<T, Frame$chestArgs<ExtArgs>>): Prisma__ChestClient<$Result.GetResult<Prisma.$ChestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    journal<T extends Frame$journalArgs<ExtArgs> = {}>(args?: Subset<T, Frame$journalArgs<ExtArgs>>): Prisma__JournalClient<$Result.GetResult<Prisma.$JournalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    polaroid<T extends Frame$polaroidArgs<ExtArgs> = {}>(args?: Subset<T, Frame$polaroidArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    media<T extends Frame$mediaArgs<ExtArgs> = {}>(args?: Subset<T, Frame$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    checklist<T extends Frame$checklistArgs<ExtArgs> = {}>(args?: Subset<T, Frame$checklistArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChecklistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    notes<T extends Frame$notesArgs<ExtArgs> = {}>(args?: Subset<T, Frame$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    decorItems<T extends Frame$decorItemsArgs<ExtArgs> = {}>(args?: Subset<T, Frame$decorItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DecorItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3716,432 +3716,432 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Cabinet model
+   * Fields of the Frame model
    */
-  interface CabinetFieldRefs {
-    readonly id: FieldRef<"Cabinet", 'Int'>
-    readonly title: FieldRef<"Cabinet", 'String'>
-    readonly createdAt: FieldRef<"Cabinet", 'DateTime'>
-    readonly updatedAt: FieldRef<"Cabinet", 'DateTime'>
-    readonly ownerId: FieldRef<"Cabinet", 'Int'>
+  interface FrameFieldRefs {
+    readonly id: FieldRef<"Frame", 'Int'>
+    readonly title: FieldRef<"Frame", 'String'>
+    readonly createdAt: FieldRef<"Frame", 'DateTime'>
+    readonly updatedAt: FieldRef<"Frame", 'DateTime'>
+    readonly ownerId: FieldRef<"Frame", 'Int'>
   }
-    
+
 
   // Custom InputTypes
   /**
-   * Cabinet findUnique
+   * Frame findUnique
    */
-  export type CabinetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelect<ExtArgs> | null
+    select?: FrameSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetInclude<ExtArgs> | null
+    include?: FrameInclude<ExtArgs> | null
     /**
-     * Filter, which Cabinet to fetch.
+     * Filter, which Frame to fetch.
      */
-    where: CabinetWhereUniqueInput
+    where: FrameWhereUniqueInput
   }
 
   /**
-   * Cabinet findUniqueOrThrow
+   * Frame findUniqueOrThrow
    */
-  export type CabinetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelect<ExtArgs> | null
+    select?: FrameSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetInclude<ExtArgs> | null
+    include?: FrameInclude<ExtArgs> | null
     /**
-     * Filter, which Cabinet to fetch.
+     * Filter, which Frame to fetch.
      */
-    where: CabinetWhereUniqueInput
+    where: FrameWhereUniqueInput
   }
 
   /**
-   * Cabinet findFirst
+   * Frame findFirst
    */
-  export type CabinetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelect<ExtArgs> | null
+    select?: FrameSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetInclude<ExtArgs> | null
+    include?: FrameInclude<ExtArgs> | null
     /**
-     * Filter, which Cabinet to fetch.
+     * Filter, which Frame to fetch.
      */
-    where?: CabinetWhereInput
+    where?: FrameWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Cabinets to fetch.
+     * Determine the order of Frames to fetch.
      */
-    orderBy?: CabinetOrderByWithRelationInput | CabinetOrderByWithRelationInput[]
+    orderBy?: FrameOrderByWithRelationInput | FrameOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Cabinets.
+     * Sets the position for searching for Frames.
      */
-    cursor?: CabinetWhereUniqueInput
+    cursor?: FrameWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Cabinets from the position of the cursor.
+     * Take `±n` Frames from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Cabinets.
+     * Skip the first `n` Frames.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Cabinets.
+     * Filter by unique combinations of Frames.
      */
-    distinct?: CabinetScalarFieldEnum | CabinetScalarFieldEnum[]
+    distinct?: FrameScalarFieldEnum | FrameScalarFieldEnum[]
   }
 
   /**
-   * Cabinet findFirstOrThrow
+   * Frame findFirstOrThrow
    */
-  export type CabinetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelect<ExtArgs> | null
+    select?: FrameSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetInclude<ExtArgs> | null
+    include?: FrameInclude<ExtArgs> | null
     /**
-     * Filter, which Cabinet to fetch.
+     * Filter, which Frame to fetch.
      */
-    where?: CabinetWhereInput
+    where?: FrameWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Cabinets to fetch.
+     * Determine the order of Frames to fetch.
      */
-    orderBy?: CabinetOrderByWithRelationInput | CabinetOrderByWithRelationInput[]
+    orderBy?: FrameOrderByWithRelationInput | FrameOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Cabinets.
+     * Sets the position for searching for Frames.
      */
-    cursor?: CabinetWhereUniqueInput
+    cursor?: FrameWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Cabinets from the position of the cursor.
+     * Take `±n` Frames from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Cabinets.
+     * Skip the first `n` Frames.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Cabinets.
+     * Filter by unique combinations of Frames.
      */
-    distinct?: CabinetScalarFieldEnum | CabinetScalarFieldEnum[]
+    distinct?: FrameScalarFieldEnum | FrameScalarFieldEnum[]
   }
 
   /**
-   * Cabinet findMany
+   * Frame findMany
    */
-  export type CabinetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelect<ExtArgs> | null
+    select?: FrameSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetInclude<ExtArgs> | null
+    include?: FrameInclude<ExtArgs> | null
     /**
-     * Filter, which Cabinets to fetch.
+     * Filter, which Frames to fetch.
      */
-    where?: CabinetWhereInput
+    where?: FrameWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Cabinets to fetch.
+     * Determine the order of Frames to fetch.
      */
-    orderBy?: CabinetOrderByWithRelationInput | CabinetOrderByWithRelationInput[]
+    orderBy?: FrameOrderByWithRelationInput | FrameOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Cabinets.
+     * Sets the position for listing Frames.
      */
-    cursor?: CabinetWhereUniqueInput
+    cursor?: FrameWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Cabinets from the position of the cursor.
+     * Take `±n` Frames from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Cabinets.
+     * Skip the first `n` Frames.
      */
     skip?: number
-    distinct?: CabinetScalarFieldEnum | CabinetScalarFieldEnum[]
+    distinct?: FrameScalarFieldEnum | FrameScalarFieldEnum[]
   }
 
   /**
-   * Cabinet create
+   * Frame create
    */
-  export type CabinetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelect<ExtArgs> | null
+    select?: FrameSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetInclude<ExtArgs> | null
+    include?: FrameInclude<ExtArgs> | null
     /**
-     * The data needed to create a Cabinet.
+     * The data needed to create a Frame.
      */
-    data: XOR<CabinetCreateInput, CabinetUncheckedCreateInput>
+    data: XOR<FrameCreateInput, FrameUncheckedCreateInput>
   }
 
   /**
-   * Cabinet createMany
+   * Frame createMany
    */
-  export type CabinetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Cabinets.
+     * The data used to create many Frames.
      */
-    data: CabinetCreateManyInput | CabinetCreateManyInput[]
+    data: FrameCreateManyInput | FrameCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Cabinet createManyAndReturn
+   * Frame createManyAndReturn
    */
-  export type CabinetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelectCreateManyAndReturn<ExtArgs> | null
+    select?: FrameSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
-     * The data used to create many Cabinets.
+     * The data used to create many Frames.
      */
-    data: CabinetCreateManyInput | CabinetCreateManyInput[]
+    data: FrameCreateManyInput | FrameCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: FrameIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Cabinet update
+   * Frame update
    */
-  export type CabinetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelect<ExtArgs> | null
+    select?: FrameSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetInclude<ExtArgs> | null
+    include?: FrameInclude<ExtArgs> | null
     /**
-     * The data needed to update a Cabinet.
+     * The data needed to update a Frame.
      */
-    data: XOR<CabinetUpdateInput, CabinetUncheckedUpdateInput>
+    data: XOR<FrameUpdateInput, FrameUncheckedUpdateInput>
     /**
-     * Choose, which Cabinet to update.
+     * Choose, which Frame to update.
      */
-    where: CabinetWhereUniqueInput
+    where: FrameWhereUniqueInput
   }
 
   /**
-   * Cabinet updateMany
+   * Frame updateMany
    */
-  export type CabinetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Cabinets.
+     * The data used to update Frames.
      */
-    data: XOR<CabinetUpdateManyMutationInput, CabinetUncheckedUpdateManyInput>
+    data: XOR<FrameUpdateManyMutationInput, FrameUncheckedUpdateManyInput>
     /**
-     * Filter which Cabinets to update
+     * Filter which Frames to update
      */
-    where?: CabinetWhereInput
+    where?: FrameWhereInput
     /**
-     * Limit how many Cabinets to update.
+     * Limit how many Frames to update.
      */
     limit?: number
   }
 
   /**
-   * Cabinet updateManyAndReturn
+   * Frame updateManyAndReturn
    */
-  export type CabinetUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: FrameSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
-     * The data used to update Cabinets.
+     * The data used to update Frames.
      */
-    data: XOR<CabinetUpdateManyMutationInput, CabinetUncheckedUpdateManyInput>
+    data: XOR<FrameUpdateManyMutationInput, FrameUncheckedUpdateManyInput>
     /**
-     * Filter which Cabinets to update
+     * Filter which Frames to update
      */
-    where?: CabinetWhereInput
+    where?: FrameWhereInput
     /**
-     * Limit how many Cabinets to update.
+     * Limit how many Frames to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: FrameIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Cabinet upsert
+   * Frame upsert
    */
-  export type CabinetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelect<ExtArgs> | null
+    select?: FrameSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetInclude<ExtArgs> | null
+    include?: FrameInclude<ExtArgs> | null
     /**
-     * The filter to search for the Cabinet to update in case it exists.
+     * The filter to search for the Frame to update in case it exists.
      */
-    where: CabinetWhereUniqueInput
+    where: FrameWhereUniqueInput
     /**
-     * In case the Cabinet found by the `where` argument doesn't exist, create a new Cabinet with this data.
+     * In case the Frame found by the `where` argument doesn't exist, create a new Frame with this data.
      */
-    create: XOR<CabinetCreateInput, CabinetUncheckedCreateInput>
+    create: XOR<FrameCreateInput, FrameUncheckedCreateInput>
     /**
-     * In case the Cabinet was found with the provided `where` argument, update it with this data.
+     * In case the Frame was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<CabinetUpdateInput, CabinetUncheckedUpdateInput>
+    update: XOR<FrameUpdateInput, FrameUncheckedUpdateInput>
   }
 
   /**
-   * Cabinet delete
+   * Frame delete
    */
-  export type CabinetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelect<ExtArgs> | null
+    select?: FrameSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetInclude<ExtArgs> | null
+    include?: FrameInclude<ExtArgs> | null
     /**
-     * Filter which Cabinet to delete.
+     * Filter which Frame to delete.
      */
-    where: CabinetWhereUniqueInput
+    where: FrameWhereUniqueInput
   }
 
   /**
-   * Cabinet deleteMany
+   * Frame deleteMany
    */
-  export type CabinetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Cabinets to delete
+     * Filter which Frames to delete
      */
-    where?: CabinetWhereInput
+    where?: FrameWhereInput
     /**
-     * Limit how many Cabinets to delete.
+     * Limit how many Frames to delete.
      */
     limit?: number
   }
 
   /**
-   * Cabinet.layout
+   * Frame.layout
    */
-  export type Cabinet$layoutArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Frame$layoutArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
-    where?: CabinetLayoutWhereInput
+    include?: FrameLayoutInclude<ExtArgs> | null
+    where?: FrameLayoutWhereInput
   }
 
   /**
-   * Cabinet.chest
+   * Frame.chest
    */
-  export type Cabinet$chestArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Frame$chestArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Chest
      */
@@ -4158,9 +4158,9 @@ export namespace Prisma {
   }
 
   /**
-   * Cabinet.journal
+   * Frame.journal
    */
-  export type Cabinet$journalArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Frame$journalArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Journal
      */
@@ -4177,9 +4177,9 @@ export namespace Prisma {
   }
 
   /**
-   * Cabinet.polaroid
+   * Frame.polaroid
    */
-  export type Cabinet$polaroidArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Frame$polaroidArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Polaroid
      */
@@ -4201,9 +4201,9 @@ export namespace Prisma {
   }
 
   /**
-   * Cabinet.media
+   * Frame.media
    */
-  export type Cabinet$mediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Frame$mediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Media
      */
@@ -4225,9 +4225,9 @@ export namespace Prisma {
   }
 
   /**
-   * Cabinet.checklist
+   * Frame.checklist
    */
-  export type Cabinet$checklistArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Frame$checklistArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Checklist
      */
@@ -4249,9 +4249,9 @@ export namespace Prisma {
   }
 
   /**
-   * Cabinet.notes
+   * Frame.notes
    */
-  export type Cabinet$notesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Frame$notesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Note
      */
@@ -4273,9 +4273,9 @@ export namespace Prisma {
   }
 
   /**
-   * Cabinet.decorItems
+   * Frame.decorItems
    */
-  export type Cabinet$decorItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Frame$decorItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the DecorItem
      */
@@ -4297,403 +4297,403 @@ export namespace Prisma {
   }
 
   /**
-   * Cabinet without action
+   * Frame without action
    */
-  export type CabinetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Cabinet
+     * Select specific fields to fetch from the Frame
      */
-    select?: CabinetSelect<ExtArgs> | null
+    select?: FrameSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Cabinet
+     * Omit specific fields from the Frame
      */
-    omit?: CabinetOmit<ExtArgs> | null
+    omit?: FrameOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetInclude<ExtArgs> | null
+    include?: FrameInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model CabinetLayout
+   * Model FrameLayout
    */
 
-  export type AggregateCabinetLayout = {
-    _count: CabinetLayoutCountAggregateOutputType | null
-    _avg: CabinetLayoutAvgAggregateOutputType | null
-    _sum: CabinetLayoutSumAggregateOutputType | null
-    _min: CabinetLayoutMinAggregateOutputType | null
-    _max: CabinetLayoutMaxAggregateOutputType | null
+  export type AggregateFrameLayout = {
+    _count: FrameLayoutCountAggregateOutputType | null
+    _avg: FrameLayoutAvgAggregateOutputType | null
+    _sum: FrameLayoutSumAggregateOutputType | null
+    _min: FrameLayoutMinAggregateOutputType | null
+    _max: FrameLayoutMaxAggregateOutputType | null
   }
 
-  export type CabinetLayoutAvgAggregateOutputType = {
+  export type FrameLayoutAvgAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
-  export type CabinetLayoutSumAggregateOutputType = {
+  export type FrameLayoutSumAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
-  export type CabinetLayoutMinAggregateOutputType = {
+  export type FrameLayoutMinAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type CabinetLayoutMaxAggregateOutputType = {
+  export type FrameLayoutMaxAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type CabinetLayoutCountAggregateOutputType = {
+  export type FrameLayoutCountAggregateOutputType = {
     id: number
     layout: number
-    cabinetId: number
+    frameId: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
-  export type CabinetLayoutAvgAggregateInputType = {
+  export type FrameLayoutAvgAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
-  export type CabinetLayoutSumAggregateInputType = {
+  export type FrameLayoutSumAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
-  export type CabinetLayoutMinAggregateInputType = {
+  export type FrameLayoutMinAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type CabinetLayoutMaxAggregateInputType = {
+  export type FrameLayoutMaxAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type CabinetLayoutCountAggregateInputType = {
+  export type FrameLayoutCountAggregateInputType = {
     id?: true
     layout?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
   }
 
-  export type CabinetLayoutAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which CabinetLayout to aggregate.
+     * Filter which FrameLayout to aggregate.
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CabinetLayouts to fetch.
+     * Determine the order of FrameLayouts to fetch.
      */
-    orderBy?: CabinetLayoutOrderByWithRelationInput | CabinetLayoutOrderByWithRelationInput[]
+    orderBy?: FrameLayoutOrderByWithRelationInput | FrameLayoutOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CabinetLayoutWhereUniqueInput
+    cursor?: FrameLayoutWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CabinetLayouts from the position of the cursor.
+     * Take `±n` FrameLayouts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CabinetLayouts.
+     * Skip the first `n` FrameLayouts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned CabinetLayouts
+     * Count returned FrameLayouts
     **/
-    _count?: true | CabinetLayoutCountAggregateInputType
+    _count?: true | FrameLayoutCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: CabinetLayoutAvgAggregateInputType
+    _avg?: FrameLayoutAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: CabinetLayoutSumAggregateInputType
+    _sum?: FrameLayoutSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CabinetLayoutMinAggregateInputType
+    _min?: FrameLayoutMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CabinetLayoutMaxAggregateInputType
+    _max?: FrameLayoutMaxAggregateInputType
   }
 
-  export type GetCabinetLayoutAggregateType<T extends CabinetLayoutAggregateArgs> = {
-        [P in keyof T & keyof AggregateCabinetLayout]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCabinetLayout[P]>
-      : GetScalarType<T[P], AggregateCabinetLayout[P]>
+  export type GetFrameLayoutAggregateType<T extends FrameLayoutAggregateArgs> = {
+    [P in keyof T & keyof AggregateFrameLayout]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateFrameLayout[P]>
+    : GetScalarType<T[P], AggregateFrameLayout[P]>
   }
 
 
 
 
-  export type CabinetLayoutGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CabinetLayoutWhereInput
-    orderBy?: CabinetLayoutOrderByWithAggregationInput | CabinetLayoutOrderByWithAggregationInput[]
-    by: CabinetLayoutScalarFieldEnum[] | CabinetLayoutScalarFieldEnum
-    having?: CabinetLayoutScalarWhereWithAggregatesInput
+  export type FrameLayoutGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FrameLayoutWhereInput
+    orderBy?: FrameLayoutOrderByWithAggregationInput | FrameLayoutOrderByWithAggregationInput[]
+    by: FrameLayoutScalarFieldEnum[] | FrameLayoutScalarFieldEnum
+    having?: FrameLayoutScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CabinetLayoutCountAggregateInputType | true
-    _avg?: CabinetLayoutAvgAggregateInputType
-    _sum?: CabinetLayoutSumAggregateInputType
-    _min?: CabinetLayoutMinAggregateInputType
-    _max?: CabinetLayoutMaxAggregateInputType
+    _count?: FrameLayoutCountAggregateInputType | true
+    _avg?: FrameLayoutAvgAggregateInputType
+    _sum?: FrameLayoutSumAggregateInputType
+    _min?: FrameLayoutMinAggregateInputType
+    _max?: FrameLayoutMaxAggregateInputType
   }
 
-  export type CabinetLayoutGroupByOutputType = {
+  export type FrameLayoutGroupByOutputType = {
     id: number
     layout: JsonValue
-    cabinetId: number
+    frameId: number
     createdAt: Date
     updatedAt: Date
-    _count: CabinetLayoutCountAggregateOutputType | null
-    _avg: CabinetLayoutAvgAggregateOutputType | null
-    _sum: CabinetLayoutSumAggregateOutputType | null
-    _min: CabinetLayoutMinAggregateOutputType | null
-    _max: CabinetLayoutMaxAggregateOutputType | null
+    _count: FrameLayoutCountAggregateOutputType | null
+    _avg: FrameLayoutAvgAggregateOutputType | null
+    _sum: FrameLayoutSumAggregateOutputType | null
+    _min: FrameLayoutMinAggregateOutputType | null
+    _max: FrameLayoutMaxAggregateOutputType | null
   }
 
-  type GetCabinetLayoutGroupByPayload<T extends CabinetLayoutGroupByArgs> = Prisma.PrismaPromise<
+  type GetFrameLayoutGroupByPayload<T extends FrameLayoutGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CabinetLayoutGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CabinetLayoutGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CabinetLayoutGroupByOutputType[P]>
-            : GetScalarType<T[P], CabinetLayoutGroupByOutputType[P]>
-        }
-      >
+      PickEnumerable<FrameLayoutGroupByOutputType, T['by']> &
+      {
+        [P in ((keyof T) & (keyof FrameLayoutGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], FrameLayoutGroupByOutputType[P]>
+        : GetScalarType<T[P], FrameLayoutGroupByOutputType[P]>
+      }
     >
+  >
 
 
-  export type CabinetLayoutSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FrameLayoutSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     layout?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["cabinetLayout"]>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["frameLayout"]>
 
-  export type CabinetLayoutSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FrameLayoutSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     layout?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["cabinetLayout"]>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["frameLayout"]>
 
-  export type CabinetLayoutSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FrameLayoutSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     layout?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["cabinetLayout"]>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["frameLayout"]>
 
-  export type CabinetLayoutSelectScalar = {
+  export type FrameLayoutSelectScalar = {
     id?: boolean
     layout?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CabinetLayoutOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "layout" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["cabinetLayout"]>
-  export type CabinetLayoutInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+  export type FrameLayoutOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "layout" | "frameId" | "createdAt" | "updatedAt", ExtArgs["result"]["frameLayout"]>
+  export type FrameLayoutInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
-  export type CabinetLayoutIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+  export type FrameLayoutIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
-  export type CabinetLayoutIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+  export type FrameLayoutIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
 
-  export type $CabinetLayoutPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CabinetLayout"
+  export type $FrameLayoutPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FrameLayout"
     objects: {
-      cabinet: Prisma.$CabinetPayload<ExtArgs>
+      frame: Prisma.$FramePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       layout: Prisma.JsonValue
-      cabinetId: number
+      frameId: number
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["cabinetLayout"]>
+    }, ExtArgs["result"]["frameLayout"]>
     composites: {}
   }
 
-  type CabinetLayoutGetPayload<S extends boolean | null | undefined | CabinetLayoutDefaultArgs> = $Result.GetResult<Prisma.$CabinetLayoutPayload, S>
+  type FrameLayoutGetPayload<S extends boolean | null | undefined | FrameLayoutDefaultArgs> = $Result.GetResult<Prisma.$FrameLayoutPayload, S>
 
-  type CabinetLayoutCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CabinetLayoutFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CabinetLayoutCountAggregateInputType | true
+  type FrameLayoutCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FrameLayoutFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FrameLayoutCountAggregateInputType | true
     }
 
-  export interface CabinetLayoutDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CabinetLayout'], meta: { name: 'CabinetLayout' } }
+  export interface FrameLayoutDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FrameLayout'], meta: { name: 'FrameLayout' } }
     /**
-     * Find zero or one CabinetLayout that matches the filter.
-     * @param {CabinetLayoutFindUniqueArgs} args - Arguments to find a CabinetLayout
+     * Find zero or one FrameLayout that matches the filter.
+     * @param {FrameLayoutFindUniqueArgs} args - Arguments to find a FrameLayout
      * @example
-     * // Get one CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.findUnique({
+     * // Get one FrameLayout
+     * const frameLayout = await prisma.frameLayout.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CabinetLayoutFindUniqueArgs>(args: SelectSubset<T, CabinetLayoutFindUniqueArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends FrameLayoutFindUniqueArgs>(args: SelectSubset<T, FrameLayoutFindUniqueArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one CabinetLayout that matches the filter or throw an error with `error.code='P2025'`
+     * Find one FrameLayout that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {CabinetLayoutFindUniqueOrThrowArgs} args - Arguments to find a CabinetLayout
+     * @param {FrameLayoutFindUniqueOrThrowArgs} args - Arguments to find a FrameLayout
      * @example
-     * // Get one CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.findUniqueOrThrow({
+     * // Get one FrameLayout
+     * const frameLayout = await prisma.frameLayout.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CabinetLayoutFindUniqueOrThrowArgs>(args: SelectSubset<T, CabinetLayoutFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends FrameLayoutFindUniqueOrThrowArgs>(args: SelectSubset<T, FrameLayoutFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first CabinetLayout that matches the filter.
+     * Find the first FrameLayout that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutFindFirstArgs} args - Arguments to find a CabinetLayout
+     * @param {FrameLayoutFindFirstArgs} args - Arguments to find a FrameLayout
      * @example
-     * // Get one CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.findFirst({
+     * // Get one FrameLayout
+     * const frameLayout = await prisma.frameLayout.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CabinetLayoutFindFirstArgs>(args?: SelectSubset<T, CabinetLayoutFindFirstArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends FrameLayoutFindFirstArgs>(args?: SelectSubset<T, FrameLayoutFindFirstArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first CabinetLayout that matches the filter or
+     * Find the first FrameLayout that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutFindFirstOrThrowArgs} args - Arguments to find a CabinetLayout
+     * @param {FrameLayoutFindFirstOrThrowArgs} args - Arguments to find a FrameLayout
      * @example
-     * // Get one CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.findFirstOrThrow({
+     * // Get one FrameLayout
+     * const frameLayout = await prisma.frameLayout.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CabinetLayoutFindFirstOrThrowArgs>(args?: SelectSubset<T, CabinetLayoutFindFirstOrThrowArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends FrameLayoutFindFirstOrThrowArgs>(args?: SelectSubset<T, FrameLayoutFindFirstOrThrowArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more CabinetLayouts that matches the filter.
+     * Find zero or more FrameLayouts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {FrameLayoutFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all CabinetLayouts
-     * const cabinetLayouts = await prisma.cabinetLayout.findMany()
+     * // Get all FrameLayouts
+     * const frameLayouts = await prisma.frameLayout.findMany()
      * 
-     * // Get first 10 CabinetLayouts
-     * const cabinetLayouts = await prisma.cabinetLayout.findMany({ take: 10 })
+     * // Get first 10 FrameLayouts
+     * const frameLayouts = await prisma.frameLayout.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const cabinetLayoutWithIdOnly = await prisma.cabinetLayout.findMany({ select: { id: true } })
+     * const frameLayoutWithIdOnly = await prisma.frameLayout.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CabinetLayoutFindManyArgs>(args?: SelectSubset<T, CabinetLayoutFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends FrameLayoutFindManyArgs>(args?: SelectSubset<T, FrameLayoutFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a CabinetLayout.
-     * @param {CabinetLayoutCreateArgs} args - Arguments to create a CabinetLayout.
+     * Create a FrameLayout.
+     * @param {FrameLayoutCreateArgs} args - Arguments to create a FrameLayout.
      * @example
-     * // Create one CabinetLayout
-     * const CabinetLayout = await prisma.cabinetLayout.create({
+     * // Create one FrameLayout
+     * const FrameLayout = await prisma.frameLayout.create({
      *   data: {
-     *     // ... data to create a CabinetLayout
+     *     // ... data to create a FrameLayout
      *   }
      * })
      * 
      */
-    create<T extends CabinetLayoutCreateArgs>(args: SelectSubset<T, CabinetLayoutCreateArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends FrameLayoutCreateArgs>(args: SelectSubset<T, FrameLayoutCreateArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many CabinetLayouts.
-     * @param {CabinetLayoutCreateManyArgs} args - Arguments to create many CabinetLayouts.
+     * Create many FrameLayouts.
+     * @param {FrameLayoutCreateManyArgs} args - Arguments to create many FrameLayouts.
      * @example
-     * // Create many CabinetLayouts
-     * const cabinetLayout = await prisma.cabinetLayout.createMany({
+     * // Create many FrameLayouts
+     * const frameLayout = await prisma.frameLayout.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends CabinetLayoutCreateManyArgs>(args?: SelectSubset<T, CabinetLayoutCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends FrameLayoutCreateManyArgs>(args?: SelectSubset<T, FrameLayoutCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many CabinetLayouts and returns the data saved in the database.
-     * @param {CabinetLayoutCreateManyAndReturnArgs} args - Arguments to create many CabinetLayouts.
+     * Create many FrameLayouts and returns the data saved in the database.
+     * @param {FrameLayoutCreateManyAndReturnArgs} args - Arguments to create many FrameLayouts.
      * @example
-     * // Create many CabinetLayouts
-     * const cabinetLayout = await prisma.cabinetLayout.createManyAndReturn({
+     * // Create many FrameLayouts
+     * const frameLayout = await prisma.frameLayout.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many CabinetLayouts and only return the `id`
-     * const cabinetLayoutWithIdOnly = await prisma.cabinetLayout.createManyAndReturn({
+     * // Create many FrameLayouts and only return the `id`
+     * const frameLayoutWithIdOnly = await prisma.frameLayout.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -4703,28 +4703,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CabinetLayoutCreateManyAndReturnArgs>(args?: SelectSubset<T, CabinetLayoutCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends FrameLayoutCreateManyAndReturnArgs>(args?: SelectSubset<T, FrameLayoutCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a CabinetLayout.
-     * @param {CabinetLayoutDeleteArgs} args - Arguments to delete one CabinetLayout.
+     * Delete a FrameLayout.
+     * @param {FrameLayoutDeleteArgs} args - Arguments to delete one FrameLayout.
      * @example
-     * // Delete one CabinetLayout
-     * const CabinetLayout = await prisma.cabinetLayout.delete({
+     * // Delete one FrameLayout
+     * const FrameLayout = await prisma.frameLayout.delete({
      *   where: {
-     *     // ... filter to delete one CabinetLayout
+     *     // ... filter to delete one FrameLayout
      *   }
      * })
      * 
      */
-    delete<T extends CabinetLayoutDeleteArgs>(args: SelectSubset<T, CabinetLayoutDeleteArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends FrameLayoutDeleteArgs>(args: SelectSubset<T, FrameLayoutDeleteArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one CabinetLayout.
-     * @param {CabinetLayoutUpdateArgs} args - Arguments to update one CabinetLayout.
+     * Update one FrameLayout.
+     * @param {FrameLayoutUpdateArgs} args - Arguments to update one FrameLayout.
      * @example
-     * // Update one CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.update({
+     * // Update one FrameLayout
+     * const frameLayout = await prisma.frameLayout.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4734,30 +4734,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CabinetLayoutUpdateArgs>(args: SelectSubset<T, CabinetLayoutUpdateArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends FrameLayoutUpdateArgs>(args: SelectSubset<T, FrameLayoutUpdateArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more CabinetLayouts.
-     * @param {CabinetLayoutDeleteManyArgs} args - Arguments to filter CabinetLayouts to delete.
+     * Delete zero or more FrameLayouts.
+     * @param {FrameLayoutDeleteManyArgs} args - Arguments to filter FrameLayouts to delete.
      * @example
-     * // Delete a few CabinetLayouts
-     * const { count } = await prisma.cabinetLayout.deleteMany({
+     * // Delete a few FrameLayouts
+     * const { count } = await prisma.frameLayout.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends CabinetLayoutDeleteManyArgs>(args?: SelectSubset<T, CabinetLayoutDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends FrameLayoutDeleteManyArgs>(args?: SelectSubset<T, FrameLayoutDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more CabinetLayouts.
+     * Update zero or more FrameLayouts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {FrameLayoutUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many CabinetLayouts
-     * const cabinetLayout = await prisma.cabinetLayout.updateMany({
+     * // Update many FrameLayouts
+     * const frameLayout = await prisma.frameLayout.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4767,14 +4767,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends CabinetLayoutUpdateManyArgs>(args: SelectSubset<T, CabinetLayoutUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends FrameLayoutUpdateManyArgs>(args: SelectSubset<T, FrameLayoutUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more CabinetLayouts and returns the data updated in the database.
-     * @param {CabinetLayoutUpdateManyAndReturnArgs} args - Arguments to update many CabinetLayouts.
+     * Update zero or more FrameLayouts and returns the data updated in the database.
+     * @param {FrameLayoutUpdateManyAndReturnArgs} args - Arguments to update many FrameLayouts.
      * @example
-     * // Update many CabinetLayouts
-     * const cabinetLayout = await prisma.cabinetLayout.updateManyAndReturn({
+     * // Update many FrameLayouts
+     * const frameLayout = await prisma.frameLayout.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4783,8 +4783,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more CabinetLayouts and only return the `id`
-     * const cabinetLayoutWithIdOnly = await prisma.cabinetLayout.updateManyAndReturn({
+     * // Update zero or more FrameLayouts and only return the `id`
+     * const frameLayoutWithIdOnly = await prisma.frameLayout.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -4797,56 +4797,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends CabinetLayoutUpdateManyAndReturnArgs>(args: SelectSubset<T, CabinetLayoutUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends FrameLayoutUpdateManyAndReturnArgs>(args: SelectSubset<T, FrameLayoutUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one CabinetLayout.
-     * @param {CabinetLayoutUpsertArgs} args - Arguments to update or create a CabinetLayout.
+     * Create or update one FrameLayout.
+     * @param {FrameLayoutUpsertArgs} args - Arguments to update or create a FrameLayout.
      * @example
-     * // Update or create a CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.upsert({
+     * // Update or create a FrameLayout
+     * const frameLayout = await prisma.frameLayout.upsert({
      *   create: {
-     *     // ... data to create a CabinetLayout
+     *     // ... data to create a FrameLayout
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the CabinetLayout we want to update
+     *     // ... the filter for the FrameLayout we want to update
      *   }
      * })
      */
-    upsert<T extends CabinetLayoutUpsertArgs>(args: SelectSubset<T, CabinetLayoutUpsertArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends FrameLayoutUpsertArgs>(args: SelectSubset<T, FrameLayoutUpsertArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of CabinetLayouts.
+     * Count the number of FrameLayouts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutCountArgs} args - Arguments to filter CabinetLayouts to count.
+     * @param {FrameLayoutCountArgs} args - Arguments to filter FrameLayouts to count.
      * @example
-     * // Count the number of CabinetLayouts
-     * const count = await prisma.cabinetLayout.count({
+     * // Count the number of FrameLayouts
+     * const count = await prisma.frameLayout.count({
      *   where: {
-     *     // ... the filter for the CabinetLayouts we want to count
+     *     // ... the filter for the FrameLayouts we want to count
      *   }
      * })
     **/
-    count<T extends CabinetLayoutCountArgs>(
-      args?: Subset<T, CabinetLayoutCountArgs>,
+    count<T extends FrameLayoutCountArgs>(
+      args?: Subset<T, FrameLayoutCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CabinetLayoutCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], FrameLayoutCountAggregateOutputType>
+      : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a CabinetLayout.
+     * Allows you to perform aggregations operations on a FrameLayout.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {FrameLayoutAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -4866,13 +4866,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CabinetLayoutAggregateArgs>(args: Subset<T, CabinetLayoutAggregateArgs>): Prisma.PrismaPromise<GetCabinetLayoutAggregateType<T>>
+    aggregate<T extends FrameLayoutAggregateArgs>(args: Subset<T, FrameLayoutAggregateArgs>): Prisma.PrismaPromise<GetFrameLayoutAggregateType<T>>
 
     /**
-     * Group by CabinetLayout.
+     * Group by FrameLayout.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutGroupByArgs} args - Group by arguments.
+     * @param {FrameLayoutGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -4887,14 +4887,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CabinetLayoutGroupByArgs,
+      T extends FrameLayoutGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CabinetLayoutGroupByArgs['orderBy'] }
-        : { orderBy?: CabinetLayoutGroupByArgs['orderBy'] },
+      ? { orderBy: FrameLayoutGroupByArgs['orderBy'] }
+      : { orderBy?: FrameLayoutGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4905,60 +4905,60 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, CabinetLayoutGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCabinetLayoutGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the CabinetLayout model
-   */
-  readonly fields: CabinetLayoutFieldRefs;
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+    >(args: SubsetIntersection<T, FrameLayoutGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFrameLayoutGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    /**
+     * Fields of the FrameLayout model
+     */
+    readonly fields: FrameLayoutFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for CabinetLayout.
+   * The delegate class that acts as a "Promise-like" for FrameLayout.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CabinetLayoutClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__FrameLayoutClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cabinet<T extends CabinetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CabinetDefaultArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    frame<T extends FrameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FrameDefaultArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4985,425 +4985,425 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the CabinetLayout model
+   * Fields of the FrameLayout model
    */
-  interface CabinetLayoutFieldRefs {
-    readonly id: FieldRef<"CabinetLayout", 'Int'>
-    readonly layout: FieldRef<"CabinetLayout", 'Json'>
-    readonly cabinetId: FieldRef<"CabinetLayout", 'Int'>
-    readonly createdAt: FieldRef<"CabinetLayout", 'DateTime'>
-    readonly updatedAt: FieldRef<"CabinetLayout", 'DateTime'>
+  interface FrameLayoutFieldRefs {
+    readonly id: FieldRef<"FrameLayout", 'Int'>
+    readonly layout: FieldRef<"FrameLayout", 'Json'>
+    readonly frameId: FieldRef<"FrameLayout", 'Int'>
+    readonly createdAt: FieldRef<"FrameLayout", 'DateTime'>
+    readonly updatedAt: FieldRef<"FrameLayout", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
-   * CabinetLayout findUnique
+   * FrameLayout findUnique
    */
-  export type CabinetLayoutFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter, which CabinetLayout to fetch.
+     * Filter, which FrameLayout to fetch.
      */
-    where: CabinetLayoutWhereUniqueInput
+    where: FrameLayoutWhereUniqueInput
   }
 
   /**
-   * CabinetLayout findUniqueOrThrow
+   * FrameLayout findUniqueOrThrow
    */
-  export type CabinetLayoutFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter, which CabinetLayout to fetch.
+     * Filter, which FrameLayout to fetch.
      */
-    where: CabinetLayoutWhereUniqueInput
+    where: FrameLayoutWhereUniqueInput
   }
 
   /**
-   * CabinetLayout findFirst
+   * FrameLayout findFirst
    */
-  export type CabinetLayoutFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter, which CabinetLayout to fetch.
+     * Filter, which FrameLayout to fetch.
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CabinetLayouts to fetch.
+     * Determine the order of FrameLayouts to fetch.
      */
-    orderBy?: CabinetLayoutOrderByWithRelationInput | CabinetLayoutOrderByWithRelationInput[]
+    orderBy?: FrameLayoutOrderByWithRelationInput | FrameLayoutOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for CabinetLayouts.
+     * Sets the position for searching for FrameLayouts.
      */
-    cursor?: CabinetLayoutWhereUniqueInput
+    cursor?: FrameLayoutWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CabinetLayouts from the position of the cursor.
+     * Take `±n` FrameLayouts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CabinetLayouts.
+     * Skip the first `n` FrameLayouts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of CabinetLayouts.
+     * Filter by unique combinations of FrameLayouts.
      */
-    distinct?: CabinetLayoutScalarFieldEnum | CabinetLayoutScalarFieldEnum[]
+    distinct?: FrameLayoutScalarFieldEnum | FrameLayoutScalarFieldEnum[]
   }
 
   /**
-   * CabinetLayout findFirstOrThrow
+   * FrameLayout findFirstOrThrow
    */
-  export type CabinetLayoutFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter, which CabinetLayout to fetch.
+     * Filter, which FrameLayout to fetch.
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CabinetLayouts to fetch.
+     * Determine the order of FrameLayouts to fetch.
      */
-    orderBy?: CabinetLayoutOrderByWithRelationInput | CabinetLayoutOrderByWithRelationInput[]
+    orderBy?: FrameLayoutOrderByWithRelationInput | FrameLayoutOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for CabinetLayouts.
+     * Sets the position for searching for FrameLayouts.
      */
-    cursor?: CabinetLayoutWhereUniqueInput
+    cursor?: FrameLayoutWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CabinetLayouts from the position of the cursor.
+     * Take `±n` FrameLayouts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CabinetLayouts.
+     * Skip the first `n` FrameLayouts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of CabinetLayouts.
+     * Filter by unique combinations of FrameLayouts.
      */
-    distinct?: CabinetLayoutScalarFieldEnum | CabinetLayoutScalarFieldEnum[]
+    distinct?: FrameLayoutScalarFieldEnum | FrameLayoutScalarFieldEnum[]
   }
 
   /**
-   * CabinetLayout findMany
+   * FrameLayout findMany
    */
-  export type CabinetLayoutFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter, which CabinetLayouts to fetch.
+     * Filter, which FrameLayouts to fetch.
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CabinetLayouts to fetch.
+     * Determine the order of FrameLayouts to fetch.
      */
-    orderBy?: CabinetLayoutOrderByWithRelationInput | CabinetLayoutOrderByWithRelationInput[]
+    orderBy?: FrameLayoutOrderByWithRelationInput | FrameLayoutOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing CabinetLayouts.
+     * Sets the position for listing FrameLayouts.
      */
-    cursor?: CabinetLayoutWhereUniqueInput
+    cursor?: FrameLayoutWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CabinetLayouts from the position of the cursor.
+     * Take `±n` FrameLayouts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CabinetLayouts.
+     * Skip the first `n` FrameLayouts.
      */
     skip?: number
-    distinct?: CabinetLayoutScalarFieldEnum | CabinetLayoutScalarFieldEnum[]
+    distinct?: FrameLayoutScalarFieldEnum | FrameLayoutScalarFieldEnum[]
   }
 
   /**
-   * CabinetLayout create
+   * FrameLayout create
    */
-  export type CabinetLayoutCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * The data needed to create a CabinetLayout.
+     * The data needed to create a FrameLayout.
      */
-    data: XOR<CabinetLayoutCreateInput, CabinetLayoutUncheckedCreateInput>
+    data: XOR<FrameLayoutCreateInput, FrameLayoutUncheckedCreateInput>
   }
 
   /**
-   * CabinetLayout createMany
+   * FrameLayout createMany
    */
-  export type CabinetLayoutCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many CabinetLayouts.
+     * The data used to create many FrameLayouts.
      */
-    data: CabinetLayoutCreateManyInput | CabinetLayoutCreateManyInput[]
+    data: FrameLayoutCreateManyInput | FrameLayoutCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * CabinetLayout createManyAndReturn
+   * FrameLayout createManyAndReturn
    */
-  export type CabinetLayoutCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelectCreateManyAndReturn<ExtArgs> | null
+    select?: FrameLayoutSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
-     * The data used to create many CabinetLayouts.
+     * The data used to create many FrameLayouts.
      */
-    data: CabinetLayoutCreateManyInput | CabinetLayoutCreateManyInput[]
+    data: FrameLayoutCreateManyInput | FrameLayoutCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: FrameLayoutIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * CabinetLayout update
+   * FrameLayout update
    */
-  export type CabinetLayoutUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * The data needed to update a CabinetLayout.
+     * The data needed to update a FrameLayout.
      */
-    data: XOR<CabinetLayoutUpdateInput, CabinetLayoutUncheckedUpdateInput>
+    data: XOR<FrameLayoutUpdateInput, FrameLayoutUncheckedUpdateInput>
     /**
-     * Choose, which CabinetLayout to update.
+     * Choose, which FrameLayout to update.
      */
-    where: CabinetLayoutWhereUniqueInput
+    where: FrameLayoutWhereUniqueInput
   }
 
   /**
-   * CabinetLayout updateMany
+   * FrameLayout updateMany
    */
-  export type CabinetLayoutUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update CabinetLayouts.
+     * The data used to update FrameLayouts.
      */
-    data: XOR<CabinetLayoutUpdateManyMutationInput, CabinetLayoutUncheckedUpdateManyInput>
+    data: XOR<FrameLayoutUpdateManyMutationInput, FrameLayoutUncheckedUpdateManyInput>
     /**
-     * Filter which CabinetLayouts to update
+     * Filter which FrameLayouts to update
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
-     * Limit how many CabinetLayouts to update.
+     * Limit how many FrameLayouts to update.
      */
     limit?: number
   }
 
   /**
-   * CabinetLayout updateManyAndReturn
+   * FrameLayout updateManyAndReturn
    */
-  export type CabinetLayoutUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: FrameLayoutSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
-     * The data used to update CabinetLayouts.
+     * The data used to update FrameLayouts.
      */
-    data: XOR<CabinetLayoutUpdateManyMutationInput, CabinetLayoutUncheckedUpdateManyInput>
+    data: XOR<FrameLayoutUpdateManyMutationInput, FrameLayoutUncheckedUpdateManyInput>
     /**
-     * Filter which CabinetLayouts to update
+     * Filter which FrameLayouts to update
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
-     * Limit how many CabinetLayouts to update.
+     * Limit how many FrameLayouts to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: FrameLayoutIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * CabinetLayout upsert
+   * FrameLayout upsert
    */
-  export type CabinetLayoutUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * The filter to search for the CabinetLayout to update in case it exists.
+     * The filter to search for the FrameLayout to update in case it exists.
      */
-    where: CabinetLayoutWhereUniqueInput
+    where: FrameLayoutWhereUniqueInput
     /**
-     * In case the CabinetLayout found by the `where` argument doesn't exist, create a new CabinetLayout with this data.
+     * In case the FrameLayout found by the `where` argument doesn't exist, create a new FrameLayout with this data.
      */
-    create: XOR<CabinetLayoutCreateInput, CabinetLayoutUncheckedCreateInput>
+    create: XOR<FrameLayoutCreateInput, FrameLayoutUncheckedCreateInput>
     /**
-     * In case the CabinetLayout was found with the provided `where` argument, update it with this data.
+     * In case the FrameLayout was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<CabinetLayoutUpdateInput, CabinetLayoutUncheckedUpdateInput>
+    update: XOR<FrameLayoutUpdateInput, FrameLayoutUncheckedUpdateInput>
   }
 
   /**
-   * CabinetLayout delete
+   * FrameLayout delete
    */
-  export type CabinetLayoutDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter which CabinetLayout to delete.
+     * Filter which FrameLayout to delete.
      */
-    where: CabinetLayoutWhereUniqueInput
+    where: FrameLayoutWhereUniqueInput
   }
 
   /**
-   * CabinetLayout deleteMany
+   * FrameLayout deleteMany
    */
-  export type CabinetLayoutDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which CabinetLayouts to delete
+     * Filter which FrameLayouts to delete
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
-     * Limit how many CabinetLayouts to delete.
+     * Limit how many FrameLayouts to delete.
      */
     limit?: number
   }
 
   /**
-   * CabinetLayout without action
+   * FrameLayout without action
    */
-  export type CabinetLayoutDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
   }
 
 
@@ -5421,18 +5421,18 @@ export namespace Prisma {
 
   export type ChestAvgAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type ChestSumAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type ChestMinAggregateOutputType = {
     id: number | null
     passcode: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5440,7 +5440,7 @@ export namespace Prisma {
   export type ChestMaxAggregateOutputType = {
     id: number | null
     passcode: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5450,7 +5450,7 @@ export namespace Prisma {
     passcode: number
     position: number
     items: number
-    cabinetId: number
+    frameId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -5459,18 +5459,18 @@ export namespace Prisma {
 
   export type ChestAvgAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type ChestSumAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type ChestMinAggregateInputType = {
     id?: true
     passcode?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5478,7 +5478,7 @@ export namespace Prisma {
   export type ChestMaxAggregateInputType = {
     id?: true
     passcode?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5488,7 +5488,7 @@ export namespace Prisma {
     passcode?: true
     position?: true
     items?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5556,11 +5556,11 @@ export namespace Prisma {
   }
 
   export type GetChestAggregateType<T extends ChestAggregateArgs> = {
-        [P in keyof T & keyof AggregateChest]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateChest[P]>
-      : GetScalarType<T[P], AggregateChest[P]>
+    [P in keyof T & keyof AggregateChest]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateChest[P]>
+    : GetScalarType<T[P], AggregateChest[P]>
   }
 
 
@@ -5585,7 +5585,7 @@ export namespace Prisma {
     passcode: string
     position: JsonValue | null
     items: JsonValue | null
-    cabinetId: number
+    frameId: number
     createdAt: Date
     updatedAt: Date
     _count: ChestCountAggregateOutputType | null
@@ -5598,15 +5598,15 @@ export namespace Prisma {
   type GetChestGroupByPayload<T extends ChestGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<ChestGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ChestGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ChestGroupByOutputType[P]>
-            : GetScalarType<T[P], ChestGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof ChestGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], ChestGroupByOutputType[P]>
+        : GetScalarType<T[P], ChestGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type ChestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5614,10 +5614,10 @@ export namespace Prisma {
     passcode?: boolean
     position?: boolean
     items?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chest"]>
 
   export type ChestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5625,10 +5625,10 @@ export namespace Prisma {
     passcode?: boolean
     position?: boolean
     items?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chest"]>
 
   export type ChestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5636,10 +5636,10 @@ export namespace Prisma {
     passcode?: boolean
     position?: boolean
     items?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chest"]>
 
   export type ChestSelectScalar = {
@@ -5647,33 +5647,33 @@ export namespace Prisma {
     passcode?: boolean
     position?: boolean
     items?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ChestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "passcode" | "position" | "items" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["chest"]>
+  export type ChestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "passcode" | "position" | "items" | "frameId" | "createdAt" | "updatedAt", ExtArgs["result"]["chest"]>
   export type ChestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type ChestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type ChestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
 
   export type $ChestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Chest"
     objects: {
-      cabinet: Prisma.$CabinetPayload<ExtArgs>
+      frame: Prisma.$FramePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       passcode: string
       position: Prisma.JsonValue | null
       items: Prisma.JsonValue | null
-      cabinetId: number
+      frameId: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["chest"]>
@@ -5948,10 +5948,10 @@ export namespace Prisma {
       args?: Subset<T, ChestCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ChestCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], ChestCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -6005,8 +6005,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ChestGroupByArgs['orderBy'] }
-        : { orderBy?: ChestGroupByArgs['orderBy'] },
+      ? { orderBy: ChestGroupByArgs['orderBy'] }
+      : { orderBy?: ChestGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6017,49 +6017,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, ChestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Chest model
-   */
-  readonly fields: ChestFieldRefs;
+    /**
+     * Fields of the Chest model
+     */
+    readonly fields: ChestFieldRefs;
   }
 
   /**
@@ -6070,7 +6070,7 @@ export namespace Prisma {
    */
   export interface Prisma__ChestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cabinet<T extends CabinetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CabinetDefaultArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    frame<T extends FrameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FrameDefaultArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6104,11 +6104,11 @@ export namespace Prisma {
     readonly passcode: FieldRef<"Chest", 'String'>
     readonly position: FieldRef<"Chest", 'Json'>
     readonly items: FieldRef<"Chest", 'Json'>
-    readonly cabinetId: FieldRef<"Chest", 'Int'>
+    readonly frameId: FieldRef<"Chest", 'Int'>
     readonly createdAt: FieldRef<"Chest", 'DateTime'>
     readonly updatedAt: FieldRef<"Chest", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -6535,18 +6535,18 @@ export namespace Prisma {
 
   export type JournalAvgAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type JournalSumAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type JournalMinAggregateOutputType = {
     id: number | null
     passcode: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6554,7 +6554,7 @@ export namespace Prisma {
   export type JournalMaxAggregateOutputType = {
     id: number | null
     passcode: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6564,7 +6564,7 @@ export namespace Prisma {
     passcode: number
     position: number
     entries: number
-    cabinetId: number
+    frameId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -6573,18 +6573,18 @@ export namespace Prisma {
 
   export type JournalAvgAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type JournalSumAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type JournalMinAggregateInputType = {
     id?: true
     passcode?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6592,7 +6592,7 @@ export namespace Prisma {
   export type JournalMaxAggregateInputType = {
     id?: true
     passcode?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6602,7 +6602,7 @@ export namespace Prisma {
     passcode?: true
     position?: true
     entries?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -6670,11 +6670,11 @@ export namespace Prisma {
   }
 
   export type GetJournalAggregateType<T extends JournalAggregateArgs> = {
-        [P in keyof T & keyof AggregateJournal]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateJournal[P]>
-      : GetScalarType<T[P], AggregateJournal[P]>
+    [P in keyof T & keyof AggregateJournal]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateJournal[P]>
+    : GetScalarType<T[P], AggregateJournal[P]>
   }
 
 
@@ -6699,7 +6699,7 @@ export namespace Prisma {
     passcode: string
     position: JsonValue | null
     entries: JsonValue
-    cabinetId: number
+    frameId: number
     createdAt: Date
     updatedAt: Date
     _count: JournalCountAggregateOutputType | null
@@ -6712,15 +6712,15 @@ export namespace Prisma {
   type GetJournalGroupByPayload<T extends JournalGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<JournalGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof JournalGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], JournalGroupByOutputType[P]>
-            : GetScalarType<T[P], JournalGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof JournalGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], JournalGroupByOutputType[P]>
+        : GetScalarType<T[P], JournalGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type JournalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6728,10 +6728,10 @@ export namespace Prisma {
     passcode?: boolean
     position?: boolean
     entries?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["journal"]>
 
   export type JournalSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6739,10 +6739,10 @@ export namespace Prisma {
     passcode?: boolean
     position?: boolean
     entries?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["journal"]>
 
   export type JournalSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6750,10 +6750,10 @@ export namespace Prisma {
     passcode?: boolean
     position?: boolean
     entries?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["journal"]>
 
   export type JournalSelectScalar = {
@@ -6761,33 +6761,33 @@ export namespace Prisma {
     passcode?: boolean
     position?: boolean
     entries?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type JournalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "passcode" | "position" | "entries" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["journal"]>
+  export type JournalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "passcode" | "position" | "entries" | "frameId" | "createdAt" | "updatedAt", ExtArgs["result"]["journal"]>
   export type JournalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type JournalIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type JournalIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
 
   export type $JournalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Journal"
     objects: {
-      cabinet: Prisma.$CabinetPayload<ExtArgs>
+      frame: Prisma.$FramePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       passcode: string
       position: Prisma.JsonValue | null
       entries: Prisma.JsonValue
-      cabinetId: number
+      frameId: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["journal"]>
@@ -7062,10 +7062,10 @@ export namespace Prisma {
       args?: Subset<T, JournalCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], JournalCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], JournalCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -7119,8 +7119,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: JournalGroupByArgs['orderBy'] }
-        : { orderBy?: JournalGroupByArgs['orderBy'] },
+      ? { orderBy: JournalGroupByArgs['orderBy'] }
+      : { orderBy?: JournalGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -7131,49 +7131,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, JournalGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetJournalGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Journal model
-   */
-  readonly fields: JournalFieldRefs;
+    /**
+     * Fields of the Journal model
+     */
+    readonly fields: JournalFieldRefs;
   }
 
   /**
@@ -7184,7 +7184,7 @@ export namespace Prisma {
    */
   export interface Prisma__JournalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cabinet<T extends CabinetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CabinetDefaultArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    frame<T extends FrameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FrameDefaultArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7218,11 +7218,11 @@ export namespace Prisma {
     readonly passcode: FieldRef<"Journal", 'String'>
     readonly position: FieldRef<"Journal", 'Json'>
     readonly entries: FieldRef<"Journal", 'Json'>
-    readonly cabinetId: FieldRef<"Journal", 'Int'>
+    readonly frameId: FieldRef<"Journal", 'Int'>
     readonly createdAt: FieldRef<"Journal", 'DateTime'>
     readonly updatedAt: FieldRef<"Journal", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -7649,19 +7649,19 @@ export namespace Prisma {
 
   export type PolaroidAvgAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type PolaroidSumAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type PolaroidMinAggregateOutputType = {
     id: number | null
     url: string | null
     caption: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7670,7 +7670,7 @@ export namespace Prisma {
     id: number | null
     url: string | null
     caption: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7680,7 +7680,7 @@ export namespace Prisma {
     position: number
     url: number
     caption: number
-    cabinetId: number
+    frameId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -7689,19 +7689,19 @@ export namespace Prisma {
 
   export type PolaroidAvgAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type PolaroidSumAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type PolaroidMinAggregateInputType = {
     id?: true
     url?: true
     caption?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7710,7 +7710,7 @@ export namespace Prisma {
     id?: true
     url?: true
     caption?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7720,7 +7720,7 @@ export namespace Prisma {
     position?: true
     url?: true
     caption?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -7788,11 +7788,11 @@ export namespace Prisma {
   }
 
   export type GetPolaroidAggregateType<T extends PolaroidAggregateArgs> = {
-        [P in keyof T & keyof AggregatePolaroid]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePolaroid[P]>
-      : GetScalarType<T[P], AggregatePolaroid[P]>
+    [P in keyof T & keyof AggregatePolaroid]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregatePolaroid[P]>
+    : GetScalarType<T[P], AggregatePolaroid[P]>
   }
 
 
@@ -7817,7 +7817,7 @@ export namespace Prisma {
     position: JsonValue | null
     url: string
     caption: string | null
-    cabinetId: number
+    frameId: number
     createdAt: Date
     updatedAt: Date
     _count: PolaroidCountAggregateOutputType | null
@@ -7830,15 +7830,15 @@ export namespace Prisma {
   type GetPolaroidGroupByPayload<T extends PolaroidGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<PolaroidGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof PolaroidGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
-            : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof PolaroidGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
+        : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type PolaroidSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7846,10 +7846,10 @@ export namespace Prisma {
     position?: boolean
     url?: boolean
     caption?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["polaroid"]>
 
   export type PolaroidSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7857,10 +7857,10 @@ export namespace Prisma {
     position?: boolean
     url?: boolean
     caption?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["polaroid"]>
 
   export type PolaroidSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7868,10 +7868,10 @@ export namespace Prisma {
     position?: boolean
     url?: boolean
     caption?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["polaroid"]>
 
   export type PolaroidSelectScalar = {
@@ -7879,33 +7879,33 @@ export namespace Prisma {
     position?: boolean
     url?: boolean
     caption?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PolaroidOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "url" | "caption" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["polaroid"]>
+  export type PolaroidOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "url" | "caption" | "frameId" | "createdAt" | "updatedAt", ExtArgs["result"]["polaroid"]>
   export type PolaroidInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type PolaroidIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type PolaroidIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
 
   export type $PolaroidPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Polaroid"
     objects: {
-      cabinet: Prisma.$CabinetPayload<ExtArgs>
+      frame: Prisma.$FramePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       position: Prisma.JsonValue | null
       url: string
       caption: string | null
-      cabinetId: number
+      frameId: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["polaroid"]>
@@ -8180,10 +8180,10 @@ export namespace Prisma {
       args?: Subset<T, PolaroidCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], PolaroidCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], PolaroidCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -8237,8 +8237,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PolaroidGroupByArgs['orderBy'] }
-        : { orderBy?: PolaroidGroupByArgs['orderBy'] },
+      ? { orderBy: PolaroidGroupByArgs['orderBy'] }
+      : { orderBy?: PolaroidGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -8249,49 +8249,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, PolaroidGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPolaroidGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Polaroid model
-   */
-  readonly fields: PolaroidFieldRefs;
+    /**
+     * Fields of the Polaroid model
+     */
+    readonly fields: PolaroidFieldRefs;
   }
 
   /**
@@ -8302,7 +8302,7 @@ export namespace Prisma {
    */
   export interface Prisma__PolaroidClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cabinet<T extends CabinetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CabinetDefaultArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    frame<T extends FrameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FrameDefaultArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8336,11 +8336,11 @@ export namespace Prisma {
     readonly position: FieldRef<"Polaroid", 'Json'>
     readonly url: FieldRef<"Polaroid", 'String'>
     readonly caption: FieldRef<"Polaroid", 'String'>
-    readonly cabinetId: FieldRef<"Polaroid", 'Int'>
+    readonly frameId: FieldRef<"Polaroid", 'Int'>
     readonly createdAt: FieldRef<"Polaroid", 'DateTime'>
     readonly updatedAt: FieldRef<"Polaroid", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -8767,19 +8767,19 @@ export namespace Prisma {
 
   export type MediaAvgAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type MediaSumAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type MediaMinAggregateOutputType = {
     id: number | null
     type: string | null
     url: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -8788,7 +8788,7 @@ export namespace Prisma {
     id: number | null
     type: string | null
     url: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -8798,7 +8798,7 @@ export namespace Prisma {
     position: number
     type: number
     url: number
-    cabinetId: number
+    frameId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -8807,19 +8807,19 @@ export namespace Prisma {
 
   export type MediaAvgAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type MediaSumAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type MediaMinAggregateInputType = {
     id?: true
     type?: true
     url?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -8828,7 +8828,7 @@ export namespace Prisma {
     id?: true
     type?: true
     url?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -8838,7 +8838,7 @@ export namespace Prisma {
     position?: true
     type?: true
     url?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -8906,11 +8906,11 @@ export namespace Prisma {
   }
 
   export type GetMediaAggregateType<T extends MediaAggregateArgs> = {
-        [P in keyof T & keyof AggregateMedia]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateMedia[P]>
-      : GetScalarType<T[P], AggregateMedia[P]>
+    [P in keyof T & keyof AggregateMedia]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateMedia[P]>
+    : GetScalarType<T[P], AggregateMedia[P]>
   }
 
 
@@ -8935,7 +8935,7 @@ export namespace Prisma {
     position: JsonValue | null
     type: string
     url: string
-    cabinetId: number
+    frameId: number
     createdAt: Date
     updatedAt: Date
     _count: MediaCountAggregateOutputType | null
@@ -8948,15 +8948,15 @@ export namespace Prisma {
   type GetMediaGroupByPayload<T extends MediaGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<MediaGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof MediaGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], MediaGroupByOutputType[P]>
-            : GetScalarType<T[P], MediaGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof MediaGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], MediaGroupByOutputType[P]>
+        : GetScalarType<T[P], MediaGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type MediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8964,10 +8964,10 @@ export namespace Prisma {
     position?: boolean
     type?: boolean
     url?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["media"]>
 
   export type MediaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8975,10 +8975,10 @@ export namespace Prisma {
     position?: boolean
     type?: boolean
     url?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["media"]>
 
   export type MediaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8986,10 +8986,10 @@ export namespace Prisma {
     position?: boolean
     type?: boolean
     url?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["media"]>
 
   export type MediaSelectScalar = {
@@ -8997,33 +8997,33 @@ export namespace Prisma {
     position?: boolean
     type?: boolean
     url?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type MediaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "type" | "url" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["media"]>
+  export type MediaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "type" | "url" | "frameId" | "createdAt" | "updatedAt", ExtArgs["result"]["media"]>
   export type MediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type MediaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type MediaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
 
   export type $MediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Media"
     objects: {
-      cabinet: Prisma.$CabinetPayload<ExtArgs>
+      frame: Prisma.$FramePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       position: Prisma.JsonValue | null
       type: string
       url: string
-      cabinetId: number
+      frameId: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["media"]>
@@ -9298,10 +9298,10 @@ export namespace Prisma {
       args?: Subset<T, MediaCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], MediaCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], MediaCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -9355,8 +9355,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: MediaGroupByArgs['orderBy'] }
-        : { orderBy?: MediaGroupByArgs['orderBy'] },
+      ? { orderBy: MediaGroupByArgs['orderBy'] }
+      : { orderBy?: MediaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -9367,49 +9367,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, MediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Media model
-   */
-  readonly fields: MediaFieldRefs;
+    /**
+     * Fields of the Media model
+     */
+    readonly fields: MediaFieldRefs;
   }
 
   /**
@@ -9420,7 +9420,7 @@ export namespace Prisma {
    */
   export interface Prisma__MediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cabinet<T extends CabinetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CabinetDefaultArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    frame<T extends FrameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FrameDefaultArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9454,11 +9454,11 @@ export namespace Prisma {
     readonly position: FieldRef<"Media", 'Json'>
     readonly type: FieldRef<"Media", 'String'>
     readonly url: FieldRef<"Media", 'String'>
-    readonly cabinetId: FieldRef<"Media", 'Int'>
+    readonly frameId: FieldRef<"Media", 'Int'>
     readonly createdAt: FieldRef<"Media", 'DateTime'>
     readonly updatedAt: FieldRef<"Media", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -9885,18 +9885,18 @@ export namespace Prisma {
 
   export type ChecklistAvgAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type ChecklistSumAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type ChecklistMinAggregateOutputType = {
     id: number | null
     title: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -9904,7 +9904,7 @@ export namespace Prisma {
   export type ChecklistMaxAggregateOutputType = {
     id: number | null
     title: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -9914,7 +9914,7 @@ export namespace Prisma {
     position: number
     title: number
     items: number
-    cabinetId: number
+    frameId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -9923,18 +9923,18 @@ export namespace Prisma {
 
   export type ChecklistAvgAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type ChecklistSumAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type ChecklistMinAggregateInputType = {
     id?: true
     title?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -9942,7 +9942,7 @@ export namespace Prisma {
   export type ChecklistMaxAggregateInputType = {
     id?: true
     title?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -9952,7 +9952,7 @@ export namespace Prisma {
     position?: true
     title?: true
     items?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -10020,11 +10020,11 @@ export namespace Prisma {
   }
 
   export type GetChecklistAggregateType<T extends ChecklistAggregateArgs> = {
-        [P in keyof T & keyof AggregateChecklist]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateChecklist[P]>
-      : GetScalarType<T[P], AggregateChecklist[P]>
+    [P in keyof T & keyof AggregateChecklist]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateChecklist[P]>
+    : GetScalarType<T[P], AggregateChecklist[P]>
   }
 
 
@@ -10049,7 +10049,7 @@ export namespace Prisma {
     position: JsonValue | null
     title: string
     items: JsonValue
-    cabinetId: number
+    frameId: number
     createdAt: Date
     updatedAt: Date
     _count: ChecklistCountAggregateOutputType | null
@@ -10062,15 +10062,15 @@ export namespace Prisma {
   type GetChecklistGroupByPayload<T extends ChecklistGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<ChecklistGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ChecklistGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
-            : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof ChecklistGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
+        : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type ChecklistSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10078,10 +10078,10 @@ export namespace Prisma {
     position?: boolean
     title?: boolean
     items?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["checklist"]>
 
   export type ChecklistSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10089,10 +10089,10 @@ export namespace Prisma {
     position?: boolean
     title?: boolean
     items?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["checklist"]>
 
   export type ChecklistSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10100,10 +10100,10 @@ export namespace Prisma {
     position?: boolean
     title?: boolean
     items?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["checklist"]>
 
   export type ChecklistSelectScalar = {
@@ -10111,33 +10111,33 @@ export namespace Prisma {
     position?: boolean
     title?: boolean
     items?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ChecklistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "title" | "items" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["checklist"]>
+  export type ChecklistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "title" | "items" | "frameId" | "createdAt" | "updatedAt", ExtArgs["result"]["checklist"]>
   export type ChecklistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type ChecklistIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type ChecklistIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
 
   export type $ChecklistPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Checklist"
     objects: {
-      cabinet: Prisma.$CabinetPayload<ExtArgs>
+      frame: Prisma.$FramePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       position: Prisma.JsonValue | null
       title: string
       items: Prisma.JsonValue
-      cabinetId: number
+      frameId: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["checklist"]>
@@ -10412,10 +10412,10 @@ export namespace Prisma {
       args?: Subset<T, ChecklistCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ChecklistCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], ChecklistCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -10469,8 +10469,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ChecklistGroupByArgs['orderBy'] }
-        : { orderBy?: ChecklistGroupByArgs['orderBy'] },
+      ? { orderBy: ChecklistGroupByArgs['orderBy'] }
+      : { orderBy?: ChecklistGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -10481,49 +10481,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, ChecklistGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChecklistGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Checklist model
-   */
-  readonly fields: ChecklistFieldRefs;
+    /**
+     * Fields of the Checklist model
+     */
+    readonly fields: ChecklistFieldRefs;
   }
 
   /**
@@ -10534,7 +10534,7 @@ export namespace Prisma {
    */
   export interface Prisma__ChecklistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cabinet<T extends CabinetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CabinetDefaultArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    frame<T extends FrameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FrameDefaultArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10568,11 +10568,11 @@ export namespace Prisma {
     readonly position: FieldRef<"Checklist", 'Json'>
     readonly title: FieldRef<"Checklist", 'String'>
     readonly items: FieldRef<"Checklist", 'Json'>
-    readonly cabinetId: FieldRef<"Checklist", 'Int'>
+    readonly frameId: FieldRef<"Checklist", 'Int'>
     readonly createdAt: FieldRef<"Checklist", 'DateTime'>
     readonly updatedAt: FieldRef<"Checklist", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -10999,18 +10999,18 @@ export namespace Prisma {
 
   export type NoteAvgAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type NoteSumAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type NoteMinAggregateOutputType = {
     id: number | null
     content: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -11018,7 +11018,7 @@ export namespace Prisma {
   export type NoteMaxAggregateOutputType = {
     id: number | null
     content: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -11027,7 +11027,7 @@ export namespace Prisma {
     id: number
     position: number
     content: number
-    cabinetId: number
+    frameId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -11036,18 +11036,18 @@ export namespace Prisma {
 
   export type NoteAvgAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type NoteSumAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type NoteMinAggregateInputType = {
     id?: true
     content?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -11055,7 +11055,7 @@ export namespace Prisma {
   export type NoteMaxAggregateInputType = {
     id?: true
     content?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -11064,7 +11064,7 @@ export namespace Prisma {
     id?: true
     position?: true
     content?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -11132,11 +11132,11 @@ export namespace Prisma {
   }
 
   export type GetNoteAggregateType<T extends NoteAggregateArgs> = {
-        [P in keyof T & keyof AggregateNote]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateNote[P]>
-      : GetScalarType<T[P], AggregateNote[P]>
+    [P in keyof T & keyof AggregateNote]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateNote[P]>
+    : GetScalarType<T[P], AggregateNote[P]>
   }
 
 
@@ -11160,7 +11160,7 @@ export namespace Prisma {
     id: number
     position: JsonValue | null
     content: string
-    cabinetId: number
+    frameId: number
     createdAt: Date
     updatedAt: Date
     _count: NoteCountAggregateOutputType | null
@@ -11173,77 +11173,77 @@ export namespace Prisma {
   type GetNoteGroupByPayload<T extends NoteGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<NoteGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof NoteGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], NoteGroupByOutputType[P]>
-            : GetScalarType<T[P], NoteGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof NoteGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], NoteGroupByOutputType[P]>
+        : GetScalarType<T[P], NoteGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type NoteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
     content?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["note"]>
 
   export type NoteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
     content?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["note"]>
 
   export type NoteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
     content?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["note"]>
 
   export type NoteSelectScalar = {
     id?: boolean
     position?: boolean
     content?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type NoteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "content" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["note"]>
+  export type NoteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "content" | "frameId" | "createdAt" | "updatedAt", ExtArgs["result"]["note"]>
   export type NoteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type NoteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type NoteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
 
   export type $NotePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Note"
     objects: {
-      cabinet: Prisma.$CabinetPayload<ExtArgs>
+      frame: Prisma.$FramePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       position: Prisma.JsonValue | null
       content: string
-      cabinetId: number
+      frameId: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["note"]>
@@ -11518,10 +11518,10 @@ export namespace Prisma {
       args?: Subset<T, NoteCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], NoteCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], NoteCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -11575,8 +11575,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: NoteGroupByArgs['orderBy'] }
-        : { orderBy?: NoteGroupByArgs['orderBy'] },
+      ? { orderBy: NoteGroupByArgs['orderBy'] }
+      : { orderBy?: NoteGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -11587,49 +11587,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, NoteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNoteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Note model
-   */
-  readonly fields: NoteFieldRefs;
+    /**
+     * Fields of the Note model
+     */
+    readonly fields: NoteFieldRefs;
   }
 
   /**
@@ -11640,7 +11640,7 @@ export namespace Prisma {
    */
   export interface Prisma__NoteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cabinet<T extends CabinetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CabinetDefaultArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    frame<T extends FrameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FrameDefaultArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11673,11 +11673,11 @@ export namespace Prisma {
     readonly id: FieldRef<"Note", 'Int'>
     readonly position: FieldRef<"Note", 'Json'>
     readonly content: FieldRef<"Note", 'String'>
-    readonly cabinetId: FieldRef<"Note", 'Int'>
+    readonly frameId: FieldRef<"Note", 'Int'>
     readonly createdAt: FieldRef<"Note", 'DateTime'>
     readonly updatedAt: FieldRef<"Note", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -12104,18 +12104,18 @@ export namespace Prisma {
 
   export type DecorItemAvgAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type DecorItemSumAggregateOutputType = {
     id: number | null
-    cabinetId: number | null
+    frameId: number | null
   }
 
   export type DecorItemMinAggregateOutputType = {
     id: number | null
     type: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -12123,7 +12123,7 @@ export namespace Prisma {
   export type DecorItemMaxAggregateOutputType = {
     id: number | null
     type: string | null
-    cabinetId: number | null
+    frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -12132,7 +12132,7 @@ export namespace Prisma {
     id: number
     position: number
     type: number
-    cabinetId: number
+    frameId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -12141,18 +12141,18 @@ export namespace Prisma {
 
   export type DecorItemAvgAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type DecorItemSumAggregateInputType = {
     id?: true
-    cabinetId?: true
+    frameId?: true
   }
 
   export type DecorItemMinAggregateInputType = {
     id?: true
     type?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -12160,7 +12160,7 @@ export namespace Prisma {
   export type DecorItemMaxAggregateInputType = {
     id?: true
     type?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -12169,7 +12169,7 @@ export namespace Prisma {
     id?: true
     position?: true
     type?: true
-    cabinetId?: true
+    frameId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -12237,11 +12237,11 @@ export namespace Prisma {
   }
 
   export type GetDecorItemAggregateType<T extends DecorItemAggregateArgs> = {
-        [P in keyof T & keyof AggregateDecorItem]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateDecorItem[P]>
-      : GetScalarType<T[P], AggregateDecorItem[P]>
+    [P in keyof T & keyof AggregateDecorItem]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateDecorItem[P]>
+    : GetScalarType<T[P], AggregateDecorItem[P]>
   }
 
 
@@ -12265,7 +12265,7 @@ export namespace Prisma {
     id: number
     position: JsonValue | null
     type: string
-    cabinetId: number
+    frameId: number
     createdAt: Date
     updatedAt: Date
     _count: DecorItemCountAggregateOutputType | null
@@ -12278,77 +12278,77 @@ export namespace Prisma {
   type GetDecorItemGroupByPayload<T extends DecorItemGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<DecorItemGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof DecorItemGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
-            : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof DecorItemGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
+        : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type DecorItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
     type?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["decorItem"]>
 
   export type DecorItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
     type?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["decorItem"]>
 
   export type DecorItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     position?: boolean
     type?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["decorItem"]>
 
   export type DecorItemSelectScalar = {
     id?: boolean
     position?: boolean
     type?: boolean
-    cabinetId?: boolean
+    frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type DecorItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "type" | "cabinetId" | "createdAt" | "updatedAt", ExtArgs["result"]["decorItem"]>
+  export type DecorItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "position" | "type" | "frameId" | "createdAt" | "updatedAt", ExtArgs["result"]["decorItem"]>
   export type DecorItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type DecorItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
   export type DecorItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    cabinet?: boolean | CabinetDefaultArgs<ExtArgs>
+    frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
 
   export type $DecorItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "DecorItem"
     objects: {
-      cabinet: Prisma.$CabinetPayload<ExtArgs>
+      frame: Prisma.$FramePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       position: Prisma.JsonValue | null
       type: string
-      cabinetId: number
+      frameId: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["decorItem"]>
@@ -12623,10 +12623,10 @@ export namespace Prisma {
       args?: Subset<T, DecorItemCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], DecorItemCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], DecorItemCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -12680,8 +12680,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DecorItemGroupByArgs['orderBy'] }
-        : { orderBy?: DecorItemGroupByArgs['orderBy'] },
+      ? { orderBy: DecorItemGroupByArgs['orderBy'] }
+      : { orderBy?: DecorItemGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -12692,49 +12692,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, DecorItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDecorItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the DecorItem model
-   */
-  readonly fields: DecorItemFieldRefs;
+    /**
+     * Fields of the DecorItem model
+     */
+    readonly fields: DecorItemFieldRefs;
   }
 
   /**
@@ -12745,7 +12745,7 @@ export namespace Prisma {
    */
   export interface Prisma__DecorItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    cabinet<T extends CabinetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CabinetDefaultArgs<ExtArgs>>): Prisma__CabinetClient<$Result.GetResult<Prisma.$CabinetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    frame<T extends FrameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FrameDefaultArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12778,11 +12778,11 @@ export namespace Prisma {
     readonly id: FieldRef<"DecorItem", 'Int'>
     readonly position: FieldRef<"DecorItem", 'Json'>
     readonly type: FieldRef<"DecorItem", 'String'>
-    readonly cabinetId: FieldRef<"DecorItem", 'Int'>
+    readonly frameId: FieldRef<"DecorItem", 'Int'>
     readonly createdAt: FieldRef<"DecorItem", 'DateTime'>
     readonly updatedAt: FieldRef<"DecorItem", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -13358,11 +13358,11 @@ export namespace Prisma {
   }
 
   export type GetSpotifyAccountAggregateType<T extends SpotifyAccountAggregateArgs> = {
-        [P in keyof T & keyof AggregateSpotifyAccount]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSpotifyAccount[P]>
-      : GetScalarType<T[P], AggregateSpotifyAccount[P]>
+    [P in keyof T & keyof AggregateSpotifyAccount]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateSpotifyAccount[P]>
+    : GetScalarType<T[P], AggregateSpotifyAccount[P]>
   }
 
 
@@ -13401,15 +13401,15 @@ export namespace Prisma {
   type GetSpotifyAccountGroupByPayload<T extends SpotifyAccountGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<SpotifyAccountGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof SpotifyAccountGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
-            : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof SpotifyAccountGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
+        : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type SpotifyAccountSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13756,10 +13756,10 @@ export namespace Prisma {
       args?: Subset<T, SpotifyAccountCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], SpotifyAccountCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], SpotifyAccountCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -13813,8 +13813,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SpotifyAccountGroupByArgs['orderBy'] }
-        : { orderBy?: SpotifyAccountGroupByArgs['orderBy'] },
+      ? { orderBy: SpotifyAccountGroupByArgs['orderBy'] }
+      : { orderBy?: SpotifyAccountGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -13825,49 +13825,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, SpotifyAccountGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpotifyAccountGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the SpotifyAccount model
-   */
-  readonly fields: SpotifyAccountFieldRefs;
+    /**
+     * Fields of the SpotifyAccount model
+     */
+    readonly fields: SpotifyAccountFieldRefs;
   }
 
   /**
@@ -13917,7 +13917,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"SpotifyAccount", 'DateTime'>
     readonly updatedAt: FieldRef<"SpotifyAccount", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -14356,7 +14356,7 @@ export namespace Prisma {
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-  export const CabinetScalarFieldEnum: {
+  export const FrameScalarFieldEnum: {
     id: 'id',
     title: 'title',
     createdAt: 'createdAt',
@@ -14364,18 +14364,18 @@ export namespace Prisma {
     ownerId: 'ownerId'
   };
 
-  export type CabinetScalarFieldEnum = (typeof CabinetScalarFieldEnum)[keyof typeof CabinetScalarFieldEnum]
+  export type FrameScalarFieldEnum = (typeof FrameScalarFieldEnum)[keyof typeof FrameScalarFieldEnum]
 
 
-  export const CabinetLayoutScalarFieldEnum: {
+  export const FrameLayoutScalarFieldEnum: {
     id: 'id',
     layout: 'layout',
-    cabinetId: 'cabinetId',
+    frameId: 'frameId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
-  export type CabinetLayoutScalarFieldEnum = (typeof CabinetLayoutScalarFieldEnum)[keyof typeof CabinetLayoutScalarFieldEnum]
+  export type FrameLayoutScalarFieldEnum = (typeof FrameLayoutScalarFieldEnum)[keyof typeof FrameLayoutScalarFieldEnum]
 
 
   export const ChestScalarFieldEnum: {
@@ -14383,7 +14383,7 @@ export namespace Prisma {
     passcode: 'passcode',
     position: 'position',
     items: 'items',
-    cabinetId: 'cabinetId',
+    frameId: 'frameId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -14396,7 +14396,7 @@ export namespace Prisma {
     passcode: 'passcode',
     position: 'position',
     entries: 'entries',
-    cabinetId: 'cabinetId',
+    frameId: 'frameId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -14409,7 +14409,7 @@ export namespace Prisma {
     position: 'position',
     url: 'url',
     caption: 'caption',
-    cabinetId: 'cabinetId',
+    frameId: 'frameId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -14422,7 +14422,7 @@ export namespace Prisma {
     position: 'position',
     type: 'type',
     url: 'url',
-    cabinetId: 'cabinetId',
+    frameId: 'frameId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -14435,7 +14435,7 @@ export namespace Prisma {
     position: 'position',
     title: 'title',
     items: 'items',
-    cabinetId: 'cabinetId',
+    frameId: 'frameId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -14447,7 +14447,7 @@ export namespace Prisma {
     id: 'id',
     position: 'position',
     content: 'content',
-    cabinetId: 'cabinetId',
+    frameId: 'frameId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -14459,7 +14459,7 @@ export namespace Prisma {
     id: 'id',
     position: 'position',
     type: 'type',
-    cabinetId: 'cabinetId',
+    frameId: 'frameId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -14538,70 +14538,70 @@ export namespace Prisma {
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
+
 
 
   /**
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
+
 
 
   /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-    
+
 
 
   /**
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
+
 
 
   /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
+
 
 
   /**
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
+
 
 
   /**
    * Reference to a field of type 'Json'
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
+
 
 
   /**
    * Reference to a field of type 'QueryMode'
    */
   export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
+
 
 
   /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
+
 
 
   /**
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
+
   /**
    * Deep Input Types
    */
@@ -14617,7 +14617,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    cabinets?: CabinetListRelationFilter
+    frame?: FrameListRelationFilter
     spotifyAccount?: XOR<SpotifyAccountNullableScalarRelationFilter, SpotifyAccountWhereInput> | null
   }
 
@@ -14628,7 +14628,7 @@ export namespace Prisma {
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    cabinets?: CabinetOrderByRelationAggregateInput
+    frame?: FrameOrderByRelationAggregateInput
     spotifyAccount?: SpotifyAccountOrderByWithRelationInput
   }
 
@@ -14642,7 +14642,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    cabinets?: CabinetListRelationFilter
+    frame?: FrameListRelationFilter
     spotifyAccount?: XOR<SpotifyAccountNullableScalarRelationFilter, SpotifyAccountWhereInput> | null
   }, "id" | "email">
 
@@ -14672,17 +14672,17 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
-  export type CabinetWhereInput = {
-    AND?: CabinetWhereInput | CabinetWhereInput[]
-    OR?: CabinetWhereInput[]
-    NOT?: CabinetWhereInput | CabinetWhereInput[]
-    id?: IntFilter<"Cabinet"> | number
-    title?: StringFilter<"Cabinet"> | string
-    createdAt?: DateTimeFilter<"Cabinet"> | Date | string
-    updatedAt?: DateTimeFilter<"Cabinet"> | Date | string
-    ownerId?: IntFilter<"Cabinet"> | number
+  export type FrameWhereInput = {
+    AND?: FrameWhereInput | FrameWhereInput[]
+    OR?: FrameWhereInput[]
+    NOT?: FrameWhereInput | FrameWhereInput[]
+    id?: IntFilter<"Frame"> | number
+    title?: StringFilter<"Frame"> | string
+    createdAt?: DateTimeFilter<"Frame"> | Date | string
+    updatedAt?: DateTimeFilter<"Frame"> | Date | string
+    ownerId?: IntFilter<"Frame"> | number
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
-    layout?: XOR<CabinetLayoutNullableScalarRelationFilter, CabinetLayoutWhereInput> | null
+    layout?: XOR<FrameLayoutNullableScalarRelationFilter, FrameLayoutWhereInput> | null
     chest?: XOR<ChestNullableScalarRelationFilter, ChestWhereInput> | null
     journal?: XOR<JournalNullableScalarRelationFilter, JournalWhereInput> | null
     polaroid?: PolaroidListRelationFilter
@@ -14692,14 +14692,14 @@ export namespace Prisma {
     decorItems?: DecorItemListRelationFilter
   }
 
-  export type CabinetOrderByWithRelationInput = {
+  export type FrameOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
     owner?: UserOrderByWithRelationInput
-    layout?: CabinetLayoutOrderByWithRelationInput
+    layout?: FrameLayoutOrderByWithRelationInput
     chest?: ChestOrderByWithRelationInput
     journal?: JournalOrderByWithRelationInput
     polaroid?: PolaroidOrderByRelationAggregateInput
@@ -14709,17 +14709,17 @@ export namespace Prisma {
     decorItems?: DecorItemOrderByRelationAggregateInput
   }
 
-  export type CabinetWhereUniqueInput = Prisma.AtLeast<{
+  export type FrameWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     ownerId?: number
-    AND?: CabinetWhereInput | CabinetWhereInput[]
-    OR?: CabinetWhereInput[]
-    NOT?: CabinetWhereInput | CabinetWhereInput[]
-    title?: StringFilter<"Cabinet"> | string
-    createdAt?: DateTimeFilter<"Cabinet"> | Date | string
-    updatedAt?: DateTimeFilter<"Cabinet"> | Date | string
+    AND?: FrameWhereInput | FrameWhereInput[]
+    OR?: FrameWhereInput[]
+    NOT?: FrameWhereInput | FrameWhereInput[]
+    title?: StringFilter<"Frame"> | string
+    createdAt?: DateTimeFilter<"Frame"> | Date | string
+    updatedAt?: DateTimeFilter<"Frame"> | Date | string
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
-    layout?: XOR<CabinetLayoutNullableScalarRelationFilter, CabinetLayoutWhereInput> | null
+    layout?: XOR<FrameLayoutNullableScalarRelationFilter, FrameLayoutWhereInput> | null
     chest?: XOR<ChestNullableScalarRelationFilter, ChestWhereInput> | null
     journal?: XOR<JournalNullableScalarRelationFilter, JournalWhereInput> | null
     polaroid?: PolaroidListRelationFilter
@@ -14729,85 +14729,85 @@ export namespace Prisma {
     decorItems?: DecorItemListRelationFilter
   }, "id" | "ownerId">
 
-  export type CabinetOrderByWithAggregationInput = {
+  export type FrameOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
-    _count?: CabinetCountOrderByAggregateInput
-    _avg?: CabinetAvgOrderByAggregateInput
-    _max?: CabinetMaxOrderByAggregateInput
-    _min?: CabinetMinOrderByAggregateInput
-    _sum?: CabinetSumOrderByAggregateInput
+    _count?: FrameCountOrderByAggregateInput
+    _avg?: FrameAvgOrderByAggregateInput
+    _max?: FrameMaxOrderByAggregateInput
+    _min?: FrameMinOrderByAggregateInput
+    _sum?: FrameSumOrderByAggregateInput
   }
 
-  export type CabinetScalarWhereWithAggregatesInput = {
-    AND?: CabinetScalarWhereWithAggregatesInput | CabinetScalarWhereWithAggregatesInput[]
-    OR?: CabinetScalarWhereWithAggregatesInput[]
-    NOT?: CabinetScalarWhereWithAggregatesInput | CabinetScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Cabinet"> | number
-    title?: StringWithAggregatesFilter<"Cabinet"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Cabinet"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Cabinet"> | Date | string
-    ownerId?: IntWithAggregatesFilter<"Cabinet"> | number
+  export type FrameScalarWhereWithAggregatesInput = {
+    AND?: FrameScalarWhereWithAggregatesInput | FrameScalarWhereWithAggregatesInput[]
+    OR?: FrameScalarWhereWithAggregatesInput[]
+    NOT?: FrameScalarWhereWithAggregatesInput | FrameScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Frame"> | number
+    title?: StringWithAggregatesFilter<"Frame"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Frame"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Frame"> | Date | string
+    ownerId?: IntWithAggregatesFilter<"Frame"> | number
   }
 
-  export type CabinetLayoutWhereInput = {
-    AND?: CabinetLayoutWhereInput | CabinetLayoutWhereInput[]
-    OR?: CabinetLayoutWhereInput[]
-    NOT?: CabinetLayoutWhereInput | CabinetLayoutWhereInput[]
-    id?: IntFilter<"CabinetLayout"> | number
-    layout?: JsonFilter<"CabinetLayout">
-    cabinetId?: IntFilter<"CabinetLayout"> | number
-    createdAt?: DateTimeFilter<"CabinetLayout"> | Date | string
-    updatedAt?: DateTimeFilter<"CabinetLayout"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+  export type FrameLayoutWhereInput = {
+    AND?: FrameLayoutWhereInput | FrameLayoutWhereInput[]
+    OR?: FrameLayoutWhereInput[]
+    NOT?: FrameLayoutWhereInput | FrameLayoutWhereInput[]
+    id?: IntFilter<"FrameLayout"> | number
+    layout?: JsonFilter<"FrameLayout">
+    frameId?: IntFilter<"FrameLayout"> | number
+    createdAt?: DateTimeFilter<"FrameLayout"> | Date | string
+    updatedAt?: DateTimeFilter<"FrameLayout"> | Date | string
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }
 
-  export type CabinetLayoutOrderByWithRelationInput = {
+  export type FrameLayoutOrderByWithRelationInput = {
     id?: SortOrder
     layout?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    cabinet?: CabinetOrderByWithRelationInput
+    frame?: FrameOrderByWithRelationInput
   }
 
-  export type CabinetLayoutWhereUniqueInput = Prisma.AtLeast<{
+  export type FrameLayoutWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    cabinetId?: number
-    AND?: CabinetLayoutWhereInput | CabinetLayoutWhereInput[]
-    OR?: CabinetLayoutWhereInput[]
-    NOT?: CabinetLayoutWhereInput | CabinetLayoutWhereInput[]
-    layout?: JsonFilter<"CabinetLayout">
-    createdAt?: DateTimeFilter<"CabinetLayout"> | Date | string
-    updatedAt?: DateTimeFilter<"CabinetLayout"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
-  }, "id" | "cabinetId">
+    frameId?: number
+    AND?: FrameLayoutWhereInput | FrameLayoutWhereInput[]
+    OR?: FrameLayoutWhereInput[]
+    NOT?: FrameLayoutWhereInput | FrameLayoutWhereInput[]
+    layout?: JsonFilter<"FrameLayout">
+    createdAt?: DateTimeFilter<"FrameLayout"> | Date | string
+    updatedAt?: DateTimeFilter<"FrameLayout"> | Date | string
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
+  }, "id" | "frameId">
 
-  export type CabinetLayoutOrderByWithAggregationInput = {
+  export type FrameLayoutOrderByWithAggregationInput = {
     id?: SortOrder
     layout?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: CabinetLayoutCountOrderByAggregateInput
-    _avg?: CabinetLayoutAvgOrderByAggregateInput
-    _max?: CabinetLayoutMaxOrderByAggregateInput
-    _min?: CabinetLayoutMinOrderByAggregateInput
-    _sum?: CabinetLayoutSumOrderByAggregateInput
+    _count?: FrameLayoutCountOrderByAggregateInput
+    _avg?: FrameLayoutAvgOrderByAggregateInput
+    _max?: FrameLayoutMaxOrderByAggregateInput
+    _min?: FrameLayoutMinOrderByAggregateInput
+    _sum?: FrameLayoutSumOrderByAggregateInput
   }
 
-  export type CabinetLayoutScalarWhereWithAggregatesInput = {
-    AND?: CabinetLayoutScalarWhereWithAggregatesInput | CabinetLayoutScalarWhereWithAggregatesInput[]
-    OR?: CabinetLayoutScalarWhereWithAggregatesInput[]
-    NOT?: CabinetLayoutScalarWhereWithAggregatesInput | CabinetLayoutScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"CabinetLayout"> | number
-    layout?: JsonWithAggregatesFilter<"CabinetLayout">
-    cabinetId?: IntWithAggregatesFilter<"CabinetLayout"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"CabinetLayout"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"CabinetLayout"> | Date | string
+  export type FrameLayoutScalarWhereWithAggregatesInput = {
+    AND?: FrameLayoutScalarWhereWithAggregatesInput | FrameLayoutScalarWhereWithAggregatesInput[]
+    OR?: FrameLayoutScalarWhereWithAggregatesInput[]
+    NOT?: FrameLayoutScalarWhereWithAggregatesInput | FrameLayoutScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"FrameLayout"> | number
+    layout?: JsonWithAggregatesFilter<"FrameLayout">
+    frameId?: IntWithAggregatesFilter<"FrameLayout"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"FrameLayout"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FrameLayout"> | Date | string
   }
 
   export type ChestWhereInput = {
@@ -14818,10 +14818,10 @@ export namespace Prisma {
     passcode?: StringFilter<"Chest"> | string
     position?: JsonNullableFilter<"Chest">
     items?: JsonNullableFilter<"Chest">
-    cabinetId?: IntFilter<"Chest"> | number
+    frameId?: IntFilter<"Chest"> | number
     createdAt?: DateTimeFilter<"Chest"> | Date | string
     updatedAt?: DateTimeFilter<"Chest"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }
 
   export type ChestOrderByWithRelationInput = {
@@ -14829,15 +14829,15 @@ export namespace Prisma {
     passcode?: SortOrder
     position?: SortOrderInput | SortOrder
     items?: SortOrderInput | SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    cabinet?: CabinetOrderByWithRelationInput
+    frame?: FrameOrderByWithRelationInput
   }
 
   export type ChestWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    cabinetId?: number
+    frameId?: number
     AND?: ChestWhereInput | ChestWhereInput[]
     OR?: ChestWhereInput[]
     NOT?: ChestWhereInput | ChestWhereInput[]
@@ -14846,15 +14846,15 @@ export namespace Prisma {
     items?: JsonNullableFilter<"Chest">
     createdAt?: DateTimeFilter<"Chest"> | Date | string
     updatedAt?: DateTimeFilter<"Chest"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
-  }, "id" | "cabinetId">
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
+  }, "id" | "frameId">
 
   export type ChestOrderByWithAggregationInput = {
     id?: SortOrder
     passcode?: SortOrder
     position?: SortOrderInput | SortOrder
     items?: SortOrderInput | SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ChestCountOrderByAggregateInput
@@ -14872,7 +14872,7 @@ export namespace Prisma {
     passcode?: StringWithAggregatesFilter<"Chest"> | string
     position?: JsonNullableWithAggregatesFilter<"Chest">
     items?: JsonNullableWithAggregatesFilter<"Chest">
-    cabinetId?: IntWithAggregatesFilter<"Chest"> | number
+    frameId?: IntWithAggregatesFilter<"Chest"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Chest"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Chest"> | Date | string
   }
@@ -14885,10 +14885,10 @@ export namespace Prisma {
     passcode?: StringFilter<"Journal"> | string
     position?: JsonNullableFilter<"Journal">
     entries?: JsonFilter<"Journal">
-    cabinetId?: IntFilter<"Journal"> | number
+    frameId?: IntFilter<"Journal"> | number
     createdAt?: DateTimeFilter<"Journal"> | Date | string
     updatedAt?: DateTimeFilter<"Journal"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }
 
   export type JournalOrderByWithRelationInput = {
@@ -14896,15 +14896,15 @@ export namespace Prisma {
     passcode?: SortOrder
     position?: SortOrderInput | SortOrder
     entries?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    cabinet?: CabinetOrderByWithRelationInput
+    frame?: FrameOrderByWithRelationInput
   }
 
   export type JournalWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    cabinetId?: number
+    frameId?: number
     AND?: JournalWhereInput | JournalWhereInput[]
     OR?: JournalWhereInput[]
     NOT?: JournalWhereInput | JournalWhereInput[]
@@ -14913,15 +14913,15 @@ export namespace Prisma {
     entries?: JsonFilter<"Journal">
     createdAt?: DateTimeFilter<"Journal"> | Date | string
     updatedAt?: DateTimeFilter<"Journal"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
-  }, "id" | "cabinetId">
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
+  }, "id" | "frameId">
 
   export type JournalOrderByWithAggregationInput = {
     id?: SortOrder
     passcode?: SortOrder
     position?: SortOrderInput | SortOrder
     entries?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: JournalCountOrderByAggregateInput
@@ -14939,7 +14939,7 @@ export namespace Prisma {
     passcode?: StringWithAggregatesFilter<"Journal"> | string
     position?: JsonNullableWithAggregatesFilter<"Journal">
     entries?: JsonWithAggregatesFilter<"Journal">
-    cabinetId?: IntWithAggregatesFilter<"Journal"> | number
+    frameId?: IntWithAggregatesFilter<"Journal"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Journal"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Journal"> | Date | string
   }
@@ -14952,10 +14952,10 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Polaroid">
     url?: StringFilter<"Polaroid"> | string
     caption?: StringNullableFilter<"Polaroid"> | string | null
-    cabinetId?: IntFilter<"Polaroid"> | number
+    frameId?: IntFilter<"Polaroid"> | number
     createdAt?: DateTimeFilter<"Polaroid"> | Date | string
     updatedAt?: DateTimeFilter<"Polaroid"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }
 
   export type PolaroidOrderByWithRelationInput = {
@@ -14963,10 +14963,10 @@ export namespace Prisma {
     position?: SortOrderInput | SortOrder
     url?: SortOrder
     caption?: SortOrderInput | SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    cabinet?: CabinetOrderByWithRelationInput
+    frame?: FrameOrderByWithRelationInput
   }
 
   export type PolaroidWhereUniqueInput = Prisma.AtLeast<{
@@ -14977,10 +14977,10 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Polaroid">
     url?: StringFilter<"Polaroid"> | string
     caption?: StringNullableFilter<"Polaroid"> | string | null
-    cabinetId?: IntFilter<"Polaroid"> | number
+    frameId?: IntFilter<"Polaroid"> | number
     createdAt?: DateTimeFilter<"Polaroid"> | Date | string
     updatedAt?: DateTimeFilter<"Polaroid"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }, "id">
 
   export type PolaroidOrderByWithAggregationInput = {
@@ -14988,7 +14988,7 @@ export namespace Prisma {
     position?: SortOrderInput | SortOrder
     url?: SortOrder
     caption?: SortOrderInput | SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: PolaroidCountOrderByAggregateInput
@@ -15006,7 +15006,7 @@ export namespace Prisma {
     position?: JsonNullableWithAggregatesFilter<"Polaroid">
     url?: StringWithAggregatesFilter<"Polaroid"> | string
     caption?: StringNullableWithAggregatesFilter<"Polaroid"> | string | null
-    cabinetId?: IntWithAggregatesFilter<"Polaroid"> | number
+    frameId?: IntWithAggregatesFilter<"Polaroid"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Polaroid"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Polaroid"> | Date | string
   }
@@ -15019,10 +15019,10 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Media">
     type?: StringFilter<"Media"> | string
     url?: StringFilter<"Media"> | string
-    cabinetId?: IntFilter<"Media"> | number
+    frameId?: IntFilter<"Media"> | number
     createdAt?: DateTimeFilter<"Media"> | Date | string
     updatedAt?: DateTimeFilter<"Media"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }
 
   export type MediaOrderByWithRelationInput = {
@@ -15030,10 +15030,10 @@ export namespace Prisma {
     position?: SortOrderInput | SortOrder
     type?: SortOrder
     url?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    cabinet?: CabinetOrderByWithRelationInput
+    frame?: FrameOrderByWithRelationInput
   }
 
   export type MediaWhereUniqueInput = Prisma.AtLeast<{
@@ -15044,10 +15044,10 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Media">
     type?: StringFilter<"Media"> | string
     url?: StringFilter<"Media"> | string
-    cabinetId?: IntFilter<"Media"> | number
+    frameId?: IntFilter<"Media"> | number
     createdAt?: DateTimeFilter<"Media"> | Date | string
     updatedAt?: DateTimeFilter<"Media"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }, "id">
 
   export type MediaOrderByWithAggregationInput = {
@@ -15055,7 +15055,7 @@ export namespace Prisma {
     position?: SortOrderInput | SortOrder
     type?: SortOrder
     url?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: MediaCountOrderByAggregateInput
@@ -15073,7 +15073,7 @@ export namespace Prisma {
     position?: JsonNullableWithAggregatesFilter<"Media">
     type?: StringWithAggregatesFilter<"Media"> | string
     url?: StringWithAggregatesFilter<"Media"> | string
-    cabinetId?: IntWithAggregatesFilter<"Media"> | number
+    frameId?: IntWithAggregatesFilter<"Media"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Media"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Media"> | Date | string
   }
@@ -15086,10 +15086,10 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Checklist">
     title?: StringFilter<"Checklist"> | string
     items?: JsonFilter<"Checklist">
-    cabinetId?: IntFilter<"Checklist"> | number
+    frameId?: IntFilter<"Checklist"> | number
     createdAt?: DateTimeFilter<"Checklist"> | Date | string
     updatedAt?: DateTimeFilter<"Checklist"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }
 
   export type ChecklistOrderByWithRelationInput = {
@@ -15097,10 +15097,10 @@ export namespace Prisma {
     position?: SortOrderInput | SortOrder
     title?: SortOrder
     items?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    cabinet?: CabinetOrderByWithRelationInput
+    frame?: FrameOrderByWithRelationInput
   }
 
   export type ChecklistWhereUniqueInput = Prisma.AtLeast<{
@@ -15111,10 +15111,10 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Checklist">
     title?: StringFilter<"Checklist"> | string
     items?: JsonFilter<"Checklist">
-    cabinetId?: IntFilter<"Checklist"> | number
+    frameId?: IntFilter<"Checklist"> | number
     createdAt?: DateTimeFilter<"Checklist"> | Date | string
     updatedAt?: DateTimeFilter<"Checklist"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }, "id">
 
   export type ChecklistOrderByWithAggregationInput = {
@@ -15122,7 +15122,7 @@ export namespace Prisma {
     position?: SortOrderInput | SortOrder
     title?: SortOrder
     items?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ChecklistCountOrderByAggregateInput
@@ -15140,7 +15140,7 @@ export namespace Prisma {
     position?: JsonNullableWithAggregatesFilter<"Checklist">
     title?: StringWithAggregatesFilter<"Checklist"> | string
     items?: JsonWithAggregatesFilter<"Checklist">
-    cabinetId?: IntWithAggregatesFilter<"Checklist"> | number
+    frameId?: IntWithAggregatesFilter<"Checklist"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Checklist"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Checklist"> | Date | string
   }
@@ -15152,20 +15152,20 @@ export namespace Prisma {
     id?: IntFilter<"Note"> | number
     position?: JsonNullableFilter<"Note">
     content?: StringFilter<"Note"> | string
-    cabinetId?: IntFilter<"Note"> | number
+    frameId?: IntFilter<"Note"> | number
     createdAt?: DateTimeFilter<"Note"> | Date | string
     updatedAt?: DateTimeFilter<"Note"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }
 
   export type NoteOrderByWithRelationInput = {
     id?: SortOrder
     position?: SortOrderInput | SortOrder
     content?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    cabinet?: CabinetOrderByWithRelationInput
+    frame?: FrameOrderByWithRelationInput
   }
 
   export type NoteWhereUniqueInput = Prisma.AtLeast<{
@@ -15175,17 +15175,17 @@ export namespace Prisma {
     NOT?: NoteWhereInput | NoteWhereInput[]
     position?: JsonNullableFilter<"Note">
     content?: StringFilter<"Note"> | string
-    cabinetId?: IntFilter<"Note"> | number
+    frameId?: IntFilter<"Note"> | number
     createdAt?: DateTimeFilter<"Note"> | Date | string
     updatedAt?: DateTimeFilter<"Note"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }, "id">
 
   export type NoteOrderByWithAggregationInput = {
     id?: SortOrder
     position?: SortOrderInput | SortOrder
     content?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: NoteCountOrderByAggregateInput
@@ -15202,7 +15202,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Note"> | number
     position?: JsonNullableWithAggregatesFilter<"Note">
     content?: StringWithAggregatesFilter<"Note"> | string
-    cabinetId?: IntWithAggregatesFilter<"Note"> | number
+    frameId?: IntWithAggregatesFilter<"Note"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Note"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Note"> | Date | string
   }
@@ -15214,20 +15214,20 @@ export namespace Prisma {
     id?: IntFilter<"DecorItem"> | number
     position?: JsonNullableFilter<"DecorItem">
     type?: StringFilter<"DecorItem"> | string
-    cabinetId?: IntFilter<"DecorItem"> | number
+    frameId?: IntFilter<"DecorItem"> | number
     createdAt?: DateTimeFilter<"DecorItem"> | Date | string
     updatedAt?: DateTimeFilter<"DecorItem"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }
 
   export type DecorItemOrderByWithRelationInput = {
     id?: SortOrder
     position?: SortOrderInput | SortOrder
     type?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    cabinet?: CabinetOrderByWithRelationInput
+    frame?: FrameOrderByWithRelationInput
   }
 
   export type DecorItemWhereUniqueInput = Prisma.AtLeast<{
@@ -15237,17 +15237,17 @@ export namespace Prisma {
     NOT?: DecorItemWhereInput | DecorItemWhereInput[]
     position?: JsonNullableFilter<"DecorItem">
     type?: StringFilter<"DecorItem"> | string
-    cabinetId?: IntFilter<"DecorItem"> | number
+    frameId?: IntFilter<"DecorItem"> | number
     createdAt?: DateTimeFilter<"DecorItem"> | Date | string
     updatedAt?: DateTimeFilter<"DecorItem"> | Date | string
-    cabinet?: XOR<CabinetScalarRelationFilter, CabinetWhereInput>
+    frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }, "id">
 
   export type DecorItemOrderByWithAggregationInput = {
     id?: SortOrder
     position?: SortOrderInput | SortOrder
     type?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: DecorItemCountOrderByAggregateInput
@@ -15264,7 +15264,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"DecorItem"> | number
     position?: JsonNullableWithAggregatesFilter<"DecorItem">
     type?: StringWithAggregatesFilter<"DecorItem"> | string
-    cabinetId?: IntWithAggregatesFilter<"DecorItem"> | number
+    frameId?: IntWithAggregatesFilter<"DecorItem"> | number
     createdAt?: DateTimeWithAggregatesFilter<"DecorItem"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"DecorItem"> | Date | string
   }
@@ -15347,7 +15347,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinets?: CabinetCreateNestedManyWithoutOwnerInput
+    frame?: FrameCreateNestedManyWithoutOwnerInput
     spotifyAccount?: SpotifyAccountCreateNestedOneWithoutUserInput
   }
 
@@ -15358,7 +15358,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinets?: CabinetUncheckedCreateNestedManyWithoutOwnerInput
+    frame?: FrameUncheckedCreateNestedManyWithoutOwnerInput
     spotifyAccount?: SpotifyAccountUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -15368,7 +15368,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinets?: CabinetUpdateManyWithoutOwnerNestedInput
+    frame?: FrameUpdateManyWithoutOwnerNestedInput
     spotifyAccount?: SpotifyAccountUpdateOneWithoutUserNestedInput
   }
 
@@ -15379,7 +15379,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinets?: CabinetUncheckedUpdateManyWithoutOwnerNestedInput
+    frame?: FrameUncheckedUpdateManyWithoutOwnerNestedInput
     spotifyAccount?: SpotifyAccountUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -15409,83 +15409,83 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CabinetCreateInput = {
+  export type FrameCreateInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
-    chest?: ChestCreateNestedOneWithoutCabinetInput
-    journal?: JournalCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
-    media?: MediaCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistCreateNestedManyWithoutCabinetInput
-    notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
+    owner: UserCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
+    chest?: ChestCreateNestedOneWithoutFrameInput
+    journal?: JournalCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidCreateNestedManyWithoutFrameInput
+    media?: MediaCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistCreateNestedManyWithoutFrameInput
+    notes?: NoteCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetUncheckedCreateInput = {
-    id?: number
-    title: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
-    chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
-    journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
-    media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
-    notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
-  }
-
-  export type CabinetUpdateInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
-    media?: MediaUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
-  }
-
-  export type CabinetUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
-    media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
-  }
-
-  export type CabinetCreateManyInput = {
+  export type FrameUncheckedCreateInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
+    chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
+    journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
+    media?: MediaUncheckedCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistUncheckedCreateNestedManyWithoutFrameInput
+    notes?: NoteUncheckedCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemUncheckedCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetUpdateManyMutationInput = {
+  export type FrameUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: UserUpdateOneRequiredWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
+    chest?: ChestUpdateOneWithoutFrameNestedInput
+    journal?: JournalUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
+    media?: MediaUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUpdateManyWithoutFrameNestedInput
+    notes?: NoteUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUpdateManyWithoutFrameNestedInput
+  }
+
+  export type FrameUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    ownerId?: IntFieldUpdateOperationsInput | number
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
+    journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
+    media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUncheckedUpdateManyWithoutFrameNestedInput
+    notes?: NoteUncheckedUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUncheckedUpdateManyWithoutFrameNestedInput
+  }
+
+  export type FrameCreateManyInput = {
+    id?: number
+    title: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    ownerId: number
+  }
+
+  export type FrameUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CabinetUncheckedUpdateManyInput = {
+  export type FrameUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15493,54 +15493,54 @@ export namespace Prisma {
     ownerId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type CabinetLayoutCreateInput = {
+  export type FrameLayoutCreateInput = {
     layout: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinet: CabinetCreateNestedOneWithoutLayoutInput
+    frame: FrameCreateNestedOneWithoutLayoutInput
   }
 
-  export type CabinetLayoutUncheckedCreateInput = {
+  export type FrameLayoutUncheckedCreateInput = {
     id?: number
     layout: JsonNullValueInput | InputJsonValue
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CabinetLayoutUpdateInput = {
+  export type FrameLayoutUpdateInput = {
     layout?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinet?: CabinetUpdateOneRequiredWithoutLayoutNestedInput
+    frame?: FrameUpdateOneRequiredWithoutLayoutNestedInput
   }
 
-  export type CabinetLayoutUncheckedUpdateInput = {
+  export type FrameLayoutUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     layout?: JsonNullValueInput | InputJsonValue
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CabinetLayoutCreateManyInput = {
+  export type FrameLayoutCreateManyInput = {
     id?: number
     layout: JsonNullValueInput | InputJsonValue
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CabinetLayoutUpdateManyMutationInput = {
+  export type FrameLayoutUpdateManyMutationInput = {
     layout?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CabinetLayoutUncheckedUpdateManyInput = {
+  export type FrameLayoutUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     layout?: JsonNullValueInput | InputJsonValue
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15551,7 +15551,7 @@ export namespace Prisma {
     items?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinet: CabinetCreateNestedOneWithoutChestInput
+    frame: FrameCreateNestedOneWithoutChestInput
   }
 
   export type ChestUncheckedCreateInput = {
@@ -15559,7 +15559,7 @@ export namespace Prisma {
     passcode: string
     position?: NullableJsonNullValueInput | InputJsonValue
     items?: NullableJsonNullValueInput | InputJsonValue
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15570,7 +15570,7 @@ export namespace Prisma {
     items?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinet?: CabinetUpdateOneRequiredWithoutChestNestedInput
+    frame?: FrameUpdateOneRequiredWithoutChestNestedInput
   }
 
   export type ChestUncheckedUpdateInput = {
@@ -15578,7 +15578,7 @@ export namespace Prisma {
     passcode?: StringFieldUpdateOperationsInput | string
     position?: NullableJsonNullValueInput | InputJsonValue
     items?: NullableJsonNullValueInput | InputJsonValue
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15588,7 +15588,7 @@ export namespace Prisma {
     passcode: string
     position?: NullableJsonNullValueInput | InputJsonValue
     items?: NullableJsonNullValueInput | InputJsonValue
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15606,7 +15606,7 @@ export namespace Prisma {
     passcode?: StringFieldUpdateOperationsInput | string
     position?: NullableJsonNullValueInput | InputJsonValue
     items?: NullableJsonNullValueInput | InputJsonValue
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15617,7 +15617,7 @@ export namespace Prisma {
     entries: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinet: CabinetCreateNestedOneWithoutJournalInput
+    frame: FrameCreateNestedOneWithoutJournalInput
   }
 
   export type JournalUncheckedCreateInput = {
@@ -15625,7 +15625,7 @@ export namespace Prisma {
     passcode: string
     position?: NullableJsonNullValueInput | InputJsonValue
     entries: JsonNullValueInput | InputJsonValue
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15636,7 +15636,7 @@ export namespace Prisma {
     entries?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinet?: CabinetUpdateOneRequiredWithoutJournalNestedInput
+    frame?: FrameUpdateOneRequiredWithoutJournalNestedInput
   }
 
   export type JournalUncheckedUpdateInput = {
@@ -15644,7 +15644,7 @@ export namespace Prisma {
     passcode?: StringFieldUpdateOperationsInput | string
     position?: NullableJsonNullValueInput | InputJsonValue
     entries?: JsonNullValueInput | InputJsonValue
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15654,7 +15654,7 @@ export namespace Prisma {
     passcode: string
     position?: NullableJsonNullValueInput | InputJsonValue
     entries: JsonNullValueInput | InputJsonValue
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15672,7 +15672,7 @@ export namespace Prisma {
     passcode?: StringFieldUpdateOperationsInput | string
     position?: NullableJsonNullValueInput | InputJsonValue
     entries?: JsonNullValueInput | InputJsonValue
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15683,7 +15683,7 @@ export namespace Prisma {
     caption?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinet: CabinetCreateNestedOneWithoutPolaroidInput
+    frame: FrameCreateNestedOneWithoutPolaroidInput
   }
 
   export type PolaroidUncheckedCreateInput = {
@@ -15691,7 +15691,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
     caption?: string | null
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15702,7 +15702,7 @@ export namespace Prisma {
     caption?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinet?: CabinetUpdateOneRequiredWithoutPolaroidNestedInput
+    frame?: FrameUpdateOneRequiredWithoutPolaroidNestedInput
   }
 
   export type PolaroidUncheckedUpdateInput = {
@@ -15710,7 +15710,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15720,7 +15720,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
     caption?: string | null
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15738,7 +15738,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15749,7 +15749,7 @@ export namespace Prisma {
     url: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinet: CabinetCreateNestedOneWithoutMediaInput
+    frame: FrameCreateNestedOneWithoutMediaInput
   }
 
   export type MediaUncheckedCreateInput = {
@@ -15757,7 +15757,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
     url: string
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15768,7 +15768,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinet?: CabinetUpdateOneRequiredWithoutMediaNestedInput
+    frame?: FrameUpdateOneRequiredWithoutMediaNestedInput
   }
 
   export type MediaUncheckedUpdateInput = {
@@ -15776,7 +15776,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15786,7 +15786,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
     url: string
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15804,7 +15804,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15815,7 +15815,7 @@ export namespace Prisma {
     items: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinet: CabinetCreateNestedOneWithoutChecklistInput
+    frame: FrameCreateNestedOneWithoutChecklistInput
   }
 
   export type ChecklistUncheckedCreateInput = {
@@ -15823,7 +15823,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     title: string
     items: JsonNullValueInput | InputJsonValue
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15834,7 +15834,7 @@ export namespace Prisma {
     items?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinet?: CabinetUpdateOneRequiredWithoutChecklistNestedInput
+    frame?: FrameUpdateOneRequiredWithoutChecklistNestedInput
   }
 
   export type ChecklistUncheckedUpdateInput = {
@@ -15842,7 +15842,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     title?: StringFieldUpdateOperationsInput | string
     items?: JsonNullValueInput | InputJsonValue
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15852,7 +15852,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     title: string
     items: JsonNullValueInput | InputJsonValue
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15870,7 +15870,7 @@ export namespace Prisma {
     position?: NullableJsonNullValueInput | InputJsonValue
     title?: StringFieldUpdateOperationsInput | string
     items?: JsonNullValueInput | InputJsonValue
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15880,14 +15880,14 @@ export namespace Prisma {
     content: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinet: CabinetCreateNestedOneWithoutNotesInput
+    frame: FrameCreateNestedOneWithoutNotesInput
   }
 
   export type NoteUncheckedCreateInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     content: string
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15897,14 +15897,14 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinet?: CabinetUpdateOneRequiredWithoutNotesNestedInput
+    frame?: FrameUpdateOneRequiredWithoutNotesNestedInput
   }
 
   export type NoteUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     content?: StringFieldUpdateOperationsInput | string
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15913,7 +15913,7 @@ export namespace Prisma {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     content: string
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15929,7 +15929,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     content?: StringFieldUpdateOperationsInput | string
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15939,14 +15939,14 @@ export namespace Prisma {
     type: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinet: CabinetCreateNestedOneWithoutDecorItemsInput
+    frame: FrameCreateNestedOneWithoutDecorItemsInput
   }
 
   export type DecorItemUncheckedCreateInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15956,14 +15956,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinet?: CabinetUpdateOneRequiredWithoutDecorItemsNestedInput
+    frame?: FrameUpdateOneRequiredWithoutDecorItemsNestedInput
   }
 
   export type DecorItemUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15972,7 +15972,7 @@ export namespace Prisma {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
-    cabinetId: number
+    frameId: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -15988,7 +15988,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
-    cabinetId?: IntFieldUpdateOperationsInput | number
+    frameId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16103,10 +16103,10 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type CabinetListRelationFilter = {
-    every?: CabinetWhereInput
-    some?: CabinetWhereInput
-    none?: CabinetWhereInput
+  export type FrameListRelationFilter = {
+    every?: FrameWhereInput
+    some?: FrameWhereInput
+    none?: FrameWhereInput
   }
 
   export type SpotifyAccountNullableScalarRelationFilter = {
@@ -16114,7 +16114,7 @@ export namespace Prisma {
     isNot?: SpotifyAccountWhereInput | null
   }
 
-  export type CabinetOrderByRelationAggregateInput = {
+  export type FrameOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -16206,9 +16206,9 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type CabinetLayoutNullableScalarRelationFilter = {
-    is?: CabinetLayoutWhereInput | null
-    isNot?: CabinetLayoutWhereInput | null
+  export type FrameLayoutNullableScalarRelationFilter = {
+    is?: FrameLayoutWhereInput | null
+    isNot?: FrameLayoutWhereInput | null
   }
 
   export type ChestNullableScalarRelationFilter = {
@@ -16271,7 +16271,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type CabinetCountOrderByAggregateInput = {
+  export type FrameCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     createdAt?: SortOrder
@@ -16279,20 +16279,12 @@ export namespace Prisma {
     ownerId?: SortOrder
   }
 
-  export type CabinetAvgOrderByAggregateInput = {
+  export type FrameAvgOrderByAggregateInput = {
     id?: SortOrder
     ownerId?: SortOrder
   }
 
-  export type CabinetMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    ownerId?: SortOrder
-  }
-
-  export type CabinetMinOrderByAggregateInput = {
+  export type FrameMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     createdAt?: SortOrder
@@ -16300,15 +16292,23 @@ export namespace Prisma {
     ownerId?: SortOrder
   }
 
-  export type CabinetSumOrderByAggregateInput = {
+  export type FrameMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    ownerId?: SortOrder
+  }
+
+  export type FrameSumOrderByAggregateInput = {
     id?: SortOrder
     ownerId?: SortOrder
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonFilterBase<$PrismaModel>>
-      >
+      Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+      Required<JsonFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonFilterBase<$PrismaModel = never> = {
@@ -16328,47 +16328,47 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type CabinetScalarRelationFilter = {
-    is?: CabinetWhereInput
-    isNot?: CabinetWhereInput
+  export type FrameScalarRelationFilter = {
+    is?: FrameWhereInput
+    isNot?: FrameWhereInput
   }
 
-  export type CabinetLayoutCountOrderByAggregateInput = {
+  export type FrameLayoutCountOrderByAggregateInput = {
     id?: SortOrder
     layout?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type CabinetLayoutAvgOrderByAggregateInput = {
+  export type FrameLayoutAvgOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
-  export type CabinetLayoutMaxOrderByAggregateInput = {
+  export type FrameLayoutMaxOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type CabinetLayoutMinOrderByAggregateInput = {
+  export type FrameLayoutMinOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type CabinetLayoutSumOrderByAggregateInput = {
+  export type FrameLayoutSumOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
-      >
+      Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+      Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
@@ -16392,9 +16392,9 @@ export namespace Prisma {
   }
   export type JsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
+      Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+      Required<JsonNullableFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonNullableFilterBase<$PrismaModel = never> = {
@@ -16424,20 +16424,20 @@ export namespace Prisma {
     passcode?: SortOrder
     position?: SortOrder
     items?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type ChestAvgOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type ChestMaxOrderByAggregateInput = {
     id?: SortOrder
     passcode?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16445,20 +16445,20 @@ export namespace Prisma {
   export type ChestMinOrderByAggregateInput = {
     id?: SortOrder
     passcode?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type ChestSumOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
+      Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+      Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
@@ -16486,20 +16486,20 @@ export namespace Prisma {
     passcode?: SortOrder
     position?: SortOrder
     entries?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type JournalAvgOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type JournalMaxOrderByAggregateInput = {
     id?: SortOrder
     passcode?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16507,14 +16507,14 @@ export namespace Prisma {
   export type JournalMinOrderByAggregateInput = {
     id?: SortOrder
     passcode?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type JournalSumOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -16537,21 +16537,21 @@ export namespace Prisma {
     position?: SortOrder
     url?: SortOrder
     caption?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type PolaroidAvgOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type PolaroidMaxOrderByAggregateInput = {
     id?: SortOrder
     url?: SortOrder
     caption?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16560,14 +16560,14 @@ export namespace Prisma {
     id?: SortOrder
     url?: SortOrder
     caption?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type PolaroidSumOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -16593,21 +16593,21 @@ export namespace Prisma {
     position?: SortOrder
     type?: SortOrder
     url?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type MediaAvgOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type MediaMaxOrderByAggregateInput = {
     id?: SortOrder
     type?: SortOrder
     url?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16616,14 +16616,14 @@ export namespace Prisma {
     id?: SortOrder
     type?: SortOrder
     url?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type MediaSumOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type ChecklistCountOrderByAggregateInput = {
@@ -16631,20 +16631,20 @@ export namespace Prisma {
     position?: SortOrder
     title?: SortOrder
     items?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type ChecklistAvgOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type ChecklistMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16652,34 +16652,34 @@ export namespace Prisma {
   export type ChecklistMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type ChecklistSumOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type NoteCountOrderByAggregateInput = {
     id?: SortOrder
     position?: SortOrder
     content?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type NoteAvgOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type NoteMaxOrderByAggregateInput = {
     id?: SortOrder
     content?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16687,34 +16687,34 @@ export namespace Prisma {
   export type NoteMinOrderByAggregateInput = {
     id?: SortOrder
     content?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type NoteSumOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type DecorItemCountOrderByAggregateInput = {
     id?: SortOrder
     position?: SortOrder
     type?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type DecorItemAvgOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type DecorItemMaxOrderByAggregateInput = {
     id?: SortOrder
     type?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -16722,14 +16722,14 @@ export namespace Prisma {
   export type DecorItemMinOrderByAggregateInput = {
     id?: SortOrder
     type?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type DecorItemSumOrderByAggregateInput = {
     id?: SortOrder
-    cabinetId?: SortOrder
+    frameId?: SortOrder
   }
 
   export type SpotifyAccountCountOrderByAggregateInput = {
@@ -16775,11 +16775,11 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type CabinetCreateNestedManyWithoutOwnerInput = {
-    create?: XOR<CabinetCreateWithoutOwnerInput, CabinetUncheckedCreateWithoutOwnerInput> | CabinetCreateWithoutOwnerInput[] | CabinetUncheckedCreateWithoutOwnerInput[]
-    connectOrCreate?: CabinetCreateOrConnectWithoutOwnerInput | CabinetCreateOrConnectWithoutOwnerInput[]
-    createMany?: CabinetCreateManyOwnerInputEnvelope
-    connect?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
+  export type FrameCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<FrameCreateWithoutOwnerInput, FrameUncheckedCreateWithoutOwnerInput> | FrameCreateWithoutOwnerInput[] | FrameUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: FrameCreateOrConnectWithoutOwnerInput | FrameCreateOrConnectWithoutOwnerInput[]
+    createMany?: FrameCreateManyOwnerInputEnvelope
+    connect?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
   }
 
   export type SpotifyAccountCreateNestedOneWithoutUserInput = {
@@ -16788,11 +16788,11 @@ export namespace Prisma {
     connect?: SpotifyAccountWhereUniqueInput
   }
 
-  export type CabinetUncheckedCreateNestedManyWithoutOwnerInput = {
-    create?: XOR<CabinetCreateWithoutOwnerInput, CabinetUncheckedCreateWithoutOwnerInput> | CabinetCreateWithoutOwnerInput[] | CabinetUncheckedCreateWithoutOwnerInput[]
-    connectOrCreate?: CabinetCreateOrConnectWithoutOwnerInput | CabinetCreateOrConnectWithoutOwnerInput[]
-    createMany?: CabinetCreateManyOwnerInputEnvelope
-    connect?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
+  export type FrameUncheckedCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<FrameCreateWithoutOwnerInput, FrameUncheckedCreateWithoutOwnerInput> | FrameCreateWithoutOwnerInput[] | FrameUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: FrameCreateOrConnectWithoutOwnerInput | FrameCreateOrConnectWithoutOwnerInput[]
+    createMany?: FrameCreateManyOwnerInputEnvelope
+    connect?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
   }
 
   export type SpotifyAccountUncheckedCreateNestedOneWithoutUserInput = {
@@ -16809,18 +16809,18 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type CabinetUpdateManyWithoutOwnerNestedInput = {
-    create?: XOR<CabinetCreateWithoutOwnerInput, CabinetUncheckedCreateWithoutOwnerInput> | CabinetCreateWithoutOwnerInput[] | CabinetUncheckedCreateWithoutOwnerInput[]
-    connectOrCreate?: CabinetCreateOrConnectWithoutOwnerInput | CabinetCreateOrConnectWithoutOwnerInput[]
-    upsert?: CabinetUpsertWithWhereUniqueWithoutOwnerInput | CabinetUpsertWithWhereUniqueWithoutOwnerInput[]
-    createMany?: CabinetCreateManyOwnerInputEnvelope
-    set?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
-    disconnect?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
-    delete?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
-    connect?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
-    update?: CabinetUpdateWithWhereUniqueWithoutOwnerInput | CabinetUpdateWithWhereUniqueWithoutOwnerInput[]
-    updateMany?: CabinetUpdateManyWithWhereWithoutOwnerInput | CabinetUpdateManyWithWhereWithoutOwnerInput[]
-    deleteMany?: CabinetScalarWhereInput | CabinetScalarWhereInput[]
+  export type FrameUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<FrameCreateWithoutOwnerInput, FrameUncheckedCreateWithoutOwnerInput> | FrameCreateWithoutOwnerInput[] | FrameUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: FrameCreateOrConnectWithoutOwnerInput | FrameCreateOrConnectWithoutOwnerInput[]
+    upsert?: FrameUpsertWithWhereUniqueWithoutOwnerInput | FrameUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: FrameCreateManyOwnerInputEnvelope
+    set?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
+    disconnect?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
+    delete?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
+    connect?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
+    update?: FrameUpdateWithWhereUniqueWithoutOwnerInput | FrameUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: FrameUpdateManyWithWhereWithoutOwnerInput | FrameUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: FrameScalarWhereInput | FrameScalarWhereInput[]
   }
 
   export type SpotifyAccountUpdateOneWithoutUserNestedInput = {
@@ -16841,18 +16841,18 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type CabinetUncheckedUpdateManyWithoutOwnerNestedInput = {
-    create?: XOR<CabinetCreateWithoutOwnerInput, CabinetUncheckedCreateWithoutOwnerInput> | CabinetCreateWithoutOwnerInput[] | CabinetUncheckedCreateWithoutOwnerInput[]
-    connectOrCreate?: CabinetCreateOrConnectWithoutOwnerInput | CabinetCreateOrConnectWithoutOwnerInput[]
-    upsert?: CabinetUpsertWithWhereUniqueWithoutOwnerInput | CabinetUpsertWithWhereUniqueWithoutOwnerInput[]
-    createMany?: CabinetCreateManyOwnerInputEnvelope
-    set?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
-    disconnect?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
-    delete?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
-    connect?: CabinetWhereUniqueInput | CabinetWhereUniqueInput[]
-    update?: CabinetUpdateWithWhereUniqueWithoutOwnerInput | CabinetUpdateWithWhereUniqueWithoutOwnerInput[]
-    updateMany?: CabinetUpdateManyWithWhereWithoutOwnerInput | CabinetUpdateManyWithWhereWithoutOwnerInput[]
-    deleteMany?: CabinetScalarWhereInput | CabinetScalarWhereInput[]
+  export type FrameUncheckedUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<FrameCreateWithoutOwnerInput, FrameUncheckedCreateWithoutOwnerInput> | FrameCreateWithoutOwnerInput[] | FrameUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: FrameCreateOrConnectWithoutOwnerInput | FrameCreateOrConnectWithoutOwnerInput[]
+    upsert?: FrameUpsertWithWhereUniqueWithoutOwnerInput | FrameUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: FrameCreateManyOwnerInputEnvelope
+    set?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
+    disconnect?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
+    delete?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
+    connect?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
+    update?: FrameUpdateWithWhereUniqueWithoutOwnerInput | FrameUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: FrameUpdateManyWithWhereWithoutOwnerInput | FrameUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: FrameScalarWhereInput | FrameScalarWhereInput[]
   }
 
   export type SpotifyAccountUncheckedUpdateOneWithoutUserNestedInput = {
@@ -16865,440 +16865,440 @@ export namespace Prisma {
     update?: XOR<XOR<SpotifyAccountUpdateToOneWithWhereWithoutUserInput, SpotifyAccountUpdateWithoutUserInput>, SpotifyAccountUncheckedUpdateWithoutUserInput>
   }
 
-  export type UserCreateNestedOneWithoutCabinetsInput = {
-    create?: XOR<UserCreateWithoutCabinetsInput, UserUncheckedCreateWithoutCabinetsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCabinetsInput
+  export type UserCreateNestedOneWithoutFrameInput = {
+    create?: XOR<UserCreateWithoutFrameInput, UserUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFrameInput
     connect?: UserWhereUniqueInput
   }
 
-  export type CabinetLayoutCreateNestedOneWithoutCabinetInput = {
-    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput
-    connect?: CabinetLayoutWhereUniqueInput
+  export type FrameLayoutCreateNestedOneWithoutFrameInput = {
+    create?: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: FrameLayoutCreateOrConnectWithoutFrameInput
+    connect?: FrameLayoutWhereUniqueInput
   }
 
-  export type ChestCreateNestedOneWithoutCabinetInput = {
-    create?: XOR<ChestCreateWithoutCabinetInput, ChestUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: ChestCreateOrConnectWithoutCabinetInput
+  export type ChestCreateNestedOneWithoutFrameInput = {
+    create?: XOR<ChestCreateWithoutFrameInput, ChestUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: ChestCreateOrConnectWithoutFrameInput
     connect?: ChestWhereUniqueInput
   }
 
-  export type JournalCreateNestedOneWithoutCabinetInput = {
-    create?: XOR<JournalCreateWithoutCabinetInput, JournalUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: JournalCreateOrConnectWithoutCabinetInput
+  export type JournalCreateNestedOneWithoutFrameInput = {
+    create?: XOR<JournalCreateWithoutFrameInput, JournalUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: JournalCreateOrConnectWithoutFrameInput
     connect?: JournalWhereUniqueInput
   }
 
-  export type PolaroidCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput> | PolaroidCreateWithoutCabinetInput[] | PolaroidUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: PolaroidCreateOrConnectWithoutCabinetInput | PolaroidCreateOrConnectWithoutCabinetInput[]
-    createMany?: PolaroidCreateManyCabinetInputEnvelope
+  export type PolaroidCreateNestedManyWithoutFrameInput = {
+    create?: XOR<PolaroidCreateWithoutFrameInput, PolaroidUncheckedCreateWithoutFrameInput> | PolaroidCreateWithoutFrameInput[] | PolaroidUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: PolaroidCreateOrConnectWithoutFrameInput | PolaroidCreateOrConnectWithoutFrameInput[]
+    createMany?: PolaroidCreateManyFrameInputEnvelope
     connect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
   }
 
-  export type MediaCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<MediaCreateWithoutCabinetInput, MediaUncheckedCreateWithoutCabinetInput> | MediaCreateWithoutCabinetInput[] | MediaUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: MediaCreateOrConnectWithoutCabinetInput | MediaCreateOrConnectWithoutCabinetInput[]
-    createMany?: MediaCreateManyCabinetInputEnvelope
+  export type MediaCreateNestedManyWithoutFrameInput = {
+    create?: XOR<MediaCreateWithoutFrameInput, MediaUncheckedCreateWithoutFrameInput> | MediaCreateWithoutFrameInput[] | MediaUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: MediaCreateOrConnectWithoutFrameInput | MediaCreateOrConnectWithoutFrameInput[]
+    createMany?: MediaCreateManyFrameInputEnvelope
     connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
   }
 
-  export type ChecklistCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<ChecklistCreateWithoutCabinetInput, ChecklistUncheckedCreateWithoutCabinetInput> | ChecklistCreateWithoutCabinetInput[] | ChecklistUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: ChecklistCreateOrConnectWithoutCabinetInput | ChecklistCreateOrConnectWithoutCabinetInput[]
-    createMany?: ChecklistCreateManyCabinetInputEnvelope
+  export type ChecklistCreateNestedManyWithoutFrameInput = {
+    create?: XOR<ChecklistCreateWithoutFrameInput, ChecklistUncheckedCreateWithoutFrameInput> | ChecklistCreateWithoutFrameInput[] | ChecklistUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: ChecklistCreateOrConnectWithoutFrameInput | ChecklistCreateOrConnectWithoutFrameInput[]
+    createMany?: ChecklistCreateManyFrameInputEnvelope
     connect?: ChecklistWhereUniqueInput | ChecklistWhereUniqueInput[]
   }
 
-  export type NoteCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<NoteCreateWithoutCabinetInput, NoteUncheckedCreateWithoutCabinetInput> | NoteCreateWithoutCabinetInput[] | NoteUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutCabinetInput | NoteCreateOrConnectWithoutCabinetInput[]
-    createMany?: NoteCreateManyCabinetInputEnvelope
+  export type NoteCreateNestedManyWithoutFrameInput = {
+    create?: XOR<NoteCreateWithoutFrameInput, NoteUncheckedCreateWithoutFrameInput> | NoteCreateWithoutFrameInput[] | NoteUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: NoteCreateOrConnectWithoutFrameInput | NoteCreateOrConnectWithoutFrameInput[]
+    createMany?: NoteCreateManyFrameInputEnvelope
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
   }
 
-  export type DecorItemCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput> | DecorItemCreateWithoutCabinetInput[] | DecorItemUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: DecorItemCreateOrConnectWithoutCabinetInput | DecorItemCreateOrConnectWithoutCabinetInput[]
-    createMany?: DecorItemCreateManyCabinetInputEnvelope
+  export type DecorItemCreateNestedManyWithoutFrameInput = {
+    create?: XOR<DecorItemCreateWithoutFrameInput, DecorItemUncheckedCreateWithoutFrameInput> | DecorItemCreateWithoutFrameInput[] | DecorItemUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: DecorItemCreateOrConnectWithoutFrameInput | DecorItemCreateOrConnectWithoutFrameInput[]
+    createMany?: DecorItemCreateManyFrameInputEnvelope
     connect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
   }
 
-  export type CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput = {
-    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput
-    connect?: CabinetLayoutWhereUniqueInput
+  export type FrameLayoutUncheckedCreateNestedOneWithoutFrameInput = {
+    create?: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: FrameLayoutCreateOrConnectWithoutFrameInput
+    connect?: FrameLayoutWhereUniqueInput
   }
 
-  export type ChestUncheckedCreateNestedOneWithoutCabinetInput = {
-    create?: XOR<ChestCreateWithoutCabinetInput, ChestUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: ChestCreateOrConnectWithoutCabinetInput
+  export type ChestUncheckedCreateNestedOneWithoutFrameInput = {
+    create?: XOR<ChestCreateWithoutFrameInput, ChestUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: ChestCreateOrConnectWithoutFrameInput
     connect?: ChestWhereUniqueInput
   }
 
-  export type JournalUncheckedCreateNestedOneWithoutCabinetInput = {
-    create?: XOR<JournalCreateWithoutCabinetInput, JournalUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: JournalCreateOrConnectWithoutCabinetInput
+  export type JournalUncheckedCreateNestedOneWithoutFrameInput = {
+    create?: XOR<JournalCreateWithoutFrameInput, JournalUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: JournalCreateOrConnectWithoutFrameInput
     connect?: JournalWhereUniqueInput
   }
 
-  export type PolaroidUncheckedCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput> | PolaroidCreateWithoutCabinetInput[] | PolaroidUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: PolaroidCreateOrConnectWithoutCabinetInput | PolaroidCreateOrConnectWithoutCabinetInput[]
-    createMany?: PolaroidCreateManyCabinetInputEnvelope
+  export type PolaroidUncheckedCreateNestedManyWithoutFrameInput = {
+    create?: XOR<PolaroidCreateWithoutFrameInput, PolaroidUncheckedCreateWithoutFrameInput> | PolaroidCreateWithoutFrameInput[] | PolaroidUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: PolaroidCreateOrConnectWithoutFrameInput | PolaroidCreateOrConnectWithoutFrameInput[]
+    createMany?: PolaroidCreateManyFrameInputEnvelope
     connect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
   }
 
-  export type MediaUncheckedCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<MediaCreateWithoutCabinetInput, MediaUncheckedCreateWithoutCabinetInput> | MediaCreateWithoutCabinetInput[] | MediaUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: MediaCreateOrConnectWithoutCabinetInput | MediaCreateOrConnectWithoutCabinetInput[]
-    createMany?: MediaCreateManyCabinetInputEnvelope
+  export type MediaUncheckedCreateNestedManyWithoutFrameInput = {
+    create?: XOR<MediaCreateWithoutFrameInput, MediaUncheckedCreateWithoutFrameInput> | MediaCreateWithoutFrameInput[] | MediaUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: MediaCreateOrConnectWithoutFrameInput | MediaCreateOrConnectWithoutFrameInput[]
+    createMany?: MediaCreateManyFrameInputEnvelope
     connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
   }
 
-  export type ChecklistUncheckedCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<ChecklistCreateWithoutCabinetInput, ChecklistUncheckedCreateWithoutCabinetInput> | ChecklistCreateWithoutCabinetInput[] | ChecklistUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: ChecklistCreateOrConnectWithoutCabinetInput | ChecklistCreateOrConnectWithoutCabinetInput[]
-    createMany?: ChecklistCreateManyCabinetInputEnvelope
+  export type ChecklistUncheckedCreateNestedManyWithoutFrameInput = {
+    create?: XOR<ChecklistCreateWithoutFrameInput, ChecklistUncheckedCreateWithoutFrameInput> | ChecklistCreateWithoutFrameInput[] | ChecklistUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: ChecklistCreateOrConnectWithoutFrameInput | ChecklistCreateOrConnectWithoutFrameInput[]
+    createMany?: ChecklistCreateManyFrameInputEnvelope
     connect?: ChecklistWhereUniqueInput | ChecklistWhereUniqueInput[]
   }
 
-  export type NoteUncheckedCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<NoteCreateWithoutCabinetInput, NoteUncheckedCreateWithoutCabinetInput> | NoteCreateWithoutCabinetInput[] | NoteUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutCabinetInput | NoteCreateOrConnectWithoutCabinetInput[]
-    createMany?: NoteCreateManyCabinetInputEnvelope
+  export type NoteUncheckedCreateNestedManyWithoutFrameInput = {
+    create?: XOR<NoteCreateWithoutFrameInput, NoteUncheckedCreateWithoutFrameInput> | NoteCreateWithoutFrameInput[] | NoteUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: NoteCreateOrConnectWithoutFrameInput | NoteCreateOrConnectWithoutFrameInput[]
+    createMany?: NoteCreateManyFrameInputEnvelope
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
   }
 
-  export type DecorItemUncheckedCreateNestedManyWithoutCabinetInput = {
-    create?: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput> | DecorItemCreateWithoutCabinetInput[] | DecorItemUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: DecorItemCreateOrConnectWithoutCabinetInput | DecorItemCreateOrConnectWithoutCabinetInput[]
-    createMany?: DecorItemCreateManyCabinetInputEnvelope
+  export type DecorItemUncheckedCreateNestedManyWithoutFrameInput = {
+    create?: XOR<DecorItemCreateWithoutFrameInput, DecorItemUncheckedCreateWithoutFrameInput> | DecorItemCreateWithoutFrameInput[] | DecorItemUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: DecorItemCreateOrConnectWithoutFrameInput | DecorItemCreateOrConnectWithoutFrameInput[]
+    createMany?: DecorItemCreateManyFrameInputEnvelope
     connect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
   }
 
-  export type UserUpdateOneRequiredWithoutCabinetsNestedInput = {
-    create?: XOR<UserCreateWithoutCabinetsInput, UserUncheckedCreateWithoutCabinetsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutCabinetsInput
-    upsert?: UserUpsertWithoutCabinetsInput
+  export type UserUpdateOneRequiredWithoutFrameNestedInput = {
+    create?: XOR<UserCreateWithoutFrameInput, UserUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFrameInput
+    upsert?: UserUpsertWithoutFrameInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCabinetsInput, UserUpdateWithoutCabinetsInput>, UserUncheckedUpdateWithoutCabinetsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFrameInput, UserUpdateWithoutFrameInput>, UserUncheckedUpdateWithoutFrameInput>
   }
 
-  export type CabinetLayoutUpdateOneWithoutCabinetNestedInput = {
-    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput
-    upsert?: CabinetLayoutUpsertWithoutCabinetInput
-    disconnect?: CabinetLayoutWhereInput | boolean
-    delete?: CabinetLayoutWhereInput | boolean
-    connect?: CabinetLayoutWhereUniqueInput
-    update?: XOR<XOR<CabinetLayoutUpdateToOneWithWhereWithoutCabinetInput, CabinetLayoutUpdateWithoutCabinetInput>, CabinetLayoutUncheckedUpdateWithoutCabinetInput>
+  export type FrameLayoutUpdateOneWithoutFrameNestedInput = {
+    create?: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: FrameLayoutCreateOrConnectWithoutFrameInput
+    upsert?: FrameLayoutUpsertWithoutFrameInput
+    disconnect?: FrameLayoutWhereInput | boolean
+    delete?: FrameLayoutWhereInput | boolean
+    connect?: FrameLayoutWhereUniqueInput
+    update?: XOR<XOR<FrameLayoutUpdateToOneWithWhereWithoutFrameInput, FrameLayoutUpdateWithoutFrameInput>, FrameLayoutUncheckedUpdateWithoutFrameInput>
   }
 
-  export type ChestUpdateOneWithoutCabinetNestedInput = {
-    create?: XOR<ChestCreateWithoutCabinetInput, ChestUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: ChestCreateOrConnectWithoutCabinetInput
-    upsert?: ChestUpsertWithoutCabinetInput
+  export type ChestUpdateOneWithoutFrameNestedInput = {
+    create?: XOR<ChestCreateWithoutFrameInput, ChestUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: ChestCreateOrConnectWithoutFrameInput
+    upsert?: ChestUpsertWithoutFrameInput
     disconnect?: ChestWhereInput | boolean
     delete?: ChestWhereInput | boolean
     connect?: ChestWhereUniqueInput
-    update?: XOR<XOR<ChestUpdateToOneWithWhereWithoutCabinetInput, ChestUpdateWithoutCabinetInput>, ChestUncheckedUpdateWithoutCabinetInput>
+    update?: XOR<XOR<ChestUpdateToOneWithWhereWithoutFrameInput, ChestUpdateWithoutFrameInput>, ChestUncheckedUpdateWithoutFrameInput>
   }
 
-  export type JournalUpdateOneWithoutCabinetNestedInput = {
-    create?: XOR<JournalCreateWithoutCabinetInput, JournalUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: JournalCreateOrConnectWithoutCabinetInput
-    upsert?: JournalUpsertWithoutCabinetInput
+  export type JournalUpdateOneWithoutFrameNestedInput = {
+    create?: XOR<JournalCreateWithoutFrameInput, JournalUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: JournalCreateOrConnectWithoutFrameInput
+    upsert?: JournalUpsertWithoutFrameInput
     disconnect?: JournalWhereInput | boolean
     delete?: JournalWhereInput | boolean
     connect?: JournalWhereUniqueInput
-    update?: XOR<XOR<JournalUpdateToOneWithWhereWithoutCabinetInput, JournalUpdateWithoutCabinetInput>, JournalUncheckedUpdateWithoutCabinetInput>
+    update?: XOR<XOR<JournalUpdateToOneWithWhereWithoutFrameInput, JournalUpdateWithoutFrameInput>, JournalUncheckedUpdateWithoutFrameInput>
   }
 
-  export type PolaroidUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput> | PolaroidCreateWithoutCabinetInput[] | PolaroidUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: PolaroidCreateOrConnectWithoutCabinetInput | PolaroidCreateOrConnectWithoutCabinetInput[]
-    upsert?: PolaroidUpsertWithWhereUniqueWithoutCabinetInput | PolaroidUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: PolaroidCreateManyCabinetInputEnvelope
+  export type PolaroidUpdateManyWithoutFrameNestedInput = {
+    create?: XOR<PolaroidCreateWithoutFrameInput, PolaroidUncheckedCreateWithoutFrameInput> | PolaroidCreateWithoutFrameInput[] | PolaroidUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: PolaroidCreateOrConnectWithoutFrameInput | PolaroidCreateOrConnectWithoutFrameInput[]
+    upsert?: PolaroidUpsertWithWhereUniqueWithoutFrameInput | PolaroidUpsertWithWhereUniqueWithoutFrameInput[]
+    createMany?: PolaroidCreateManyFrameInputEnvelope
     set?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
     disconnect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
     delete?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
     connect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
-    update?: PolaroidUpdateWithWhereUniqueWithoutCabinetInput | PolaroidUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: PolaroidUpdateManyWithWhereWithoutCabinetInput | PolaroidUpdateManyWithWhereWithoutCabinetInput[]
+    update?: PolaroidUpdateWithWhereUniqueWithoutFrameInput | PolaroidUpdateWithWhereUniqueWithoutFrameInput[]
+    updateMany?: PolaroidUpdateManyWithWhereWithoutFrameInput | PolaroidUpdateManyWithWhereWithoutFrameInput[]
     deleteMany?: PolaroidScalarWhereInput | PolaroidScalarWhereInput[]
   }
 
-  export type MediaUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<MediaCreateWithoutCabinetInput, MediaUncheckedCreateWithoutCabinetInput> | MediaCreateWithoutCabinetInput[] | MediaUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: MediaCreateOrConnectWithoutCabinetInput | MediaCreateOrConnectWithoutCabinetInput[]
-    upsert?: MediaUpsertWithWhereUniqueWithoutCabinetInput | MediaUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: MediaCreateManyCabinetInputEnvelope
+  export type MediaUpdateManyWithoutFrameNestedInput = {
+    create?: XOR<MediaCreateWithoutFrameInput, MediaUncheckedCreateWithoutFrameInput> | MediaCreateWithoutFrameInput[] | MediaUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: MediaCreateOrConnectWithoutFrameInput | MediaCreateOrConnectWithoutFrameInput[]
+    upsert?: MediaUpsertWithWhereUniqueWithoutFrameInput | MediaUpsertWithWhereUniqueWithoutFrameInput[]
+    createMany?: MediaCreateManyFrameInputEnvelope
     set?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
     disconnect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
     delete?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
     connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
-    update?: MediaUpdateWithWhereUniqueWithoutCabinetInput | MediaUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: MediaUpdateManyWithWhereWithoutCabinetInput | MediaUpdateManyWithWhereWithoutCabinetInput[]
+    update?: MediaUpdateWithWhereUniqueWithoutFrameInput | MediaUpdateWithWhereUniqueWithoutFrameInput[]
+    updateMany?: MediaUpdateManyWithWhereWithoutFrameInput | MediaUpdateManyWithWhereWithoutFrameInput[]
     deleteMany?: MediaScalarWhereInput | MediaScalarWhereInput[]
   }
 
-  export type ChecklistUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<ChecklistCreateWithoutCabinetInput, ChecklistUncheckedCreateWithoutCabinetInput> | ChecklistCreateWithoutCabinetInput[] | ChecklistUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: ChecklistCreateOrConnectWithoutCabinetInput | ChecklistCreateOrConnectWithoutCabinetInput[]
-    upsert?: ChecklistUpsertWithWhereUniqueWithoutCabinetInput | ChecklistUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: ChecklistCreateManyCabinetInputEnvelope
+  export type ChecklistUpdateManyWithoutFrameNestedInput = {
+    create?: XOR<ChecklistCreateWithoutFrameInput, ChecklistUncheckedCreateWithoutFrameInput> | ChecklistCreateWithoutFrameInput[] | ChecklistUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: ChecklistCreateOrConnectWithoutFrameInput | ChecklistCreateOrConnectWithoutFrameInput[]
+    upsert?: ChecklistUpsertWithWhereUniqueWithoutFrameInput | ChecklistUpsertWithWhereUniqueWithoutFrameInput[]
+    createMany?: ChecklistCreateManyFrameInputEnvelope
     set?: ChecklistWhereUniqueInput | ChecklistWhereUniqueInput[]
     disconnect?: ChecklistWhereUniqueInput | ChecklistWhereUniqueInput[]
     delete?: ChecklistWhereUniqueInput | ChecklistWhereUniqueInput[]
     connect?: ChecklistWhereUniqueInput | ChecklistWhereUniqueInput[]
-    update?: ChecklistUpdateWithWhereUniqueWithoutCabinetInput | ChecklistUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: ChecklistUpdateManyWithWhereWithoutCabinetInput | ChecklistUpdateManyWithWhereWithoutCabinetInput[]
+    update?: ChecklistUpdateWithWhereUniqueWithoutFrameInput | ChecklistUpdateWithWhereUniqueWithoutFrameInput[]
+    updateMany?: ChecklistUpdateManyWithWhereWithoutFrameInput | ChecklistUpdateManyWithWhereWithoutFrameInput[]
     deleteMany?: ChecklistScalarWhereInput | ChecklistScalarWhereInput[]
   }
 
-  export type NoteUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<NoteCreateWithoutCabinetInput, NoteUncheckedCreateWithoutCabinetInput> | NoteCreateWithoutCabinetInput[] | NoteUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutCabinetInput | NoteCreateOrConnectWithoutCabinetInput[]
-    upsert?: NoteUpsertWithWhereUniqueWithoutCabinetInput | NoteUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: NoteCreateManyCabinetInputEnvelope
+  export type NoteUpdateManyWithoutFrameNestedInput = {
+    create?: XOR<NoteCreateWithoutFrameInput, NoteUncheckedCreateWithoutFrameInput> | NoteCreateWithoutFrameInput[] | NoteUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: NoteCreateOrConnectWithoutFrameInput | NoteCreateOrConnectWithoutFrameInput[]
+    upsert?: NoteUpsertWithWhereUniqueWithoutFrameInput | NoteUpsertWithWhereUniqueWithoutFrameInput[]
+    createMany?: NoteCreateManyFrameInputEnvelope
     set?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
     disconnect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
     delete?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    update?: NoteUpdateWithWhereUniqueWithoutCabinetInput | NoteUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: NoteUpdateManyWithWhereWithoutCabinetInput | NoteUpdateManyWithWhereWithoutCabinetInput[]
+    update?: NoteUpdateWithWhereUniqueWithoutFrameInput | NoteUpdateWithWhereUniqueWithoutFrameInput[]
+    updateMany?: NoteUpdateManyWithWhereWithoutFrameInput | NoteUpdateManyWithWhereWithoutFrameInput[]
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
   }
 
-  export type DecorItemUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput> | DecorItemCreateWithoutCabinetInput[] | DecorItemUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: DecorItemCreateOrConnectWithoutCabinetInput | DecorItemCreateOrConnectWithoutCabinetInput[]
-    upsert?: DecorItemUpsertWithWhereUniqueWithoutCabinetInput | DecorItemUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: DecorItemCreateManyCabinetInputEnvelope
+  export type DecorItemUpdateManyWithoutFrameNestedInput = {
+    create?: XOR<DecorItemCreateWithoutFrameInput, DecorItemUncheckedCreateWithoutFrameInput> | DecorItemCreateWithoutFrameInput[] | DecorItemUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: DecorItemCreateOrConnectWithoutFrameInput | DecorItemCreateOrConnectWithoutFrameInput[]
+    upsert?: DecorItemUpsertWithWhereUniqueWithoutFrameInput | DecorItemUpsertWithWhereUniqueWithoutFrameInput[]
+    createMany?: DecorItemCreateManyFrameInputEnvelope
     set?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
     disconnect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
     delete?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
     connect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-    update?: DecorItemUpdateWithWhereUniqueWithoutCabinetInput | DecorItemUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: DecorItemUpdateManyWithWhereWithoutCabinetInput | DecorItemUpdateManyWithWhereWithoutCabinetInput[]
+    update?: DecorItemUpdateWithWhereUniqueWithoutFrameInput | DecorItemUpdateWithWhereUniqueWithoutFrameInput[]
+    updateMany?: DecorItemUpdateManyWithWhereWithoutFrameInput | DecorItemUpdateManyWithWhereWithoutFrameInput[]
     deleteMany?: DecorItemScalarWhereInput | DecorItemScalarWhereInput[]
   }
 
-  export type CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput = {
-    create?: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutCabinetInput
-    upsert?: CabinetLayoutUpsertWithoutCabinetInput
-    disconnect?: CabinetLayoutWhereInput | boolean
-    delete?: CabinetLayoutWhereInput | boolean
-    connect?: CabinetLayoutWhereUniqueInput
-    update?: XOR<XOR<CabinetLayoutUpdateToOneWithWhereWithoutCabinetInput, CabinetLayoutUpdateWithoutCabinetInput>, CabinetLayoutUncheckedUpdateWithoutCabinetInput>
+  export type FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput = {
+    create?: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: FrameLayoutCreateOrConnectWithoutFrameInput
+    upsert?: FrameLayoutUpsertWithoutFrameInput
+    disconnect?: FrameLayoutWhereInput | boolean
+    delete?: FrameLayoutWhereInput | boolean
+    connect?: FrameLayoutWhereUniqueInput
+    update?: XOR<XOR<FrameLayoutUpdateToOneWithWhereWithoutFrameInput, FrameLayoutUpdateWithoutFrameInput>, FrameLayoutUncheckedUpdateWithoutFrameInput>
   }
 
-  export type ChestUncheckedUpdateOneWithoutCabinetNestedInput = {
-    create?: XOR<ChestCreateWithoutCabinetInput, ChestUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: ChestCreateOrConnectWithoutCabinetInput
-    upsert?: ChestUpsertWithoutCabinetInput
+  export type ChestUncheckedUpdateOneWithoutFrameNestedInput = {
+    create?: XOR<ChestCreateWithoutFrameInput, ChestUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: ChestCreateOrConnectWithoutFrameInput
+    upsert?: ChestUpsertWithoutFrameInput
     disconnect?: ChestWhereInput | boolean
     delete?: ChestWhereInput | boolean
     connect?: ChestWhereUniqueInput
-    update?: XOR<XOR<ChestUpdateToOneWithWhereWithoutCabinetInput, ChestUpdateWithoutCabinetInput>, ChestUncheckedUpdateWithoutCabinetInput>
+    update?: XOR<XOR<ChestUpdateToOneWithWhereWithoutFrameInput, ChestUpdateWithoutFrameInput>, ChestUncheckedUpdateWithoutFrameInput>
   }
 
-  export type JournalUncheckedUpdateOneWithoutCabinetNestedInput = {
-    create?: XOR<JournalCreateWithoutCabinetInput, JournalUncheckedCreateWithoutCabinetInput>
-    connectOrCreate?: JournalCreateOrConnectWithoutCabinetInput
-    upsert?: JournalUpsertWithoutCabinetInput
+  export type JournalUncheckedUpdateOneWithoutFrameNestedInput = {
+    create?: XOR<JournalCreateWithoutFrameInput, JournalUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: JournalCreateOrConnectWithoutFrameInput
+    upsert?: JournalUpsertWithoutFrameInput
     disconnect?: JournalWhereInput | boolean
     delete?: JournalWhereInput | boolean
     connect?: JournalWhereUniqueInput
-    update?: XOR<XOR<JournalUpdateToOneWithWhereWithoutCabinetInput, JournalUpdateWithoutCabinetInput>, JournalUncheckedUpdateWithoutCabinetInput>
+    update?: XOR<XOR<JournalUpdateToOneWithWhereWithoutFrameInput, JournalUpdateWithoutFrameInput>, JournalUncheckedUpdateWithoutFrameInput>
   }
 
-  export type PolaroidUncheckedUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput> | PolaroidCreateWithoutCabinetInput[] | PolaroidUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: PolaroidCreateOrConnectWithoutCabinetInput | PolaroidCreateOrConnectWithoutCabinetInput[]
-    upsert?: PolaroidUpsertWithWhereUniqueWithoutCabinetInput | PolaroidUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: PolaroidCreateManyCabinetInputEnvelope
+  export type PolaroidUncheckedUpdateManyWithoutFrameNestedInput = {
+    create?: XOR<PolaroidCreateWithoutFrameInput, PolaroidUncheckedCreateWithoutFrameInput> | PolaroidCreateWithoutFrameInput[] | PolaroidUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: PolaroidCreateOrConnectWithoutFrameInput | PolaroidCreateOrConnectWithoutFrameInput[]
+    upsert?: PolaroidUpsertWithWhereUniqueWithoutFrameInput | PolaroidUpsertWithWhereUniqueWithoutFrameInput[]
+    createMany?: PolaroidCreateManyFrameInputEnvelope
     set?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
     disconnect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
     delete?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
     connect?: PolaroidWhereUniqueInput | PolaroidWhereUniqueInput[]
-    update?: PolaroidUpdateWithWhereUniqueWithoutCabinetInput | PolaroidUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: PolaroidUpdateManyWithWhereWithoutCabinetInput | PolaroidUpdateManyWithWhereWithoutCabinetInput[]
+    update?: PolaroidUpdateWithWhereUniqueWithoutFrameInput | PolaroidUpdateWithWhereUniqueWithoutFrameInput[]
+    updateMany?: PolaroidUpdateManyWithWhereWithoutFrameInput | PolaroidUpdateManyWithWhereWithoutFrameInput[]
     deleteMany?: PolaroidScalarWhereInput | PolaroidScalarWhereInput[]
   }
 
-  export type MediaUncheckedUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<MediaCreateWithoutCabinetInput, MediaUncheckedCreateWithoutCabinetInput> | MediaCreateWithoutCabinetInput[] | MediaUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: MediaCreateOrConnectWithoutCabinetInput | MediaCreateOrConnectWithoutCabinetInput[]
-    upsert?: MediaUpsertWithWhereUniqueWithoutCabinetInput | MediaUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: MediaCreateManyCabinetInputEnvelope
+  export type MediaUncheckedUpdateManyWithoutFrameNestedInput = {
+    create?: XOR<MediaCreateWithoutFrameInput, MediaUncheckedCreateWithoutFrameInput> | MediaCreateWithoutFrameInput[] | MediaUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: MediaCreateOrConnectWithoutFrameInput | MediaCreateOrConnectWithoutFrameInput[]
+    upsert?: MediaUpsertWithWhereUniqueWithoutFrameInput | MediaUpsertWithWhereUniqueWithoutFrameInput[]
+    createMany?: MediaCreateManyFrameInputEnvelope
     set?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
     disconnect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
     delete?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
     connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
-    update?: MediaUpdateWithWhereUniqueWithoutCabinetInput | MediaUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: MediaUpdateManyWithWhereWithoutCabinetInput | MediaUpdateManyWithWhereWithoutCabinetInput[]
+    update?: MediaUpdateWithWhereUniqueWithoutFrameInput | MediaUpdateWithWhereUniqueWithoutFrameInput[]
+    updateMany?: MediaUpdateManyWithWhereWithoutFrameInput | MediaUpdateManyWithWhereWithoutFrameInput[]
     deleteMany?: MediaScalarWhereInput | MediaScalarWhereInput[]
   }
 
-  export type ChecklistUncheckedUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<ChecklistCreateWithoutCabinetInput, ChecklistUncheckedCreateWithoutCabinetInput> | ChecklistCreateWithoutCabinetInput[] | ChecklistUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: ChecklistCreateOrConnectWithoutCabinetInput | ChecklistCreateOrConnectWithoutCabinetInput[]
-    upsert?: ChecklistUpsertWithWhereUniqueWithoutCabinetInput | ChecklistUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: ChecklistCreateManyCabinetInputEnvelope
+  export type ChecklistUncheckedUpdateManyWithoutFrameNestedInput = {
+    create?: XOR<ChecklistCreateWithoutFrameInput, ChecklistUncheckedCreateWithoutFrameInput> | ChecklistCreateWithoutFrameInput[] | ChecklistUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: ChecklistCreateOrConnectWithoutFrameInput | ChecklistCreateOrConnectWithoutFrameInput[]
+    upsert?: ChecklistUpsertWithWhereUniqueWithoutFrameInput | ChecklistUpsertWithWhereUniqueWithoutFrameInput[]
+    createMany?: ChecklistCreateManyFrameInputEnvelope
     set?: ChecklistWhereUniqueInput | ChecklistWhereUniqueInput[]
     disconnect?: ChecklistWhereUniqueInput | ChecklistWhereUniqueInput[]
     delete?: ChecklistWhereUniqueInput | ChecklistWhereUniqueInput[]
     connect?: ChecklistWhereUniqueInput | ChecklistWhereUniqueInput[]
-    update?: ChecklistUpdateWithWhereUniqueWithoutCabinetInput | ChecklistUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: ChecklistUpdateManyWithWhereWithoutCabinetInput | ChecklistUpdateManyWithWhereWithoutCabinetInput[]
+    update?: ChecklistUpdateWithWhereUniqueWithoutFrameInput | ChecklistUpdateWithWhereUniqueWithoutFrameInput[]
+    updateMany?: ChecklistUpdateManyWithWhereWithoutFrameInput | ChecklistUpdateManyWithWhereWithoutFrameInput[]
     deleteMany?: ChecklistScalarWhereInput | ChecklistScalarWhereInput[]
   }
 
-  export type NoteUncheckedUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<NoteCreateWithoutCabinetInput, NoteUncheckedCreateWithoutCabinetInput> | NoteCreateWithoutCabinetInput[] | NoteUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: NoteCreateOrConnectWithoutCabinetInput | NoteCreateOrConnectWithoutCabinetInput[]
-    upsert?: NoteUpsertWithWhereUniqueWithoutCabinetInput | NoteUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: NoteCreateManyCabinetInputEnvelope
+  export type NoteUncheckedUpdateManyWithoutFrameNestedInput = {
+    create?: XOR<NoteCreateWithoutFrameInput, NoteUncheckedCreateWithoutFrameInput> | NoteCreateWithoutFrameInput[] | NoteUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: NoteCreateOrConnectWithoutFrameInput | NoteCreateOrConnectWithoutFrameInput[]
+    upsert?: NoteUpsertWithWhereUniqueWithoutFrameInput | NoteUpsertWithWhereUniqueWithoutFrameInput[]
+    createMany?: NoteCreateManyFrameInputEnvelope
     set?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
     disconnect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
     delete?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
     connect?: NoteWhereUniqueInput | NoteWhereUniqueInput[]
-    update?: NoteUpdateWithWhereUniqueWithoutCabinetInput | NoteUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: NoteUpdateManyWithWhereWithoutCabinetInput | NoteUpdateManyWithWhereWithoutCabinetInput[]
+    update?: NoteUpdateWithWhereUniqueWithoutFrameInput | NoteUpdateWithWhereUniqueWithoutFrameInput[]
+    updateMany?: NoteUpdateManyWithWhereWithoutFrameInput | NoteUpdateManyWithWhereWithoutFrameInput[]
     deleteMany?: NoteScalarWhereInput | NoteScalarWhereInput[]
   }
 
-  export type DecorItemUncheckedUpdateManyWithoutCabinetNestedInput = {
-    create?: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput> | DecorItemCreateWithoutCabinetInput[] | DecorItemUncheckedCreateWithoutCabinetInput[]
-    connectOrCreate?: DecorItemCreateOrConnectWithoutCabinetInput | DecorItemCreateOrConnectWithoutCabinetInput[]
-    upsert?: DecorItemUpsertWithWhereUniqueWithoutCabinetInput | DecorItemUpsertWithWhereUniqueWithoutCabinetInput[]
-    createMany?: DecorItemCreateManyCabinetInputEnvelope
+  export type DecorItemUncheckedUpdateManyWithoutFrameNestedInput = {
+    create?: XOR<DecorItemCreateWithoutFrameInput, DecorItemUncheckedCreateWithoutFrameInput> | DecorItemCreateWithoutFrameInput[] | DecorItemUncheckedCreateWithoutFrameInput[]
+    connectOrCreate?: DecorItemCreateOrConnectWithoutFrameInput | DecorItemCreateOrConnectWithoutFrameInput[]
+    upsert?: DecorItemUpsertWithWhereUniqueWithoutFrameInput | DecorItemUpsertWithWhereUniqueWithoutFrameInput[]
+    createMany?: DecorItemCreateManyFrameInputEnvelope
     set?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
     disconnect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
     delete?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
     connect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
-    update?: DecorItemUpdateWithWhereUniqueWithoutCabinetInput | DecorItemUpdateWithWhereUniqueWithoutCabinetInput[]
-    updateMany?: DecorItemUpdateManyWithWhereWithoutCabinetInput | DecorItemUpdateManyWithWhereWithoutCabinetInput[]
+    update?: DecorItemUpdateWithWhereUniqueWithoutFrameInput | DecorItemUpdateWithWhereUniqueWithoutFrameInput[]
+    updateMany?: DecorItemUpdateManyWithWhereWithoutFrameInput | DecorItemUpdateManyWithWhereWithoutFrameInput[]
     deleteMany?: DecorItemScalarWhereInput | DecorItemScalarWhereInput[]
   }
 
-  export type CabinetCreateNestedOneWithoutLayoutInput = {
-    create?: XOR<CabinetCreateWithoutLayoutInput, CabinetUncheckedCreateWithoutLayoutInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutLayoutInput
-    connect?: CabinetWhereUniqueInput
+  export type FrameCreateNestedOneWithoutLayoutInput = {
+    create?: XOR<FrameCreateWithoutLayoutInput, FrameUncheckedCreateWithoutLayoutInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutLayoutInput
+    connect?: FrameWhereUniqueInput
   }
 
-  export type CabinetUpdateOneRequiredWithoutLayoutNestedInput = {
-    create?: XOR<CabinetCreateWithoutLayoutInput, CabinetUncheckedCreateWithoutLayoutInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutLayoutInput
-    upsert?: CabinetUpsertWithoutLayoutInput
-    connect?: CabinetWhereUniqueInput
-    update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutLayoutInput, CabinetUpdateWithoutLayoutInput>, CabinetUncheckedUpdateWithoutLayoutInput>
+  export type FrameUpdateOneRequiredWithoutLayoutNestedInput = {
+    create?: XOR<FrameCreateWithoutLayoutInput, FrameUncheckedCreateWithoutLayoutInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutLayoutInput
+    upsert?: FrameUpsertWithoutLayoutInput
+    connect?: FrameWhereUniqueInput
+    update?: XOR<XOR<FrameUpdateToOneWithWhereWithoutLayoutInput, FrameUpdateWithoutLayoutInput>, FrameUncheckedUpdateWithoutLayoutInput>
   }
 
-  export type CabinetCreateNestedOneWithoutChestInput = {
-    create?: XOR<CabinetCreateWithoutChestInput, CabinetUncheckedCreateWithoutChestInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutChestInput
-    connect?: CabinetWhereUniqueInput
+  export type FrameCreateNestedOneWithoutChestInput = {
+    create?: XOR<FrameCreateWithoutChestInput, FrameUncheckedCreateWithoutChestInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutChestInput
+    connect?: FrameWhereUniqueInput
   }
 
-  export type CabinetUpdateOneRequiredWithoutChestNestedInput = {
-    create?: XOR<CabinetCreateWithoutChestInput, CabinetUncheckedCreateWithoutChestInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutChestInput
-    upsert?: CabinetUpsertWithoutChestInput
-    connect?: CabinetWhereUniqueInput
-    update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutChestInput, CabinetUpdateWithoutChestInput>, CabinetUncheckedUpdateWithoutChestInput>
+  export type FrameUpdateOneRequiredWithoutChestNestedInput = {
+    create?: XOR<FrameCreateWithoutChestInput, FrameUncheckedCreateWithoutChestInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutChestInput
+    upsert?: FrameUpsertWithoutChestInput
+    connect?: FrameWhereUniqueInput
+    update?: XOR<XOR<FrameUpdateToOneWithWhereWithoutChestInput, FrameUpdateWithoutChestInput>, FrameUncheckedUpdateWithoutChestInput>
   }
 
-  export type CabinetCreateNestedOneWithoutJournalInput = {
-    create?: XOR<CabinetCreateWithoutJournalInput, CabinetUncheckedCreateWithoutJournalInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutJournalInput
-    connect?: CabinetWhereUniqueInput
+  export type FrameCreateNestedOneWithoutJournalInput = {
+    create?: XOR<FrameCreateWithoutJournalInput, FrameUncheckedCreateWithoutJournalInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutJournalInput
+    connect?: FrameWhereUniqueInput
   }
 
-  export type CabinetUpdateOneRequiredWithoutJournalNestedInput = {
-    create?: XOR<CabinetCreateWithoutJournalInput, CabinetUncheckedCreateWithoutJournalInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutJournalInput
-    upsert?: CabinetUpsertWithoutJournalInput
-    connect?: CabinetWhereUniqueInput
-    update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutJournalInput, CabinetUpdateWithoutJournalInput>, CabinetUncheckedUpdateWithoutJournalInput>
+  export type FrameUpdateOneRequiredWithoutJournalNestedInput = {
+    create?: XOR<FrameCreateWithoutJournalInput, FrameUncheckedCreateWithoutJournalInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutJournalInput
+    upsert?: FrameUpsertWithoutJournalInput
+    connect?: FrameWhereUniqueInput
+    update?: XOR<XOR<FrameUpdateToOneWithWhereWithoutJournalInput, FrameUpdateWithoutJournalInput>, FrameUncheckedUpdateWithoutJournalInput>
   }
 
-  export type CabinetCreateNestedOneWithoutPolaroidInput = {
-    create?: XOR<CabinetCreateWithoutPolaroidInput, CabinetUncheckedCreateWithoutPolaroidInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutPolaroidInput
-    connect?: CabinetWhereUniqueInput
+  export type FrameCreateNestedOneWithoutPolaroidInput = {
+    create?: XOR<FrameCreateWithoutPolaroidInput, FrameUncheckedCreateWithoutPolaroidInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutPolaroidInput
+    connect?: FrameWhereUniqueInput
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
-  export type CabinetUpdateOneRequiredWithoutPolaroidNestedInput = {
-    create?: XOR<CabinetCreateWithoutPolaroidInput, CabinetUncheckedCreateWithoutPolaroidInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutPolaroidInput
-    upsert?: CabinetUpsertWithoutPolaroidInput
-    connect?: CabinetWhereUniqueInput
-    update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutPolaroidInput, CabinetUpdateWithoutPolaroidInput>, CabinetUncheckedUpdateWithoutPolaroidInput>
+  export type FrameUpdateOneRequiredWithoutPolaroidNestedInput = {
+    create?: XOR<FrameCreateWithoutPolaroidInput, FrameUncheckedCreateWithoutPolaroidInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutPolaroidInput
+    upsert?: FrameUpsertWithoutPolaroidInput
+    connect?: FrameWhereUniqueInput
+    update?: XOR<XOR<FrameUpdateToOneWithWhereWithoutPolaroidInput, FrameUpdateWithoutPolaroidInput>, FrameUncheckedUpdateWithoutPolaroidInput>
   }
 
-  export type CabinetCreateNestedOneWithoutMediaInput = {
-    create?: XOR<CabinetCreateWithoutMediaInput, CabinetUncheckedCreateWithoutMediaInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutMediaInput
-    connect?: CabinetWhereUniqueInput
+  export type FrameCreateNestedOneWithoutMediaInput = {
+    create?: XOR<FrameCreateWithoutMediaInput, FrameUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutMediaInput
+    connect?: FrameWhereUniqueInput
   }
 
-  export type CabinetUpdateOneRequiredWithoutMediaNestedInput = {
-    create?: XOR<CabinetCreateWithoutMediaInput, CabinetUncheckedCreateWithoutMediaInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutMediaInput
-    upsert?: CabinetUpsertWithoutMediaInput
-    connect?: CabinetWhereUniqueInput
-    update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutMediaInput, CabinetUpdateWithoutMediaInput>, CabinetUncheckedUpdateWithoutMediaInput>
+  export type FrameUpdateOneRequiredWithoutMediaNestedInput = {
+    create?: XOR<FrameCreateWithoutMediaInput, FrameUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutMediaInput
+    upsert?: FrameUpsertWithoutMediaInput
+    connect?: FrameWhereUniqueInput
+    update?: XOR<XOR<FrameUpdateToOneWithWhereWithoutMediaInput, FrameUpdateWithoutMediaInput>, FrameUncheckedUpdateWithoutMediaInput>
   }
 
-  export type CabinetCreateNestedOneWithoutChecklistInput = {
-    create?: XOR<CabinetCreateWithoutChecklistInput, CabinetUncheckedCreateWithoutChecklistInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutChecklistInput
-    connect?: CabinetWhereUniqueInput
+  export type FrameCreateNestedOneWithoutChecklistInput = {
+    create?: XOR<FrameCreateWithoutChecklistInput, FrameUncheckedCreateWithoutChecklistInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutChecklistInput
+    connect?: FrameWhereUniqueInput
   }
 
-  export type CabinetUpdateOneRequiredWithoutChecklistNestedInput = {
-    create?: XOR<CabinetCreateWithoutChecklistInput, CabinetUncheckedCreateWithoutChecklistInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutChecklistInput
-    upsert?: CabinetUpsertWithoutChecklistInput
-    connect?: CabinetWhereUniqueInput
-    update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutChecklistInput, CabinetUpdateWithoutChecklistInput>, CabinetUncheckedUpdateWithoutChecklistInput>
+  export type FrameUpdateOneRequiredWithoutChecklistNestedInput = {
+    create?: XOR<FrameCreateWithoutChecklistInput, FrameUncheckedCreateWithoutChecklistInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutChecklistInput
+    upsert?: FrameUpsertWithoutChecklistInput
+    connect?: FrameWhereUniqueInput
+    update?: XOR<XOR<FrameUpdateToOneWithWhereWithoutChecklistInput, FrameUpdateWithoutChecklistInput>, FrameUncheckedUpdateWithoutChecklistInput>
   }
 
-  export type CabinetCreateNestedOneWithoutNotesInput = {
-    create?: XOR<CabinetCreateWithoutNotesInput, CabinetUncheckedCreateWithoutNotesInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutNotesInput
-    connect?: CabinetWhereUniqueInput
+  export type FrameCreateNestedOneWithoutNotesInput = {
+    create?: XOR<FrameCreateWithoutNotesInput, FrameUncheckedCreateWithoutNotesInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutNotesInput
+    connect?: FrameWhereUniqueInput
   }
 
-  export type CabinetUpdateOneRequiredWithoutNotesNestedInput = {
-    create?: XOR<CabinetCreateWithoutNotesInput, CabinetUncheckedCreateWithoutNotesInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutNotesInput
-    upsert?: CabinetUpsertWithoutNotesInput
-    connect?: CabinetWhereUniqueInput
-    update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutNotesInput, CabinetUpdateWithoutNotesInput>, CabinetUncheckedUpdateWithoutNotesInput>
+  export type FrameUpdateOneRequiredWithoutNotesNestedInput = {
+    create?: XOR<FrameCreateWithoutNotesInput, FrameUncheckedCreateWithoutNotesInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutNotesInput
+    upsert?: FrameUpsertWithoutNotesInput
+    connect?: FrameWhereUniqueInput
+    update?: XOR<XOR<FrameUpdateToOneWithWhereWithoutNotesInput, FrameUpdateWithoutNotesInput>, FrameUncheckedUpdateWithoutNotesInput>
   }
 
-  export type CabinetCreateNestedOneWithoutDecorItemsInput = {
-    create?: XOR<CabinetCreateWithoutDecorItemsInput, CabinetUncheckedCreateWithoutDecorItemsInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutDecorItemsInput
-    connect?: CabinetWhereUniqueInput
+  export type FrameCreateNestedOneWithoutDecorItemsInput = {
+    create?: XOR<FrameCreateWithoutDecorItemsInput, FrameUncheckedCreateWithoutDecorItemsInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutDecorItemsInput
+    connect?: FrameWhereUniqueInput
   }
 
-  export type CabinetUpdateOneRequiredWithoutDecorItemsNestedInput = {
-    create?: XOR<CabinetCreateWithoutDecorItemsInput, CabinetUncheckedCreateWithoutDecorItemsInput>
-    connectOrCreate?: CabinetCreateOrConnectWithoutDecorItemsInput
-    upsert?: CabinetUpsertWithoutDecorItemsInput
-    connect?: CabinetWhereUniqueInput
-    update?: XOR<XOR<CabinetUpdateToOneWithWhereWithoutDecorItemsInput, CabinetUpdateWithoutDecorItemsInput>, CabinetUncheckedUpdateWithoutDecorItemsInput>
+  export type FrameUpdateOneRequiredWithoutDecorItemsNestedInput = {
+    create?: XOR<FrameCreateWithoutDecorItemsInput, FrameUncheckedCreateWithoutDecorItemsInput>
+    connectOrCreate?: FrameCreateOrConnectWithoutDecorItemsInput
+    upsert?: FrameUpsertWithoutDecorItemsInput
+    connect?: FrameWhereUniqueInput
+    update?: XOR<XOR<FrameUpdateToOneWithWhereWithoutDecorItemsInput, FrameUpdateWithoutDecorItemsInput>, FrameUncheckedUpdateWithoutDecorItemsInput>
   }
 
   export type UserCreateNestedOneWithoutSpotifyAccountInput = {
@@ -17410,9 +17410,9 @@ export namespace Prisma {
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonFilterBase<$PrismaModel>>
-      >
+      Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+      Required<NestedJsonFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
 
   export type NestedJsonFilterBase<$PrismaModel = never> = {
@@ -17444,9 +17444,9 @@ export namespace Prisma {
   }
   export type NestedJsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
+      Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+      Required<NestedJsonNullableFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
   export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
@@ -17497,42 +17497,42 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type CabinetCreateWithoutOwnerInput = {
+  export type FrameCreateWithoutOwnerInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
-    chest?: ChestCreateNestedOneWithoutCabinetInput
-    journal?: JournalCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
-    media?: MediaCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistCreateNestedManyWithoutCabinetInput
-    notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
+    chest?: ChestCreateNestedOneWithoutFrameInput
+    journal?: JournalCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidCreateNestedManyWithoutFrameInput
+    media?: MediaCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistCreateNestedManyWithoutFrameInput
+    notes?: NoteCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetUncheckedCreateWithoutOwnerInput = {
+  export type FrameUncheckedCreateWithoutOwnerInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
-    chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
-    journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
-    media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
-    notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
+    chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
+    journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
+    media?: MediaUncheckedCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistUncheckedCreateNestedManyWithoutFrameInput
+    notes?: NoteUncheckedCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemUncheckedCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetCreateOrConnectWithoutOwnerInput = {
-    where: CabinetWhereUniqueInput
-    create: XOR<CabinetCreateWithoutOwnerInput, CabinetUncheckedCreateWithoutOwnerInput>
+  export type FrameCreateOrConnectWithoutOwnerInput = {
+    where: FrameWhereUniqueInput
+    create: XOR<FrameCreateWithoutOwnerInput, FrameUncheckedCreateWithoutOwnerInput>
   }
 
-  export type CabinetCreateManyOwnerInputEnvelope = {
-    data: CabinetCreateManyOwnerInput | CabinetCreateManyOwnerInput[]
+  export type FrameCreateManyOwnerInputEnvelope = {
+    data: FrameCreateManyOwnerInput | FrameCreateManyOwnerInput[]
     skipDuplicates?: boolean
   }
 
@@ -17560,31 +17560,31 @@ export namespace Prisma {
     create: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
   }
 
-  export type CabinetUpsertWithWhereUniqueWithoutOwnerInput = {
-    where: CabinetWhereUniqueInput
-    update: XOR<CabinetUpdateWithoutOwnerInput, CabinetUncheckedUpdateWithoutOwnerInput>
-    create: XOR<CabinetCreateWithoutOwnerInput, CabinetUncheckedCreateWithoutOwnerInput>
+  export type FrameUpsertWithWhereUniqueWithoutOwnerInput = {
+    where: FrameWhereUniqueInput
+    update: XOR<FrameUpdateWithoutOwnerInput, FrameUncheckedUpdateWithoutOwnerInput>
+    create: XOR<FrameCreateWithoutOwnerInput, FrameUncheckedCreateWithoutOwnerInput>
   }
 
-  export type CabinetUpdateWithWhereUniqueWithoutOwnerInput = {
-    where: CabinetWhereUniqueInput
-    data: XOR<CabinetUpdateWithoutOwnerInput, CabinetUncheckedUpdateWithoutOwnerInput>
+  export type FrameUpdateWithWhereUniqueWithoutOwnerInput = {
+    where: FrameWhereUniqueInput
+    data: XOR<FrameUpdateWithoutOwnerInput, FrameUncheckedUpdateWithoutOwnerInput>
   }
 
-  export type CabinetUpdateManyWithWhereWithoutOwnerInput = {
-    where: CabinetScalarWhereInput
-    data: XOR<CabinetUpdateManyMutationInput, CabinetUncheckedUpdateManyWithoutOwnerInput>
+  export type FrameUpdateManyWithWhereWithoutOwnerInput = {
+    where: FrameScalarWhereInput
+    data: XOR<FrameUpdateManyMutationInput, FrameUncheckedUpdateManyWithoutOwnerInput>
   }
 
-  export type CabinetScalarWhereInput = {
-    AND?: CabinetScalarWhereInput | CabinetScalarWhereInput[]
-    OR?: CabinetScalarWhereInput[]
-    NOT?: CabinetScalarWhereInput | CabinetScalarWhereInput[]
-    id?: IntFilter<"Cabinet"> | number
-    title?: StringFilter<"Cabinet"> | string
-    createdAt?: DateTimeFilter<"Cabinet"> | Date | string
-    updatedAt?: DateTimeFilter<"Cabinet"> | Date | string
-    ownerId?: IntFilter<"Cabinet"> | number
+  export type FrameScalarWhereInput = {
+    AND?: FrameScalarWhereInput | FrameScalarWhereInput[]
+    OR?: FrameScalarWhereInput[]
+    NOT?: FrameScalarWhereInput | FrameScalarWhereInput[]
+    id?: IntFilter<"Frame"> | number
+    title?: StringFilter<"Frame"> | string
+    createdAt?: DateTimeFilter<"Frame"> | Date | string
+    updatedAt?: DateTimeFilter<"Frame"> | Date | string
+    ownerId?: IntFilter<"Frame"> | number
   }
 
   export type SpotifyAccountUpsertWithoutUserInput = {
@@ -17617,7 +17617,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCreateWithoutCabinetsInput = {
+  export type UserCreateWithoutFrameInput = {
     name: string
     email: string
     password: string
@@ -17626,7 +17626,7 @@ export namespace Prisma {
     spotifyAccount?: SpotifyAccountCreateNestedOneWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutCabinetsInput = {
+  export type UserUncheckedCreateWithoutFrameInput = {
     id?: number
     name: string
     email: string
@@ -17636,30 +17636,30 @@ export namespace Prisma {
     spotifyAccount?: SpotifyAccountUncheckedCreateNestedOneWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutCabinetsInput = {
+  export type UserCreateOrConnectWithoutFrameInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutCabinetsInput, UserUncheckedCreateWithoutCabinetsInput>
+    create: XOR<UserCreateWithoutFrameInput, UserUncheckedCreateWithoutFrameInput>
   }
 
-  export type CabinetLayoutCreateWithoutCabinetInput = {
+  export type FrameLayoutCreateWithoutFrameInput = {
     layout: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CabinetLayoutUncheckedCreateWithoutCabinetInput = {
+  export type FrameLayoutUncheckedCreateWithoutFrameInput = {
     id?: number
     layout: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CabinetLayoutCreateOrConnectWithoutCabinetInput = {
-    where: CabinetLayoutWhereUniqueInput
-    create: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
+  export type FrameLayoutCreateOrConnectWithoutFrameInput = {
+    where: FrameLayoutWhereUniqueInput
+    create: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
   }
 
-  export type ChestCreateWithoutCabinetInput = {
+  export type ChestCreateWithoutFrameInput = {
     passcode: string
     position?: NullableJsonNullValueInput | InputJsonValue
     items?: NullableJsonNullValueInput | InputJsonValue
@@ -17667,7 +17667,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ChestUncheckedCreateWithoutCabinetInput = {
+  export type ChestUncheckedCreateWithoutFrameInput = {
     id?: number
     passcode: string
     position?: NullableJsonNullValueInput | InputJsonValue
@@ -17676,12 +17676,12 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ChestCreateOrConnectWithoutCabinetInput = {
+  export type ChestCreateOrConnectWithoutFrameInput = {
     where: ChestWhereUniqueInput
-    create: XOR<ChestCreateWithoutCabinetInput, ChestUncheckedCreateWithoutCabinetInput>
+    create: XOR<ChestCreateWithoutFrameInput, ChestUncheckedCreateWithoutFrameInput>
   }
 
-  export type JournalCreateWithoutCabinetInput = {
+  export type JournalCreateWithoutFrameInput = {
     passcode: string
     position?: NullableJsonNullValueInput | InputJsonValue
     entries: JsonNullValueInput | InputJsonValue
@@ -17689,7 +17689,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type JournalUncheckedCreateWithoutCabinetInput = {
+  export type JournalUncheckedCreateWithoutFrameInput = {
     id?: number
     passcode: string
     position?: NullableJsonNullValueInput | InputJsonValue
@@ -17698,12 +17698,12 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type JournalCreateOrConnectWithoutCabinetInput = {
+  export type JournalCreateOrConnectWithoutFrameInput = {
     where: JournalWhereUniqueInput
-    create: XOR<JournalCreateWithoutCabinetInput, JournalUncheckedCreateWithoutCabinetInput>
+    create: XOR<JournalCreateWithoutFrameInput, JournalUncheckedCreateWithoutFrameInput>
   }
 
-  export type PolaroidCreateWithoutCabinetInput = {
+  export type PolaroidCreateWithoutFrameInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
     caption?: string | null
@@ -17711,7 +17711,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PolaroidUncheckedCreateWithoutCabinetInput = {
+  export type PolaroidUncheckedCreateWithoutFrameInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
@@ -17720,17 +17720,17 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PolaroidCreateOrConnectWithoutCabinetInput = {
+  export type PolaroidCreateOrConnectWithoutFrameInput = {
     where: PolaroidWhereUniqueInput
-    create: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput>
+    create: XOR<PolaroidCreateWithoutFrameInput, PolaroidUncheckedCreateWithoutFrameInput>
   }
 
-  export type PolaroidCreateManyCabinetInputEnvelope = {
-    data: PolaroidCreateManyCabinetInput | PolaroidCreateManyCabinetInput[]
+  export type PolaroidCreateManyFrameInputEnvelope = {
+    data: PolaroidCreateManyFrameInput | PolaroidCreateManyFrameInput[]
     skipDuplicates?: boolean
   }
 
-  export type MediaCreateWithoutCabinetInput = {
+  export type MediaCreateWithoutFrameInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
     url: string
@@ -17738,7 +17738,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type MediaUncheckedCreateWithoutCabinetInput = {
+  export type MediaUncheckedCreateWithoutFrameInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
@@ -17747,17 +17747,17 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type MediaCreateOrConnectWithoutCabinetInput = {
+  export type MediaCreateOrConnectWithoutFrameInput = {
     where: MediaWhereUniqueInput
-    create: XOR<MediaCreateWithoutCabinetInput, MediaUncheckedCreateWithoutCabinetInput>
+    create: XOR<MediaCreateWithoutFrameInput, MediaUncheckedCreateWithoutFrameInput>
   }
 
-  export type MediaCreateManyCabinetInputEnvelope = {
-    data: MediaCreateManyCabinetInput | MediaCreateManyCabinetInput[]
+  export type MediaCreateManyFrameInputEnvelope = {
+    data: MediaCreateManyFrameInput | MediaCreateManyFrameInput[]
     skipDuplicates?: boolean
   }
 
-  export type ChecklistCreateWithoutCabinetInput = {
+  export type ChecklistCreateWithoutFrameInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     title: string
     items: JsonNullValueInput | InputJsonValue
@@ -17765,7 +17765,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ChecklistUncheckedCreateWithoutCabinetInput = {
+  export type ChecklistUncheckedCreateWithoutFrameInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     title: string
@@ -17774,24 +17774,24 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ChecklistCreateOrConnectWithoutCabinetInput = {
+  export type ChecklistCreateOrConnectWithoutFrameInput = {
     where: ChecklistWhereUniqueInput
-    create: XOR<ChecklistCreateWithoutCabinetInput, ChecklistUncheckedCreateWithoutCabinetInput>
+    create: XOR<ChecklistCreateWithoutFrameInput, ChecklistUncheckedCreateWithoutFrameInput>
   }
 
-  export type ChecklistCreateManyCabinetInputEnvelope = {
-    data: ChecklistCreateManyCabinetInput | ChecklistCreateManyCabinetInput[]
+  export type ChecklistCreateManyFrameInputEnvelope = {
+    data: ChecklistCreateManyFrameInput | ChecklistCreateManyFrameInput[]
     skipDuplicates?: boolean
   }
 
-  export type NoteCreateWithoutCabinetInput = {
+  export type NoteCreateWithoutFrameInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     content: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type NoteUncheckedCreateWithoutCabinetInput = {
+  export type NoteUncheckedCreateWithoutFrameInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     content: string
@@ -17799,24 +17799,24 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type NoteCreateOrConnectWithoutCabinetInput = {
+  export type NoteCreateOrConnectWithoutFrameInput = {
     where: NoteWhereUniqueInput
-    create: XOR<NoteCreateWithoutCabinetInput, NoteUncheckedCreateWithoutCabinetInput>
+    create: XOR<NoteCreateWithoutFrameInput, NoteUncheckedCreateWithoutFrameInput>
   }
 
-  export type NoteCreateManyCabinetInputEnvelope = {
-    data: NoteCreateManyCabinetInput | NoteCreateManyCabinetInput[]
+  export type NoteCreateManyFrameInputEnvelope = {
+    data: NoteCreateManyFrameInput | NoteCreateManyFrameInput[]
     skipDuplicates?: boolean
   }
 
-  export type DecorItemCreateWithoutCabinetInput = {
+  export type DecorItemCreateWithoutFrameInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type DecorItemUncheckedCreateWithoutCabinetInput = {
+  export type DecorItemUncheckedCreateWithoutFrameInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
@@ -17824,28 +17824,28 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type DecorItemCreateOrConnectWithoutCabinetInput = {
+  export type DecorItemCreateOrConnectWithoutFrameInput = {
     where: DecorItemWhereUniqueInput
-    create: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput>
+    create: XOR<DecorItemCreateWithoutFrameInput, DecorItemUncheckedCreateWithoutFrameInput>
   }
 
-  export type DecorItemCreateManyCabinetInputEnvelope = {
-    data: DecorItemCreateManyCabinetInput | DecorItemCreateManyCabinetInput[]
+  export type DecorItemCreateManyFrameInputEnvelope = {
+    data: DecorItemCreateManyFrameInput | DecorItemCreateManyFrameInput[]
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithoutCabinetsInput = {
-    update: XOR<UserUpdateWithoutCabinetsInput, UserUncheckedUpdateWithoutCabinetsInput>
-    create: XOR<UserCreateWithoutCabinetsInput, UserUncheckedCreateWithoutCabinetsInput>
+  export type UserUpsertWithoutFrameInput = {
+    update: XOR<UserUpdateWithoutFrameInput, UserUncheckedUpdateWithoutFrameInput>
+    create: XOR<UserCreateWithoutFrameInput, UserUncheckedCreateWithoutFrameInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutCabinetsInput = {
+  export type UserUpdateToOneWithWhereWithoutFrameInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutCabinetsInput, UserUncheckedUpdateWithoutCabinetsInput>
+    data: XOR<UserUpdateWithoutFrameInput, UserUncheckedUpdateWithoutFrameInput>
   }
 
-  export type UserUpdateWithoutCabinetsInput = {
+  export type UserUpdateWithoutFrameInput = {
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -17854,7 +17854,7 @@ export namespace Prisma {
     spotifyAccount?: SpotifyAccountUpdateOneWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutCabinetsInput = {
+  export type UserUncheckedUpdateWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -17864,42 +17864,42 @@ export namespace Prisma {
     spotifyAccount?: SpotifyAccountUncheckedUpdateOneWithoutUserNestedInput
   }
 
-  export type CabinetLayoutUpsertWithoutCabinetInput = {
-    update: XOR<CabinetLayoutUpdateWithoutCabinetInput, CabinetLayoutUncheckedUpdateWithoutCabinetInput>
-    create: XOR<CabinetLayoutCreateWithoutCabinetInput, CabinetLayoutUncheckedCreateWithoutCabinetInput>
-    where?: CabinetLayoutWhereInput
+  export type FrameLayoutUpsertWithoutFrameInput = {
+    update: XOR<FrameLayoutUpdateWithoutFrameInput, FrameLayoutUncheckedUpdateWithoutFrameInput>
+    create: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
+    where?: FrameLayoutWhereInput
   }
 
-  export type CabinetLayoutUpdateToOneWithWhereWithoutCabinetInput = {
-    where?: CabinetLayoutWhereInput
-    data: XOR<CabinetLayoutUpdateWithoutCabinetInput, CabinetLayoutUncheckedUpdateWithoutCabinetInput>
+  export type FrameLayoutUpdateToOneWithWhereWithoutFrameInput = {
+    where?: FrameLayoutWhereInput
+    data: XOR<FrameLayoutUpdateWithoutFrameInput, FrameLayoutUncheckedUpdateWithoutFrameInput>
   }
 
-  export type CabinetLayoutUpdateWithoutCabinetInput = {
+  export type FrameLayoutUpdateWithoutFrameInput = {
     layout?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CabinetLayoutUncheckedUpdateWithoutCabinetInput = {
+  export type FrameLayoutUncheckedUpdateWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     layout?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChestUpsertWithoutCabinetInput = {
-    update: XOR<ChestUpdateWithoutCabinetInput, ChestUncheckedUpdateWithoutCabinetInput>
-    create: XOR<ChestCreateWithoutCabinetInput, ChestUncheckedCreateWithoutCabinetInput>
+  export type ChestUpsertWithoutFrameInput = {
+    update: XOR<ChestUpdateWithoutFrameInput, ChestUncheckedUpdateWithoutFrameInput>
+    create: XOR<ChestCreateWithoutFrameInput, ChestUncheckedCreateWithoutFrameInput>
     where?: ChestWhereInput
   }
 
-  export type ChestUpdateToOneWithWhereWithoutCabinetInput = {
+  export type ChestUpdateToOneWithWhereWithoutFrameInput = {
     where?: ChestWhereInput
-    data: XOR<ChestUpdateWithoutCabinetInput, ChestUncheckedUpdateWithoutCabinetInput>
+    data: XOR<ChestUpdateWithoutFrameInput, ChestUncheckedUpdateWithoutFrameInput>
   }
 
-  export type ChestUpdateWithoutCabinetInput = {
+  export type ChestUpdateWithoutFrameInput = {
     passcode?: StringFieldUpdateOperationsInput | string
     position?: NullableJsonNullValueInput | InputJsonValue
     items?: NullableJsonNullValueInput | InputJsonValue
@@ -17907,7 +17907,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChestUncheckedUpdateWithoutCabinetInput = {
+  export type ChestUncheckedUpdateWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     passcode?: StringFieldUpdateOperationsInput | string
     position?: NullableJsonNullValueInput | InputJsonValue
@@ -17916,18 +17916,18 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type JournalUpsertWithoutCabinetInput = {
-    update: XOR<JournalUpdateWithoutCabinetInput, JournalUncheckedUpdateWithoutCabinetInput>
-    create: XOR<JournalCreateWithoutCabinetInput, JournalUncheckedCreateWithoutCabinetInput>
+  export type JournalUpsertWithoutFrameInput = {
+    update: XOR<JournalUpdateWithoutFrameInput, JournalUncheckedUpdateWithoutFrameInput>
+    create: XOR<JournalCreateWithoutFrameInput, JournalUncheckedCreateWithoutFrameInput>
     where?: JournalWhereInput
   }
 
-  export type JournalUpdateToOneWithWhereWithoutCabinetInput = {
+  export type JournalUpdateToOneWithWhereWithoutFrameInput = {
     where?: JournalWhereInput
-    data: XOR<JournalUpdateWithoutCabinetInput, JournalUncheckedUpdateWithoutCabinetInput>
+    data: XOR<JournalUpdateWithoutFrameInput, JournalUncheckedUpdateWithoutFrameInput>
   }
 
-  export type JournalUpdateWithoutCabinetInput = {
+  export type JournalUpdateWithoutFrameInput = {
     passcode?: StringFieldUpdateOperationsInput | string
     position?: NullableJsonNullValueInput | InputJsonValue
     entries?: JsonNullValueInput | InputJsonValue
@@ -17935,7 +17935,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type JournalUncheckedUpdateWithoutCabinetInput = {
+  export type JournalUncheckedUpdateWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     passcode?: StringFieldUpdateOperationsInput | string
     position?: NullableJsonNullValueInput | InputJsonValue
@@ -17944,20 +17944,20 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PolaroidUpsertWithWhereUniqueWithoutCabinetInput = {
+  export type PolaroidUpsertWithWhereUniqueWithoutFrameInput = {
     where: PolaroidWhereUniqueInput
-    update: XOR<PolaroidUpdateWithoutCabinetInput, PolaroidUncheckedUpdateWithoutCabinetInput>
-    create: XOR<PolaroidCreateWithoutCabinetInput, PolaroidUncheckedCreateWithoutCabinetInput>
+    update: XOR<PolaroidUpdateWithoutFrameInput, PolaroidUncheckedUpdateWithoutFrameInput>
+    create: XOR<PolaroidCreateWithoutFrameInput, PolaroidUncheckedCreateWithoutFrameInput>
   }
 
-  export type PolaroidUpdateWithWhereUniqueWithoutCabinetInput = {
+  export type PolaroidUpdateWithWhereUniqueWithoutFrameInput = {
     where: PolaroidWhereUniqueInput
-    data: XOR<PolaroidUpdateWithoutCabinetInput, PolaroidUncheckedUpdateWithoutCabinetInput>
+    data: XOR<PolaroidUpdateWithoutFrameInput, PolaroidUncheckedUpdateWithoutFrameInput>
   }
 
-  export type PolaroidUpdateManyWithWhereWithoutCabinetInput = {
+  export type PolaroidUpdateManyWithWhereWithoutFrameInput = {
     where: PolaroidScalarWhereInput
-    data: XOR<PolaroidUpdateManyMutationInput, PolaroidUncheckedUpdateManyWithoutCabinetInput>
+    data: XOR<PolaroidUpdateManyMutationInput, PolaroidUncheckedUpdateManyWithoutFrameInput>
   }
 
   export type PolaroidScalarWhereInput = {
@@ -17968,25 +17968,25 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Polaroid">
     url?: StringFilter<"Polaroid"> | string
     caption?: StringNullableFilter<"Polaroid"> | string | null
-    cabinetId?: IntFilter<"Polaroid"> | number
+    frameId?: IntFilter<"Polaroid"> | number
     createdAt?: DateTimeFilter<"Polaroid"> | Date | string
     updatedAt?: DateTimeFilter<"Polaroid"> | Date | string
   }
 
-  export type MediaUpsertWithWhereUniqueWithoutCabinetInput = {
+  export type MediaUpsertWithWhereUniqueWithoutFrameInput = {
     where: MediaWhereUniqueInput
-    update: XOR<MediaUpdateWithoutCabinetInput, MediaUncheckedUpdateWithoutCabinetInput>
-    create: XOR<MediaCreateWithoutCabinetInput, MediaUncheckedCreateWithoutCabinetInput>
+    update: XOR<MediaUpdateWithoutFrameInput, MediaUncheckedUpdateWithoutFrameInput>
+    create: XOR<MediaCreateWithoutFrameInput, MediaUncheckedCreateWithoutFrameInput>
   }
 
-  export type MediaUpdateWithWhereUniqueWithoutCabinetInput = {
+  export type MediaUpdateWithWhereUniqueWithoutFrameInput = {
     where: MediaWhereUniqueInput
-    data: XOR<MediaUpdateWithoutCabinetInput, MediaUncheckedUpdateWithoutCabinetInput>
+    data: XOR<MediaUpdateWithoutFrameInput, MediaUncheckedUpdateWithoutFrameInput>
   }
 
-  export type MediaUpdateManyWithWhereWithoutCabinetInput = {
+  export type MediaUpdateManyWithWhereWithoutFrameInput = {
     where: MediaScalarWhereInput
-    data: XOR<MediaUpdateManyMutationInput, MediaUncheckedUpdateManyWithoutCabinetInput>
+    data: XOR<MediaUpdateManyMutationInput, MediaUncheckedUpdateManyWithoutFrameInput>
   }
 
   export type MediaScalarWhereInput = {
@@ -17997,25 +17997,25 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Media">
     type?: StringFilter<"Media"> | string
     url?: StringFilter<"Media"> | string
-    cabinetId?: IntFilter<"Media"> | number
+    frameId?: IntFilter<"Media"> | number
     createdAt?: DateTimeFilter<"Media"> | Date | string
     updatedAt?: DateTimeFilter<"Media"> | Date | string
   }
 
-  export type ChecklistUpsertWithWhereUniqueWithoutCabinetInput = {
+  export type ChecklistUpsertWithWhereUniqueWithoutFrameInput = {
     where: ChecklistWhereUniqueInput
-    update: XOR<ChecklistUpdateWithoutCabinetInput, ChecklistUncheckedUpdateWithoutCabinetInput>
-    create: XOR<ChecklistCreateWithoutCabinetInput, ChecklistUncheckedCreateWithoutCabinetInput>
+    update: XOR<ChecklistUpdateWithoutFrameInput, ChecklistUncheckedUpdateWithoutFrameInput>
+    create: XOR<ChecklistCreateWithoutFrameInput, ChecklistUncheckedCreateWithoutFrameInput>
   }
 
-  export type ChecklistUpdateWithWhereUniqueWithoutCabinetInput = {
+  export type ChecklistUpdateWithWhereUniqueWithoutFrameInput = {
     where: ChecklistWhereUniqueInput
-    data: XOR<ChecklistUpdateWithoutCabinetInput, ChecklistUncheckedUpdateWithoutCabinetInput>
+    data: XOR<ChecklistUpdateWithoutFrameInput, ChecklistUncheckedUpdateWithoutFrameInput>
   }
 
-  export type ChecklistUpdateManyWithWhereWithoutCabinetInput = {
+  export type ChecklistUpdateManyWithWhereWithoutFrameInput = {
     where: ChecklistScalarWhereInput
-    data: XOR<ChecklistUpdateManyMutationInput, ChecklistUncheckedUpdateManyWithoutCabinetInput>
+    data: XOR<ChecklistUpdateManyMutationInput, ChecklistUncheckedUpdateManyWithoutFrameInput>
   }
 
   export type ChecklistScalarWhereInput = {
@@ -18026,25 +18026,25 @@ export namespace Prisma {
     position?: JsonNullableFilter<"Checklist">
     title?: StringFilter<"Checklist"> | string
     items?: JsonFilter<"Checklist">
-    cabinetId?: IntFilter<"Checklist"> | number
+    frameId?: IntFilter<"Checklist"> | number
     createdAt?: DateTimeFilter<"Checklist"> | Date | string
     updatedAt?: DateTimeFilter<"Checklist"> | Date | string
   }
 
-  export type NoteUpsertWithWhereUniqueWithoutCabinetInput = {
+  export type NoteUpsertWithWhereUniqueWithoutFrameInput = {
     where: NoteWhereUniqueInput
-    update: XOR<NoteUpdateWithoutCabinetInput, NoteUncheckedUpdateWithoutCabinetInput>
-    create: XOR<NoteCreateWithoutCabinetInput, NoteUncheckedCreateWithoutCabinetInput>
+    update: XOR<NoteUpdateWithoutFrameInput, NoteUncheckedUpdateWithoutFrameInput>
+    create: XOR<NoteCreateWithoutFrameInput, NoteUncheckedCreateWithoutFrameInput>
   }
 
-  export type NoteUpdateWithWhereUniqueWithoutCabinetInput = {
+  export type NoteUpdateWithWhereUniqueWithoutFrameInput = {
     where: NoteWhereUniqueInput
-    data: XOR<NoteUpdateWithoutCabinetInput, NoteUncheckedUpdateWithoutCabinetInput>
+    data: XOR<NoteUpdateWithoutFrameInput, NoteUncheckedUpdateWithoutFrameInput>
   }
 
-  export type NoteUpdateManyWithWhereWithoutCabinetInput = {
+  export type NoteUpdateManyWithWhereWithoutFrameInput = {
     where: NoteScalarWhereInput
-    data: XOR<NoteUpdateManyMutationInput, NoteUncheckedUpdateManyWithoutCabinetInput>
+    data: XOR<NoteUpdateManyMutationInput, NoteUncheckedUpdateManyWithoutFrameInput>
   }
 
   export type NoteScalarWhereInput = {
@@ -18054,25 +18054,25 @@ export namespace Prisma {
     id?: IntFilter<"Note"> | number
     position?: JsonNullableFilter<"Note">
     content?: StringFilter<"Note"> | string
-    cabinetId?: IntFilter<"Note"> | number
+    frameId?: IntFilter<"Note"> | number
     createdAt?: DateTimeFilter<"Note"> | Date | string
     updatedAt?: DateTimeFilter<"Note"> | Date | string
   }
 
-  export type DecorItemUpsertWithWhereUniqueWithoutCabinetInput = {
+  export type DecorItemUpsertWithWhereUniqueWithoutFrameInput = {
     where: DecorItemWhereUniqueInput
-    update: XOR<DecorItemUpdateWithoutCabinetInput, DecorItemUncheckedUpdateWithoutCabinetInput>
-    create: XOR<DecorItemCreateWithoutCabinetInput, DecorItemUncheckedCreateWithoutCabinetInput>
+    update: XOR<DecorItemUpdateWithoutFrameInput, DecorItemUncheckedUpdateWithoutFrameInput>
+    create: XOR<DecorItemCreateWithoutFrameInput, DecorItemUncheckedCreateWithoutFrameInput>
   }
 
-  export type DecorItemUpdateWithWhereUniqueWithoutCabinetInput = {
+  export type DecorItemUpdateWithWhereUniqueWithoutFrameInput = {
     where: DecorItemWhereUniqueInput
-    data: XOR<DecorItemUpdateWithoutCabinetInput, DecorItemUncheckedUpdateWithoutCabinetInput>
+    data: XOR<DecorItemUpdateWithoutFrameInput, DecorItemUncheckedUpdateWithoutFrameInput>
   }
 
-  export type DecorItemUpdateManyWithWhereWithoutCabinetInput = {
+  export type DecorItemUpdateManyWithWhereWithoutFrameInput = {
     where: DecorItemScalarWhereInput
-    data: XOR<DecorItemUpdateManyMutationInput, DecorItemUncheckedUpdateManyWithoutCabinetInput>
+    data: XOR<DecorItemUpdateManyMutationInput, DecorItemUncheckedUpdateManyWithoutFrameInput>
   }
 
   export type DecorItemScalarWhereInput = {
@@ -18082,601 +18082,601 @@ export namespace Prisma {
     id?: IntFilter<"DecorItem"> | number
     position?: JsonNullableFilter<"DecorItem">
     type?: StringFilter<"DecorItem"> | string
-    cabinetId?: IntFilter<"DecorItem"> | number
+    frameId?: IntFilter<"DecorItem"> | number
     createdAt?: DateTimeFilter<"DecorItem"> | Date | string
     updatedAt?: DateTimeFilter<"DecorItem"> | Date | string
   }
 
-  export type CabinetCreateWithoutLayoutInput = {
+  export type FrameCreateWithoutLayoutInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    owner: UserCreateNestedOneWithoutCabinetsInput
-    chest?: ChestCreateNestedOneWithoutCabinetInput
-    journal?: JournalCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
-    media?: MediaCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistCreateNestedManyWithoutCabinetInput
-    notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
+    owner: UserCreateNestedOneWithoutFrameInput
+    chest?: ChestCreateNestedOneWithoutFrameInput
+    journal?: JournalCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidCreateNestedManyWithoutFrameInput
+    media?: MediaCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistCreateNestedManyWithoutFrameInput
+    notes?: NoteCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetUncheckedCreateWithoutLayoutInput = {
+  export type FrameUncheckedCreateWithoutLayoutInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
-    journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
-    media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
-    notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
+    chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
+    journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
+    media?: MediaUncheckedCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistUncheckedCreateNestedManyWithoutFrameInput
+    notes?: NoteUncheckedCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemUncheckedCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetCreateOrConnectWithoutLayoutInput = {
-    where: CabinetWhereUniqueInput
-    create: XOR<CabinetCreateWithoutLayoutInput, CabinetUncheckedCreateWithoutLayoutInput>
+  export type FrameCreateOrConnectWithoutLayoutInput = {
+    where: FrameWhereUniqueInput
+    create: XOR<FrameCreateWithoutLayoutInput, FrameUncheckedCreateWithoutLayoutInput>
   }
 
-  export type CabinetUpsertWithoutLayoutInput = {
-    update: XOR<CabinetUpdateWithoutLayoutInput, CabinetUncheckedUpdateWithoutLayoutInput>
-    create: XOR<CabinetCreateWithoutLayoutInput, CabinetUncheckedCreateWithoutLayoutInput>
-    where?: CabinetWhereInput
+  export type FrameUpsertWithoutLayoutInput = {
+    update: XOR<FrameUpdateWithoutLayoutInput, FrameUncheckedUpdateWithoutLayoutInput>
+    create: XOR<FrameCreateWithoutLayoutInput, FrameUncheckedCreateWithoutLayoutInput>
+    where?: FrameWhereInput
   }
 
-  export type CabinetUpdateToOneWithWhereWithoutLayoutInput = {
-    where?: CabinetWhereInput
-    data: XOR<CabinetUpdateWithoutLayoutInput, CabinetUncheckedUpdateWithoutLayoutInput>
+  export type FrameUpdateToOneWithWhereWithoutLayoutInput = {
+    where?: FrameWhereInput
+    data: XOR<FrameUpdateWithoutLayoutInput, FrameUncheckedUpdateWithoutLayoutInput>
   }
 
-  export type CabinetUpdateWithoutLayoutInput = {
+  export type FrameUpdateWithoutLayoutInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    chest?: ChestUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
-    media?: MediaUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
+    owner?: UserUpdateOneRequiredWithoutFrameNestedInput
+    chest?: ChestUpdateOneWithoutFrameNestedInput
+    journal?: JournalUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
+    media?: MediaUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUpdateManyWithoutFrameNestedInput
+    notes?: NoteUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetUncheckedUpdateWithoutLayoutInput = {
+  export type FrameUncheckedUpdateWithoutLayoutInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
-    media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
+    chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
+    journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
+    media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUncheckedUpdateManyWithoutFrameNestedInput
+    notes?: NoteUncheckedUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUncheckedUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetCreateWithoutChestInput = {
+  export type FrameCreateWithoutChestInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
-    journal?: JournalCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
-    media?: MediaCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistCreateNestedManyWithoutCabinetInput
-    notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
+    owner: UserCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
+    journal?: JournalCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidCreateNestedManyWithoutFrameInput
+    media?: MediaCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistCreateNestedManyWithoutFrameInput
+    notes?: NoteCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetUncheckedCreateWithoutChestInput = {
+  export type FrameUncheckedCreateWithoutChestInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
-    journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
-    media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
-    notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
+    journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
+    media?: MediaUncheckedCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistUncheckedCreateNestedManyWithoutFrameInput
+    notes?: NoteUncheckedCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemUncheckedCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetCreateOrConnectWithoutChestInput = {
-    where: CabinetWhereUniqueInput
-    create: XOR<CabinetCreateWithoutChestInput, CabinetUncheckedCreateWithoutChestInput>
+  export type FrameCreateOrConnectWithoutChestInput = {
+    where: FrameWhereUniqueInput
+    create: XOR<FrameCreateWithoutChestInput, FrameUncheckedCreateWithoutChestInput>
   }
 
-  export type CabinetUpsertWithoutChestInput = {
-    update: XOR<CabinetUpdateWithoutChestInput, CabinetUncheckedUpdateWithoutChestInput>
-    create: XOR<CabinetCreateWithoutChestInput, CabinetUncheckedCreateWithoutChestInput>
-    where?: CabinetWhereInput
+  export type FrameUpsertWithoutChestInput = {
+    update: XOR<FrameUpdateWithoutChestInput, FrameUncheckedUpdateWithoutChestInput>
+    create: XOR<FrameCreateWithoutChestInput, FrameUncheckedCreateWithoutChestInput>
+    where?: FrameWhereInput
   }
 
-  export type CabinetUpdateToOneWithWhereWithoutChestInput = {
-    where?: CabinetWhereInput
-    data: XOR<CabinetUpdateWithoutChestInput, CabinetUncheckedUpdateWithoutChestInput>
+  export type FrameUpdateToOneWithWhereWithoutChestInput = {
+    where?: FrameWhereInput
+    data: XOR<FrameUpdateWithoutChestInput, FrameUncheckedUpdateWithoutChestInput>
   }
 
-  export type CabinetUpdateWithoutChestInput = {
+  export type FrameUpdateWithoutChestInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
-    media?: MediaUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
+    owner?: UserUpdateOneRequiredWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
+    journal?: JournalUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
+    media?: MediaUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUpdateManyWithoutFrameNestedInput
+    notes?: NoteUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetUncheckedUpdateWithoutChestInput = {
+  export type FrameUncheckedUpdateWithoutChestInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
-    media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
+    media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUncheckedUpdateManyWithoutFrameNestedInput
+    notes?: NoteUncheckedUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUncheckedUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetCreateWithoutJournalInput = {
+  export type FrameCreateWithoutJournalInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
-    chest?: ChestCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
-    media?: MediaCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistCreateNestedManyWithoutCabinetInput
-    notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
+    owner: UserCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
+    chest?: ChestCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidCreateNestedManyWithoutFrameInput
+    media?: MediaCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistCreateNestedManyWithoutFrameInput
+    notes?: NoteCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetUncheckedCreateWithoutJournalInput = {
+  export type FrameUncheckedCreateWithoutJournalInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
-    chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
-    media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
-    notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
+    chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
+    media?: MediaUncheckedCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistUncheckedCreateNestedManyWithoutFrameInput
+    notes?: NoteUncheckedCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemUncheckedCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetCreateOrConnectWithoutJournalInput = {
-    where: CabinetWhereUniqueInput
-    create: XOR<CabinetCreateWithoutJournalInput, CabinetUncheckedCreateWithoutJournalInput>
+  export type FrameCreateOrConnectWithoutJournalInput = {
+    where: FrameWhereUniqueInput
+    create: XOR<FrameCreateWithoutJournalInput, FrameUncheckedCreateWithoutJournalInput>
   }
 
-  export type CabinetUpsertWithoutJournalInput = {
-    update: XOR<CabinetUpdateWithoutJournalInput, CabinetUncheckedUpdateWithoutJournalInput>
-    create: XOR<CabinetCreateWithoutJournalInput, CabinetUncheckedCreateWithoutJournalInput>
-    where?: CabinetWhereInput
+  export type FrameUpsertWithoutJournalInput = {
+    update: XOR<FrameUpdateWithoutJournalInput, FrameUncheckedUpdateWithoutJournalInput>
+    create: XOR<FrameCreateWithoutJournalInput, FrameUncheckedCreateWithoutJournalInput>
+    where?: FrameWhereInput
   }
 
-  export type CabinetUpdateToOneWithWhereWithoutJournalInput = {
-    where?: CabinetWhereInput
-    data: XOR<CabinetUpdateWithoutJournalInput, CabinetUncheckedUpdateWithoutJournalInput>
+  export type FrameUpdateToOneWithWhereWithoutJournalInput = {
+    where?: FrameWhereInput
+    data: XOR<FrameUpdateWithoutJournalInput, FrameUncheckedUpdateWithoutJournalInput>
   }
 
-  export type CabinetUpdateWithoutJournalInput = {
+  export type FrameUpdateWithoutJournalInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
-    media?: MediaUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
+    owner?: UserUpdateOneRequiredWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
+    chest?: ChestUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
+    media?: MediaUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUpdateManyWithoutFrameNestedInput
+    notes?: NoteUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetUncheckedUpdateWithoutJournalInput = {
+  export type FrameUncheckedUpdateWithoutJournalInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
-    media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
+    media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUncheckedUpdateManyWithoutFrameNestedInput
+    notes?: NoteUncheckedUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUncheckedUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetCreateWithoutPolaroidInput = {
+  export type FrameCreateWithoutPolaroidInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
-    chest?: ChestCreateNestedOneWithoutCabinetInput
-    journal?: JournalCreateNestedOneWithoutCabinetInput
-    media?: MediaCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistCreateNestedManyWithoutCabinetInput
-    notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
+    owner: UserCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
+    chest?: ChestCreateNestedOneWithoutFrameInput
+    journal?: JournalCreateNestedOneWithoutFrameInput
+    media?: MediaCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistCreateNestedManyWithoutFrameInput
+    notes?: NoteCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetUncheckedCreateWithoutPolaroidInput = {
+  export type FrameUncheckedCreateWithoutPolaroidInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
-    chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
-    journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
-    notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
+    chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
+    journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
+    media?: MediaUncheckedCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistUncheckedCreateNestedManyWithoutFrameInput
+    notes?: NoteUncheckedCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemUncheckedCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetCreateOrConnectWithoutPolaroidInput = {
-    where: CabinetWhereUniqueInput
-    create: XOR<CabinetCreateWithoutPolaroidInput, CabinetUncheckedCreateWithoutPolaroidInput>
+  export type FrameCreateOrConnectWithoutPolaroidInput = {
+    where: FrameWhereUniqueInput
+    create: XOR<FrameCreateWithoutPolaroidInput, FrameUncheckedCreateWithoutPolaroidInput>
   }
 
-  export type CabinetUpsertWithoutPolaroidInput = {
-    update: XOR<CabinetUpdateWithoutPolaroidInput, CabinetUncheckedUpdateWithoutPolaroidInput>
-    create: XOR<CabinetCreateWithoutPolaroidInput, CabinetUncheckedCreateWithoutPolaroidInput>
-    where?: CabinetWhereInput
+  export type FrameUpsertWithoutPolaroidInput = {
+    update: XOR<FrameUpdateWithoutPolaroidInput, FrameUncheckedUpdateWithoutPolaroidInput>
+    create: XOR<FrameCreateWithoutPolaroidInput, FrameUncheckedCreateWithoutPolaroidInput>
+    where?: FrameWhereInput
   }
 
-  export type CabinetUpdateToOneWithWhereWithoutPolaroidInput = {
-    where?: CabinetWhereInput
-    data: XOR<CabinetUpdateWithoutPolaroidInput, CabinetUncheckedUpdateWithoutPolaroidInput>
+  export type FrameUpdateToOneWithWhereWithoutPolaroidInput = {
+    where?: FrameWhereInput
+    data: XOR<FrameUpdateWithoutPolaroidInput, FrameUncheckedUpdateWithoutPolaroidInput>
   }
 
-  export type CabinetUpdateWithoutPolaroidInput = {
+  export type FrameUpdateWithoutPolaroidInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUpdateOneWithoutCabinetNestedInput
-    media?: MediaUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
+    owner?: UserUpdateOneRequiredWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
+    chest?: ChestUpdateOneWithoutFrameNestedInput
+    journal?: JournalUpdateOneWithoutFrameNestedInput
+    media?: MediaUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUpdateManyWithoutFrameNestedInput
+    notes?: NoteUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetUncheckedUpdateWithoutPolaroidInput = {
+  export type FrameUncheckedUpdateWithoutPolaroidInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
+    journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
+    media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUncheckedUpdateManyWithoutFrameNestedInput
+    notes?: NoteUncheckedUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUncheckedUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetCreateWithoutMediaInput = {
+  export type FrameCreateWithoutMediaInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
-    chest?: ChestCreateNestedOneWithoutCabinetInput
-    journal?: JournalCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistCreateNestedManyWithoutCabinetInput
-    notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
+    owner: UserCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
+    chest?: ChestCreateNestedOneWithoutFrameInput
+    journal?: JournalCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistCreateNestedManyWithoutFrameInput
+    notes?: NoteCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetUncheckedCreateWithoutMediaInput = {
+  export type FrameUncheckedCreateWithoutMediaInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
-    chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
-    journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
-    notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
+    chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
+    journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistUncheckedCreateNestedManyWithoutFrameInput
+    notes?: NoteUncheckedCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemUncheckedCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetCreateOrConnectWithoutMediaInput = {
-    where: CabinetWhereUniqueInput
-    create: XOR<CabinetCreateWithoutMediaInput, CabinetUncheckedCreateWithoutMediaInput>
+  export type FrameCreateOrConnectWithoutMediaInput = {
+    where: FrameWhereUniqueInput
+    create: XOR<FrameCreateWithoutMediaInput, FrameUncheckedCreateWithoutMediaInput>
   }
 
-  export type CabinetUpsertWithoutMediaInput = {
-    update: XOR<CabinetUpdateWithoutMediaInput, CabinetUncheckedUpdateWithoutMediaInput>
-    create: XOR<CabinetCreateWithoutMediaInput, CabinetUncheckedCreateWithoutMediaInput>
-    where?: CabinetWhereInput
+  export type FrameUpsertWithoutMediaInput = {
+    update: XOR<FrameUpdateWithoutMediaInput, FrameUncheckedUpdateWithoutMediaInput>
+    create: XOR<FrameCreateWithoutMediaInput, FrameUncheckedCreateWithoutMediaInput>
+    where?: FrameWhereInput
   }
 
-  export type CabinetUpdateToOneWithWhereWithoutMediaInput = {
-    where?: CabinetWhereInput
-    data: XOR<CabinetUpdateWithoutMediaInput, CabinetUncheckedUpdateWithoutMediaInput>
+  export type FrameUpdateToOneWithWhereWithoutMediaInput = {
+    where?: FrameWhereInput
+    data: XOR<FrameUpdateWithoutMediaInput, FrameUncheckedUpdateWithoutMediaInput>
   }
 
-  export type CabinetUpdateWithoutMediaInput = {
+  export type FrameUpdateWithoutMediaInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
+    owner?: UserUpdateOneRequiredWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
+    chest?: ChestUpdateOneWithoutFrameNestedInput
+    journal?: JournalUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUpdateManyWithoutFrameNestedInput
+    notes?: NoteUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetUncheckedUpdateWithoutMediaInput = {
+  export type FrameUncheckedUpdateWithoutMediaInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
+    journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUncheckedUpdateManyWithoutFrameNestedInput
+    notes?: NoteUncheckedUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUncheckedUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetCreateWithoutChecklistInput = {
+  export type FrameCreateWithoutChecklistInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
-    chest?: ChestCreateNestedOneWithoutCabinetInput
-    journal?: JournalCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
-    media?: MediaCreateNestedManyWithoutCabinetInput
-    notes?: NoteCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
+    owner: UserCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
+    chest?: ChestCreateNestedOneWithoutFrameInput
+    journal?: JournalCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidCreateNestedManyWithoutFrameInput
+    media?: MediaCreateNestedManyWithoutFrameInput
+    notes?: NoteCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetUncheckedCreateWithoutChecklistInput = {
+  export type FrameUncheckedCreateWithoutChecklistInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
-    chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
-    journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
-    media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
-    notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
+    chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
+    journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
+    media?: MediaUncheckedCreateNestedManyWithoutFrameInput
+    notes?: NoteUncheckedCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemUncheckedCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetCreateOrConnectWithoutChecklistInput = {
-    where: CabinetWhereUniqueInput
-    create: XOR<CabinetCreateWithoutChecklistInput, CabinetUncheckedCreateWithoutChecklistInput>
+  export type FrameCreateOrConnectWithoutChecklistInput = {
+    where: FrameWhereUniqueInput
+    create: XOR<FrameCreateWithoutChecklistInput, FrameUncheckedCreateWithoutChecklistInput>
   }
 
-  export type CabinetUpsertWithoutChecklistInput = {
-    update: XOR<CabinetUpdateWithoutChecklistInput, CabinetUncheckedUpdateWithoutChecklistInput>
-    create: XOR<CabinetCreateWithoutChecklistInput, CabinetUncheckedCreateWithoutChecklistInput>
-    where?: CabinetWhereInput
+  export type FrameUpsertWithoutChecklistInput = {
+    update: XOR<FrameUpdateWithoutChecklistInput, FrameUncheckedUpdateWithoutChecklistInput>
+    create: XOR<FrameCreateWithoutChecklistInput, FrameUncheckedCreateWithoutChecklistInput>
+    where?: FrameWhereInput
   }
 
-  export type CabinetUpdateToOneWithWhereWithoutChecklistInput = {
-    where?: CabinetWhereInput
-    data: XOR<CabinetUpdateWithoutChecklistInput, CabinetUncheckedUpdateWithoutChecklistInput>
+  export type FrameUpdateToOneWithWhereWithoutChecklistInput = {
+    where?: FrameWhereInput
+    data: XOR<FrameUpdateWithoutChecklistInput, FrameUncheckedUpdateWithoutChecklistInput>
   }
 
-  export type CabinetUpdateWithoutChecklistInput = {
+  export type FrameUpdateWithoutChecklistInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
-    media?: MediaUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
+    owner?: UserUpdateOneRequiredWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
+    chest?: ChestUpdateOneWithoutFrameNestedInput
+    journal?: JournalUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
+    media?: MediaUpdateManyWithoutFrameNestedInput
+    notes?: NoteUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetUncheckedUpdateWithoutChecklistInput = {
+  export type FrameUncheckedUpdateWithoutChecklistInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
-    media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
+    journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
+    media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
+    notes?: NoteUncheckedUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUncheckedUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetCreateWithoutNotesInput = {
+  export type FrameCreateWithoutNotesInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
-    chest?: ChestCreateNestedOneWithoutCabinetInput
-    journal?: JournalCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
-    media?: MediaCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemCreateNestedManyWithoutCabinetInput
+    owner: UserCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
+    chest?: ChestCreateNestedOneWithoutFrameInput
+    journal?: JournalCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidCreateNestedManyWithoutFrameInput
+    media?: MediaCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetUncheckedCreateWithoutNotesInput = {
+  export type FrameUncheckedCreateWithoutNotesInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
-    chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
-    journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
-    media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
-    decorItems?: DecorItemUncheckedCreateNestedManyWithoutCabinetInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
+    chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
+    journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
+    media?: MediaUncheckedCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistUncheckedCreateNestedManyWithoutFrameInput
+    decorItems?: DecorItemUncheckedCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetCreateOrConnectWithoutNotesInput = {
-    where: CabinetWhereUniqueInput
-    create: XOR<CabinetCreateWithoutNotesInput, CabinetUncheckedCreateWithoutNotesInput>
+  export type FrameCreateOrConnectWithoutNotesInput = {
+    where: FrameWhereUniqueInput
+    create: XOR<FrameCreateWithoutNotesInput, FrameUncheckedCreateWithoutNotesInput>
   }
 
-  export type CabinetUpsertWithoutNotesInput = {
-    update: XOR<CabinetUpdateWithoutNotesInput, CabinetUncheckedUpdateWithoutNotesInput>
-    create: XOR<CabinetCreateWithoutNotesInput, CabinetUncheckedCreateWithoutNotesInput>
-    where?: CabinetWhereInput
+  export type FrameUpsertWithoutNotesInput = {
+    update: XOR<FrameUpdateWithoutNotesInput, FrameUncheckedUpdateWithoutNotesInput>
+    create: XOR<FrameCreateWithoutNotesInput, FrameUncheckedCreateWithoutNotesInput>
+    where?: FrameWhereInput
   }
 
-  export type CabinetUpdateToOneWithWhereWithoutNotesInput = {
-    where?: CabinetWhereInput
-    data: XOR<CabinetUpdateWithoutNotesInput, CabinetUncheckedUpdateWithoutNotesInput>
+  export type FrameUpdateToOneWithWhereWithoutNotesInput = {
+    where?: FrameWhereInput
+    data: XOR<FrameUpdateWithoutNotesInput, FrameUncheckedUpdateWithoutNotesInput>
   }
 
-  export type CabinetUpdateWithoutNotesInput = {
+  export type FrameUpdateWithoutNotesInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
-    media?: MediaUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
+    owner?: UserUpdateOneRequiredWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
+    chest?: ChestUpdateOneWithoutFrameNestedInput
+    journal?: JournalUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
+    media?: MediaUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetUncheckedUpdateWithoutNotesInput = {
+  export type FrameUncheckedUpdateWithoutNotesInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
-    media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
+    journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
+    media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUncheckedUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUncheckedUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetCreateWithoutDecorItemsInput = {
+  export type FrameCreateWithoutDecorItemsInput = {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    owner: UserCreateNestedOneWithoutCabinetsInput
-    layout?: CabinetLayoutCreateNestedOneWithoutCabinetInput
-    chest?: ChestCreateNestedOneWithoutCabinetInput
-    journal?: JournalCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidCreateNestedManyWithoutCabinetInput
-    media?: MediaCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistCreateNestedManyWithoutCabinetInput
-    notes?: NoteCreateNestedManyWithoutCabinetInput
+    owner: UserCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
+    chest?: ChestCreateNestedOneWithoutFrameInput
+    journal?: JournalCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidCreateNestedManyWithoutFrameInput
+    media?: MediaCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistCreateNestedManyWithoutFrameInput
+    notes?: NoteCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetUncheckedCreateWithoutDecorItemsInput = {
+  export type FrameUncheckedCreateWithoutDecorItemsInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutCabinetInput
-    chest?: ChestUncheckedCreateNestedOneWithoutCabinetInput
-    journal?: JournalUncheckedCreateNestedOneWithoutCabinetInput
-    polaroid?: PolaroidUncheckedCreateNestedManyWithoutCabinetInput
-    media?: MediaUncheckedCreateNestedManyWithoutCabinetInput
-    checklist?: ChecklistUncheckedCreateNestedManyWithoutCabinetInput
-    notes?: NoteUncheckedCreateNestedManyWithoutCabinetInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
+    chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
+    journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
+    polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
+    media?: MediaUncheckedCreateNestedManyWithoutFrameInput
+    checklist?: ChecklistUncheckedCreateNestedManyWithoutFrameInput
+    notes?: NoteUncheckedCreateNestedManyWithoutFrameInput
   }
 
-  export type CabinetCreateOrConnectWithoutDecorItemsInput = {
-    where: CabinetWhereUniqueInput
-    create: XOR<CabinetCreateWithoutDecorItemsInput, CabinetUncheckedCreateWithoutDecorItemsInput>
+  export type FrameCreateOrConnectWithoutDecorItemsInput = {
+    where: FrameWhereUniqueInput
+    create: XOR<FrameCreateWithoutDecorItemsInput, FrameUncheckedCreateWithoutDecorItemsInput>
   }
 
-  export type CabinetUpsertWithoutDecorItemsInput = {
-    update: XOR<CabinetUpdateWithoutDecorItemsInput, CabinetUncheckedUpdateWithoutDecorItemsInput>
-    create: XOR<CabinetCreateWithoutDecorItemsInput, CabinetUncheckedCreateWithoutDecorItemsInput>
-    where?: CabinetWhereInput
+  export type FrameUpsertWithoutDecorItemsInput = {
+    update: XOR<FrameUpdateWithoutDecorItemsInput, FrameUncheckedUpdateWithoutDecorItemsInput>
+    create: XOR<FrameCreateWithoutDecorItemsInput, FrameUncheckedCreateWithoutDecorItemsInput>
+    where?: FrameWhereInput
   }
 
-  export type CabinetUpdateToOneWithWhereWithoutDecorItemsInput = {
-    where?: CabinetWhereInput
-    data: XOR<CabinetUpdateWithoutDecorItemsInput, CabinetUncheckedUpdateWithoutDecorItemsInput>
+  export type FrameUpdateToOneWithWhereWithoutDecorItemsInput = {
+    where?: FrameWhereInput
+    data: XOR<FrameUpdateWithoutDecorItemsInput, FrameUncheckedUpdateWithoutDecorItemsInput>
   }
 
-  export type CabinetUpdateWithoutDecorItemsInput = {
+  export type FrameUpdateWithoutDecorItemsInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    owner?: UserUpdateOneRequiredWithoutCabinetsNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
-    media?: MediaUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUpdateManyWithoutCabinetNestedInput
+    owner?: UserUpdateOneRequiredWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
+    chest?: ChestUpdateOneWithoutFrameNestedInput
+    journal?: JournalUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
+    media?: MediaUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUpdateManyWithoutFrameNestedInput
+    notes?: NoteUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetUncheckedUpdateWithoutDecorItemsInput = {
+  export type FrameUncheckedUpdateWithoutDecorItemsInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
-    media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
+    journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
+    media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUncheckedUpdateManyWithoutFrameNestedInput
+    notes?: NoteUncheckedUpdateManyWithoutFrameNestedInput
   }
 
   export type UserCreateWithoutSpotifyAccountInput = {
@@ -18685,7 +18685,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinets?: CabinetCreateNestedManyWithoutOwnerInput
+    frame?: FrameCreateNestedManyWithoutOwnerInput
   }
 
   export type UserUncheckedCreateWithoutSpotifyAccountInput = {
@@ -18695,7 +18695,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    cabinets?: CabinetUncheckedCreateNestedManyWithoutOwnerInput
+    frame?: FrameUncheckedCreateNestedManyWithoutOwnerInput
   }
 
   export type UserCreateOrConnectWithoutSpotifyAccountInput = {
@@ -18720,7 +18720,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinets?: CabinetUpdateManyWithoutOwnerNestedInput
+    frame?: FrameUpdateManyWithoutOwnerNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSpotifyAccountInput = {
@@ -18730,53 +18730,53 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    cabinets?: CabinetUncheckedUpdateManyWithoutOwnerNestedInput
+    frame?: FrameUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
-  export type CabinetCreateManyOwnerInput = {
+  export type FrameCreateManyOwnerInput = {
     id?: number
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CabinetUpdateWithoutOwnerInput = {
+  export type FrameUpdateWithoutOwnerInput = {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    layout?: CabinetLayoutUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUpdateManyWithoutCabinetNestedInput
-    media?: MediaUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUpdateManyWithoutCabinetNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
+    chest?: ChestUpdateOneWithoutFrameNestedInput
+    journal?: JournalUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
+    media?: MediaUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUpdateManyWithoutFrameNestedInput
+    notes?: NoteUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetUncheckedUpdateWithoutOwnerInput = {
+  export type FrameUncheckedUpdateWithoutOwnerInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutCabinetNestedInput
-    chest?: ChestUncheckedUpdateOneWithoutCabinetNestedInput
-    journal?: JournalUncheckedUpdateOneWithoutCabinetNestedInput
-    polaroid?: PolaroidUncheckedUpdateManyWithoutCabinetNestedInput
-    media?: MediaUncheckedUpdateManyWithoutCabinetNestedInput
-    checklist?: ChecklistUncheckedUpdateManyWithoutCabinetNestedInput
-    notes?: NoteUncheckedUpdateManyWithoutCabinetNestedInput
-    decorItems?: DecorItemUncheckedUpdateManyWithoutCabinetNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
+    journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
+    polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
+    media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
+    checklist?: ChecklistUncheckedUpdateManyWithoutFrameNestedInput
+    notes?: NoteUncheckedUpdateManyWithoutFrameNestedInput
+    decorItems?: DecorItemUncheckedUpdateManyWithoutFrameNestedInput
   }
 
-  export type CabinetUncheckedUpdateManyWithoutOwnerInput = {
+  export type FrameUncheckedUpdateManyWithoutOwnerInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PolaroidCreateManyCabinetInput = {
+  export type PolaroidCreateManyFrameInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     url: string
@@ -18785,7 +18785,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type MediaCreateManyCabinetInput = {
+  export type MediaCreateManyFrameInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
@@ -18794,7 +18794,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type ChecklistCreateManyCabinetInput = {
+  export type ChecklistCreateManyFrameInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     title: string
@@ -18803,7 +18803,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type NoteCreateManyCabinetInput = {
+  export type NoteCreateManyFrameInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     content: string
@@ -18811,7 +18811,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type DecorItemCreateManyCabinetInput = {
+  export type DecorItemCreateManyFrameInput = {
     id?: number
     position?: NullableJsonNullValueInput | InputJsonValue
     type: string
@@ -18819,7 +18819,7 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PolaroidUpdateWithoutCabinetInput = {
+  export type PolaroidUpdateWithoutFrameInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
     caption?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18827,16 +18827,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PolaroidUncheckedUpdateWithoutCabinetInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    position?: NullableJsonNullValueInput | InputJsonValue
-    url?: StringFieldUpdateOperationsInput | string
-    caption?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PolaroidUncheckedUpdateManyWithoutCabinetInput = {
+  export type PolaroidUncheckedUpdateWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     url?: StringFieldUpdateOperationsInput | string
@@ -18845,7 +18836,16 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MediaUpdateWithoutCabinetInput = {
+  export type PolaroidUncheckedUpdateManyWithoutFrameInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    position?: NullableJsonNullValueInput | InputJsonValue
+    url?: StringFieldUpdateOperationsInput | string
+    caption?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MediaUpdateWithoutFrameInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
@@ -18853,7 +18853,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MediaUncheckedUpdateWithoutCabinetInput = {
+  export type MediaUncheckedUpdateWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
@@ -18862,7 +18862,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MediaUncheckedUpdateManyWithoutCabinetInput = {
+  export type MediaUncheckedUpdateManyWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
@@ -18871,7 +18871,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChecklistUpdateWithoutCabinetInput = {
+  export type ChecklistUpdateWithoutFrameInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     title?: StringFieldUpdateOperationsInput | string
     items?: JsonNullValueInput | InputJsonValue
@@ -18879,16 +18879,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ChecklistUncheckedUpdateWithoutCabinetInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    position?: NullableJsonNullValueInput | InputJsonValue
-    title?: StringFieldUpdateOperationsInput | string
-    items?: JsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ChecklistUncheckedUpdateManyWithoutCabinetInput = {
+  export type ChecklistUncheckedUpdateWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     title?: StringFieldUpdateOperationsInput | string
@@ -18897,14 +18888,23 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type NoteUpdateWithoutCabinetInput = {
+  export type ChecklistUncheckedUpdateManyWithoutFrameInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    position?: NullableJsonNullValueInput | InputJsonValue
+    title?: StringFieldUpdateOperationsInput | string
+    items?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NoteUpdateWithoutFrameInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type NoteUncheckedUpdateWithoutCabinetInput = {
+  export type NoteUncheckedUpdateWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     content?: StringFieldUpdateOperationsInput | string
@@ -18912,7 +18912,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type NoteUncheckedUpdateManyWithoutCabinetInput = {
+  export type NoteUncheckedUpdateManyWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     content?: StringFieldUpdateOperationsInput | string
@@ -18920,14 +18920,14 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DecorItemUpdateWithoutCabinetInput = {
+  export type DecorItemUpdateWithoutFrameInput = {
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DecorItemUncheckedUpdateWithoutCabinetInput = {
+  export type DecorItemUncheckedUpdateWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string
@@ -18935,7 +18935,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type DecorItemUncheckedUpdateManyWithoutCabinetInput = {
+  export type DecorItemUncheckedUpdateManyWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     position?: NullableJsonNullValueInput | InputJsonValue
     type?: StringFieldUpdateOperationsInput | string

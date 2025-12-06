@@ -8,14 +8,14 @@ export const verifyJournalAccess = async (
   next: NextFunction
 ) => {
   try {
-    const cabinetId = Number(req.params.cabinetId);
+    const frameId = Number(req.params.frameId);
     const { passcode } = req.body;
 
     if (!passcode) {
       return res.status(400).json({ error: "Passcode is required" });
     }
 
-    const journal = await journalModel.getByCabinetId(cabinetId);
+    const journal = await journalModel.getByFrameId(frameId);
 
     if (!journal) {
       return res.status(404).json({ error: "Journal not found" });

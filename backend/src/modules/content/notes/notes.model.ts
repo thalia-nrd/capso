@@ -1,14 +1,14 @@
 import { prisma } from '../../../infrastructure/database/prisma';
 
 export const notesModel = {
-  getNotesByCabinetId: async (cabinetId: number) => {
+  getNotesByFrameId: async (frameId: number) => {
     return await prisma.note.findMany({
-      where: { cabinetId },
+      where: { frameId },
     });
   },
-  createNote: async (cabinetId: number, content: string) => {
+  createNote: async (frameId: number, content: string) => {
     return await prisma.note.create({
-      data: { cabinetId, content },
+      data: { frameId, content },
     });
   },
   updateNote: async (noteId: number, content: string) => {

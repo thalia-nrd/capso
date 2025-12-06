@@ -6,8 +6,8 @@ import { hashPassword } from "../../../utils/bcrypt";
 export const journalController = {
   getJournal: async (req: Request, res: Response) => {
     try {
-      const cabinetId = Number(req.params.cabinetId);
-      const journal = await journalModel.getByCabinetId(cabinetId);
+      const frameId = Number(req.params.frameId);
+      const journal = await journalModel.getByFrameId(frameId);
 
       if (!journal) {
         return res.status(404).json({ error: "Journal not found" });
@@ -22,7 +22,7 @@ export const journalController = {
 
   createJournal: async (req: Request, res: Response) => {
     try {
-      const cabinetId = Number(req.params.cabinetId);
+      const frameId = Number(req.params.frameId);
 
       const parsed = journalSchema.safeParse(req.body);
       if (!parsed.success) {
@@ -34,7 +34,7 @@ export const journalController = {
       const hashedPasscode = await hashPassword(passcode);
 
       const newJournal = await journalModel.createJournal({
-        cabinetId,
+        frameId,
         hashedPasscode,
         entries: (entries ?? []).map(entry => ({
           ...entry,
@@ -75,9 +75,9 @@ export const journalController = {
       const updatedEntries = entries.map(entry => ({
         ...entry,
         createdAt: entry.createdAt ?? new Date().toISOString(),
-        }));
+      }));
 
-        const updated = await journalModel.updateEntries(journal.id, updatedEntries);
+      const updated = await journalModel.updateEntries(journal.id, updatedEntries);
 
       res.json(updated);
     } catch (err) {

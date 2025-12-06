@@ -21,9 +21,9 @@ export const ChestController = {
   },
 
   getChest: async (req: Request, res: Response) => {
-    try {    
-      const { cabinetId } = req.params;
-      const chest = await ChestModel.getChestByCabinetId(Number(cabinetId));
+    try {
+      const { frameId } = req.params;
+      const chest = await ChestModel.getChestByFrameId(Number(frameId));
       res.json(chest);
     } catch (err) {
       console.error("GET chest error:", err);
@@ -33,16 +33,16 @@ export const ChestController = {
 
   createChest: async (req: Request, res: Response) => {
     try {
-     const cabinetId = Number(req.params.cabinetId);
-    
-     const { passcode } = req.body;
+      const frameId = Number(req.params.frameId);
+
+      const { passcode } = req.body;
       if (!passcode) {
         return res.status(400).json({ error: "Passcode is required" });
       }
       const hashedPasscode = await bcrypt.hash(passcode, 10);
 
       const newChest = await ChestModel.createChest(
-        cabinetId, 
+        frameId,
         hashedPasscode,
         req.body.items,
       );
@@ -55,35 +55,35 @@ export const ChestController = {
 
   openChest: async (req: Request, res: Response) => {
     try {
-        const chest = (req as any).chest;
+      const chest = (req as any).chest;
 
-        res.json({
-            id: chest.id,
-            items: chest.items,
-        });
+      res.json({
+        id: chest.id,
+        items: chest.items,
+      });
     } catch (err) {
       console.error("OPEN chest error:", err);
       res.status(500).json({ error: "Server error" });
     }
   },
 
-    addChestContent: async (req: Request, res: Response) => {
-      try {
-          const { cabinetId } = req.params;
-          const { items } = req.body;
-          const chest = await ChestModel.getChestByCabinetId(Number(cabinetId));
-          if (!chest) {
-            return res.status(404).json({ error: "Chest not found" });
-          }
-          const updatedChest = await ChestModel.addChestContent(
-            chest.id, 
-            items
-          );
-          res.json(updatedChest);
-        } 
-        catch (err) {
-            console.error("ADD chest content error:", err);
-            res.status(500).json({ error: "Server error" });
-       }
-    },
+  addChestContent: async (req: Request, res: Response) => {
+    try {
+      const { frameId } = req.params;
+      const { items } = req.body;
+      const chest = await ChestModel.getChestByFrameId(Number(frameId));
+      if (!chest) {
+        return res.status(404).json({ error: "Chest not found" });
+      }
+      const updatedChest = await ChestModel.addChestContent(
+        chest.id,
+        items
+      );
+      res.json(updatedChest);
+    }
+    catch (err) {
+      console.error("ADD chest content error:", err);
+      res.status(500).json({ error: "Server error" });
+    }
+  },
 };

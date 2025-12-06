@@ -8,14 +8,14 @@ export const verifyChestAccess = async (
     next: NextFunction
 ) => {
     try {
-        const cabinetId = Number(req.params.cabinetId);
+        const frameId = Number(req.params.frameId);
 
         const { passcode } = req.body;
         if (!passcode) {
             return res.status(400).json({ error: "Passcode is required" });
         }
 
-        const chest = await ChestModel.getChestByCabinetId(cabinetId);
+        const chest = await ChestModel.getChestByFrameId(frameId);
         if (!chest) {
             return res.status(404).json({ error: "Chest not found" });
         }
@@ -26,7 +26,7 @@ export const verifyChestAccess = async (
         }
 
         (req as any).chest = chest;
-        
+
         next();
     } catch (error) {
         next(error);
