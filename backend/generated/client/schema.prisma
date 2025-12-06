@@ -28,7 +28,7 @@ model Frame {
   owner     User     @relation(fields: [ownerId], references: [id])
   ownerId   Int      @unique
 
-  layout     CabinetLayout?
+  layout     FrameLayout?
   chest      Chest?
   journal    Journal?
   polaroid   Polaroid[]
@@ -38,7 +38,7 @@ model Frame {
   decorItems DecorItem[]
 }
 
-model CabinetLayout {
+model FrameLayout {
   id        Int      @id @default(autoincrement())
   layout    Json
   frame     Frame    @relation(fields: [frameId], references: [id])

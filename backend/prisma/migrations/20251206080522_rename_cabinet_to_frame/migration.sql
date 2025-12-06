@@ -1,19 +1,19 @@
 /*
   Warnings:
 
-  - You are about to drop the column `cabinetId` on the `CabinetLayout` table. All the data in the column will be lost.
-  - You are about to drop the column `cabinetId` on the `Checklist` table. All the data in the column will be lost.
-  - You are about to drop the column `cabinetId` on the `Chest` table. All the data in the column will be lost.
-  - You are about to drop the column `cabinetId` on the `DecorItem` table. All the data in the column will be lost.
-  - You are about to drop the column `cabinetId` on the `Journal` table. All the data in the column will be lost.
-  - You are about to drop the column `cabinetId` on the `Media` table. All the data in the column will be lost.
-  - You are about to drop the column `cabinetId` on the `Note` table. All the data in the column will be lost.
-  - You are about to drop the column `cabinetId` on the `Polaroid` table. All the data in the column will be lost.
-  - You are about to drop the `Cabinet` table. If the table is not empty, all the data it contains will be lost.
-  - A unique constraint covering the columns `[frameId]` on the table `CabinetLayout` will be added. If there are existing duplicate values, this will fail.
+  - You are about to drop the column `frameId` on the `FrameLayout` table. All the data in the column will be lost.
+  - You are about to drop the column `frameId` on the `Checklist` table. All the data in the column will be lost.
+  - You are about to drop the column `frameId` on the `Chest` table. All the data in the column will be lost.
+  - You are about to drop the column `frameId` on the `DecorItem` table. All the data in the column will be lost.
+  - You are about to drop the column `frameId` on the `Journal` table. All the data in the column will be lost.
+  - You are about to drop the column `frameId` on the `Media` table. All the data in the column will be lost.
+  - You are about to drop the column `frameId` on the `Note` table. All the data in the column will be lost.
+  - You are about to drop the column `frameId` on the `Polaroid` table. All the data in the column will be lost.
+  - You are about to drop the `Frame` table. If the table is not empty, all the data it contains will be lost.
+  - A unique constraint covering the columns `[frameId]` on the table `FrameLayout` will be added. If there are existing duplicate values, this will fail.
   - A unique constraint covering the columns `[frameId]` on the table `Chest` will be added. If there are existing duplicate values, this will fail.
   - A unique constraint covering the columns `[frameId]` on the table `Journal` will be added. If there are existing duplicate values, this will fail.
-  - Added the required column `frameId` to the `CabinetLayout` table without a default value. This is not possible if the table is not empty.
+  - Added the required column `frameId` to the `FrameLayout` table without a default value. This is not possible if the table is not empty.
   - Added the required column `frameId` to the `Checklist` table without a default value. This is not possible if the table is not empty.
   - Added the required column `frameId` to the `Chest` table without a default value. This is not possible if the table is not empty.
   - Added the required column `frameId` to the `DecorItem` table without a default value. This is not possible if the table is not empty.
@@ -24,75 +24,75 @@
 
 */
 -- DropForeignKey
-ALTER TABLE "Cabinet" DROP CONSTRAINT "Cabinet_ownerId_fkey";
+ALTER TABLE "Frame" DROP CONSTRAINT "Frame_ownerId_fkey";
 
 -- DropForeignKey
-ALTER TABLE "CabinetLayout" DROP CONSTRAINT "CabinetLayout_cabinetId_fkey";
+ALTER TABLE "FrameLayout" DROP CONSTRAINT "FrameLayout_frameId_fkey";
 
 -- DropForeignKey
-ALTER TABLE "Checklist" DROP CONSTRAINT "Checklist_cabinetId_fkey";
+ALTER TABLE "Checklist" DROP CONSTRAINT "Checklist_frameId_fkey";
 
 -- DropForeignKey
-ALTER TABLE "Chest" DROP CONSTRAINT "Chest_cabinetId_fkey";
+ALTER TABLE "Chest" DROP CONSTRAINT "Chest_frameId_fkey";
 
 -- DropForeignKey
-ALTER TABLE "DecorItem" DROP CONSTRAINT "DecorItem_cabinetId_fkey";
+ALTER TABLE "DecorItem" DROP CONSTRAINT "DecorItem_frameId_fkey";
 
 -- DropForeignKey
-ALTER TABLE "Journal" DROP CONSTRAINT "Journal_cabinetId_fkey";
+ALTER TABLE "Journal" DROP CONSTRAINT "Journal_frameId_fkey";
 
 -- DropForeignKey
-ALTER TABLE "Media" DROP CONSTRAINT "Media_cabinetId_fkey";
+ALTER TABLE "Media" DROP CONSTRAINT "Media_frameId_fkey";
 
 -- DropForeignKey
-ALTER TABLE "Note" DROP CONSTRAINT "Note_cabinetId_fkey";
+ALTER TABLE "Note" DROP CONSTRAINT "Note_frameId_fkey";
 
 -- DropForeignKey
-ALTER TABLE "Polaroid" DROP CONSTRAINT "Polaroid_cabinetId_fkey";
+ALTER TABLE "Polaroid" DROP CONSTRAINT "Polaroid_frameId_fkey";
 
 -- DropIndex
-DROP INDEX "CabinetLayout_cabinetId_key";
+DROP INDEX "FrameLayout_frameId_key";
 
 -- DropIndex
-DROP INDEX "Chest_cabinetId_key";
+DROP INDEX "Chest_frameId_key";
 
 -- DropIndex
-DROP INDEX "Journal_cabinetId_key";
+DROP INDEX "Journal_frameId_key";
 
 -- AlterTable
-ALTER TABLE "CabinetLayout" DROP COLUMN "cabinetId",
+ALTER TABLE "FrameLayout" DROP COLUMN "frameId",
 ADD COLUMN     "frameId" INTEGER NOT NULL;
 
 -- AlterTable
-ALTER TABLE "Checklist" DROP COLUMN "cabinetId",
+ALTER TABLE "Checklist" DROP COLUMN "frameId",
 ADD COLUMN     "frameId" INTEGER NOT NULL;
 
 -- AlterTable
-ALTER TABLE "Chest" DROP COLUMN "cabinetId",
+ALTER TABLE "Chest" DROP COLUMN "frameId",
 ADD COLUMN     "frameId" INTEGER NOT NULL;
 
 -- AlterTable
-ALTER TABLE "DecorItem" DROP COLUMN "cabinetId",
+ALTER TABLE "DecorItem" DROP COLUMN "frameId",
 ADD COLUMN     "frameId" INTEGER NOT NULL;
 
 -- AlterTable
-ALTER TABLE "Journal" DROP COLUMN "cabinetId",
+ALTER TABLE "Journal" DROP COLUMN "frameId",
 ADD COLUMN     "frameId" INTEGER NOT NULL;
 
 -- AlterTable
-ALTER TABLE "Media" DROP COLUMN "cabinetId",
+ALTER TABLE "Media" DROP COLUMN "frameId",
 ADD COLUMN     "frameId" INTEGER NOT NULL;
 
 -- AlterTable
-ALTER TABLE "Note" DROP COLUMN "cabinetId",
+ALTER TABLE "Note" DROP COLUMN "frameId",
 ADD COLUMN     "frameId" INTEGER NOT NULL;
 
 -- AlterTable
-ALTER TABLE "Polaroid" DROP COLUMN "cabinetId",
+ALTER TABLE "Polaroid" DROP COLUMN "frameId",
 ADD COLUMN     "frameId" INTEGER NOT NULL;
 
 -- DropTable
-DROP TABLE "Cabinet";
+DROP TABLE "Frame";
 
 -- CreateTable
 CREATE TABLE "Frame" (
@@ -109,7 +109,7 @@ CREATE TABLE "Frame" (
 CREATE UNIQUE INDEX "Frame_ownerId_key" ON "Frame"("ownerId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "CabinetLayout_frameId_key" ON "CabinetLayout"("frameId");
+CREATE UNIQUE INDEX "FrameLayout_frameId_key" ON "FrameLayout"("frameId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Chest_frameId_key" ON "Chest"("frameId");
@@ -121,7 +121,7 @@ CREATE UNIQUE INDEX "Journal_frameId_key" ON "Journal"("frameId");
 ALTER TABLE "Frame" ADD CONSTRAINT "Frame_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "CabinetLayout" ADD CONSTRAINT "CabinetLayout_frameId_fkey" FOREIGN KEY ("frameId") REFERENCES "Frame"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "FrameLayout" ADD CONSTRAINT "FrameLayout_frameId_fkey" FOREIGN KEY ("frameId") REFERENCES "Frame"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Chest" ADD CONSTRAINT "Chest_frameId_fkey" FOREIGN KEY ("frameId") REFERENCES "Frame"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

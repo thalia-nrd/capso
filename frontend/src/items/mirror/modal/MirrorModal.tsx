@@ -10,7 +10,7 @@ const MirrorModal: React.FC<MirrorModalProps> = ({ quote }) => {
 
   const getQuote = async () => {
     try {
-      const res = await getMirrorFact("some-cabinet-id");
+      const res = await getMirrorFact("some-frame-id");
       setFact(res.fact);
     } catch (error) {
       console.error("Failed to fetch mirror fact:", error);

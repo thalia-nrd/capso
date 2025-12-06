@@ -24,10 +24,10 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Frame = $Result.DefaultSelection<Prisma.$FramePayload>
 /**
- * Model CabinetLayout
+ * Model FrameLayout
  * 
  */
-export type CabinetLayout = $Result.DefaultSelection<Prisma.$CabinetLayoutPayload>
+export type FrameLayout = $Result.DefaultSelection<Prisma.$FrameLayoutPayload>
 /**
  * Model Chest
  * 
@@ -90,22 +90,22 @@ export class PrismaClient<
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
 
-    /**
-   * ##  Prisma Client ʲˢ
-   *
-   * Type-safe database client for TypeScript & Node.js
-   * @example
-   * ```
-   * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
-   * ```
-   *
-   *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
-   */
+  /**
+ * ##  Prisma Client ʲˢ
+ *
+ * Type-safe database client for TypeScript & Node.js
+ * @example
+ * ```
+ * const prisma = new PrismaClient()
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
+ * ```
+ *
+ *
+ * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+ */
 
-  constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
+  constructor(optionsArg?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
   $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
 
   /**
@@ -118,15 +118,15 @@ export class PrismaClient<
    */
   $disconnect(): $Utils.JsPromise<void>;
 
-/**
-   * Executes a prepared raw query and returns the number of affected rows.
-   * @example
-   * ```
-   * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
-   * ```
-   *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
-   */
+  /**
+     * Executes a prepared raw query and returns the number of affected rows.
+     * @example
+     * ```
+     * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
+     * ```
+     *
+     * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+     */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
 
   /**
@@ -187,14 +187,14 @@ export class PrismaClient<
     extArgs: ExtArgs
   }>>
 
-      /**
-   * `prisma.user`: Exposes CRUD operations for the **User** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Users
-    * const users = await prisma.user.findMany()
-    * ```
-    */
+  /**
+* `prisma.user`: Exposes CRUD operations for the **User** model.
+* Example usage:
+* ```ts
+* // Fetch zero or more Users
+* const users = await prisma.user.findMany()
+* ```
+*/
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
 
   /**
@@ -208,14 +208,14 @@ export class PrismaClient<
   get frame(): Prisma.FrameDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.cabinetLayout`: Exposes CRUD operations for the **CabinetLayout** model.
+   * `prisma.frameLayout`: Exposes CRUD operations for the **FrameLayout** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more CabinetLayouts
-    * const cabinetLayouts = await prisma.cabinetLayout.findMany()
+    * // Fetch zero or more FrameLayouts
+    * const frameLayouts = await prisma.frameLayout.findMany()
     * ```
     */
-  get cabinetLayout(): Prisma.CabinetLayoutDelegate<ExtArgs, ClientOptions>;
+  get frameLayout(): Prisma.FrameLayoutDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.chest`: Exposes CRUD operations for the **Chest** model.
@@ -464,7 +464,7 @@ export namespace Prisma {
    * From T, pick a set of properties whose keys are in the union K
    */
   type Prisma__Pick<T, K extends keyof T> = {
-      [P in K]: T[P];
+    [P in K]: T[P];
   };
 
 
@@ -499,8 +499,8 @@ export namespace Prisma {
     (T extends SelectAndInclude
       ? 'Please either choose `select` or `include`.'
       : T extends SelectAndOmit
-        ? 'Please either choose `select` or `omit`.'
-        : {})
+      ? 'Please either choose `select` or `omit`.'
+      : {})
 
   /**
    * Subset + Intersection
@@ -520,7 +520,7 @@ export namespace Prisma {
   type XOR<T, U> =
     T extends object ?
     U extends object ?
-      (Without<T, U> & U) | (Without<U, T> & T)
+    (Without<T, U> & U) | (Without<U, T> & T)
     : U : T
 
 
@@ -528,16 +528,16 @@ export namespace Prisma {
    * Is T a Record?
    */
   type IsObject<T extends any> = T extends Array<any>
-  ? False
-  : T extends Date
-  ? False
-  : T extends Uint8Array
-  ? False
-  : T extends BigInt
-  ? False
-  : T extends object
-  ? True
-  : False
+    ? False
+    : T extends Date
+    ? False
+    : T extends Uint8Array
+    ? False
+    : T extends BigInt
+    ? False
+    : T extends object
+    ? True
+    : False
 
 
   /**
@@ -588,11 +588,11 @@ export namespace Prisma {
     : never
 
   export type Overwrite<O extends object, O1 extends object> = {
-      [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
+    [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
   } & {};
 
   type _Merge<U extends object> = IntersectOf<Overwrite<U, {
-      [K in keyof U]-?: At<U, K>;
+    [K in keyof U]-?: At<U, K>;
   }>>;
 
   type Key = string | number | symbol;
@@ -600,8 +600,8 @@ export namespace Prisma {
   type AtStrict<O extends object, K extends Key> = O[K & keyof O];
   type AtLoose<O extends object, K extends Key> = O extends unknown ? AtStrict<O, K> : never;
   export type At<O extends object, K extends Key, strict extends Boolean = 1> = {
-      1: AtStrict<O, K>;
-      0: AtLoose<O, K>;
+    1: AtStrict<O, K>;
+    0: AtLoose<O, K>;
   }[strict];
 
   export type ComputeRaw<A extends any> = A extends Function ? A : {
@@ -623,7 +623,7 @@ export namespace Prisma {
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
     ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
+    | { [P in keyof O as P extends K ? P : never]-?: O[P] } & O
     : never>;
 
   type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
@@ -688,8 +688,8 @@ export namespace Prisma {
 
   export type GetScalarType<T, O> = O extends object ? {
     [P in keyof T]: P extends keyof O
-      ? O[P]
-      : never
+    ? O[P]
+    : never
   } : never
 
   type FieldPaths<
@@ -702,15 +702,15 @@ export namespace Prisma {
       Or<Extends<'OR', K>, Extends<'AND', K>>,
       Extends<'NOT', K>
     > extends True
-      ? // infer is only needed to not hit TS limit
-        // based on the brilliant idea of Pierre-Antoine Mills
-        // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
-        T[K] extends infer TK
-        ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
-        : never
-      : {} extends FieldPaths<T[K]>
-      ? never
-      : K
+    ? // infer is only needed to not hit TS limit
+    // based on the brilliant idea of Pierre-Antoine Mills
+    // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
+    T[K] extends infer TK
+    ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
+    : never
+    : {} extends FieldPaths<T[K]>
+    ? never
+    : K
   }[keyof T]
 
   /**
@@ -739,7 +739,7 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Frame: 'Frame',
-    CabinetLayout: 'CabinetLayout',
+    FrameLayout: 'FrameLayout',
     Chest: 'Chest',
     Journal: 'Journal',
     Polaroid: 'Polaroid',
@@ -757,7 +757,7 @@ export namespace Prisma {
     db?: Datasource
   }
 
-  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
+  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{ extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
     returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
   }
 
@@ -766,7 +766,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "frame" | "cabinetLayout" | "chest" | "journal" | "polaroid" | "media" | "checklist" | "note" | "decorItem" | "spotifyAccount"
+      modelProps: "user" | "frame" | "frameLayout" | "chest" | "journal" | "polaroid" | "media" | "checklist" | "note" | "decorItem" | "spotifyAccount"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -918,77 +918,77 @@ export namespace Prisma {
           }
         }
       }
-      CabinetLayout: {
-        payload: Prisma.$CabinetLayoutPayload<ExtArgs>
-        fields: Prisma.CabinetLayoutFieldRefs
+      FrameLayout: {
+        payload: Prisma.$FrameLayoutPayload<ExtArgs>
+        fields: Prisma.FrameLayoutFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CabinetLayoutFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload> | null
+            args: Prisma.FrameLayoutFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CabinetLayoutFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           findFirst: {
-            args: Prisma.CabinetLayoutFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload> | null
+            args: Prisma.FrameLayoutFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CabinetLayoutFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           findMany: {
-            args: Prisma.CabinetLayoutFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>[]
+            args: Prisma.FrameLayoutFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>[]
           }
           create: {
-            args: Prisma.CabinetLayoutCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           createMany: {
-            args: Prisma.CabinetLayoutCreateManyArgs<ExtArgs>
+            args: Prisma.FrameLayoutCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.CabinetLayoutCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>[]
+            args: Prisma.FrameLayoutCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>[]
           }
           delete: {
-            args: Prisma.CabinetLayoutDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           update: {
-            args: Prisma.CabinetLayoutUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           deleteMany: {
-            args: Prisma.CabinetLayoutDeleteManyArgs<ExtArgs>
+            args: Prisma.FrameLayoutDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.CabinetLayoutUpdateManyArgs<ExtArgs>
+            args: Prisma.FrameLayoutUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.CabinetLayoutUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>[]
+            args: Prisma.FrameLayoutUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>[]
           }
           upsert: {
-            args: Prisma.CabinetLayoutUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CabinetLayoutPayload>
+            args: Prisma.FrameLayoutUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FrameLayoutPayload>
           }
           aggregate: {
-            args: Prisma.CabinetLayoutAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCabinetLayout>
+            args: Prisma.FrameLayoutAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFrameLayout>
           }
           groupBy: {
-            args: Prisma.CabinetLayoutGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CabinetLayoutGroupByOutputType>[]
+            args: Prisma.FrameLayoutGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FrameLayoutGroupByOutputType>[]
           }
           count: {
-            args: Prisma.CabinetLayoutCountArgs<ExtArgs>
-            result: $Utils.Optional<CabinetLayoutCountAggregateOutputType> | number
+            args: Prisma.FrameLayoutCountArgs<ExtArgs>
+            result: $Utils.Optional<FrameLayoutCountAggregateOutputType> | number
           }
         }
       }
@@ -1682,7 +1682,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     frame?: FrameOmit
-    cabinetLayout?: CabinetLayoutOmit
+    frameLayout?: FrameLayoutOmit
     chest?: ChestOmit
     journal?: JournalOmit
     polaroid?: PolaroidOmit
@@ -2015,11 +2015,11 @@ export namespace Prisma {
   }
 
   export type GetUserAggregateType<T extends UserAggregateArgs> = {
-        [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateUser[P]>
-      : GetScalarType<T[P], AggregateUser[P]>
+    [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateUser[P]>
+    : GetScalarType<T[P], AggregateUser[P]>
   }
 
 
@@ -2056,15 +2056,15 @@ export namespace Prisma {
   type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<UserGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], UserGroupByOutputType[P]>
-            : GetScalarType<T[P], UserGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], UserGroupByOutputType[P]>
+        : GetScalarType<T[P], UserGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2400,10 +2400,10 @@ export namespace Prisma {
       args?: Subset<T, UserCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], UserCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], UserCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -2457,8 +2457,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserGroupByArgs['orderBy'] }
-        : { orderBy?: UserGroupByArgs['orderBy'] },
+      ? { orderBy: UserGroupByArgs['orderBy'] }
+      : { orderBy?: UserGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2469,49 +2469,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, UserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the User model
-   */
-  readonly fields: UserFieldRefs;
+    /**
+     * Fields of the User model
+     */
+    readonly fields: UserFieldRefs;
   }
 
   /**
@@ -2560,7 +2560,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -3153,11 +3153,11 @@ export namespace Prisma {
   }
 
   export type GetFrameAggregateType<T extends FrameAggregateArgs> = {
-        [P in keyof T & keyof AggregateFrame]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateFrame[P]>
-      : GetScalarType<T[P], AggregateFrame[P]>
+    [P in keyof T & keyof AggregateFrame]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateFrame[P]>
+    : GetScalarType<T[P], AggregateFrame[P]>
   }
 
 
@@ -3193,15 +3193,15 @@ export namespace Prisma {
   type GetFrameGroupByPayload<T extends FrameGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<FrameGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof FrameGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], FrameGroupByOutputType[P]>
-            : GetScalarType<T[P], FrameGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof FrameGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], FrameGroupByOutputType[P]>
+        : GetScalarType<T[P], FrameGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type FrameSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3272,7 +3272,7 @@ export namespace Prisma {
     name: "Frame"
     objects: {
       owner: Prisma.$UserPayload<ExtArgs>
-      layout: Prisma.$CabinetLayoutPayload<ExtArgs> | null
+      layout: Prisma.$FrameLayoutPayload<ExtArgs> | null
       chest: Prisma.$ChestPayload<ExtArgs> | null
       journal: Prisma.$JournalPayload<ExtArgs> | null
       polaroid: Prisma.$PolaroidPayload<ExtArgs>[]
@@ -3559,10 +3559,10 @@ export namespace Prisma {
       args?: Subset<T, FrameCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], FrameCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], FrameCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -3616,8 +3616,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: FrameGroupByArgs['orderBy'] }
-        : { orderBy?: FrameGroupByArgs['orderBy'] },
+      ? { orderBy: FrameGroupByArgs['orderBy'] }
+      : { orderBy?: FrameGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3628,49 +3628,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, FrameGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFrameGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Frame model
-   */
-  readonly fields: FrameFieldRefs;
+    /**
+     * Fields of the Frame model
+     */
+    readonly fields: FrameFieldRefs;
   }
 
   /**
@@ -3682,7 +3682,7 @@ export namespace Prisma {
   export interface Prisma__FrameClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     owner<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    layout<T extends Frame$layoutArgs<ExtArgs> = {}>(args?: Subset<T, Frame$layoutArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    layout<T extends Frame$layoutArgs<ExtArgs> = {}>(args?: Subset<T, Frame$layoutArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     chest<T extends Frame$chestArgs<ExtArgs> = {}>(args?: Subset<T, Frame$chestArgs<ExtArgs>>): Prisma__ChestClient<$Result.GetResult<Prisma.$ChestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     journal<T extends Frame$journalArgs<ExtArgs> = {}>(args?: Subset<T, Frame$journalArgs<ExtArgs>>): Prisma__JournalClient<$Result.GetResult<Prisma.$JournalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     polaroid<T extends Frame$polaroidArgs<ExtArgs> = {}>(args?: Subset<T, Frame$polaroidArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PolaroidPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3725,7 +3725,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"Frame", 'DateTime'>
     readonly ownerId: FieldRef<"Frame", 'Int'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -4124,18 +4124,18 @@ export namespace Prisma {
    */
   export type Frame$layoutArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
-    where?: CabinetLayoutWhereInput
+    include?: FrameLayoutInclude<ExtArgs> | null
+    where?: FrameLayoutWhereInput
   }
 
   /**
@@ -4316,42 +4316,42 @@ export namespace Prisma {
 
 
   /**
-   * Model CabinetLayout
+   * Model FrameLayout
    */
 
-  export type AggregateCabinetLayout = {
-    _count: CabinetLayoutCountAggregateOutputType | null
-    _avg: CabinetLayoutAvgAggregateOutputType | null
-    _sum: CabinetLayoutSumAggregateOutputType | null
-    _min: CabinetLayoutMinAggregateOutputType | null
-    _max: CabinetLayoutMaxAggregateOutputType | null
+  export type AggregateFrameLayout = {
+    _count: FrameLayoutCountAggregateOutputType | null
+    _avg: FrameLayoutAvgAggregateOutputType | null
+    _sum: FrameLayoutSumAggregateOutputType | null
+    _min: FrameLayoutMinAggregateOutputType | null
+    _max: FrameLayoutMaxAggregateOutputType | null
   }
 
-  export type CabinetLayoutAvgAggregateOutputType = {
+  export type FrameLayoutAvgAggregateOutputType = {
     id: number | null
     frameId: number | null
   }
 
-  export type CabinetLayoutSumAggregateOutputType = {
+  export type FrameLayoutSumAggregateOutputType = {
     id: number | null
     frameId: number | null
   }
 
-  export type CabinetLayoutMinAggregateOutputType = {
-    id: number | null
-    frameId: number | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type CabinetLayoutMaxAggregateOutputType = {
+  export type FrameLayoutMinAggregateOutputType = {
     id: number | null
     frameId: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type CabinetLayoutCountAggregateOutputType = {
+  export type FrameLayoutMaxAggregateOutputType = {
+    id: number | null
+    frameId: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type FrameLayoutCountAggregateOutputType = {
     id: number
     layout: number
     frameId: number
@@ -4361,31 +4361,31 @@ export namespace Prisma {
   }
 
 
-  export type CabinetLayoutAvgAggregateInputType = {
+  export type FrameLayoutAvgAggregateInputType = {
     id?: true
     frameId?: true
   }
 
-  export type CabinetLayoutSumAggregateInputType = {
+  export type FrameLayoutSumAggregateInputType = {
     id?: true
     frameId?: true
   }
 
-  export type CabinetLayoutMinAggregateInputType = {
-    id?: true
-    frameId?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type CabinetLayoutMaxAggregateInputType = {
+  export type FrameLayoutMinAggregateInputType = {
     id?: true
     frameId?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type CabinetLayoutCountAggregateInputType = {
+  export type FrameLayoutMaxAggregateInputType = {
+    id?: true
+    frameId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type FrameLayoutCountAggregateInputType = {
     id?: true
     layout?: true
     frameId?: true
@@ -4394,147 +4394,147 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type CabinetLayoutAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which CabinetLayout to aggregate.
+     * Filter which FrameLayout to aggregate.
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CabinetLayouts to fetch.
+     * Determine the order of FrameLayouts to fetch.
      */
-    orderBy?: CabinetLayoutOrderByWithRelationInput | CabinetLayoutOrderByWithRelationInput[]
+    orderBy?: FrameLayoutOrderByWithRelationInput | FrameLayoutOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CabinetLayoutWhereUniqueInput
+    cursor?: FrameLayoutWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CabinetLayouts from the position of the cursor.
+     * Take `±n` FrameLayouts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CabinetLayouts.
+     * Skip the first `n` FrameLayouts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned CabinetLayouts
+     * Count returned FrameLayouts
     **/
-    _count?: true | CabinetLayoutCountAggregateInputType
+    _count?: true | FrameLayoutCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: CabinetLayoutAvgAggregateInputType
+    _avg?: FrameLayoutAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: CabinetLayoutSumAggregateInputType
+    _sum?: FrameLayoutSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CabinetLayoutMinAggregateInputType
+    _min?: FrameLayoutMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CabinetLayoutMaxAggregateInputType
+    _max?: FrameLayoutMaxAggregateInputType
   }
 
-  export type GetCabinetLayoutAggregateType<T extends CabinetLayoutAggregateArgs> = {
-        [P in keyof T & keyof AggregateCabinetLayout]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCabinetLayout[P]>
-      : GetScalarType<T[P], AggregateCabinetLayout[P]>
+  export type GetFrameLayoutAggregateType<T extends FrameLayoutAggregateArgs> = {
+    [P in keyof T & keyof AggregateFrameLayout]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateFrameLayout[P]>
+    : GetScalarType<T[P], AggregateFrameLayout[P]>
   }
 
 
 
 
-  export type CabinetLayoutGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CabinetLayoutWhereInput
-    orderBy?: CabinetLayoutOrderByWithAggregationInput | CabinetLayoutOrderByWithAggregationInput[]
-    by: CabinetLayoutScalarFieldEnum[] | CabinetLayoutScalarFieldEnum
-    having?: CabinetLayoutScalarWhereWithAggregatesInput
+  export type FrameLayoutGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FrameLayoutWhereInput
+    orderBy?: FrameLayoutOrderByWithAggregationInput | FrameLayoutOrderByWithAggregationInput[]
+    by: FrameLayoutScalarFieldEnum[] | FrameLayoutScalarFieldEnum
+    having?: FrameLayoutScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CabinetLayoutCountAggregateInputType | true
-    _avg?: CabinetLayoutAvgAggregateInputType
-    _sum?: CabinetLayoutSumAggregateInputType
-    _min?: CabinetLayoutMinAggregateInputType
-    _max?: CabinetLayoutMaxAggregateInputType
+    _count?: FrameLayoutCountAggregateInputType | true
+    _avg?: FrameLayoutAvgAggregateInputType
+    _sum?: FrameLayoutSumAggregateInputType
+    _min?: FrameLayoutMinAggregateInputType
+    _max?: FrameLayoutMaxAggregateInputType
   }
 
-  export type CabinetLayoutGroupByOutputType = {
+  export type FrameLayoutGroupByOutputType = {
     id: number
     layout: JsonValue
     frameId: number
     createdAt: Date
     updatedAt: Date
-    _count: CabinetLayoutCountAggregateOutputType | null
-    _avg: CabinetLayoutAvgAggregateOutputType | null
-    _sum: CabinetLayoutSumAggregateOutputType | null
-    _min: CabinetLayoutMinAggregateOutputType | null
-    _max: CabinetLayoutMaxAggregateOutputType | null
+    _count: FrameLayoutCountAggregateOutputType | null
+    _avg: FrameLayoutAvgAggregateOutputType | null
+    _sum: FrameLayoutSumAggregateOutputType | null
+    _min: FrameLayoutMinAggregateOutputType | null
+    _max: FrameLayoutMaxAggregateOutputType | null
   }
 
-  type GetCabinetLayoutGroupByPayload<T extends CabinetLayoutGroupByArgs> = Prisma.PrismaPromise<
+  type GetFrameLayoutGroupByPayload<T extends FrameLayoutGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CabinetLayoutGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CabinetLayoutGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CabinetLayoutGroupByOutputType[P]>
-            : GetScalarType<T[P], CabinetLayoutGroupByOutputType[P]>
-        }
-      >
+      PickEnumerable<FrameLayoutGroupByOutputType, T['by']> &
+      {
+        [P in ((keyof T) & (keyof FrameLayoutGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], FrameLayoutGroupByOutputType[P]>
+        : GetScalarType<T[P], FrameLayoutGroupByOutputType[P]>
+      }
     >
+  >
 
 
-  export type CabinetLayoutSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FrameLayoutSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     layout?: boolean
     frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     frame?: boolean | FrameDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["cabinetLayout"]>
+  }, ExtArgs["result"]["frameLayout"]>
 
-  export type CabinetLayoutSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FrameLayoutSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     layout?: boolean
     frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     frame?: boolean | FrameDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["cabinetLayout"]>
+  }, ExtArgs["result"]["frameLayout"]>
 
-  export type CabinetLayoutSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type FrameLayoutSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     layout?: boolean
     frameId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     frame?: boolean | FrameDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["cabinetLayout"]>
+  }, ExtArgs["result"]["frameLayout"]>
 
-  export type CabinetLayoutSelectScalar = {
+  export type FrameLayoutSelectScalar = {
     id?: boolean
     layout?: boolean
     frameId?: boolean
@@ -4542,19 +4542,19 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type CabinetLayoutOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "layout" | "frameId" | "createdAt" | "updatedAt", ExtArgs["result"]["cabinetLayout"]>
-  export type CabinetLayoutInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "layout" | "frameId" | "createdAt" | "updatedAt", ExtArgs["result"]["frameLayout"]>
+  export type FrameLayoutInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
-  export type CabinetLayoutIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
-  export type CabinetLayoutIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     frame?: boolean | FrameDefaultArgs<ExtArgs>
   }
 
-  export type $CabinetLayoutPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CabinetLayout"
+  export type $FrameLayoutPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FrameLayout"
     objects: {
       frame: Prisma.$FramePayload<ExtArgs>
     }
@@ -4564,136 +4564,136 @@ export namespace Prisma {
       frameId: number
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["cabinetLayout"]>
+    }, ExtArgs["result"]["frameLayout"]>
     composites: {}
   }
 
-  type CabinetLayoutGetPayload<S extends boolean | null | undefined | CabinetLayoutDefaultArgs> = $Result.GetResult<Prisma.$CabinetLayoutPayload, S>
+  type FrameLayoutGetPayload<S extends boolean | null | undefined | FrameLayoutDefaultArgs> = $Result.GetResult<Prisma.$FrameLayoutPayload, S>
 
-  type CabinetLayoutCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CabinetLayoutFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CabinetLayoutCountAggregateInputType | true
+  type FrameLayoutCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FrameLayoutFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FrameLayoutCountAggregateInputType | true
     }
 
-  export interface CabinetLayoutDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CabinetLayout'], meta: { name: 'CabinetLayout' } }
+  export interface FrameLayoutDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FrameLayout'], meta: { name: 'FrameLayout' } }
     /**
-     * Find zero or one CabinetLayout that matches the filter.
-     * @param {CabinetLayoutFindUniqueArgs} args - Arguments to find a CabinetLayout
+     * Find zero or one FrameLayout that matches the filter.
+     * @param {FrameLayoutFindUniqueArgs} args - Arguments to find a FrameLayout
      * @example
-     * // Get one CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.findUnique({
+     * // Get one FrameLayout
+     * const frameLayout = await prisma.frameLayout.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CabinetLayoutFindUniqueArgs>(args: SelectSubset<T, CabinetLayoutFindUniqueArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends FrameLayoutFindUniqueArgs>(args: SelectSubset<T, FrameLayoutFindUniqueArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one CabinetLayout that matches the filter or throw an error with `error.code='P2025'`
+     * Find one FrameLayout that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {CabinetLayoutFindUniqueOrThrowArgs} args - Arguments to find a CabinetLayout
+     * @param {FrameLayoutFindUniqueOrThrowArgs} args - Arguments to find a FrameLayout
      * @example
-     * // Get one CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.findUniqueOrThrow({
+     * // Get one FrameLayout
+     * const frameLayout = await prisma.frameLayout.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CabinetLayoutFindUniqueOrThrowArgs>(args: SelectSubset<T, CabinetLayoutFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends FrameLayoutFindUniqueOrThrowArgs>(args: SelectSubset<T, FrameLayoutFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first CabinetLayout that matches the filter.
+     * Find the first FrameLayout that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutFindFirstArgs} args - Arguments to find a CabinetLayout
+     * @param {FrameLayoutFindFirstArgs} args - Arguments to find a FrameLayout
      * @example
-     * // Get one CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.findFirst({
+     * // Get one FrameLayout
+     * const frameLayout = await prisma.frameLayout.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CabinetLayoutFindFirstArgs>(args?: SelectSubset<T, CabinetLayoutFindFirstArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends FrameLayoutFindFirstArgs>(args?: SelectSubset<T, FrameLayoutFindFirstArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first CabinetLayout that matches the filter or
+     * Find the first FrameLayout that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutFindFirstOrThrowArgs} args - Arguments to find a CabinetLayout
+     * @param {FrameLayoutFindFirstOrThrowArgs} args - Arguments to find a FrameLayout
      * @example
-     * // Get one CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.findFirstOrThrow({
+     * // Get one FrameLayout
+     * const frameLayout = await prisma.frameLayout.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CabinetLayoutFindFirstOrThrowArgs>(args?: SelectSubset<T, CabinetLayoutFindFirstOrThrowArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends FrameLayoutFindFirstOrThrowArgs>(args?: SelectSubset<T, FrameLayoutFindFirstOrThrowArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more CabinetLayouts that matches the filter.
+     * Find zero or more FrameLayouts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {FrameLayoutFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all CabinetLayouts
-     * const cabinetLayouts = await prisma.cabinetLayout.findMany()
+     * // Get all FrameLayouts
+     * const frameLayouts = await prisma.frameLayout.findMany()
      * 
-     * // Get first 10 CabinetLayouts
-     * const cabinetLayouts = await prisma.cabinetLayout.findMany({ take: 10 })
+     * // Get first 10 FrameLayouts
+     * const frameLayouts = await prisma.frameLayout.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const cabinetLayoutWithIdOnly = await prisma.cabinetLayout.findMany({ select: { id: true } })
+     * const frameLayoutWithIdOnly = await prisma.frameLayout.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CabinetLayoutFindManyArgs>(args?: SelectSubset<T, CabinetLayoutFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends FrameLayoutFindManyArgs>(args?: SelectSubset<T, FrameLayoutFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a CabinetLayout.
-     * @param {CabinetLayoutCreateArgs} args - Arguments to create a CabinetLayout.
+     * Create a FrameLayout.
+     * @param {FrameLayoutCreateArgs} args - Arguments to create a FrameLayout.
      * @example
-     * // Create one CabinetLayout
-     * const CabinetLayout = await prisma.cabinetLayout.create({
+     * // Create one FrameLayout
+     * const FrameLayout = await prisma.frameLayout.create({
      *   data: {
-     *     // ... data to create a CabinetLayout
+     *     // ... data to create a FrameLayout
      *   }
      * })
      * 
      */
-    create<T extends CabinetLayoutCreateArgs>(args: SelectSubset<T, CabinetLayoutCreateArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends FrameLayoutCreateArgs>(args: SelectSubset<T, FrameLayoutCreateArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many CabinetLayouts.
-     * @param {CabinetLayoutCreateManyArgs} args - Arguments to create many CabinetLayouts.
+     * Create many FrameLayouts.
+     * @param {FrameLayoutCreateManyArgs} args - Arguments to create many FrameLayouts.
      * @example
-     * // Create many CabinetLayouts
-     * const cabinetLayout = await prisma.cabinetLayout.createMany({
+     * // Create many FrameLayouts
+     * const frameLayout = await prisma.frameLayout.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends CabinetLayoutCreateManyArgs>(args?: SelectSubset<T, CabinetLayoutCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends FrameLayoutCreateManyArgs>(args?: SelectSubset<T, FrameLayoutCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many CabinetLayouts and returns the data saved in the database.
-     * @param {CabinetLayoutCreateManyAndReturnArgs} args - Arguments to create many CabinetLayouts.
+     * Create many FrameLayouts and returns the data saved in the database.
+     * @param {FrameLayoutCreateManyAndReturnArgs} args - Arguments to create many FrameLayouts.
      * @example
-     * // Create many CabinetLayouts
-     * const cabinetLayout = await prisma.cabinetLayout.createManyAndReturn({
+     * // Create many FrameLayouts
+     * const frameLayout = await prisma.frameLayout.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many CabinetLayouts and only return the `id`
-     * const cabinetLayoutWithIdOnly = await prisma.cabinetLayout.createManyAndReturn({
+     * // Create many FrameLayouts and only return the `id`
+     * const frameLayoutWithIdOnly = await prisma.frameLayout.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -4703,28 +4703,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CabinetLayoutCreateManyAndReturnArgs>(args?: SelectSubset<T, CabinetLayoutCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends FrameLayoutCreateManyAndReturnArgs>(args?: SelectSubset<T, FrameLayoutCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a CabinetLayout.
-     * @param {CabinetLayoutDeleteArgs} args - Arguments to delete one CabinetLayout.
+     * Delete a FrameLayout.
+     * @param {FrameLayoutDeleteArgs} args - Arguments to delete one FrameLayout.
      * @example
-     * // Delete one CabinetLayout
-     * const CabinetLayout = await prisma.cabinetLayout.delete({
+     * // Delete one FrameLayout
+     * const FrameLayout = await prisma.frameLayout.delete({
      *   where: {
-     *     // ... filter to delete one CabinetLayout
+     *     // ... filter to delete one FrameLayout
      *   }
      * })
      * 
      */
-    delete<T extends CabinetLayoutDeleteArgs>(args: SelectSubset<T, CabinetLayoutDeleteArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends FrameLayoutDeleteArgs>(args: SelectSubset<T, FrameLayoutDeleteArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one CabinetLayout.
-     * @param {CabinetLayoutUpdateArgs} args - Arguments to update one CabinetLayout.
+     * Update one FrameLayout.
+     * @param {FrameLayoutUpdateArgs} args - Arguments to update one FrameLayout.
      * @example
-     * // Update one CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.update({
+     * // Update one FrameLayout
+     * const frameLayout = await prisma.frameLayout.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4734,30 +4734,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CabinetLayoutUpdateArgs>(args: SelectSubset<T, CabinetLayoutUpdateArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends FrameLayoutUpdateArgs>(args: SelectSubset<T, FrameLayoutUpdateArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more CabinetLayouts.
-     * @param {CabinetLayoutDeleteManyArgs} args - Arguments to filter CabinetLayouts to delete.
+     * Delete zero or more FrameLayouts.
+     * @param {FrameLayoutDeleteManyArgs} args - Arguments to filter FrameLayouts to delete.
      * @example
-     * // Delete a few CabinetLayouts
-     * const { count } = await prisma.cabinetLayout.deleteMany({
+     * // Delete a few FrameLayouts
+     * const { count } = await prisma.frameLayout.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends CabinetLayoutDeleteManyArgs>(args?: SelectSubset<T, CabinetLayoutDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends FrameLayoutDeleteManyArgs>(args?: SelectSubset<T, FrameLayoutDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more CabinetLayouts.
+     * Update zero or more FrameLayouts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {FrameLayoutUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many CabinetLayouts
-     * const cabinetLayout = await prisma.cabinetLayout.updateMany({
+     * // Update many FrameLayouts
+     * const frameLayout = await prisma.frameLayout.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4767,14 +4767,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends CabinetLayoutUpdateManyArgs>(args: SelectSubset<T, CabinetLayoutUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends FrameLayoutUpdateManyArgs>(args: SelectSubset<T, FrameLayoutUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more CabinetLayouts and returns the data updated in the database.
-     * @param {CabinetLayoutUpdateManyAndReturnArgs} args - Arguments to update many CabinetLayouts.
+     * Update zero or more FrameLayouts and returns the data updated in the database.
+     * @param {FrameLayoutUpdateManyAndReturnArgs} args - Arguments to update many FrameLayouts.
      * @example
-     * // Update many CabinetLayouts
-     * const cabinetLayout = await prisma.cabinetLayout.updateManyAndReturn({
+     * // Update many FrameLayouts
+     * const frameLayout = await prisma.frameLayout.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4783,8 +4783,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more CabinetLayouts and only return the `id`
-     * const cabinetLayoutWithIdOnly = await prisma.cabinetLayout.updateManyAndReturn({
+     * // Update zero or more FrameLayouts and only return the `id`
+     * const frameLayoutWithIdOnly = await prisma.frameLayout.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -4797,56 +4797,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends CabinetLayoutUpdateManyAndReturnArgs>(args: SelectSubset<T, CabinetLayoutUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends FrameLayoutUpdateManyAndReturnArgs>(args: SelectSubset<T, FrameLayoutUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one CabinetLayout.
-     * @param {CabinetLayoutUpsertArgs} args - Arguments to update or create a CabinetLayout.
+     * Create or update one FrameLayout.
+     * @param {FrameLayoutUpsertArgs} args - Arguments to update or create a FrameLayout.
      * @example
-     * // Update or create a CabinetLayout
-     * const cabinetLayout = await prisma.cabinetLayout.upsert({
+     * // Update or create a FrameLayout
+     * const frameLayout = await prisma.frameLayout.upsert({
      *   create: {
-     *     // ... data to create a CabinetLayout
+     *     // ... data to create a FrameLayout
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the CabinetLayout we want to update
+     *     // ... the filter for the FrameLayout we want to update
      *   }
      * })
      */
-    upsert<T extends CabinetLayoutUpsertArgs>(args: SelectSubset<T, CabinetLayoutUpsertArgs<ExtArgs>>): Prisma__CabinetLayoutClient<$Result.GetResult<Prisma.$CabinetLayoutPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends FrameLayoutUpsertArgs>(args: SelectSubset<T, FrameLayoutUpsertArgs<ExtArgs>>): Prisma__FrameLayoutClient<$Result.GetResult<Prisma.$FrameLayoutPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of CabinetLayouts.
+     * Count the number of FrameLayouts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutCountArgs} args - Arguments to filter CabinetLayouts to count.
+     * @param {FrameLayoutCountArgs} args - Arguments to filter FrameLayouts to count.
      * @example
-     * // Count the number of CabinetLayouts
-     * const count = await prisma.cabinetLayout.count({
+     * // Count the number of FrameLayouts
+     * const count = await prisma.frameLayout.count({
      *   where: {
-     *     // ... the filter for the CabinetLayouts we want to count
+     *     // ... the filter for the FrameLayouts we want to count
      *   }
      * })
     **/
-    count<T extends CabinetLayoutCountArgs>(
-      args?: Subset<T, CabinetLayoutCountArgs>,
+    count<T extends FrameLayoutCountArgs>(
+      args?: Subset<T, FrameLayoutCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CabinetLayoutCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], FrameLayoutCountAggregateOutputType>
+      : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a CabinetLayout.
+     * Allows you to perform aggregations operations on a FrameLayout.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {FrameLayoutAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -4866,13 +4866,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CabinetLayoutAggregateArgs>(args: Subset<T, CabinetLayoutAggregateArgs>): Prisma.PrismaPromise<GetCabinetLayoutAggregateType<T>>
+    aggregate<T extends FrameLayoutAggregateArgs>(args: Subset<T, FrameLayoutAggregateArgs>): Prisma.PrismaPromise<GetFrameLayoutAggregateType<T>>
 
     /**
-     * Group by CabinetLayout.
+     * Group by FrameLayout.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CabinetLayoutGroupByArgs} args - Group by arguments.
+     * @param {FrameLayoutGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -4887,14 +4887,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CabinetLayoutGroupByArgs,
+      T extends FrameLayoutGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CabinetLayoutGroupByArgs['orderBy'] }
-        : { orderBy?: CabinetLayoutGroupByArgs['orderBy'] },
+      ? { orderBy: FrameLayoutGroupByArgs['orderBy'] }
+      : { orderBy?: FrameLayoutGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4905,58 +4905,58 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, CabinetLayoutGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCabinetLayoutGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the CabinetLayout model
-   */
-  readonly fields: CabinetLayoutFieldRefs;
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+    >(args: SubsetIntersection<T, FrameLayoutGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFrameLayoutGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    /**
+     * Fields of the FrameLayout model
+     */
+    readonly fields: FrameLayoutFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for CabinetLayout.
+   * The delegate class that acts as a "Promise-like" for FrameLayout.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CabinetLayoutClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__FrameLayoutClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     frame<T extends FrameDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FrameDefaultArgs<ExtArgs>>): Prisma__FrameClient<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -4985,425 +4985,425 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the CabinetLayout model
+   * Fields of the FrameLayout model
    */
-  interface CabinetLayoutFieldRefs {
-    readonly id: FieldRef<"CabinetLayout", 'Int'>
-    readonly layout: FieldRef<"CabinetLayout", 'Json'>
-    readonly frameId: FieldRef<"CabinetLayout", 'Int'>
-    readonly createdAt: FieldRef<"CabinetLayout", 'DateTime'>
-    readonly updatedAt: FieldRef<"CabinetLayout", 'DateTime'>
+  interface FrameLayoutFieldRefs {
+    readonly id: FieldRef<"FrameLayout", 'Int'>
+    readonly layout: FieldRef<"FrameLayout", 'Json'>
+    readonly frameId: FieldRef<"FrameLayout", 'Int'>
+    readonly createdAt: FieldRef<"FrameLayout", 'DateTime'>
+    readonly updatedAt: FieldRef<"FrameLayout", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
-   * CabinetLayout findUnique
+   * FrameLayout findUnique
    */
-  export type CabinetLayoutFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter, which CabinetLayout to fetch.
+     * Filter, which FrameLayout to fetch.
      */
-    where: CabinetLayoutWhereUniqueInput
+    where: FrameLayoutWhereUniqueInput
   }
 
   /**
-   * CabinetLayout findUniqueOrThrow
+   * FrameLayout findUniqueOrThrow
    */
-  export type CabinetLayoutFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter, which CabinetLayout to fetch.
+     * Filter, which FrameLayout to fetch.
      */
-    where: CabinetLayoutWhereUniqueInput
+    where: FrameLayoutWhereUniqueInput
   }
 
   /**
-   * CabinetLayout findFirst
+   * FrameLayout findFirst
    */
-  export type CabinetLayoutFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter, which CabinetLayout to fetch.
+     * Filter, which FrameLayout to fetch.
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CabinetLayouts to fetch.
+     * Determine the order of FrameLayouts to fetch.
      */
-    orderBy?: CabinetLayoutOrderByWithRelationInput | CabinetLayoutOrderByWithRelationInput[]
+    orderBy?: FrameLayoutOrderByWithRelationInput | FrameLayoutOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for CabinetLayouts.
+     * Sets the position for searching for FrameLayouts.
      */
-    cursor?: CabinetLayoutWhereUniqueInput
+    cursor?: FrameLayoutWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CabinetLayouts from the position of the cursor.
+     * Take `±n` FrameLayouts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CabinetLayouts.
+     * Skip the first `n` FrameLayouts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of CabinetLayouts.
+     * Filter by unique combinations of FrameLayouts.
      */
-    distinct?: CabinetLayoutScalarFieldEnum | CabinetLayoutScalarFieldEnum[]
+    distinct?: FrameLayoutScalarFieldEnum | FrameLayoutScalarFieldEnum[]
   }
 
   /**
-   * CabinetLayout findFirstOrThrow
+   * FrameLayout findFirstOrThrow
    */
-  export type CabinetLayoutFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter, which CabinetLayout to fetch.
+     * Filter, which FrameLayout to fetch.
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CabinetLayouts to fetch.
+     * Determine the order of FrameLayouts to fetch.
      */
-    orderBy?: CabinetLayoutOrderByWithRelationInput | CabinetLayoutOrderByWithRelationInput[]
+    orderBy?: FrameLayoutOrderByWithRelationInput | FrameLayoutOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for CabinetLayouts.
+     * Sets the position for searching for FrameLayouts.
      */
-    cursor?: CabinetLayoutWhereUniqueInput
+    cursor?: FrameLayoutWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CabinetLayouts from the position of the cursor.
+     * Take `±n` FrameLayouts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CabinetLayouts.
+     * Skip the first `n` FrameLayouts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of CabinetLayouts.
+     * Filter by unique combinations of FrameLayouts.
      */
-    distinct?: CabinetLayoutScalarFieldEnum | CabinetLayoutScalarFieldEnum[]
+    distinct?: FrameLayoutScalarFieldEnum | FrameLayoutScalarFieldEnum[]
   }
 
   /**
-   * CabinetLayout findMany
+   * FrameLayout findMany
    */
-  export type CabinetLayoutFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter, which CabinetLayouts to fetch.
+     * Filter, which FrameLayouts to fetch.
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of CabinetLayouts to fetch.
+     * Determine the order of FrameLayouts to fetch.
      */
-    orderBy?: CabinetLayoutOrderByWithRelationInput | CabinetLayoutOrderByWithRelationInput[]
+    orderBy?: FrameLayoutOrderByWithRelationInput | FrameLayoutOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing CabinetLayouts.
+     * Sets the position for listing FrameLayouts.
      */
-    cursor?: CabinetLayoutWhereUniqueInput
+    cursor?: FrameLayoutWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` CabinetLayouts from the position of the cursor.
+     * Take `±n` FrameLayouts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` CabinetLayouts.
+     * Skip the first `n` FrameLayouts.
      */
     skip?: number
-    distinct?: CabinetLayoutScalarFieldEnum | CabinetLayoutScalarFieldEnum[]
+    distinct?: FrameLayoutScalarFieldEnum | FrameLayoutScalarFieldEnum[]
   }
 
   /**
-   * CabinetLayout create
+   * FrameLayout create
    */
-  export type CabinetLayoutCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * The data needed to create a CabinetLayout.
+     * The data needed to create a FrameLayout.
      */
-    data: XOR<CabinetLayoutCreateInput, CabinetLayoutUncheckedCreateInput>
+    data: XOR<FrameLayoutCreateInput, FrameLayoutUncheckedCreateInput>
   }
 
   /**
-   * CabinetLayout createMany
+   * FrameLayout createMany
    */
-  export type CabinetLayoutCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many CabinetLayouts.
+     * The data used to create many FrameLayouts.
      */
-    data: CabinetLayoutCreateManyInput | CabinetLayoutCreateManyInput[]
+    data: FrameLayoutCreateManyInput | FrameLayoutCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * CabinetLayout createManyAndReturn
+   * FrameLayout createManyAndReturn
    */
-  export type CabinetLayoutCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelectCreateManyAndReturn<ExtArgs> | null
+    select?: FrameLayoutSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
-     * The data used to create many CabinetLayouts.
+     * The data used to create many FrameLayouts.
      */
-    data: CabinetLayoutCreateManyInput | CabinetLayoutCreateManyInput[]
+    data: FrameLayoutCreateManyInput | FrameLayoutCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: FrameLayoutIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * CabinetLayout update
+   * FrameLayout update
    */
-  export type CabinetLayoutUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * The data needed to update a CabinetLayout.
+     * The data needed to update a FrameLayout.
      */
-    data: XOR<CabinetLayoutUpdateInput, CabinetLayoutUncheckedUpdateInput>
+    data: XOR<FrameLayoutUpdateInput, FrameLayoutUncheckedUpdateInput>
     /**
-     * Choose, which CabinetLayout to update.
+     * Choose, which FrameLayout to update.
      */
-    where: CabinetLayoutWhereUniqueInput
+    where: FrameLayoutWhereUniqueInput
   }
 
   /**
-   * CabinetLayout updateMany
+   * FrameLayout updateMany
    */
-  export type CabinetLayoutUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update CabinetLayouts.
+     * The data used to update FrameLayouts.
      */
-    data: XOR<CabinetLayoutUpdateManyMutationInput, CabinetLayoutUncheckedUpdateManyInput>
+    data: XOR<FrameLayoutUpdateManyMutationInput, FrameLayoutUncheckedUpdateManyInput>
     /**
-     * Filter which CabinetLayouts to update
+     * Filter which FrameLayouts to update
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
-     * Limit how many CabinetLayouts to update.
+     * Limit how many FrameLayouts to update.
      */
     limit?: number
   }
 
   /**
-   * CabinetLayout updateManyAndReturn
+   * FrameLayout updateManyAndReturn
    */
-  export type CabinetLayoutUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: FrameLayoutSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
-     * The data used to update CabinetLayouts.
+     * The data used to update FrameLayouts.
      */
-    data: XOR<CabinetLayoutUpdateManyMutationInput, CabinetLayoutUncheckedUpdateManyInput>
+    data: XOR<FrameLayoutUpdateManyMutationInput, FrameLayoutUncheckedUpdateManyInput>
     /**
-     * Filter which CabinetLayouts to update
+     * Filter which FrameLayouts to update
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
-     * Limit how many CabinetLayouts to update.
+     * Limit how many FrameLayouts to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: FrameLayoutIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * CabinetLayout upsert
+   * FrameLayout upsert
    */
-  export type CabinetLayoutUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * The filter to search for the CabinetLayout to update in case it exists.
+     * The filter to search for the FrameLayout to update in case it exists.
      */
-    where: CabinetLayoutWhereUniqueInput
+    where: FrameLayoutWhereUniqueInput
     /**
-     * In case the CabinetLayout found by the `where` argument doesn't exist, create a new CabinetLayout with this data.
+     * In case the FrameLayout found by the `where` argument doesn't exist, create a new FrameLayout with this data.
      */
-    create: XOR<CabinetLayoutCreateInput, CabinetLayoutUncheckedCreateInput>
+    create: XOR<FrameLayoutCreateInput, FrameLayoutUncheckedCreateInput>
     /**
-     * In case the CabinetLayout was found with the provided `where` argument, update it with this data.
+     * In case the FrameLayout was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<CabinetLayoutUpdateInput, CabinetLayoutUncheckedUpdateInput>
+    update: XOR<FrameLayoutUpdateInput, FrameLayoutUncheckedUpdateInput>
   }
 
   /**
-   * CabinetLayout delete
+   * FrameLayout delete
    */
-  export type CabinetLayoutDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
     /**
-     * Filter which CabinetLayout to delete.
+     * Filter which FrameLayout to delete.
      */
-    where: CabinetLayoutWhereUniqueInput
+    where: FrameLayoutWhereUniqueInput
   }
 
   /**
-   * CabinetLayout deleteMany
+   * FrameLayout deleteMany
    */
-  export type CabinetLayoutDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which CabinetLayouts to delete
+     * Filter which FrameLayouts to delete
      */
-    where?: CabinetLayoutWhereInput
+    where?: FrameLayoutWhereInput
     /**
-     * Limit how many CabinetLayouts to delete.
+     * Limit how many FrameLayouts to delete.
      */
     limit?: number
   }
 
   /**
-   * CabinetLayout without action
+   * FrameLayout without action
    */
-  export type CabinetLayoutDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type FrameLayoutDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CabinetLayout
+     * Select specific fields to fetch from the FrameLayout
      */
-    select?: CabinetLayoutSelect<ExtArgs> | null
+    select?: FrameLayoutSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the CabinetLayout
+     * Omit specific fields from the FrameLayout
      */
-    omit?: CabinetLayoutOmit<ExtArgs> | null
+    omit?: FrameLayoutOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CabinetLayoutInclude<ExtArgs> | null
+    include?: FrameLayoutInclude<ExtArgs> | null
   }
 
 
@@ -5556,11 +5556,11 @@ export namespace Prisma {
   }
 
   export type GetChestAggregateType<T extends ChestAggregateArgs> = {
-        [P in keyof T & keyof AggregateChest]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateChest[P]>
-      : GetScalarType<T[P], AggregateChest[P]>
+    [P in keyof T & keyof AggregateChest]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateChest[P]>
+    : GetScalarType<T[P], AggregateChest[P]>
   }
 
 
@@ -5598,15 +5598,15 @@ export namespace Prisma {
   type GetChestGroupByPayload<T extends ChestGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<ChestGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ChestGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ChestGroupByOutputType[P]>
-            : GetScalarType<T[P], ChestGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof ChestGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], ChestGroupByOutputType[P]>
+        : GetScalarType<T[P], ChestGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type ChestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5948,10 +5948,10 @@ export namespace Prisma {
       args?: Subset<T, ChestCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ChestCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], ChestCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -6005,8 +6005,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ChestGroupByArgs['orderBy'] }
-        : { orderBy?: ChestGroupByArgs['orderBy'] },
+      ? { orderBy: ChestGroupByArgs['orderBy'] }
+      : { orderBy?: ChestGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6017,49 +6017,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, ChestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Chest model
-   */
-  readonly fields: ChestFieldRefs;
+    /**
+     * Fields of the Chest model
+     */
+    readonly fields: ChestFieldRefs;
   }
 
   /**
@@ -6108,7 +6108,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Chest", 'DateTime'>
     readonly updatedAt: FieldRef<"Chest", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -6670,11 +6670,11 @@ export namespace Prisma {
   }
 
   export type GetJournalAggregateType<T extends JournalAggregateArgs> = {
-        [P in keyof T & keyof AggregateJournal]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateJournal[P]>
-      : GetScalarType<T[P], AggregateJournal[P]>
+    [P in keyof T & keyof AggregateJournal]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateJournal[P]>
+    : GetScalarType<T[P], AggregateJournal[P]>
   }
 
 
@@ -6712,15 +6712,15 @@ export namespace Prisma {
   type GetJournalGroupByPayload<T extends JournalGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<JournalGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof JournalGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], JournalGroupByOutputType[P]>
-            : GetScalarType<T[P], JournalGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof JournalGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], JournalGroupByOutputType[P]>
+        : GetScalarType<T[P], JournalGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type JournalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7062,10 +7062,10 @@ export namespace Prisma {
       args?: Subset<T, JournalCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], JournalCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], JournalCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -7119,8 +7119,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: JournalGroupByArgs['orderBy'] }
-        : { orderBy?: JournalGroupByArgs['orderBy'] },
+      ? { orderBy: JournalGroupByArgs['orderBy'] }
+      : { orderBy?: JournalGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -7131,49 +7131,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, JournalGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetJournalGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Journal model
-   */
-  readonly fields: JournalFieldRefs;
+    /**
+     * Fields of the Journal model
+     */
+    readonly fields: JournalFieldRefs;
   }
 
   /**
@@ -7222,7 +7222,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Journal", 'DateTime'>
     readonly updatedAt: FieldRef<"Journal", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -7788,11 +7788,11 @@ export namespace Prisma {
   }
 
   export type GetPolaroidAggregateType<T extends PolaroidAggregateArgs> = {
-        [P in keyof T & keyof AggregatePolaroid]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePolaroid[P]>
-      : GetScalarType<T[P], AggregatePolaroid[P]>
+    [P in keyof T & keyof AggregatePolaroid]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregatePolaroid[P]>
+    : GetScalarType<T[P], AggregatePolaroid[P]>
   }
 
 
@@ -7830,15 +7830,15 @@ export namespace Prisma {
   type GetPolaroidGroupByPayload<T extends PolaroidGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<PolaroidGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof PolaroidGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
-            : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof PolaroidGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
+        : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type PolaroidSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8180,10 +8180,10 @@ export namespace Prisma {
       args?: Subset<T, PolaroidCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], PolaroidCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], PolaroidCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -8237,8 +8237,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PolaroidGroupByArgs['orderBy'] }
-        : { orderBy?: PolaroidGroupByArgs['orderBy'] },
+      ? { orderBy: PolaroidGroupByArgs['orderBy'] }
+      : { orderBy?: PolaroidGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -8249,49 +8249,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, PolaroidGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPolaroidGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Polaroid model
-   */
-  readonly fields: PolaroidFieldRefs;
+    /**
+     * Fields of the Polaroid model
+     */
+    readonly fields: PolaroidFieldRefs;
   }
 
   /**
@@ -8340,7 +8340,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Polaroid", 'DateTime'>
     readonly updatedAt: FieldRef<"Polaroid", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -8906,11 +8906,11 @@ export namespace Prisma {
   }
 
   export type GetMediaAggregateType<T extends MediaAggregateArgs> = {
-        [P in keyof T & keyof AggregateMedia]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateMedia[P]>
-      : GetScalarType<T[P], AggregateMedia[P]>
+    [P in keyof T & keyof AggregateMedia]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateMedia[P]>
+    : GetScalarType<T[P], AggregateMedia[P]>
   }
 
 
@@ -8948,15 +8948,15 @@ export namespace Prisma {
   type GetMediaGroupByPayload<T extends MediaGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<MediaGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof MediaGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], MediaGroupByOutputType[P]>
-            : GetScalarType<T[P], MediaGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof MediaGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], MediaGroupByOutputType[P]>
+        : GetScalarType<T[P], MediaGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type MediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -9298,10 +9298,10 @@ export namespace Prisma {
       args?: Subset<T, MediaCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], MediaCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], MediaCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -9355,8 +9355,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: MediaGroupByArgs['orderBy'] }
-        : { orderBy?: MediaGroupByArgs['orderBy'] },
+      ? { orderBy: MediaGroupByArgs['orderBy'] }
+      : { orderBy?: MediaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -9367,49 +9367,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, MediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Media model
-   */
-  readonly fields: MediaFieldRefs;
+    /**
+     * Fields of the Media model
+     */
+    readonly fields: MediaFieldRefs;
   }
 
   /**
@@ -9458,7 +9458,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Media", 'DateTime'>
     readonly updatedAt: FieldRef<"Media", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -10020,11 +10020,11 @@ export namespace Prisma {
   }
 
   export type GetChecklistAggregateType<T extends ChecklistAggregateArgs> = {
-        [P in keyof T & keyof AggregateChecklist]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateChecklist[P]>
-      : GetScalarType<T[P], AggregateChecklist[P]>
+    [P in keyof T & keyof AggregateChecklist]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateChecklist[P]>
+    : GetScalarType<T[P], AggregateChecklist[P]>
   }
 
 
@@ -10062,15 +10062,15 @@ export namespace Prisma {
   type GetChecklistGroupByPayload<T extends ChecklistGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<ChecklistGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ChecklistGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
-            : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof ChecklistGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
+        : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type ChecklistSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10412,10 +10412,10 @@ export namespace Prisma {
       args?: Subset<T, ChecklistCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ChecklistCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], ChecklistCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -10469,8 +10469,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ChecklistGroupByArgs['orderBy'] }
-        : { orderBy?: ChecklistGroupByArgs['orderBy'] },
+      ? { orderBy: ChecklistGroupByArgs['orderBy'] }
+      : { orderBy?: ChecklistGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -10481,49 +10481,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, ChecklistGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChecklistGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Checklist model
-   */
-  readonly fields: ChecklistFieldRefs;
+    /**
+     * Fields of the Checklist model
+     */
+    readonly fields: ChecklistFieldRefs;
   }
 
   /**
@@ -10572,7 +10572,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Checklist", 'DateTime'>
     readonly updatedAt: FieldRef<"Checklist", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -11132,11 +11132,11 @@ export namespace Prisma {
   }
 
   export type GetNoteAggregateType<T extends NoteAggregateArgs> = {
-        [P in keyof T & keyof AggregateNote]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateNote[P]>
-      : GetScalarType<T[P], AggregateNote[P]>
+    [P in keyof T & keyof AggregateNote]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateNote[P]>
+    : GetScalarType<T[P], AggregateNote[P]>
   }
 
 
@@ -11173,15 +11173,15 @@ export namespace Prisma {
   type GetNoteGroupByPayload<T extends NoteGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<NoteGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof NoteGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], NoteGroupByOutputType[P]>
-            : GetScalarType<T[P], NoteGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof NoteGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], NoteGroupByOutputType[P]>
+        : GetScalarType<T[P], NoteGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type NoteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11518,10 +11518,10 @@ export namespace Prisma {
       args?: Subset<T, NoteCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], NoteCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], NoteCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -11575,8 +11575,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: NoteGroupByArgs['orderBy'] }
-        : { orderBy?: NoteGroupByArgs['orderBy'] },
+      ? { orderBy: NoteGroupByArgs['orderBy'] }
+      : { orderBy?: NoteGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -11587,49 +11587,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, NoteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNoteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Note model
-   */
-  readonly fields: NoteFieldRefs;
+    /**
+     * Fields of the Note model
+     */
+    readonly fields: NoteFieldRefs;
   }
 
   /**
@@ -11677,7 +11677,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Note", 'DateTime'>
     readonly updatedAt: FieldRef<"Note", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -12237,11 +12237,11 @@ export namespace Prisma {
   }
 
   export type GetDecorItemAggregateType<T extends DecorItemAggregateArgs> = {
-        [P in keyof T & keyof AggregateDecorItem]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateDecorItem[P]>
-      : GetScalarType<T[P], AggregateDecorItem[P]>
+    [P in keyof T & keyof AggregateDecorItem]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateDecorItem[P]>
+    : GetScalarType<T[P], AggregateDecorItem[P]>
   }
 
 
@@ -12278,15 +12278,15 @@ export namespace Prisma {
   type GetDecorItemGroupByPayload<T extends DecorItemGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<DecorItemGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof DecorItemGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
-            : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof DecorItemGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
+        : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type DecorItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -12623,10 +12623,10 @@ export namespace Prisma {
       args?: Subset<T, DecorItemCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], DecorItemCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], DecorItemCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -12680,8 +12680,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: DecorItemGroupByArgs['orderBy'] }
-        : { orderBy?: DecorItemGroupByArgs['orderBy'] },
+      ? { orderBy: DecorItemGroupByArgs['orderBy'] }
+      : { orderBy?: DecorItemGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -12692,49 +12692,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, DecorItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDecorItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the DecorItem model
-   */
-  readonly fields: DecorItemFieldRefs;
+    /**
+     * Fields of the DecorItem model
+     */
+    readonly fields: DecorItemFieldRefs;
   }
 
   /**
@@ -12782,7 +12782,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"DecorItem", 'DateTime'>
     readonly updatedAt: FieldRef<"DecorItem", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -13358,11 +13358,11 @@ export namespace Prisma {
   }
 
   export type GetSpotifyAccountAggregateType<T extends SpotifyAccountAggregateArgs> = {
-        [P in keyof T & keyof AggregateSpotifyAccount]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSpotifyAccount[P]>
-      : GetScalarType<T[P], AggregateSpotifyAccount[P]>
+    [P in keyof T & keyof AggregateSpotifyAccount]: P extends '_count' | 'count'
+    ? T[P] extends true
+    ? number
+    : GetScalarType<T[P], AggregateSpotifyAccount[P]>
+    : GetScalarType<T[P], AggregateSpotifyAccount[P]>
   }
 
 
@@ -13401,15 +13401,15 @@ export namespace Prisma {
   type GetSpotifyAccountGroupByPayload<T extends SpotifyAccountGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<SpotifyAccountGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof SpotifyAccountGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
-            : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
-        }
-      >
+      {
+        [P in ((keyof T) & (keyof SpotifyAccountGroupByOutputType))]: P extends '_count'
+        ? T[P] extends boolean
+        ? number
+        : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
+        : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
+      }
     >
+  >
 
 
   export type SpotifyAccountSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -13756,10 +13756,10 @@ export namespace Prisma {
       args?: Subset<T, SpotifyAccountCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], SpotifyAccountCountAggregateOutputType>
-        : number
+      ? T['select'] extends true
+      ? number
+      : GetScalarType<T['select'], SpotifyAccountCountAggregateOutputType>
+      : number
     >
 
     /**
@@ -13813,8 +13813,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SpotifyAccountGroupByArgs['orderBy'] }
-        : { orderBy?: SpotifyAccountGroupByArgs['orderBy'] },
+      ? { orderBy: SpotifyAccountGroupByArgs['orderBy'] }
+      : { orderBy?: SpotifyAccountGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -13825,49 +13825,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
+        [P in HavingFields]: P extends ByFields
+        ? never
+        : P extends string
+        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+        : [
+          Error,
+          'Field ',
+          P,
+          ` in "having" needs to be provided in "by"`,
+        ]
+      }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      ? ByValid extends True
+      ? {}
+      : {
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
+      : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
+        [P in OrderFields]: P extends ByFields
+        ? never
+        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+      }[OrderFields]
     >(args: SubsetIntersection<T, SpotifyAccountGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpotifyAccountGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the SpotifyAccount model
-   */
-  readonly fields: SpotifyAccountFieldRefs;
+    /**
+     * Fields of the SpotifyAccount model
+     */
+    readonly fields: SpotifyAccountFieldRefs;
   }
 
   /**
@@ -13917,7 +13917,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"SpotifyAccount", 'DateTime'>
     readonly updatedAt: FieldRef<"SpotifyAccount", 'DateTime'>
   }
-    
+
 
   // Custom InputTypes
   /**
@@ -14367,7 +14367,7 @@ export namespace Prisma {
   export type FrameScalarFieldEnum = (typeof FrameScalarFieldEnum)[keyof typeof FrameScalarFieldEnum]
 
 
-  export const CabinetLayoutScalarFieldEnum: {
+  export const FrameLayoutScalarFieldEnum: {
     id: 'id',
     layout: 'layout',
     frameId: 'frameId',
@@ -14375,7 +14375,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type CabinetLayoutScalarFieldEnum = (typeof CabinetLayoutScalarFieldEnum)[keyof typeof CabinetLayoutScalarFieldEnum]
+  export type FrameLayoutScalarFieldEnum = (typeof FrameLayoutScalarFieldEnum)[keyof typeof FrameLayoutScalarFieldEnum]
 
 
   export const ChestScalarFieldEnum: {
@@ -14538,70 +14538,70 @@ export namespace Prisma {
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
+
 
 
   /**
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
+
 
 
   /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-    
+
 
 
   /**
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
+
 
 
   /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
+
 
 
   /**
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
+
 
 
   /**
    * Reference to a field of type 'Json'
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
+
 
 
   /**
    * Reference to a field of type 'QueryMode'
    */
   export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
+
 
 
   /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
+
 
 
   /**
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
+
   /**
    * Deep Input Types
    */
@@ -14682,7 +14682,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Frame"> | Date | string
     ownerId?: IntFilter<"Frame"> | number
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
-    layout?: XOR<CabinetLayoutNullableScalarRelationFilter, CabinetLayoutWhereInput> | null
+    layout?: XOR<FrameLayoutNullableScalarRelationFilter, FrameLayoutWhereInput> | null
     chest?: XOR<ChestNullableScalarRelationFilter, ChestWhereInput> | null
     journal?: XOR<JournalNullableScalarRelationFilter, JournalWhereInput> | null
     polaroid?: PolaroidListRelationFilter
@@ -14699,7 +14699,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     ownerId?: SortOrder
     owner?: UserOrderByWithRelationInput
-    layout?: CabinetLayoutOrderByWithRelationInput
+    layout?: FrameLayoutOrderByWithRelationInput
     chest?: ChestOrderByWithRelationInput
     journal?: JournalOrderByWithRelationInput
     polaroid?: PolaroidOrderByRelationAggregateInput
@@ -14719,7 +14719,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Frame"> | Date | string
     updatedAt?: DateTimeFilter<"Frame"> | Date | string
     owner?: XOR<UserScalarRelationFilter, UserWhereInput>
-    layout?: XOR<CabinetLayoutNullableScalarRelationFilter, CabinetLayoutWhereInput> | null
+    layout?: XOR<FrameLayoutNullableScalarRelationFilter, FrameLayoutWhereInput> | null
     chest?: XOR<ChestNullableScalarRelationFilter, ChestWhereInput> | null
     journal?: XOR<JournalNullableScalarRelationFilter, JournalWhereInput> | null
     polaroid?: PolaroidListRelationFilter
@@ -14753,19 +14753,19 @@ export namespace Prisma {
     ownerId?: IntWithAggregatesFilter<"Frame"> | number
   }
 
-  export type CabinetLayoutWhereInput = {
-    AND?: CabinetLayoutWhereInput | CabinetLayoutWhereInput[]
-    OR?: CabinetLayoutWhereInput[]
-    NOT?: CabinetLayoutWhereInput | CabinetLayoutWhereInput[]
-    id?: IntFilter<"CabinetLayout"> | number
-    layout?: JsonFilter<"CabinetLayout">
-    frameId?: IntFilter<"CabinetLayout"> | number
-    createdAt?: DateTimeFilter<"CabinetLayout"> | Date | string
-    updatedAt?: DateTimeFilter<"CabinetLayout"> | Date | string
+  export type FrameLayoutWhereInput = {
+    AND?: FrameLayoutWhereInput | FrameLayoutWhereInput[]
+    OR?: FrameLayoutWhereInput[]
+    NOT?: FrameLayoutWhereInput | FrameLayoutWhereInput[]
+    id?: IntFilter<"FrameLayout"> | number
+    layout?: JsonFilter<"FrameLayout">
+    frameId?: IntFilter<"FrameLayout"> | number
+    createdAt?: DateTimeFilter<"FrameLayout"> | Date | string
+    updatedAt?: DateTimeFilter<"FrameLayout"> | Date | string
     frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }
 
-  export type CabinetLayoutOrderByWithRelationInput = {
+  export type FrameLayoutOrderByWithRelationInput = {
     id?: SortOrder
     layout?: SortOrder
     frameId?: SortOrder
@@ -14774,40 +14774,40 @@ export namespace Prisma {
     frame?: FrameOrderByWithRelationInput
   }
 
-  export type CabinetLayoutWhereUniqueInput = Prisma.AtLeast<{
+  export type FrameLayoutWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     frameId?: number
-    AND?: CabinetLayoutWhereInput | CabinetLayoutWhereInput[]
-    OR?: CabinetLayoutWhereInput[]
-    NOT?: CabinetLayoutWhereInput | CabinetLayoutWhereInput[]
-    layout?: JsonFilter<"CabinetLayout">
-    createdAt?: DateTimeFilter<"CabinetLayout"> | Date | string
-    updatedAt?: DateTimeFilter<"CabinetLayout"> | Date | string
+    AND?: FrameLayoutWhereInput | FrameLayoutWhereInput[]
+    OR?: FrameLayoutWhereInput[]
+    NOT?: FrameLayoutWhereInput | FrameLayoutWhereInput[]
+    layout?: JsonFilter<"FrameLayout">
+    createdAt?: DateTimeFilter<"FrameLayout"> | Date | string
+    updatedAt?: DateTimeFilter<"FrameLayout"> | Date | string
     frame?: XOR<FrameScalarRelationFilter, FrameWhereInput>
   }, "id" | "frameId">
 
-  export type CabinetLayoutOrderByWithAggregationInput = {
+  export type FrameLayoutOrderByWithAggregationInput = {
     id?: SortOrder
     layout?: SortOrder
     frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: CabinetLayoutCountOrderByAggregateInput
-    _avg?: CabinetLayoutAvgOrderByAggregateInput
-    _max?: CabinetLayoutMaxOrderByAggregateInput
-    _min?: CabinetLayoutMinOrderByAggregateInput
-    _sum?: CabinetLayoutSumOrderByAggregateInput
+    _count?: FrameLayoutCountOrderByAggregateInput
+    _avg?: FrameLayoutAvgOrderByAggregateInput
+    _max?: FrameLayoutMaxOrderByAggregateInput
+    _min?: FrameLayoutMinOrderByAggregateInput
+    _sum?: FrameLayoutSumOrderByAggregateInput
   }
 
-  export type CabinetLayoutScalarWhereWithAggregatesInput = {
-    AND?: CabinetLayoutScalarWhereWithAggregatesInput | CabinetLayoutScalarWhereWithAggregatesInput[]
-    OR?: CabinetLayoutScalarWhereWithAggregatesInput[]
-    NOT?: CabinetLayoutScalarWhereWithAggregatesInput | CabinetLayoutScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"CabinetLayout"> | number
-    layout?: JsonWithAggregatesFilter<"CabinetLayout">
-    frameId?: IntWithAggregatesFilter<"CabinetLayout"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"CabinetLayout"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"CabinetLayout"> | Date | string
+  export type FrameLayoutScalarWhereWithAggregatesInput = {
+    AND?: FrameLayoutScalarWhereWithAggregatesInput | FrameLayoutScalarWhereWithAggregatesInput[]
+    OR?: FrameLayoutScalarWhereWithAggregatesInput[]
+    NOT?: FrameLayoutScalarWhereWithAggregatesInput | FrameLayoutScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"FrameLayout"> | number
+    layout?: JsonWithAggregatesFilter<"FrameLayout">
+    frameId?: IntWithAggregatesFilter<"FrameLayout"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"FrameLayout"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"FrameLayout"> | Date | string
   }
 
   export type ChestWhereInput = {
@@ -15414,7 +15414,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutFrameInput
-    layout?: CabinetLayoutCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
     chest?: ChestCreateNestedOneWithoutFrameInput
     journal?: JournalCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidCreateNestedManyWithoutFrameInput
@@ -15430,7 +15430,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
     chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
     journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
@@ -15445,7 +15445,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutFrameNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
     chest?: ChestUpdateOneWithoutFrameNestedInput
     journal?: JournalUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
@@ -15461,7 +15461,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
     chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
     journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
@@ -15493,14 +15493,14 @@ export namespace Prisma {
     ownerId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type CabinetLayoutCreateInput = {
+  export type FrameLayoutCreateInput = {
     layout: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
     frame: FrameCreateNestedOneWithoutLayoutInput
   }
 
-  export type CabinetLayoutUncheckedCreateInput = {
+  export type FrameLayoutUncheckedCreateInput = {
     id?: number
     layout: JsonNullValueInput | InputJsonValue
     frameId: number
@@ -15508,14 +15508,14 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type CabinetLayoutUpdateInput = {
+  export type FrameLayoutUpdateInput = {
     layout?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     frame?: FrameUpdateOneRequiredWithoutLayoutNestedInput
   }
 
-  export type CabinetLayoutUncheckedUpdateInput = {
+  export type FrameLayoutUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     layout?: JsonNullValueInput | InputJsonValue
     frameId?: IntFieldUpdateOperationsInput | number
@@ -15523,7 +15523,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CabinetLayoutCreateManyInput = {
+  export type FrameLayoutCreateManyInput = {
     id?: number
     layout: JsonNullValueInput | InputJsonValue
     frameId: number
@@ -15531,13 +15531,13 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type CabinetLayoutUpdateManyMutationInput = {
+  export type FrameLayoutUpdateManyMutationInput = {
     layout?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CabinetLayoutUncheckedUpdateManyInput = {
+  export type FrameLayoutUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     layout?: JsonNullValueInput | InputJsonValue
     frameId?: IntFieldUpdateOperationsInput | number
@@ -16206,9 +16206,9 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type CabinetLayoutNullableScalarRelationFilter = {
-    is?: CabinetLayoutWhereInput | null
-    isNot?: CabinetLayoutWhereInput | null
+  export type FrameLayoutNullableScalarRelationFilter = {
+    is?: FrameLayoutWhereInput | null
+    isNot?: FrameLayoutWhereInput | null
   }
 
   export type ChestNullableScalarRelationFilter = {
@@ -16306,9 +16306,9 @@ export namespace Prisma {
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonFilterBase<$PrismaModel>>
-      >
+      Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+      Required<JsonFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonFilterBase<$PrismaModel = never> = {
@@ -16333,7 +16333,7 @@ export namespace Prisma {
     isNot?: FrameWhereInput
   }
 
-  export type CabinetLayoutCountOrderByAggregateInput = {
+  export type FrameLayoutCountOrderByAggregateInput = {
     id?: SortOrder
     layout?: SortOrder
     frameId?: SortOrder
@@ -16341,34 +16341,34 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type CabinetLayoutAvgOrderByAggregateInput = {
+  export type FrameLayoutAvgOrderByAggregateInput = {
     id?: SortOrder
     frameId?: SortOrder
   }
 
-  export type CabinetLayoutMaxOrderByAggregateInput = {
-    id?: SortOrder
-    frameId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type CabinetLayoutMinOrderByAggregateInput = {
+  export type FrameLayoutMaxOrderByAggregateInput = {
     id?: SortOrder
     frameId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type CabinetLayoutSumOrderByAggregateInput = {
+  export type FrameLayoutMinOrderByAggregateInput = {
+    id?: SortOrder
+    frameId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FrameLayoutSumOrderByAggregateInput = {
     id?: SortOrder
     frameId?: SortOrder
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
-      >
+      Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+      Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
@@ -16392,9 +16392,9 @@ export namespace Prisma {
   }
   export type JsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
+      Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+      Required<JsonNullableFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonNullableFilterBase<$PrismaModel = never> = {
@@ -16456,9 +16456,9 @@ export namespace Prisma {
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
+      Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+      Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
@@ -16871,10 +16871,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type CabinetLayoutCreateNestedOneWithoutFrameInput = {
-    create?: XOR<CabinetLayoutCreateWithoutFrameInput, CabinetLayoutUncheckedCreateWithoutFrameInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutFrameInput
-    connect?: CabinetLayoutWhereUniqueInput
+  export type FrameLayoutCreateNestedOneWithoutFrameInput = {
+    create?: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: FrameLayoutCreateOrConnectWithoutFrameInput
+    connect?: FrameLayoutWhereUniqueInput
   }
 
   export type ChestCreateNestedOneWithoutFrameInput = {
@@ -16924,10 +16924,10 @@ export namespace Prisma {
     connect?: DecorItemWhereUniqueInput | DecorItemWhereUniqueInput[]
   }
 
-  export type CabinetLayoutUncheckedCreateNestedOneWithoutFrameInput = {
-    create?: XOR<CabinetLayoutCreateWithoutFrameInput, CabinetLayoutUncheckedCreateWithoutFrameInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutFrameInput
-    connect?: CabinetLayoutWhereUniqueInput
+  export type FrameLayoutUncheckedCreateNestedOneWithoutFrameInput = {
+    create?: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: FrameLayoutCreateOrConnectWithoutFrameInput
+    connect?: FrameLayoutWhereUniqueInput
   }
 
   export type ChestUncheckedCreateNestedOneWithoutFrameInput = {
@@ -16985,14 +16985,14 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFrameInput, UserUpdateWithoutFrameInput>, UserUncheckedUpdateWithoutFrameInput>
   }
 
-  export type CabinetLayoutUpdateOneWithoutFrameNestedInput = {
-    create?: XOR<CabinetLayoutCreateWithoutFrameInput, CabinetLayoutUncheckedCreateWithoutFrameInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutFrameInput
-    upsert?: CabinetLayoutUpsertWithoutFrameInput
-    disconnect?: CabinetLayoutWhereInput | boolean
-    delete?: CabinetLayoutWhereInput | boolean
-    connect?: CabinetLayoutWhereUniqueInput
-    update?: XOR<XOR<CabinetLayoutUpdateToOneWithWhereWithoutFrameInput, CabinetLayoutUpdateWithoutFrameInput>, CabinetLayoutUncheckedUpdateWithoutFrameInput>
+  export type FrameLayoutUpdateOneWithoutFrameNestedInput = {
+    create?: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: FrameLayoutCreateOrConnectWithoutFrameInput
+    upsert?: FrameLayoutUpsertWithoutFrameInput
+    disconnect?: FrameLayoutWhereInput | boolean
+    delete?: FrameLayoutWhereInput | boolean
+    connect?: FrameLayoutWhereUniqueInput
+    update?: XOR<XOR<FrameLayoutUpdateToOneWithWhereWithoutFrameInput, FrameLayoutUpdateWithoutFrameInput>, FrameLayoutUncheckedUpdateWithoutFrameInput>
   }
 
   export type ChestUpdateOneWithoutFrameNestedInput = {
@@ -17085,14 +17085,14 @@ export namespace Prisma {
     deleteMany?: DecorItemScalarWhereInput | DecorItemScalarWhereInput[]
   }
 
-  export type CabinetLayoutUncheckedUpdateOneWithoutFrameNestedInput = {
-    create?: XOR<CabinetLayoutCreateWithoutFrameInput, CabinetLayoutUncheckedCreateWithoutFrameInput>
-    connectOrCreate?: CabinetLayoutCreateOrConnectWithoutFrameInput
-    upsert?: CabinetLayoutUpsertWithoutFrameInput
-    disconnect?: CabinetLayoutWhereInput | boolean
-    delete?: CabinetLayoutWhereInput | boolean
-    connect?: CabinetLayoutWhereUniqueInput
-    update?: XOR<XOR<CabinetLayoutUpdateToOneWithWhereWithoutFrameInput, CabinetLayoutUpdateWithoutFrameInput>, CabinetLayoutUncheckedUpdateWithoutFrameInput>
+  export type FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput = {
+    create?: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
+    connectOrCreate?: FrameLayoutCreateOrConnectWithoutFrameInput
+    upsert?: FrameLayoutUpsertWithoutFrameInput
+    disconnect?: FrameLayoutWhereInput | boolean
+    delete?: FrameLayoutWhereInput | boolean
+    connect?: FrameLayoutWhereUniqueInput
+    update?: XOR<XOR<FrameLayoutUpdateToOneWithWhereWithoutFrameInput, FrameLayoutUpdateWithoutFrameInput>, FrameLayoutUncheckedUpdateWithoutFrameInput>
   }
 
   export type ChestUncheckedUpdateOneWithoutFrameNestedInput = {
@@ -17410,9 +17410,9 @@ export namespace Prisma {
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonFilterBase<$PrismaModel>>
-      >
+      Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+      Required<NestedJsonFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
 
   export type NestedJsonFilterBase<$PrismaModel = never> = {
@@ -17444,9 +17444,9 @@ export namespace Prisma {
   }
   export type NestedJsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
+      Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+      Required<NestedJsonNullableFilterBase<$PrismaModel>>
+    >
     | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
   export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
@@ -17501,7 +17501,7 @@ export namespace Prisma {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    layout?: CabinetLayoutCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
     chest?: ChestCreateNestedOneWithoutFrameInput
     journal?: JournalCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidCreateNestedManyWithoutFrameInput
@@ -17516,7 +17516,7 @@ export namespace Prisma {
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
     chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
     journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
@@ -17641,22 +17641,22 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutFrameInput, UserUncheckedCreateWithoutFrameInput>
   }
 
-  export type CabinetLayoutCreateWithoutFrameInput = {
+  export type FrameLayoutCreateWithoutFrameInput = {
     layout: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CabinetLayoutUncheckedCreateWithoutFrameInput = {
+  export type FrameLayoutUncheckedCreateWithoutFrameInput = {
     id?: number
     layout: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CabinetLayoutCreateOrConnectWithoutFrameInput = {
-    where: CabinetLayoutWhereUniqueInput
-    create: XOR<CabinetLayoutCreateWithoutFrameInput, CabinetLayoutUncheckedCreateWithoutFrameInput>
+  export type FrameLayoutCreateOrConnectWithoutFrameInput = {
+    where: FrameLayoutWhereUniqueInput
+    create: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
   }
 
   export type ChestCreateWithoutFrameInput = {
@@ -17864,24 +17864,24 @@ export namespace Prisma {
     spotifyAccount?: SpotifyAccountUncheckedUpdateOneWithoutUserNestedInput
   }
 
-  export type CabinetLayoutUpsertWithoutFrameInput = {
-    update: XOR<CabinetLayoutUpdateWithoutFrameInput, CabinetLayoutUncheckedUpdateWithoutFrameInput>
-    create: XOR<CabinetLayoutCreateWithoutFrameInput, CabinetLayoutUncheckedCreateWithoutFrameInput>
-    where?: CabinetLayoutWhereInput
+  export type FrameLayoutUpsertWithoutFrameInput = {
+    update: XOR<FrameLayoutUpdateWithoutFrameInput, FrameLayoutUncheckedUpdateWithoutFrameInput>
+    create: XOR<FrameLayoutCreateWithoutFrameInput, FrameLayoutUncheckedCreateWithoutFrameInput>
+    where?: FrameLayoutWhereInput
   }
 
-  export type CabinetLayoutUpdateToOneWithWhereWithoutFrameInput = {
-    where?: CabinetLayoutWhereInput
-    data: XOR<CabinetLayoutUpdateWithoutFrameInput, CabinetLayoutUncheckedUpdateWithoutFrameInput>
+  export type FrameLayoutUpdateToOneWithWhereWithoutFrameInput = {
+    where?: FrameLayoutWhereInput
+    data: XOR<FrameLayoutUpdateWithoutFrameInput, FrameLayoutUncheckedUpdateWithoutFrameInput>
   }
 
-  export type CabinetLayoutUpdateWithoutFrameInput = {
+  export type FrameLayoutUpdateWithoutFrameInput = {
     layout?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CabinetLayoutUncheckedUpdateWithoutFrameInput = {
+  export type FrameLayoutUncheckedUpdateWithoutFrameInput = {
     id?: IntFieldUpdateOperationsInput | number
     layout?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18166,7 +18166,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutFrameInput
-    layout?: CabinetLayoutCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
     journal?: JournalCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidCreateNestedManyWithoutFrameInput
     media?: MediaCreateNestedManyWithoutFrameInput
@@ -18181,7 +18181,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
     journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
     media?: MediaUncheckedCreateNestedManyWithoutFrameInput
@@ -18211,7 +18211,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutFrameNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
     journal?: JournalUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
     media?: MediaUpdateManyWithoutFrameNestedInput
@@ -18226,7 +18226,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
     journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
     media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
@@ -18240,7 +18240,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutFrameInput
-    layout?: CabinetLayoutCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
     chest?: ChestCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidCreateNestedManyWithoutFrameInput
     media?: MediaCreateNestedManyWithoutFrameInput
@@ -18255,7 +18255,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
     chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
     media?: MediaUncheckedCreateNestedManyWithoutFrameInput
@@ -18285,7 +18285,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutFrameNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
     chest?: ChestUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
     media?: MediaUpdateManyWithoutFrameNestedInput
@@ -18300,7 +18300,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
     chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
     media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
@@ -18314,7 +18314,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutFrameInput
-    layout?: CabinetLayoutCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
     chest?: ChestCreateNestedOneWithoutFrameInput
     journal?: JournalCreateNestedOneWithoutFrameInput
     media?: MediaCreateNestedManyWithoutFrameInput
@@ -18329,7 +18329,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
     chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
     journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
     media?: MediaUncheckedCreateNestedManyWithoutFrameInput
@@ -18359,7 +18359,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutFrameNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
     chest?: ChestUpdateOneWithoutFrameNestedInput
     journal?: JournalUpdateOneWithoutFrameNestedInput
     media?: MediaUpdateManyWithoutFrameNestedInput
@@ -18374,7 +18374,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
     chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
     journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
     media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
@@ -18388,7 +18388,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutFrameInput
-    layout?: CabinetLayoutCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
     chest?: ChestCreateNestedOneWithoutFrameInput
     journal?: JournalCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidCreateNestedManyWithoutFrameInput
@@ -18403,7 +18403,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
     chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
     journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
@@ -18433,7 +18433,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutFrameNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
     chest?: ChestUpdateOneWithoutFrameNestedInput
     journal?: JournalUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
@@ -18448,7 +18448,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
     chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
     journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
@@ -18462,7 +18462,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutFrameInput
-    layout?: CabinetLayoutCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
     chest?: ChestCreateNestedOneWithoutFrameInput
     journal?: JournalCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidCreateNestedManyWithoutFrameInput
@@ -18477,7 +18477,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
     chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
     journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
@@ -18507,7 +18507,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutFrameNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
     chest?: ChestUpdateOneWithoutFrameNestedInput
     journal?: JournalUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
@@ -18522,7 +18522,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
     chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
     journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
@@ -18536,7 +18536,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutFrameInput
-    layout?: CabinetLayoutCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
     chest?: ChestCreateNestedOneWithoutFrameInput
     journal?: JournalCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidCreateNestedManyWithoutFrameInput
@@ -18551,7 +18551,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
     chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
     journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
@@ -18581,7 +18581,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutFrameNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
     chest?: ChestUpdateOneWithoutFrameNestedInput
     journal?: JournalUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
@@ -18596,7 +18596,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
     chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
     journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
@@ -18610,7 +18610,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: UserCreateNestedOneWithoutFrameInput
-    layout?: CabinetLayoutCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutCreateNestedOneWithoutFrameInput
     chest?: ChestCreateNestedOneWithoutFrameInput
     journal?: JournalCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidCreateNestedManyWithoutFrameInput
@@ -18625,7 +18625,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: number
-    layout?: CabinetLayoutUncheckedCreateNestedOneWithoutFrameInput
+    layout?: FrameLayoutUncheckedCreateNestedOneWithoutFrameInput
     chest?: ChestUncheckedCreateNestedOneWithoutFrameInput
     journal?: JournalUncheckedCreateNestedOneWithoutFrameInput
     polaroid?: PolaroidUncheckedCreateNestedManyWithoutFrameInput
@@ -18655,7 +18655,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: UserUpdateOneRequiredWithoutFrameNestedInput
-    layout?: CabinetLayoutUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
     chest?: ChestUpdateOneWithoutFrameNestedInput
     journal?: JournalUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
@@ -18670,7 +18670,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: IntFieldUpdateOperationsInput | number
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
     chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
     journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput
@@ -18744,7 +18744,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    layout?: CabinetLayoutUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUpdateOneWithoutFrameNestedInput
     chest?: ChestUpdateOneWithoutFrameNestedInput
     journal?: JournalUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUpdateManyWithoutFrameNestedInput
@@ -18759,7 +18759,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    layout?: CabinetLayoutUncheckedUpdateOneWithoutFrameNestedInput
+    layout?: FrameLayoutUncheckedUpdateOneWithoutFrameNestedInput
     chest?: ChestUncheckedUpdateOneWithoutFrameNestedInput
     journal?: JournalUncheckedUpdateOneWithoutFrameNestedInput
     polaroid?: PolaroidUncheckedUpdateManyWithoutFrameNestedInput

@@ -4,11 +4,11 @@ import { noteSchema } from './notes.schema';
 
 export const notesController = {
   getNotes: async (req: Request, res: Response) => {
-    const cabinetId = Number(req.params.cabinetId);
-    const notes = await notesModel.getNotesByCabinetId(cabinetId);
+    const frameId = Number(req.params.frameId);
+    const notes = await notesModel.getNotesByFrameId(frameId);
     res.json(notes);
 
-    // will be called when getting cabinets will not load separately
+    // will be called when getting frames will not load separately
   },
 
   createNote: async (req: Request, res: Response) => {
@@ -17,10 +17,10 @@ export const notesController = {
       return res.status(400).json({ error: parsedNote.error.issues });
     }
 
-    const cabinetId = Number(req.params.cabinetId);
+    const frameId = Number(req.params.frameId);
     const { content } = req.body;
 
-    const newNote = await notesModel.createNote(cabinetId, content);
+    const newNote = await notesModel.createNote(frameId, content);
     res.status(201).json(newNote);
   },
 

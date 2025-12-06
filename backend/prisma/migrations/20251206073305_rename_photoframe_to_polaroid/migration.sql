@@ -5,7 +5,7 @@
 
 */
 -- DropForeignKey
-ALTER TABLE "PhotoFrame" DROP CONSTRAINT "PhotoFrame_cabinetId_fkey";
+ALTER TABLE "PhotoFrame" DROP CONSTRAINT "PhotoFrame_frameId_fkey";
 
 -- DropTable
 DROP TABLE "PhotoFrame";
@@ -16,7 +16,7 @@ CREATE TABLE "Polaroid" (
     "position" JSONB,
     "url" TEXT NOT NULL,
     "caption" TEXT,
-    "cabinetId" INTEGER NOT NULL,
+    "frameId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -24,4 +24,4 @@ CREATE TABLE "Polaroid" (
 );
 
 -- AddForeignKey
-ALTER TABLE "Polaroid" ADD CONSTRAINT "Polaroid_cabinetId_fkey" FOREIGN KEY ("cabinetId") REFERENCES "Cabinet"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Polaroid" ADD CONSTRAINT "Polaroid_frameId_fkey" FOREIGN KEY ("frameId") REFERENCES "Frame"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

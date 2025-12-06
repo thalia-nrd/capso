@@ -1,22 +1,22 @@
 import { prisma } from "../../../infrastructure/database/prisma";
 
 export const ChestModel = {
-  async getChestByCabinetId(cabinetId: number) {
+  async getChestByFrameId(frameId: number) {
     return await prisma.chest.findUnique({
-        where: { cabinetId },
+      where: { frameId },
     });
   },
 
-  async createChest(cabinetId: number, hashedPasscode: string, items?: any[]) {
+  async createChest(frameId: number, hashedPasscode: string, items?: any[]) {
     return await prisma.chest.create({
-        data: { cabinetId, passcode: hashedPasscode, items: items ?? [] },
+      data: { frameId, passcode: hashedPasscode, items: items ?? [] },
     });
   },
 
   async addChestContent(chestId: number, items: any[]) {
     return await prisma.chest.update({
-    where: { id: chestId },
-    data: { items },
+      where: { id: chestId },
+      data: { items },
     });
   },
 };

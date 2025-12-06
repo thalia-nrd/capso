@@ -1,5 +1,5 @@
 # cabinna
-A cozy digital cabinet where users can personalize their own space 🌸 add photos, notes, trinkets, and memories. It’s a playful and expressive web app that blends creativity with personal organization.  
+A cozy digital frame where users can personalize their own space 🌸 add photos, notes, trinkets, and memories. It’s a playful and expressive web app that blends creativity with personal organization.  
 
 ---
 

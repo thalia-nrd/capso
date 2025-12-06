@@ -21,7 +21,7 @@ const Frame: React.FC = () => {
         position: "relative",
         width: 700,
         height: 900,
-        backgroundImage: "url('/cabinet/cabinet.png')",
+        backgroundImage: "url('/frame/frame.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         margin: "0 auto",

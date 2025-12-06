@@ -6,7 +6,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import authRoutes from './modules/auth/auth.routes';
-import cabinetRoutes from './modules/cabinet/cabinet.routes';
+import frameRoutes from './modules/frame/frame.routes';
 import notesRoutes from './modules/content/notes/notes.routes';
 import checklistRoutes from './modules/content/checklist/checklist.routes';
 import journalRoutes from './modules/content/journal/journal.routes';
@@ -16,7 +16,7 @@ import mirrorRoutes from './modules/content/mirror/mirror.routes';
 import mp3Routes from './modules/content/mp3/mp3.routes';
 import spotifyRoutes from './modules/auth/spotify/spotify.routes';
 
-import { verifyCabinetOwnership } from './modules/cabinet/middleware/cabinet.middleware';
+import { verifyFrameOwnership } from './modules/frame/middleware/frame.middleware';
 import { requireAuth } from './modules/auth/middleware/auth.middleware';
 
 const app = express();
@@ -34,19 +34,19 @@ app.use(cookieParser());
 // public
 app.use('/auth', authRoutes);
 
-app.use('/cabinet', requireAuth);
+app.use('/frame', requireAuth);
 
-app.use('/cabinet/:cabinetId', verifyCabinetOwnership);
+app.use('/frame/:frameId', verifyFrameOwnership);
 
 // routes
-app.use('/cabinet', cabinetRoutes);
-app.use('/cabinet/:cabinetId/notes', notesRoutes);
-app.use('/cabinet/:cabinetId/checklists', checklistRoutes);
-app.use('/cabinet/:cabinetId/journal', journalRoutes);
-app.use('/cabinet/:cabinetId/polaroid', polaroidRoutes);
-app.use('/cabinet/:cabinetId/chest', chestRoutes);
-app.use('/cabinet/:cabinetId/mirror', mirrorRoutes);
-app.use('/cabinet/:cabinetId/mp3', mp3Routes);
+app.use('/frame', frameRoutes);
+app.use('/frame/:frameId/notes', notesRoutes);
+app.use('/frame/:frameId/checklists', checklistRoutes);
+app.use('/frame/:frameId/journal', journalRoutes);
+app.use('/frame/:frameId/polaroid', polaroidRoutes);
+app.use('/frame/:frameId/chest', chestRoutes);
+app.use('/frame/:frameId/mirror', mirrorRoutes);
+app.use('/frame/:frameId/mp3', mp3Routes);
 app.use('/spotify', spotifyRoutes);
 
 app.get('/', (_req, res) => {

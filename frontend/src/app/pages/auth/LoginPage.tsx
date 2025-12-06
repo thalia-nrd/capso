@@ -27,13 +27,13 @@ const Login: React.FC = () => {
 
       console.log("Login response:", res); // DEBUG: See exactly what backend returns
 
-      const cabinetId = res.cabinet?.id;
-      if (!cabinetId) {
-        console.error("Cabinet ID not returned by backend");
+      const frameId = res.frame?.id;
+      if (!frameId) {
+        console.error("Frame ID not returned by backend");
         return;
       }
 
-      navigate(`/cabinet/${cabinetId}`);
+      navigate(`/frame/${frameId}`);
     } catch (error) {
       console.error('Login failed:', error);
     }
