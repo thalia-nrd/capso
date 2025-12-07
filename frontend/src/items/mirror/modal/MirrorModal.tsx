@@ -2,31 +2,35 @@ import React, { useState } from "react";
 import { getMirrorFact } from "../../../services/api/mirrorService";
 
 interface MirrorModalProps {
-  quote: string;
+  frameId: string;
 }
 
-const MirrorModal: React.FC<MirrorModalProps> = ({ quote }) => {
+const MirrorModal: React.FC<MirrorModalProps> = ({ frameId }) => {
   const [fact, setFact] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  const getQuote = async () => {
+  const fetchFact = async () => {
+    setLoading(true);
     try {
-      const res = await getMirrorFact("some-frame-id");
-      setFact(res.fact);
+      const res = await getMirrorFact(frameId);
+      setFact(res.fact); // only the text
     } catch (error) {
-      console.error("Failed to fetch mirror fact:", error);
+      console.error("Your magic mirror is asleep", error);
       setFact("Could not fetch a fact right now.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="mirror-modal">
       <div className="mirror-content">
-        <button onClick={getQuote}>
+        <button onClick={fetchFact}>
           mirror mirror on the wall...
         </button>
 
-        {/* Only show fact/quote AFTER button is clicked */}
-        {fact !== null && <p>{fact || quote}</p>}
+        {loading && <p>✨ consulting the magic mirror...</p>}
+        {!loading && fact && <p>{fact}</p>}
       </div>
     </div>
   );
