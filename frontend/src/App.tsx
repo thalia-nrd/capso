@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Frame />} />
+      <Route path="/frame/:frameId" element={<Frame />} />
     </Routes>
   );
 }
