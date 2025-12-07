@@ -25,7 +25,7 @@ const Login: React.FC = () => {
     try {
       const res = await login(data);
 
-      console.log("Login response:", res); // DEBUG: See exactly what backend returns
+      console.log("Login response:", res);
 
       const frameId = res.frame?.id;
       if (!frameId) {
