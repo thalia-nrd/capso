@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //import '../../styles/Frame.scss';
 import Slot from "../../../layout/Slot";
 import ChecklistItem from "../../../items/checklist/component/ChecklistItem";
@@ -9,11 +9,34 @@ import KeyItem from "../../../items/key/component/KeyItem";
 import PolaroidItem from "../../../items/polaroid/component/PolaroidItem";
 import CDItem from "../../../items/cd/component/CDItem";
 import MirrorItem from "../../../items/mirror/component/MirrorItem";
-import MirrorModal from "../../../items/mirror/modal/MirrorModal";
+
+import { useParams } from "react-router-dom";
+import { getUserFrame } from "../../../services/frame/frameService";
 
 const Frame: React.FC = () => {
   const [checklist, setChecklist] = useState<string[]>([]);
   const [isChecklistOpen, setIsChecklistOpen] = useState(false);
+
+  const { frameId } = useParams();
+  const [frame, setFrame] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!frameId) return;
+
+    getUserFrame(frameId)
+      .then((data: any) => {
+        setFrame(data);
+      })
+      .catch((err: any) => {
+        console.error("Failed to load frame:", err);
+      })
+      .finally(() => setLoading(false));
+  }, [frameId]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div
@@ -58,7 +81,7 @@ const Frame: React.FC = () => {
         <CDItem onOpen={() => alert("CD opened!")} />
       </Slot>
       <Slot x={400} y={600} width={120} height={140}>
-        <MirrorItem />
+        <MirrorItem frameId={frameId!} />
       </Slot>
 
     </div>
