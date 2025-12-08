@@ -65,7 +65,7 @@ const Frame: React.FC = () => {
       />
 
       <Slot x={350} y={200} width={120} height={140}>
-        <NoteItem onOpen={() => alert("Note opened!")} />
+        <NoteItem frameId={frameId!} />
       </Slot>
 
       <Slot x={120} y={400} width={120} height={140}>
