@@ -29,7 +29,12 @@ const Register = () => {
   const submitRegister = async (data: any) => {
     try {
       const newUser = await register(data);
-      navigate(`/main/${newUser.userId}`);
+      const frameId = newUser.frame?.id;
+      if (!frameId) {
+        console.error("Frame ID not returned by backend");
+        return;
+      }
+      navigate(`/frame/${frameId}`);
     } catch (err: any) {
       console.error(err);
       alert(err.message || "Registration failed");
