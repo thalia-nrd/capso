@@ -1,77 +1,148 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Journal, JournalEntry, getJournal, createJournal, openJournal, editJournalEntries } from "../service/envelopeService";
 
 interface EnvelopeModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  initialItems?: string[];
-  onSave: (items: string[]) => void;
+  frameId: string;
 }
 
-const EnvelopeModal: React.FC<EnvelopeModalProps> = ({
-  isOpen,
-  onClose,
-  initialItems = [],
-  onSave
-}) => {
-  const [items, setItems] = useState(initialItems);
+const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId }) => {
+  const [journal, setJournal] = useState<Journal | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [passcode, setPasscode] = useState("");
+  const [newEntry, setNewEntry] = useState("");
+  const [isOpened, setIsOpened] = useState(false);
 
-  if (!isOpen) return null;
+  // check if journal exists
+  useEffect(() => {
+    const fetchJournal = async () => {
+      setLoading(true);
+      try {
+        const data = await getJournal(frameId);
+        setJournal(data);
+      } catch (err) {
+        console.log("No journal exists yet. Will need to create one.");
+        setJournal(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchJournal();
+  }, [frameId]);
 
-  const updateItem = (i: number, value: string) => {
-    const newItems = [...items];
-    newItems[i] = value;
-    setItems(newItems);
+  const handleCreateJournal = async () => {
+    if (!passcode.trim()) return;
+    setLoading(true);
+    try {
+      const newJournal = await createJournal(frameId, passcode);
+      setJournal(newJournal);
+      setIsOpened(true);
+    } catch (err) {
+      console.error("Failed to create journal:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const addItem = () => setItems([...items, ""]);
+  const handleOpenJournal = async () => {
+    if (!passcode.trim()) return;
+    setLoading(true);
+    try {
+      const opened = await openJournal(frameId, passcode);
+      setJournal(opened);
+      setIsOpened(true);
+    } catch (err) {
+      console.error("Failed to open journal:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const addEntry = () => {
+    if (!newEntry.trim() || !journal) return;
+    const updatedEntries: JournalEntry[] = [
+      ...journal.entries,
+      { content: newEntry, createdAt: new Date().toISOString() },
+    ];
+    setJournal({ ...journal, entries: updatedEntries });
+    setNewEntry("");
+  };
+
+  const saveEntries = async () => {
+    if (!journal) return;
+    setLoading(true);
+    try {
+      const updated = await editJournalEntries(frameId, journal.entries);
+      setJournal(updated);
+    } catch (err) {
+      console.error("Failed to save entries:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div style={styles.overlay}>
-      <div style={styles.modal}>
-        <h2>Envelope</h2>
+    <div className="envelope-modal">
+      <div className="envelope-content">
+        {loading && <p>Loading...</p>}
 
-        {items.map((item, idx) => (
-          <input
-            key={idx}
-            value={item}
-            onChange={(e) => updateItem(idx, e.target.value)}
-            style={styles.input}
-          />
-        ))}
+        {!loading && !journal && (
+          <>
+            <h3>Create Your Journal</h3>
+            <input
+              type="password"
+              placeholder="Set a passcode"
+              value={passcode}
+              onChange={(e) => setPasscode(e.target.value)}
+            />
+            <button onClick={handleCreateJournal} disabled={!passcode.trim()}>
+              {loading ? "Creating..." : "Create Journal"}
+            </button>
+          </>
+        )}
 
-        <button onClick={addItem}>Add</button>
+        {!loading && journal && !isOpened && (
+          <>
+            <h3>Enter Passcode to Open Journal</h3>
+            <input
+              type="password"
+              placeholder="Enter passcode"
+              value={passcode}
+              onChange={(e) => setPasscode(e.target.value)}
+            />
+            <button onClick={handleOpenJournal} disabled={!passcode.trim()}>
+              {loading ? "Opening..." : "Open Journal"}
+            </button>
+          </>
+        )}
 
-        <div style={{ marginTop: "20px" }}>
-          <button onClick={() => onSave(items)}>Save</button>
-          <button onClick={onClose} style={{ marginLeft: "10px" }}>
-            Close
-          </button>
-        </div>
+        {!loading && journal && isOpened && (
+          <>
+            <h3>Journal Entries</h3>
+            <ul>
+              {journal.entries.map((entry, idx) => (
+                <li key={idx}>
+                  <span>{entry.content}</span>
+                  <small>{new Date(entry.createdAt).toLocaleString()}</small>
+                </li>
+              ))}
+            </ul>
+
+            <textarea
+              value={newEntry}
+              onChange={(e) => setNewEntry(e.target.value)}
+              placeholder="Add new entry..."
+            />
+            <button onClick={addEntry} disabled={!newEntry.trim()}>
+              Add Entry
+            </button>
+            <button onClick={saveEntries} disabled={loading}>
+              {loading ? "Saving..." : "Save Journal"}
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
-};
-
-const styles = {
-  overlay: {
-    position: "fixed" as const,
-    top: 0, left: 0, right: 0, bottom: 0,
-    background: "rgba(0,0,0,0.2)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modal: {
-    background: "white",
-    padding: "20px",
-    borderRadius: "8px",
-    minWidth: "300px",
-  },
-  input: {
-    width: "100%",
-    marginBottom: "10px",
-    padding: "6px",
-  }
 };
 
 export default EnvelopeModal;
