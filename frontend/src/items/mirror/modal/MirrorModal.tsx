@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getMirrorFact } from "../../../services/api/mirrorService";
+import { getMirrorFact } from "../service/mirrorService";
 
 interface MirrorModalProps {
   frameId: string;

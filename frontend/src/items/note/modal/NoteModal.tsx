@@ -1,60 +1,112 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { createNote, updateNote, deleteNote } from "../service/noteService";
 
-interface NoteModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  id: string;         // unique key for localStorage
-  title?: string;
-  onSave?: () => void; // optional callback if needed
+interface Note {
+  id: number;
+  content: string;
 }
 
-const NoteModal: React.FC<NoteModalProps> = ({
-  isOpen,
-  onClose,
-  id,
-  title = "Note",
-  onSave
-}) => {
-  const [text, setText] = useState("");
+interface NotesModalProps {
+  frameId: string;
+  notes: Note[];
+  setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
+}
 
-  // Load saved note on mount
-  useEffect(() => {
-    if (!isOpen) return; // load only when modal opens (optional)
-    const saved = localStorage.getItem(`note-${id}`);
-    if (saved) setText(saved);
-  }, [id, isOpen]);
+const NotesModal: React.FC<NotesModalProps> = ({ frameId, notes, setNotes }) => {
+  const [selected, setSelected] = useState<number | null>(null);
+  const [content, setContent] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const saveNote = () => {
-    localStorage.setItem(`note-${id}`, text);
-    onSave?.();
-    onClose();
+  const selectNote = (id: number) => {
+    const note = notes.find((n) => n.id === id);
+    if (!note) return;
+    setSelected(id);
+    setContent(note.content);
   };
 
-  if (!isOpen) return null;
+  const startNewNote = () => {
+    setSelected(null);
+    setContent("");
+  };
+
+  const saveNote = async () => {
+    if (loading || !content.trim()) return;
+    setLoading(true);
+
+    try {
+      if (selected !== null) {
+        // UPDATE
+        const updated = await updateNote(frameId, selected.toString(), content);
+        setNotes((prev) =>
+          prev.map((n) =>
+            n.id === selected ? { ...n, content: updated.content } : n
+          )
+        );
+      } else {
+        // CREATE
+        const created = await createNote(frameId, content);
+        setNotes((prev) => [...prev, created]);
+        setSelected(created.id);
+      }
+    } catch (err) {
+      console.error("Failed to save note:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const removeNote = async () => {
+    if (selected === null) return;
+
+    try {
+      await deleteNote(frameId, selected.toString());
+      setNotes((prev) => prev.filter((n) => n.id !== selected));
+      startNewNote();
+    } catch (err) {
+      console.error("Failed to delete note:", err);
+    }
+  };
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex justify-center items-center z-50">
-      <div className="bg-[#fffefb] p-6 rounded-lg w-[340px] flex flex-col gap-4 shadow-xl">
-        <h2 className="text-xl font-semibold">{title}</h2>
+    <div className="notes-modal">
+      <div className="notes-panel">
+        <h3>Your Notes</h3>
+        <button onClick={startNewNote}>+ New Note</button>
+        <ul>
+          {notes.map((note) => (
+            <li
+              key={note.id}
+              onClick={() => selectNote(note.id)}
+              style={{
+                cursor: "pointer",
+                fontWeight: selected === note.id ? "bold" : "normal",
+              }}
+            >
+              {note.content.slice(0, 20) || "(empty)"}
+            </li>
+          ))}
+        </ul>
+      </div>
 
+      <div className="editor-panel">
         <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
           placeholder="Write your note..."
-          className="w-full h-40 p-2 border border-gray-300 rounded"
         />
 
-        <div className="flex justify-end gap-2">
-          <button onClick={onClose} className="px-3 py-1 bg-gray-200 rounded">
-            Close
+        <button onClick={saveNote} disabled={loading || !content.trim()}>
+          {loading ? "Saving..." : "Save"}
+        </button>
+
+        {selected !== null && (
+          <button style={{ color: "red" }} onClick={removeNote}>
+            Delete
           </button>
-          <button onClick={saveNote} className="px-3 py-1 bg-yellow-300 rounded">
-            Save
-          </button>
-        </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default NoteModal;
+export default NotesModal;

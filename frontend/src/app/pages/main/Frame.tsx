@@ -65,11 +65,11 @@ const Frame: React.FC = () => {
       />
 
       <Slot x={350} y={200} width={120} height={140}>
-        <NoteItem onOpen={() => alert("Note opened!")} />
+        <NoteItem frameId={frameId!} />
       </Slot>
 
       <Slot x={120} y={400} width={120} height={140}>
-        <EnvelopeItem onOpen={() => alert("Envelope opened!")} />
+        <EnvelopeItem frameId={frameId!} />
       </Slot>
       <Slot x={300} y={400} width={120} height={140}>
         <KeyItem onOpen={() => alert("Key opened!")} />
