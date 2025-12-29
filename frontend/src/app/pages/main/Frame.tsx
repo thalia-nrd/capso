@@ -75,7 +75,7 @@ const Frame: React.FC = () => {
         <KeyItem onOpen={() => alert("Key opened!")} />
       </Slot>
       <Slot x={480} y={400} width={120} height={140}>
-        <PolaroidItem onOpen={() => alert("Polaroid opened!")} />
+        <PolaroidItem frameId={frameId!} />
       </Slot>
       <Slot x={200} y={600} width={120} height={140}>
         <CDItem onOpen={() => alert("CD opened!")} />
