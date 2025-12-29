@@ -3,4 +3,5 @@ export interface CloudinarySignature {
   timestamp: number;
   upload_preset: string;
   folder: string;
+  apiKey: string;
 }
