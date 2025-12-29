@@ -1,52 +1,86 @@
 import React, { useState } from "react";
+import {
+  getPolaroid,
+  createPolaroid,
+  updatePolaroid,
+} from "../service/polaroidService";
+import { uploadImageToCloudinary } from "../../../utils/uploadImage";
 
 interface PolaroidModalProps {
-  isOpen: boolean;
+  frameId: string;
+  setUrl: (url: string) => void;
   onClose: () => void;
-  initialItems?: string[];
-  onSave: (items: string[]) => void;
 }
 
 const PolaroidModal: React.FC<PolaroidModalProps> = ({
-  isOpen,
+  frameId,
+  setUrl,
   onClose,
-  initialItems = [],
-  onSave
 }) => {
-  const [items, setItems] = useState(initialItems);
+  const [isUploading, setIsUploading] = useState(false);
+  const [error, setError] = useState("");
 
-  if (!isOpen) return null;
+  const handleImageChange = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
 
-  const updateItem = (i: number, value: string) => {
-    const newItems = [...items];
-    newItems[i] = value;
-    setItems(newItems);
+    const validTypes = ["image/jpeg", "image/png", "image/gif"];
+    if (!validTypes.includes(file.type)) {
+      setError("Please upload a valid image (JPEG, PNG, GIF).");
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setError("Image size must be less than 5MB.");
+      return;
+    }
+
+    try {
+      setError("");
+      setIsUploading(true);
+
+      const result = await uploadImageToCloudinary(file, frameId);
+      const imageUrl = result.secure_url;
+
+      const polaroids = await getPolaroid(frameId);
+      if (polaroids.length > 0) {
+        await updatePolaroid(
+          frameId,
+          polaroids[0].id.toString(),
+          imageUrl
+        );
+      } else {
+        await createPolaroid(frameId, imageUrl);
+      }
+
+      setUrl(imageUrl);
+      onClose();
+    } catch (err) {
+      console.error(err);
+      setError("Failed to upload image. Please try again.");
+    } finally {
+      setIsUploading(false);
+    }
   };
-
-  const addItem = () => setItems([...items, ""]);
 
   return (
     <div style={styles.overlay}>
       <div style={styles.modal}>
-        <h2>Polaroid</h2>
+        <h2>Upload Polaroid Image</h2>
 
-        {items.map((item, idx) => (
-          <input
-            key={idx}
-            value={item}
-            onChange={(e) => updateItem(idx, e.target.value)}
-            style={styles.input}
-          />
-        ))}
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
-        <button onClick={addItem}>Add</button>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          disabled={isUploading}
+          style={styles.input}
+        />
 
-        <div style={{ marginTop: "20px" }}>
-          <button onClick={() => onSave(items)}>Save</button>
-          <button onClick={onClose} style={{ marginLeft: "10px" }}>
-            Close
-          </button>
-        </div>
+        {isUploading && <p>Uploading…</p>}
       </div>
     </div>
   );
@@ -55,7 +89,10 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
 const styles = {
   overlay: {
     position: "fixed" as const,
-    top: 0, left: 0, right: 0, bottom: 0,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     background: "rgba(0,0,0,0.2)",
     display: "flex",
     justifyContent: "center",
@@ -71,7 +108,7 @@ const styles = {
     width: "100%",
     marginBottom: "10px",
     padding: "6px",
-  }
+  },
 };
 
 export default PolaroidModal;

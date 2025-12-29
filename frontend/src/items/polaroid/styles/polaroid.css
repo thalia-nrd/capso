@@ -1,0 +1,49 @@
+.polaroid-wrapper {
+  position: relative;
+  width: 220px;
+  height: 260px;
+}
+
+.polaroid-base {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.polaroid-content {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 184px;
+  height: 170px;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.polaroid-photo {
+  position: static;
+  width: fit-content;
+  height: fit-content;
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: cover;
+  display: block;
+}
+
+.polaroid-upload-btn {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background: white;
+  opacity: 0.9;
+}
+
+.polaroid-upload-btn:hover {
+  opacity: 1;
+}
