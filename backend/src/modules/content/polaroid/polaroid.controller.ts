@@ -8,10 +8,9 @@ import { CloudinaryFolders } from "../../../lib/cloudinaryFolders";
 export const polaroidController = {
     getUploadSignature: async (req: Request, res: Response) => {
         try {
-            const folder = req.query.folder as string;
             const upload_preset = req.query.upload_preset as string;
 
-            const payload: CloudinarySignature = generateUploadSignature(CloudinaryFolders.POLAROID, upload_preset);
+            const payload = generateUploadSignature(CloudinaryFolders.POLAROID, upload_preset) as CloudinarySignature;
 
             res.json(payload);
         } catch (err) {
