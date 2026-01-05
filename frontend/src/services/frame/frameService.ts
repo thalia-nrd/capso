@@ -30,5 +30,3 @@ async function request<T>(endpoint: string, data?: any, method: string = "GET"):
 export const getUserFrame = (frameId: string) => {
     return request<{ frameId: string; items: any[] }>(`/frame/${frameId}`);
 };
-
-// add update frame
