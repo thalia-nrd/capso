@@ -1,32 +1,35 @@
 const API_URL = process.env.REACT_APP_API_URL || "";
 
-async function request<T>(endpoint: string, data?: any, method: string = "GET"): Promise<T> {
-    try {
-        const response = await fetch(`${API_URL}${endpoint}`, {
-            method,
-            credentials: "include",
-            headers: { "Content-Type": "application/json" },
-            ...(method !== "GET" && data ? { body: JSON.stringify(data) } : {})
-        });
+async function request<T>(
+  endpoint: string,
+  method: string = "GET",
+  data?: any
+): Promise<T> {
+  const res = await fetch(`${API_URL}${endpoint}`, {
+    method,
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    ...(data ? { body: JSON.stringify(data) } : {}),
+  });
 
-        if (!response.ok) {
-            let errorMessage = "Request failed";
-            try {
-                const errorBody = await response.json();
-                if (errorBody?.message) errorMessage = errorBody.message;
-            } catch {}
-            throw new Error(errorMessage);
-        }
+  if (!res.ok) {
+    throw new Error(`Request failed: ${res.status}`);
+  }
 
-        return await response.json();
-    } catch (err: any) {
-        if (err instanceof TypeError && err.message.includes("Failed to fetch")) {
-            throw new Error("Cannot reach server. Please try again later.");
-        }
-        throw err;
-    }
+  return res.json();
 }
 
-export const getUserFrame = (frameId: string) => {
-    return request<{ frameId: string; items: any[] }>(`/frame/${frameId}`);
+export type FullFrame = {
+  id: number;
+  title: string;
+  chest?: any;
+  journal?: any;
+  polaroid: any[];
+  media: any[];
+  checklist: any[];
+  notes: any[];
+};
+
+export const getUserFrame = () => {
+  return request<FullFrame>("/frame");
 };
