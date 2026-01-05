@@ -36,17 +36,15 @@ app.use('/auth', authRoutes);
 
 app.use('/frame', requireAuth);
 
-app.use('/frame/:frameId', verifyFrameOwnership);
-
 // routes
 app.use('/frame', frameRoutes);
-app.use('/frame/:frameId/notes', notesRoutes);
-app.use('/frame/:frameId/checklists', checklistRoutes);
-app.use('/frame/:frameId/journal', journalRoutes);
-app.use('/frame/:frameId/polaroid', polaroidRoutes);
-app.use('/frame/:frameId/chest', chestRoutes);
-app.use('/frame/:frameId/mirror', mirrorRoutes);
-app.use('/frame/:frameId/mp3', mp3Routes);
+app.use('/frame/notes', notesRoutes);
+app.use('/frame/checklists', checklistRoutes);
+app.use('/frame/journal', journalRoutes);
+app.use('/frame/polaroid', polaroidRoutes);
+app.use('/frame/chest', chestRoutes);
+app.use('/frame/mirror', mirrorRoutes);
+app.use('/frame/mp3', mp3Routes);
 app.use('/spotify', spotifyRoutes);
 
 app.get('/', (_req, res) => {

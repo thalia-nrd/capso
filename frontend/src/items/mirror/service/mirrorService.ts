@@ -42,7 +42,7 @@ export const getMirrorFact = async (frameId: string) => {
       language: string;
       permalink: string;
     };
-  }>(`/frame/${frameId}/mirror/random-fact`);
+  }>(`/frame/mirror/random-fact`);
 
   return {
     frameId: res.frameId,

@@ -46,13 +46,13 @@ export interface Journal {
 }
 
 export const getJournal = (frameId: string): Promise<Journal> =>
-  request<Journal>(`/frame/${frameId}/journal`, "GET");
+  request<Journal>(`/frame/journal`, "GET");
 
 export const createJournal = (frameId: string, passcode: string): Promise<Journal> =>
-  request<Journal>(`/frame/${frameId}/journal`, "POST", { passcode });
+  request<Journal>(`/frame/journal`, "POST", { passcode });
 
 export const openJournal = (frameId: string, passcode: string): Promise<Journal> =>
-  request<Journal>(`/frame/${frameId}/journal/open`, "POST", { passcode });
+  request<Journal>(`/frame/journal/open`, "POST", { passcode });
 
 export const editJournalEntries = (frameId: string, entries: JournalEntry[]): Promise<Journal> =>
-  request<Journal>(`/frame/${frameId}/journal/entries`, "PUT", { entries });
+  request<Journal>(`/frame/journal/entries`, "PUT", { entries });

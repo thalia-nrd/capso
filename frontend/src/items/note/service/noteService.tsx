@@ -57,11 +57,11 @@ export interface Note {
 }
 
 export const getNotes = (frameId: string): Promise<Note[]> => {
-  return request<Note[]>(`/frame/${frameId}/notes`, "GET");
+  return request<Note[]>(`/frame/notes`, "GET");
 };
 
 export const createNote = (frameId: string, content: string): Promise<Note> => {
-  return request<Note>(`/frame/${frameId}/notes`, "POST", { content });
+  return request<Note>(`/frame/notes`, "POST", { content });
 };
 
 export const updateNote = (
@@ -69,7 +69,7 @@ export const updateNote = (
   noteId: string,
   content: string
 ): Promise<Note> =>
-  request<Note>(`/frame/${frameId}/notes/${noteId}`, "PUT", { content });
+  request<Note>(`/frame/notes/${noteId}`, "PUT", { content });
 
 export const deleteNote = (frameId: string, noteId: string): Promise<void> =>
-  request<void>(`/frame/${frameId}/notes/${noteId}`, "DELETE");
+  request<void>(`/frame/notes/${noteId}`, "DELETE");

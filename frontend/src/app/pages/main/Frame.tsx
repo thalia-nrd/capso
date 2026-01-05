@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import Slot from "../../../layout/Slot";
 import ChecklistItem from "../../../items/checklist/component/ChecklistItem";
-import ChecklistModal from "../../../items/checklist/modal/ChecklistModal";
 import NoteItem from "../../../items/note/component/NoteItem";
 import EnvelopeItem from "../../../items/envelope/component/EnvelopeItem";
 import KeyItem from "../../../items/key/component/KeyItem";
