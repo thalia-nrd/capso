@@ -11,30 +11,22 @@ import PolaroidItem from "../../../items/polaroid/component/PolaroidItem";
 import CDItem from "../../../items/cd/component/CDItem";
 import MirrorItem from "../../../items/mirror/component/MirrorItem";
 
-import { getUserFrame } from "../../../services/frame/frameService";
+import { getUserFrame, FullFrame } from "../../../services/frame/frameService";
 
 const Frame: React.FC = () => {
-  const { frameId } = useParams<{ frameId: string }>();
   const navigate = useNavigate();
 
+  const [frame, setFrame] = useState<FullFrame | null>(null);
   const [loading, setLoading] = useState(true);
-  const [checklist, setChecklist] = useState<string[]>([]);
-  const [isChecklistOpen, setIsChecklistOpen] = useState(false);
 
   useEffect(() => {
-    if (!frameId) {
-      navigate("/frame");
-      return;
-    }
-
-    getUserFrame(frameId)
-      .catch(() => {
-        navigate("/frame");
-      })
+    getUserFrame()
+      .then(setFrame)
+      .catch(() => navigate("/login"))
       .finally(() => setLoading(false));
-  }, [frameId, navigate]);
+  }, [navigate]);
 
-  if (loading || !frameId) {
+  if (loading || !frame) {
     return <div>Loading...</div>;
   }
 
@@ -51,25 +43,15 @@ const Frame: React.FC = () => {
       }}
     >
       <Slot x={180} y={200} width={120} height={140}>
-        <ChecklistItem onOpen={() => setIsChecklistOpen(true)} />
+        <ChecklistItem onOpen={() => {}} />
       </Slot>
 
-      <ChecklistModal
-        isOpen={isChecklistOpen}
-        onClose={() => setIsChecklistOpen(false)}
-        initialItems={checklist}
-        onSave={(newItems) => {
-          setChecklist(newItems);
-          setIsChecklistOpen(false);
-        }}
-      />
-
       <Slot x={350} y={200} width={120} height={140}>
-        <NoteItem frameId={frameId} />
+        <NoteItem frameId={""} />
       </Slot>
 
       <Slot x={120} y={400} width={120} height={140}>
-        <EnvelopeItem frameId={frameId} />
+        <EnvelopeItem frameId={""} />
       </Slot>
 
       <Slot x={300} y={400} width={120} height={140}>
@@ -77,7 +59,7 @@ const Frame: React.FC = () => {
       </Slot>
 
       <Slot x={480} y={400} width={120} height={140}>
-        <PolaroidItem frameId={frameId} />
+        <PolaroidItem frameId={""} />
       </Slot>
 
       <Slot x={200} y={600} width={120} height={140}>
@@ -85,7 +67,7 @@ const Frame: React.FC = () => {
       </Slot>
 
       <Slot x={400} y={600} width={120} height={140}>
-        <MirrorItem frameId={frameId} />
+        <MirrorItem frameId={""} />
       </Slot>
     </div>
   );
