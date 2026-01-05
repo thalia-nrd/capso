@@ -27,13 +27,7 @@ const Login: React.FC = () => {
 
       console.log("Login response:", res);
 
-      const frameId = res.frame?.id;
-      if (!frameId) {
-        console.error("Frame ID not returned by backend");
-        return;
-      }
-
-      navigate(`/frame/${frameId}`);
+      navigate(`/frame`);
     } catch (error) {
       console.error('Login failed:', error);
     }
