@@ -11,10 +11,18 @@ export const frameModel = {
   },
 
   getUserFrame: async (ownerId: number) => {
-    return await prisma.frame.findUnique({
-      where: { ownerId },
-    });
-  },
+  return prisma.frame.findFirst({
+    where: { ownerId },
+    include: {
+      chest: true,
+      journal: true,
+      polaroid: true,
+      media: true,
+      checklist: true,
+      notes: true,
+    },
+  });
+},
 
   updateFrame: async (frameId: number, title: string) => {
     return await prisma.frame.update({
