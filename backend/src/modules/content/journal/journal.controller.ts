@@ -6,7 +6,8 @@ import { hashPassword } from "../../../utils/bcrypt";
 export const journalController = {
   getJournal: async (req: Request, res: Response) => {
     try {
-      const frameId = Number(req.params.frameId);
+      const frameId = req.frameId!;
+
       const journal = await journalModel.getByFrameId(frameId);
 
       if (!journal) {
@@ -22,7 +23,7 @@ export const journalController = {
 
   createJournal: async (req: Request, res: Response) => {
     try {
-      const frameId = Number(req.params.frameId);
+      const frameId = req.frameId!;
 
       const parsed = journalSchema.safeParse(req.body);
       if (!parsed.success) {

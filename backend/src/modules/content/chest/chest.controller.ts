@@ -11,7 +11,15 @@ export const ChestController = {
       const folder = req.query.folder as string;
       const upload_preset = req.query.upload_preset as string;
 
-      const payload: CloudinarySignature = generateUploadSignature(CloudinaryFolders.KEY, upload_preset);
+      const raw = generateUploadSignature(
+        CloudinaryFolders.KEY,
+        upload_preset
+      );
+
+      const payload: CloudinarySignature = {
+        ...raw,
+        apiKey: raw.apiKey ?? "",
+      };
 
       res.json(payload);
     } catch (err) {
@@ -22,8 +30,9 @@ export const ChestController = {
 
   getChest: async (req: Request, res: Response) => {
     try {
-      const { frameId } = req.params;
-      const chest = await ChestModel.getChestByFrameId(Number(frameId));
+      const frameId = req.frameId!;
+
+      const chest = await ChestModel.getChestByFrameId(frameId);
       res.json(chest);
     } catch (err) {
       console.error("GET chest error:", err);
@@ -33,19 +42,21 @@ export const ChestController = {
 
   createChest: async (req: Request, res: Response) => {
     try {
-      const frameId = Number(req.params.frameId);
+      const frameId = req.frameId!;
 
-      const { passcode } = req.body;
+      const { passcode, items } = req.body;
       if (!passcode) {
         return res.status(400).json({ error: "Passcode is required" });
       }
+
       const hashedPasscode = await bcrypt.hash(passcode, 10);
 
       const newChest = await ChestModel.createChest(
         frameId,
         hashedPasscode,
-        req.body.items,
+        items
       );
+
       res.json(newChest);
     } catch (err) {
       console.error("CREATE chest error:", err);
@@ -69,16 +80,17 @@ export const ChestController = {
 
   addChestContent: async (req: Request, res: Response) => {
     try {
-      const { frameId } = req.params;
+      const frameId = req.frameId!;
+
       const { items } = req.body;
-      const chest = await ChestModel.getChestByFrameId(Number(frameId));
+      const chest = await ChestModel.getChestByFrameId(frameId);
+
       if (!chest) {
         return res.status(404).json({ error: "Chest not found" });
       }
-      const updatedChest = await ChestModel.addChestContent(
-        chest.id,
-        items
-      );
+
+      const updatedChest = await ChestModel.addChestContent(chest.id, items);
+
       res.json(updatedChest);
     }
     catch (err) {

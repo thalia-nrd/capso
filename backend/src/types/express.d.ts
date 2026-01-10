@@ -5,5 +5,6 @@ declare module 'express' {
     user?: {
       userId: number;
     };
+    frameId?: number;
   }
 }

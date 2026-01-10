@@ -4,7 +4,7 @@ import axios from "axios";
 export const mirrorController = {
     getRandomFact: async (req: Request, res: Response) => {
         try {
-            const { frameId } = req.params;
+            const frameId = req.frameId!;
 
             const response = await axios.get(
                 "https://uselessfacts.jsph.pl/api/v2/facts/random?language=en",
