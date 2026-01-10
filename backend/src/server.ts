@@ -34,7 +34,7 @@ app.use(cookieParser());
 // public
 app.use('/auth', authRoutes);
 
-app.use('/frame', requireAuth, verifyFrameOwnership);
+app.use('/frame', requireAuth);
 
 // routes
 app.use('/frame', frameRoutes);
