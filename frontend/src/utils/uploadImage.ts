@@ -19,7 +19,7 @@ export const uploadImageToCloudinary = async (
 ): Promise<CloudinaryUploadResponse> => {
   // 1️⃣ Get signature from backend
   const sigRes = await axios.get<CloudinarySignature>(
-    `http://localhost:5000/frame/${frameId}/polaroid/signature`,
+    `http://localhost:5000/frame/polaroid/signature`,
     {
       params: {
         folder: "polaroid",

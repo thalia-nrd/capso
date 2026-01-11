@@ -1,14 +1,12 @@
-import { Request, Response } from 'express';
-import { notesModel } from './notes.model';
-import { noteSchema } from './notes.schema';
+import { Request, Response } from "express";
+import { notesModel } from "./notes.model";
+import { noteSchema } from "./notes.schema";
 
 export const notesController = {
   getNotes: async (req: Request, res: Response) => {
-    const frameId = Number(req.params.frameId);
+    const frameId = req.frameId!;
     const notes = await notesModel.getNotesByFrameId(frameId);
     res.json(notes);
-
-    // will be called when getting frames will not load separately
   },
 
   createNote: async (req: Request, res: Response) => {
@@ -17,7 +15,7 @@ export const notesController = {
       return res.status(400).json({ error: parsedNote.error.issues });
     }
 
-    const frameId = Number(req.params.frameId);
+    const frameId = req.frameId!;
     const { content } = req.body;
 
     const newNote = await notesModel.createNote(frameId, content);

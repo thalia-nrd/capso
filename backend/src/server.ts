@@ -16,7 +16,7 @@ import mirrorRoutes from './modules/content/mirror/mirror.routes';
 import mp3Routes from './modules/content/mp3/mp3.routes';
 import spotifyRoutes from './modules/auth/spotify/spotify.routes';
 
-import { verifyFrameOwnership } from './modules/frame/middleware/frame.middleware';
+import { attachFrameId } from './modules/frame/middleware/frame.middleware';
 import { requireAuth } from './modules/auth/middleware/auth.middleware';
 
 const app = express();
@@ -34,7 +34,7 @@ app.use(cookieParser());
 // public
 app.use('/auth', authRoutes);
 
-app.use('/frame', requireAuth);
+app.use('/frame', requireAuth, attachFrameId);
 
 // routes
 app.use('/frame', frameRoutes);

@@ -27,7 +27,7 @@ const NoteItem: React.FC<NoteItemProps> = ({ frameId }) => {
   return (
     <>
       <img
-        src="content/Postit.png"
+        src="content/postIts.png"
         alt="Notes"
         style={{ width: "100%", height: "100%", cursor: "pointer" }}
         onClick={() => setOpen(true)}
