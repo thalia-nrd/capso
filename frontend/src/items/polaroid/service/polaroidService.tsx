@@ -50,13 +50,13 @@ export interface Polaroid {
 }
 
 export const getPolaroid = (frameId: string): Promise<Polaroid[]> => {
-  return request<Polaroid[]>(`/frame/polaroids`, "GET");
+  return request<Polaroid[]>(`/frame/polaroid`, "GET");
 }
 
 export const createPolaroid = (frameId: string, imageUrl: string): Promise<Polaroid> => {
-  return request<Polaroid>(`/frame/polaroids`, "POST", { imageUrl });
+  return request<Polaroid>(`/frame/polaroid`, "POST", { imageUrl });
 }
 
 export const updatePolaroid = (frameId: string, polaroidId: string, imageUrl: string): Promise<Polaroid> => {
-  return request<Polaroid>(`/frame/polaroids/${polaroidId}`, "PUT", { imageUrl });
+  return request<Polaroid>(`/frame/polaroid/${polaroidId}`, "PUT", { imageUrl });
 }

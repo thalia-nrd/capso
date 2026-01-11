@@ -1,7 +1,7 @@
 .polaroid-wrapper {
   position: relative;
-  width: 220px;
-  height: 260px;
+  width: 150px;
+  height: 180px;
 }
 
 .polaroid-base {
@@ -12,10 +12,10 @@
 
 .polaroid-content {
   position: absolute;
-  top: 18px;
-  left: 18px;
-  width: 184px;
-  height: 170px;
+  top: 36px;
+  left: 30px;
+  width: 90px;
+  height: 90px;
 
   overflow: hidden;
   display: flex;
