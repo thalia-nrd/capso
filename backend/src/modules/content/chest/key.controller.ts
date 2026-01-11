@@ -1,11 +1,11 @@
-import { ChestModel } from "./chest.model";
+import { KeyModel } from "./key.model";
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { generateUploadSignature } from "../../../lib/cloudinary";
 import type { CloudinarySignature } from "../../../types/cloudinary.types";
 import { CloudinaryFolders } from "../../../lib/cloudinaryFolders";
 
-export const ChestController = {
+export const keyController = {
   getUploadSignature: async (req: Request, res: Response) => {
     try {
       const folder = req.query.folder as string;
@@ -28,19 +28,19 @@ export const ChestController = {
     }
   },
 
-  getChest: async (req: Request, res: Response) => {
+  getKey: async (req: Request, res: Response) => {
     try {
       const frameId = req.frameId!;
 
-      const chest = await ChestModel.getChestByFrameId(frameId);
-      res.json(chest);
+      const key = await KeyModel.getKeyByFrameId(frameId);
+      res.json(key);
     } catch (err) {
-      console.error("GET chest error:", err);
+      console.error("GET key error:", err);
       res.status(500).json({ error: "Server error" });
     }
   },
 
-  createChest: async (req: Request, res: Response) => {
+  createKey: async (req: Request, res: Response) => {
     try {
       const frameId = req.frameId!;
 
@@ -51,50 +51,50 @@ export const ChestController = {
 
       const hashedPasscode = await bcrypt.hash(passcode, 10);
 
-      const newChest = await ChestModel.createChest(
+      const newKey = await KeyModel.createKey(
         frameId,
         hashedPasscode,
         items
       );
 
-      res.json(newChest);
+      res.json(newKey);
     } catch (err) {
-      console.error("CREATE chest error:", err);
+      console.error("CREATE key error:", err);
       res.status(500).json({ error: "Server error" });
     }
   },
 
-  openChest: async (req: Request, res: Response) => {
+  openKey: async (req: Request, res: Response) => {
     try {
-      const chest = (req as any).chest;
+      const key = (req as any).key;
 
       res.json({
-        id: chest.id,
-        items: chest.items,
+        id: key.id,
+        items: key.items,
       });
     } catch (err) {
-      console.error("OPEN chest error:", err);
+      console.error("OPEN key error:", err);
       res.status(500).json({ error: "Server error" });
     }
   },
 
-  addChestContent: async (req: Request, res: Response) => {
+  addKeyContent: async (req: Request, res: Response) => {
     try {
       const frameId = req.frameId!;
 
       const { items } = req.body;
-      const chest = await ChestModel.getChestByFrameId(frameId);
+      const key = await KeyModel.getKeyByFrameId(frameId);
 
-      if (!chest) {
-        return res.status(404).json({ error: "Chest not found" });
+      if (!key) {
+        return res.status(404).json({ error: "key not found" });
       }
 
-      const updatedChest = await ChestModel.addChestContent(chest.id, items);
+      const updatedKey = await KeyModel.addKeyContent(key.id, items);
 
-      res.json(updatedChest);
+      res.json(updatedKey);
     }
     catch (err) {
-      console.error("ADD chest content error:", err);
+      console.error("ADD key content error:", err);
       res.status(500).json({ error: "Server error" });
     }
   },
