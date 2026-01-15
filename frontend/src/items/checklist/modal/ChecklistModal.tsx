@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 interface ChecklistModalProps {
   isOpen: boolean;
+  frameId?: any;
   onClose: () => void;
   initialItems?: string[];
   onSave: (items: string[]) => void;
