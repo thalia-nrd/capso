@@ -45,6 +45,7 @@ app.use('/frame/polaroid', polaroidRoutes);
 app.use('/frame/key', keyRoutes);
 app.use('/frame/mirror', mirrorRoutes);
 app.use('/frame/mp3', mp3Routes);
+
 app.use('/spotify', spotifyRoutes);
 
 app.get('/', (_req, res) => {
