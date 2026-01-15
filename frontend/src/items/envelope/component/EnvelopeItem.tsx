@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import EnvelopeModal from "../modal/EnvelopeModal";
 
 interface EnvelopeItemProps {
-  frameId: string;
+  frameId: any;
 }
 
 const EnvelopeItem: React.FC<EnvelopeItemProps> = ({ frameId }) => {
