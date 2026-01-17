@@ -15,7 +15,6 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   frame     Frame[]
-  spotifyAccount SpotifyAccount?
 }
 
 model Frame {
@@ -118,24 +117,4 @@ model DecorItem {
   frameId   Int      
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model Mp3Item {
-  id        Int      @id @default(autoincrement())
-  frameId   Int
-  playlist  Json
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model SpotifyAccount {
-  id           Int      @id @default(autoincrement())
-  user         User     @relation(fields: [userId], references: [id])
-  userId       Int      @unique
-  accessToken  String
-  refreshToken String
-  scope        String?
-  expiresAt    DateTime
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
 }
