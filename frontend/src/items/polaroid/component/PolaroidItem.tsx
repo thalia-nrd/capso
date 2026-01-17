@@ -4,12 +4,13 @@ import { getPolaroid } from "../service/polaroidService";
 import "../styles/polaroid.css";
 
 interface PolaroidItemProps {
-  frameId: string;
+  frameId: any;
 }
 
 const PolaroidItem: React.FC<PolaroidItemProps> = ({ frameId }) => {
   const [open, setOpen] = useState(false);
-  const [imageUrl, setImageUrl] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadPolaroid = async () => {
@@ -17,9 +18,13 @@ const PolaroidItem: React.FC<PolaroidItemProps> = ({ frameId }) => {
         const polaroids = await getPolaroid(frameId);
         if (polaroids.length > 0) {
           setImageUrl(polaroids[0].imageUrl);
+        } else {
+          setImageUrl(null);
         }
       } catch (err) {
         console.error("Failed to load polaroid:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -36,13 +41,20 @@ const PolaroidItem: React.FC<PolaroidItemProps> = ({ frameId }) => {
         />
 
         <div className="polaroid-content">
-          {imageUrl ? (
+          {/* 1️⃣ Loading state (prevents flashing upload button) */}
+          {loading ? (
+            <p className="polaroid-loading">Loading...</p>
+          ) : imageUrl ? (
+            /* 2️⃣ Image exists → display it, click to change */
             <img
               src={imageUrl}
               alt="Uploaded"
               className="polaroid-photo"
+              onClick={() => setOpen(true)}
+              style={{ cursor: "pointer" }}
             />
           ) : (
+            /* 3️⃣ No image → show upload button */
             <button
               className="polaroid-upload-btn"
               onClick={() => setOpen(true)}
@@ -56,7 +68,7 @@ const PolaroidItem: React.FC<PolaroidItemProps> = ({ frameId }) => {
       {open && (
         <PolaroidModal
           frameId={frameId}
-          setUrl={setImageUrl}
+          setUrl={(url) => setImageUrl(url)}
           onClose={() => setOpen(false)}
         />
       )}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Slot from "../../../layout/Slot";
 import ChecklistItem from "../../../items/checklist/component/ChecklistItem";
@@ -42,23 +42,23 @@ const Frame: React.FC = () => {
       }}
     >
       <Slot x={180} y={200} width={120} height={140}>
-        <ChecklistItem onOpen={() => {}} />
+        <ChecklistItem frameId={frame.id} />
       </Slot>
 
-      <Slot x={350} y={200} width={120} height={140}>
-        <NoteItem frameId={""} />
+      <Slot x={400} y={200} width={120} height={140}>
+        <NoteItem frameId={frame.id} />
       </Slot>
 
       <Slot x={120} y={400} width={120} height={140}>
-        <EnvelopeItem frameId={""} />
+        <EnvelopeItem frameId={frame.id} />
       </Slot>
 
       <Slot x={300} y={400} width={120} height={140}>
-        <KeyItem onOpen={() => alert("Key opened!")} />
+        <KeyItem frameId={frame.id} />
       </Slot>
 
       <Slot x={480} y={400} width={120} height={140}>
-        <PolaroidItem frameId={""} />
+        <PolaroidItem frameId={frame.id} />
       </Slot>
 
       <Slot x={200} y={600} width={120} height={140}>
@@ -66,7 +66,7 @@ const Frame: React.FC = () => {
       </Slot>
 
       <Slot x={400} y={600} width={120} height={140}>
-        <MirrorItem frameId={""} />
+        <MirrorItem frameId={frame.id} />
       </Slot>
     </div>
   );

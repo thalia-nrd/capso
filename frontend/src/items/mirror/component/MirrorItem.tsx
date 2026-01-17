@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MirrorModal from "../modal/MirrorModal";
 
 interface MirrorItemProps {
-  frameId: string;
+  frameId: any;
 }
 
 const MirrorItem: React.FC<MirrorItemProps> = ({ frameId }) => {

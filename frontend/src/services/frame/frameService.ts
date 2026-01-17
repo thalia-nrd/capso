@@ -31,5 +31,5 @@ export type FullFrame = {
 };
 
 export const getUserFrame = () => {
-  return request<FullFrame>("/frame");
+  return request<FullFrame>("/frame", "GET");
 };

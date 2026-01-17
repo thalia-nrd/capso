@@ -3,7 +3,7 @@ import NotesModal from "../modal/NoteModal";
 import { getNotes } from "../service/noteService";
 
 interface NoteItemProps {
-  frameId: string;
+  frameId: any;
 }
 
 const NoteItem: React.FC<NoteItemProps> = ({ frameId }) => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   getPolaroid,
   createPolaroid,
@@ -19,6 +19,22 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
 }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState("");
+  const [existingImage, setExistingImage] = useState<string | null>(null);
+
+  // 1️⃣ Load existing polaroid on mount
+  useEffect(() => {
+    async function load() {
+      try {
+        const polaroids = await getPolaroid(frameId);
+        if (polaroids.length > 0 && polaroids[0].imageUrl) {
+          setExistingImage(polaroids[0].imageUrl);
+        }
+      } catch (err) {
+        console.error("Failed to load existing polaroid", err);
+      }
+    }
+    load();
+  }, [frameId]);
 
   const handleImageChange = async (
     e: React.ChangeEvent<HTMLInputElement>
@@ -41,21 +57,22 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
       setError("");
       setIsUploading(true);
 
+      // 2️⃣ Upload to Cloudinary
       const result = await uploadImageToCloudinary(file, frameId);
       const imageUrl = result.secure_url;
 
+      // 3️⃣ Save to DB
       const polaroids = await getPolaroid(frameId);
       if (polaroids.length > 0) {
-        await updatePolaroid(
-          frameId,
-          polaroids[0].id.toString(),
-          imageUrl
-        );
+        await updatePolaroid(frameId, polaroids[0].id.toString(), imageUrl);
       } else {
         await createPolaroid(frameId, imageUrl);
       }
 
+      // 4️⃣ Update UI
+      setExistingImage(imageUrl);
       setUrl(imageUrl);
+
       onClose();
     } catch (err) {
       console.error(err);
@@ -71,6 +88,15 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
         <h2>Upload Polaroid Image</h2>
 
         {error && <p style={{ color: "red" }}>{error}</p>}
+
+        {/* 5️⃣ Show current image */}
+        {existingImage && (
+          <img
+            src={existingImage}
+            alt="Current Polaroid"
+            style={{ width: "100%", borderRadius: "6px", marginBottom: "10px" }}
+          />
+        )}
 
         <input
           type="file"
