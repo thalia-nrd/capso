@@ -15,9 +15,9 @@ const PolaroidItem: React.FC<PolaroidItemProps> = ({ frameId }) => {
   useEffect(() => {
     const loadPolaroid = async () => {
       try {
-        const polaroids = await getPolaroid(frameId);
+        const polaroids = await getPolaroid(frameId, "");
         if (polaroids.length > 0) {
-          setImageUrl(polaroids[0].imageUrl);
+          setImageUrl(polaroids[0].url);
         } else {
           setImageUrl(null);
         }
@@ -41,11 +41,9 @@ const PolaroidItem: React.FC<PolaroidItemProps> = ({ frameId }) => {
         />
 
         <div className="polaroid-content">
-          {/* 1️⃣ Loading state (prevents flashing upload button) */}
           {loading ? (
             <p className="polaroid-loading">Loading...</p>
           ) : imageUrl ? (
-            /* 2️⃣ Image exists → display it, click to change */
             <img
               src={imageUrl}
               alt="Uploaded"
@@ -54,7 +52,7 @@ const PolaroidItem: React.FC<PolaroidItemProps> = ({ frameId }) => {
               style={{ cursor: "pointer" }}
             />
           ) : (
-            /* 3️⃣ No image → show upload button */
+
             <button
               className="polaroid-upload-btn"
               onClick={() => setOpen(true)}

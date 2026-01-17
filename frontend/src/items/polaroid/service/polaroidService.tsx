@@ -43,14 +43,14 @@ async function request<T>(
 
 export interface Polaroid {
   id: number;
-  imageUrl: string;
+  url: string;
   frameId: string;
   createdAt: string;
   updatedAt: string;
 }
 
-export const getPolaroid = (frameId: string): Promise<Polaroid[]> => {
-  return request<Polaroid[]>(`/frame/polaroid`, "GET");
+export const getPolaroid = (frameId: string, imageUrl: string): Promise<Polaroid[]> => {
+  return request<Polaroid[]>(`/frame/polaroid`, "GET", { imageUrl });
 }
 
 export const createPolaroid = (frameId: string, imageUrl: string): Promise<Polaroid> => {

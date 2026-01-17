@@ -25,9 +25,9 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
   useEffect(() => {
     async function load() {
       try {
-        const polaroids = await getPolaroid(frameId);
-        if (polaroids.length > 0 && polaroids[0].imageUrl) {
-          setExistingImage(polaroids[0].imageUrl);
+        const polaroids = await getPolaroid(frameId, "");
+        if (polaroids.length > 0 && polaroids[0].url) {
+          setExistingImage(polaroids[0].url);
         }
       } catch (err) {
         console.error("Failed to load existing polaroid", err);
@@ -62,7 +62,7 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
       const imageUrl = result.secure_url;
 
       // 3️⃣ Save to DB
-      const polaroids = await getPolaroid(frameId);
+      const polaroids = await getPolaroid(frameId, "");
       if (polaroids.length > 0) {
         await updatePolaroid(frameId, polaroids[0].id.toString(), imageUrl);
       } else {
