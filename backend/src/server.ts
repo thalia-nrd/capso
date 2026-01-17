@@ -11,10 +11,9 @@ import notesRoutes from './modules/content/notes/notes.routes';
 import checklistRoutes from './modules/content/checklist/checklist.routes';
 import journalRoutes from './modules/content/journal/journal.routes';
 import polaroidRoutes from './modules/content/polaroid/polaroid.routes';
-import keyRoutes from './modules/content/chest/key.routes';
+import keyRoutes from './modules/content/key/key.routes';
 import mirrorRoutes from './modules/content/mirror/mirror.routes';
-import mp3Routes from './modules/content/mp3/mp3.routes';
-import spotifyRoutes from './modules/auth/spotify/spotify.routes';
+import clockRoutes from './modules/content/clock/clock.routes';
 
 import { attachFrameId } from './modules/frame/middleware/frame.middleware';
 import { requireAuth } from './modules/auth/middleware/auth.middleware';
@@ -44,9 +43,7 @@ app.use('/frame/journal', journalRoutes);
 app.use('/frame/polaroid', polaroidRoutes);
 app.use('/frame/key', keyRoutes);
 app.use('/frame/mirror', mirrorRoutes);
-app.use('/frame/mp3', mp3Routes);
-
-app.use('/spotify', spotifyRoutes);
+app.use('/frame/clock', clockRoutes);
 
 app.get('/', (_req, res) => {
   res.send('Cabinna backend is running!');
