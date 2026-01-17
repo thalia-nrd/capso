@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import KeyModal from "../modal/KeyModal";
 
 interface KeyItemProps {
-  onOpen: () => void;
+  frameId: any;
 }
 
-const KeyItem: React.FC<KeyItemProps> = ({ onOpen }) => {
+const KeyItem: React.FC<KeyItemProps> = ({ frameId }) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <img
-      src="content/Key.png"
-      alt="Key"
-      style={{
-        width: "100%",
-        height: "100%",
-        cursor: "pointer",
-      }}
-      onClick={onOpen}
-    />
+    <>
+      <img
+        src="/content/Key.png"
+        alt="Key"
+        className="key-base"
+        style={{ cursor: "pointer", width: "100%", height: "100%" }}
+        onClick={() => setOpen(true)}
+      />
+
+      {open && (
+        <KeyModal
+          frameId={frameId}
+          onClose={() => setOpen(false)}
+        />
+      )}
+    </>
   );
 };
 
