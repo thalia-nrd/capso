@@ -11,7 +11,7 @@ import notesRoutes from './modules/content/notes/notes.routes';
 import checklistRoutes from './modules/content/checklist/checklist.routes';
 import journalRoutes from './modules/content/journal/journal.routes';
 import polaroidRoutes from './modules/content/polaroid/polaroid.routes';
-import keyRoutes from './modules/content/chest/key.routes';
+import keyRoutes from './modules/content/key/key.routes';
 import mirrorRoutes from './modules/content/mirror/mirror.routes';
 import mp3Routes from './modules/content/mp3/mp3.routes';
 import spotifyRoutes from './modules/auth/spotify/spotify.routes';
