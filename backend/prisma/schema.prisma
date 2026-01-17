@@ -5,8 +5,6 @@ generator client {
 
 datasource db {
   provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
 }    
 
 model User {
@@ -118,6 +116,14 @@ model DecorItem {
   type      String
   frame     Frame  @relation(fields: [frameId], references: [id])
   frameId   Int      
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Mp3Item {
+  id        Int      @id @default(autoincrement())
+  frameId   Int
+  playlist  Json
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
