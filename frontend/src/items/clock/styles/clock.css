@@ -1,0 +1,40 @@
+.clock-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+
+.clock-face {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.clock-hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: bottom center;
+  background: #222;
+  border-radius: 4px;
+}
+
+/* You can make these look sketched later */
+.hour-hand {
+  width: 5px;
+  height: 45px;
+  background: #4b3f34;
+}
+
+.minute-hand {
+  width: 3px;
+  height: 65px;
+  background: #3e342e;
+}
+
+.second-hand {
+  width: 2px;
+  height: 75px;
+  background: #b43f3f;
+}
