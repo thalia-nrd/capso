@@ -7,7 +7,7 @@ import NoteItem from "../../../items/note/component/NoteItem";
 import EnvelopeItem from "../../../items/envelope/component/EnvelopeItem";
 import KeyItem from "../../../items/key/component/KeyItem";
 import PolaroidItem from "../../../items/polaroid/component/PolaroidItem";
-import CDItem from "../../../items/cd/component/CDItem";
+import ClockItem from "../../../items/clock/component/ClockItem";
 import MirrorItem from "../../../items/mirror/component/MirrorItem";
 
 import { getUserFrame, FullFrame } from "../../../services/frame/frameService";
@@ -62,7 +62,7 @@ const Frame: React.FC = () => {
       </Slot>
 
       <Slot x={200} y={600} width={120} height={140}>
-        <CDItem onOpen={() => alert("CD opened!")} />
+        <ClockItem frameId={frame.id} />
       </Slot>
 
       <Slot x={400} y={600} width={120} height={140}>
