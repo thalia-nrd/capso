@@ -19,4 +19,11 @@ export const KeyModel = {
       data: { items },
     });
   },
+
+  async openKey(keyId: number) {
+    return await prisma.chest.findUnique({
+      where: { id: keyId },
+      select: { items: true },
+    });
+  }
 };

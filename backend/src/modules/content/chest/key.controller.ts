@@ -68,9 +68,11 @@ export const keyController = {
     try {
       const key = (req as any).key;
 
+      const items = await KeyModel.openKey(key.id);
+
       res.json({
         id: key.id,
-        items: key.items,
+        items: items?.items ?? [],
       });
     } catch (err) {
       console.error("OPEN key error:", err);
@@ -80,21 +82,23 @@ export const keyController = {
 
   addKeyContent: async (req: Request, res: Response) => {
     try {
-      const frameId = req.frameId!;
-
+      const key = (req as any).key;
       const { items } = req.body;
-      const key = await KeyModel.getKeyByFrameId(frameId);
 
-      if (!key) {
-        return res.status(404).json({ error: "key not found" });
+      if (!items || !Array.isArray(items)) {
+        return res.status(400).json({ error: "Items array is required" });
       }
 
-      const updatedKey = await KeyModel.addKeyContent(key.id, items);
+      const updatedItems = items.map(item => ({
+        ...item,
+        createdAt: item.createdAt ?? new Date().toISOString(),
+      }));
 
-      res.json(updatedKey);
-    }
-    catch (err) {
-      console.error("ADD key content error:", err);
+      const updated = await KeyModel.addKeyContent(key.id, updatedItems);
+
+      res.json(updated);
+    } catch (err) {
+      console.error("EDIT key content error:", err);
       res.status(500).json({ error: "Server error" });
     }
   },

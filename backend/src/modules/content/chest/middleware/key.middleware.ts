@@ -2,15 +2,27 @@ import { Request, Response, NextFunction } from 'express';
 import { KeyModel } from "../key.model";
 import { comparePassword } from "../../../../utils/bcrypt";
 
+declare global {
+    namespace Express {
+        interface Request {
+            key?: any;
+        }
+    }
+}
+
 export const verifyKeyAccess = async (
     req: Request,
     res: Response,
     next: NextFunction
 ) => {
     try {
-        const frameId = Number(req.params.frameId);
+        const frameId = Number(req.body.frameId);
 
-        const { passcode } = req.body;
+        if (!frameId || isNaN(frameId)) {
+            return res.status(400).json({ error: "frameId is required" });
+        }
+
+        const passcode = req.body?.passcode;
         if (!passcode) {
             return res.status(400).json({ error: "Passcode is required" });
         }
@@ -25,9 +37,9 @@ export const verifyKeyAccess = async (
             return res.status(400).json({ error: "Invalid passcode" });
         }
 
-        (req as any).key = key;
-
+        req.key = key;
         next();
+
     } catch (error) {
         next(error);
     }
