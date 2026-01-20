@@ -33,7 +33,7 @@ const Frame: React.FC = () => {
     <div
       style={{
         position: "relative",
-        width: 700,
+        width: 800,
         height: 900,
         backgroundImage: "url('/frame/frame.png')",
         backgroundSize: "cover",
@@ -41,31 +41,31 @@ const Frame: React.FC = () => {
         margin: "0 auto",
       }}
     >
-      <Slot x={180} y={200} width={120} height={140}>
-        <ChecklistItem frameId={frame.id} />
-      </Slot>
-
-      <Slot x={400} y={200} width={120} height={140}>
-        <NoteItem frameId={frame.id} />
-      </Slot>
-
-      <Slot x={120} y={400} width={120} height={140}>
-        <EnvelopeItem frameId={frame.id} />
-      </Slot>
-
-      <Slot x={300} y={400} width={120} height={140}>
-        <KeyItem frameId={frame.id} />
-      </Slot>
-
-      <Slot x={480} y={400} width={120} height={140}>
-        <PolaroidItem frameId={frame.id} />
-      </Slot>
-
-      <Slot x={200} y={600} width={120} height={140}>
+      <Slot x={250} y={220} width={120} height={140}>
         <ClockItem frameId={frame.id} />
       </Slot>
 
-      <Slot x={400} y={600} width={120} height={140}>
+      <Slot x={450} y={200} width={80} height={100}>
+        <NoteItem frameId={frame.id} />
+      </Slot>
+
+      <Slot x={200} y={400} width={80} height={100}>
+        <EnvelopeItem frameId={frame.id} />
+      </Slot>
+
+      <Slot x={355} y={400} width={80} height={100}>
+        <KeyItem frameId={frame.id} />
+      </Slot>
+
+      <Slot x={505} y={410} width={60} height={80}>
+        <PolaroidItem frameId={frame.id} />
+      </Slot>
+
+      <Slot x={250} y={550} width={100} height={100}>
+        <ChecklistItem frameId={frame.id} />
+      </Slot>
+
+      <Slot x={450} y={550} width={80} height={100}>
         <MirrorItem frameId={frame.id} />
       </Slot>
     </div>
