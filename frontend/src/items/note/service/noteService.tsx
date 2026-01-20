@@ -11,7 +11,6 @@ async function request<T>(
     headers: { "Content-Type": "application/json" },
   };
 
-  // Only attach body for methods that allow it
   if (data && method !== "GET" && method !== "DELETE") {
     options.body = JSON.stringify(data);
   }

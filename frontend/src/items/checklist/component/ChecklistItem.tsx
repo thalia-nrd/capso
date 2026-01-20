@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ChecklistModal from "../modal/ChecklistModal";
+import "../styles/checklist.css";
 
 interface ChecklistItemProps {
   frameId?: any;
@@ -17,13 +18,9 @@ const ChecklistItem: React.FC<ChecklistItemProps> = ({ frameId }) => {
   return (
     <>
       <img
-        src="content/checklist.png"
+        src="/content/checklist.png"
         alt="checklist"
-        style={{
-          width: "100%",
-          height: "100%",
-          cursor: "pointer",
-        }}
+        className="checklist-base"
         onClick={() => setOpen(true)}
       />
       {open && (

@@ -44,7 +44,7 @@ const ClockItem: React.FC<ClockItemProps> = ({ frameId }) => {
     <div className="clock-container">
       <img
         src="/content/clock.png"
-        alt="Clock"
+        alt="clock"
         className="clock-face"
       />
 

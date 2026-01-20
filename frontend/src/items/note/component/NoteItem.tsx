@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NotesModal from "../modal/NoteModal";
 import { getNotes } from "../service/noteService";
+import "../styles/note.css";
 
 interface NoteItemProps {
   frameId: any;
@@ -25,11 +26,11 @@ const NoteItem: React.FC<NoteItemProps> = ({ frameId }) => {
   }, [frameId]);
 
   return (
-    <>
+    <div className="note-wrapper">
       <img
-        src="content/postIts.png"
-        alt="Notes"
-        style={{ width: "100%", height: "100%", cursor: "pointer" }}
+        src="/content/postIts.png"
+        alt="notes"
+        className="note-base"
         onClick={() => setOpen(true)}
       />
 
@@ -40,7 +41,7 @@ const NoteItem: React.FC<NoteItemProps> = ({ frameId }) => {
           setNotes={setNotes}
         />
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MirrorModal from "../modal/MirrorModal";
+import "../styles/mirror.css";
 
 interface MirrorItemProps {
   frameId: any;
@@ -11,9 +12,9 @@ const MirrorItem: React.FC<MirrorItemProps> = ({ frameId }) => {
   return (
     <>
       <img
-        src="content/Mirror.png"
-        alt="Mirror"
-        style={{ width: "100%", height: "100%", cursor: "pointer" }}
+        src="/content/mirror.png"
+        alt="mirror"
+        className="mirror-base"
         onClick={() => setOpen(true)}
       />
 

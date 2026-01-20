@@ -45,27 +45,27 @@ const Frame: React.FC = () => {
         <ClockItem frameId={frame.id} />
       </Slot>
 
-      <Slot x={450} y={200} width={80} height={100}>
+      <Slot x={450} y={240} width={100} height={100}>
         <NoteItem frameId={frame.id} />
       </Slot>
 
-      <Slot x={200} y={400} width={80} height={100}>
+      <Slot x={200} y={400} width={120} height={100}>
         <EnvelopeItem frameId={frame.id} />
       </Slot>
 
-      <Slot x={355} y={400} width={80} height={100}>
+      <Slot x={365} y={400} width={80} height={100}>
         <KeyItem frameId={frame.id} />
       </Slot>
 
-      <Slot x={505} y={410} width={60} height={80}>
+      <Slot x={495} y={410} width={100} height={100}>
         <PolaroidItem frameId={frame.id} />
       </Slot>
 
-      <Slot x={250} y={550} width={100} height={100}>
+      <Slot x={270} y={545} width={85} height={100}>
         <ChecklistItem frameId={frame.id} />
       </Slot>
 
-      <Slot x={450} y={550} width={80} height={100}>
+      <Slot x={450} y={550} width={100} height={100}>
         <MirrorItem frameId={frame.id} />
       </Slot>
     </div>
