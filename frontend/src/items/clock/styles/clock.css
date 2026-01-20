@@ -8,7 +8,7 @@
 .clock-hand {
   position: absolute;
   left: 50%;
-  bottom: 50%;
+  bottom: 55%;
   transform-origin: bottom center;
   border-radius: 4px;
 }
