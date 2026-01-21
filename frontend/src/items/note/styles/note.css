@@ -1,6 +1,141 @@
+/* =========================
+   NOTE ITEM (trigger image)
+   ========================= */
+
 .note-base {
-    width: 100%;
-    height: 100%;
-    display: block;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+/* =========================
+   DIALOG (MODAL BEHAVIOR)
+   ========================= */
+
+/* Overlay (background fade) */
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 50;
+}
+
+/* Dialog content (centered modal) */
+.note-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 90%;
+  max-width: 900px;
+  max-height: 85vh;
+
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+
+  z-index: 51;
+
+  display: flex;
+  flex-direction: column;
+
+  animation: dialogFadeIn 0.2s ease-out;
+}
+
+/* Modal open animation */
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* =========================
+   NOTES MODAL LAYOUT
+   ========================= */
+
+.notes-modal {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  max-height: 420px;
+  overflow: hidden;
+}
+
+/* =========================
+   LEFT PANEL (NOTES LIST)
+   ========================= */
+
+.notes-panel {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border, #ddd);
+  padding-right: 1rem;
+}
+
+.notes-panel h3 {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.notes-panel button {
+  margin-bottom: 0.5rem;
+}
+
+/* Notes list */
+.notes-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.notes-panel li {
+  cursor: pointer;
+  padding: 0.4rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.15s;
+  user-select: none;
+}
+
+.notes-panel li:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.notes-panel li.active {
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   RIGHT PANEL (EDITOR)
+   ========================= */
+
+.editor-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-panel textarea {
+  flex: 1;
+  resize: none;
+  padding: 0.6rem;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border, #ccc);
+  min-height: 120px;
+}
+
+.editor-panel button {
+  align-self: flex-start;
+  margin-right: 0.5rem;
 }

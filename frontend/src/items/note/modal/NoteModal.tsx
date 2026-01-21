@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createNote, updateNote, deleteNote } from "../service/noteService";
+import "../styles/note.css";
 
 interface Note {
   id: number;
@@ -12,7 +13,11 @@ interface NotesModalProps {
   setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
 }
 
-const NotesModal: React.FC<NotesModalProps> = ({ frameId, notes, setNotes }) => {
+const NotesModal: React.FC<NotesModalProps> = ({
+  frameId,
+  notes,
+  setNotes,
+}) => {
   const [selected, setSelected] = useState<number | null>(null);
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,7 +40,6 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId, notes, setNotes }) => 
 
     try {
       if (selected !== null) {
-        // UPDATE
         const updated = await updateNote(frameId, selected.toString(), content);
         setNotes((prev) =>
           prev.map((n) =>
@@ -43,7 +47,6 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId, notes, setNotes }) => 
           )
         );
       } else {
-        // CREATE
         const created = await createNote(frameId, content);
         setNotes((prev) => [...prev, created]);
         setSelected(created.id);
@@ -72,15 +75,13 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId, notes, setNotes }) => 
       <div className="notes-panel">
         <h3>Your Notes</h3>
         <button onClick={startNewNote}>+ New Note</button>
+
         <ul>
           {notes.map((note) => (
             <li
               key={note.id}
               onClick={() => selectNote(note.id)}
-              style={{
-                cursor: "pointer",
-                fontWeight: selected === note.id ? "bold" : "normal",
-              }}
+              className={selected === note.id ? "active" : ""}
             >
               {note.content.slice(0, 20) || "(empty)"}
             </li>
@@ -100,7 +101,7 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId, notes, setNotes }) => 
         </button>
 
         {selected !== null && (
-          <button style={{ color: "red" }} onClick={removeNote}>
+          <button className="delete-btn" onClick={removeNote}>
             Delete
           </button>
         )}

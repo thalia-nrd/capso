@@ -6,6 +6,7 @@ import {
   editKeyItems,
   Key
 } from "../service/keyService";
+import { Dialog } from "../../../components/Dialog";
 import "../styles/key.css";
 import { uploadFileToCloudinary } from "../../../utils/uploadFiles";
 

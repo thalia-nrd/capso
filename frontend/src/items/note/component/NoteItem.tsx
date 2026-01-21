@@ -1,7 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NotesModal from "../modal/NoteModal";
 import { getNotes } from "../service/noteService";
 import "../styles/note.css";
+
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "../../../components/Dialog";
 
 interface NoteItemProps {
   frameId: any;
@@ -14,6 +22,8 @@ const NoteItem: React.FC<NoteItemProps> = ({ frameId }) => {
   >([]);
 
   useEffect(() => {
+    if (!open) return;
+
     const loadNotes = async () => {
       try {
         const res = await getNotes(frameId);
@@ -22,26 +32,32 @@ const NoteItem: React.FC<NoteItemProps> = ({ frameId }) => {
         console.error("Failed to load notes:", err);
       }
     };
+
     loadNotes();
-  }, [frameId]);
+  }, [frameId, open]);
 
   return (
-    <div className="note-wrapper">
-      <img
-        src="/content/postIts.png"
-        alt="notes"
-        className="note-base"
-        onClick={() => setOpen(true)}
-      />
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <img
+          src="/content/postIts.png"
+          alt="notes"
+          className="note-base"
+        />
+      </DialogTrigger>
 
-      {open && (
+      <DialogContent className="note-dialog">
+        <DialogHeader>
+          <DialogTitle>Your Notes</DialogTitle>
+        </DialogHeader>
+
         <NotesModal
           frameId={frameId}
           notes={notes}
           setNotes={setNotes}
         />
-      )}
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 
