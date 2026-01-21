@@ -24,10 +24,12 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@radix-ui/react-dialog": "^1.1.15",
     "@tailwindcss/postcss": "^4.1.17",
     "axios": "^1.13.2",
     "framer-motion": "^12.23.25",
     "react": "^18.3.1",
+    "react-dialog": "^0.1.0",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.67.0",
     "react-router-dom": "^6.30.2",
