@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { createNote, updateNote, deleteNote } from "../service/noteService";
+import React, { useState, useEffect } from "react";
+import {
+  getNotes,
+  createNote,
+  updateNote,
+  deleteNote,
+} from "../service/noteService";
 import "../styles/note.css";
 
 interface Note {
@@ -8,19 +13,28 @@ interface Note {
 }
 
 interface NotesModalProps {
-  frameId: string;
-  notes: Note[];
-  setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
+  frameId: any;
 }
 
-const NotesModal: React.FC<NotesModalProps> = ({
-  frameId,
-  notes,
-  setNotes,
-}) => {
+const NotesModal: React.FC<NotesModalProps> = ({ frameId }) => {
+  const [notes, setNotes] = useState<Note[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // ✅ Load notes when modal opens
+  useEffect(() => {
+    const loadNotes = async () => {
+      try {
+        const res = await getNotes(frameId);
+        setNotes(res);
+      } catch (err) {
+        console.error("Failed to load notes:", err);
+      }
+    };
+
+    loadNotes();
+  }, [frameId]);
 
   const selectNote = (id: number) => {
     const note = notes.find((n) => n.id === id);
@@ -40,7 +54,11 @@ const NotesModal: React.FC<NotesModalProps> = ({
 
     try {
       if (selected !== null) {
-        const updated = await updateNote(frameId, selected.toString(), content);
+        const updated = await updateNote(
+          frameId,
+          selected.toString(),
+          content
+        );
         setNotes((prev) =>
           prev.map((n) =>
             n.id === selected ? { ...n, content: updated.content } : n
@@ -73,7 +91,6 @@ const NotesModal: React.FC<NotesModalProps> = ({
   return (
     <div className="notes-modal">
       <div className="notes-panel">
-        <h3>Your Notes</h3>
         <button onClick={startNewNote}>+ New Note</button>
 
         <ul>

@@ -1,5 +1,5 @@
 /* =========================
-   NOTE ITEM (trigger image)
+   Note trigger (post-it)
    ========================= */
 
 .note-base {
@@ -10,74 +10,52 @@
 }
 
 /* =========================
-   DIALOG (MODAL BEHAVIOR)
+   Dialog container override
    ========================= */
 
-/* Overlay (background fade) */
-.dialog-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(2px);
-  z-index: 50;
-}
-
-/* Dialog content (centered modal) */
 .note-dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 90%;
-  max-width: 900px;
-  max-height: 85vh;
-
-  background: #fff;
-  border-radius: 12px;
-  padding: 1.25rem;
-
-  z-index: 51;
+  width: 100%;
+  max-width: 720px;
+  max-height: 80vh;
 
   display: flex;
   flex-direction: column;
 
-  animation: dialogFadeIn 0.2s ease-out;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transform: translateX(120px) translateY(-50%);
+
+  overflow: hidden;
 }
 
-/* Modal open animation */
-@keyframes dialogFadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -48%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
+/* Optional title spacing */
+.note-dialog h2 {
+  margin-bottom: 1rem;
 }
 
 /* =========================
-   NOTES MODAL LAYOUT
+   Notes modal layout
    ========================= */
 
 .notes-modal {
   display: flex;
   gap: 1rem;
   width: 100%;
-  max-height: 420px;
-  overflow: hidden;
+  height: 100%;
+  max-height: 60vh;
 }
 
 /* =========================
-   LEFT PANEL (NOTES LIST)
+   Left panel (list)
    ========================= */
 
 .notes-panel {
   width: 30%;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--border, #ddd);
+
+  border-right: 1px solid #ddd;
   padding-right: 1rem;
 }
 
@@ -87,7 +65,7 @@
 }
 
 .notes-panel button {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 /* Notes list */
@@ -96,6 +74,7 @@
   padding: 0;
   margin: 0;
   overflow-y: auto;
+  flex: 1;
 }
 
 .notes-panel li {
@@ -103,7 +82,6 @@
   padding: 0.4rem 0.5rem;
   border-radius: 4px;
   transition: background 0.15s;
-  user-select: none;
 }
 
 .notes-panel li:hover {
@@ -112,11 +90,11 @@
 
 .notes-panel li.active {
   font-weight: 600;
-  background: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 /* =========================
-   RIGHT PANEL (EDITOR)
+   Right panel (editor)
    ========================= */
 
 .editor-panel {
@@ -128,14 +106,27 @@
 .editor-panel textarea {
   flex: 1;
   resize: none;
-  padding: 0.6rem;
+
+  padding: 0.75rem;
   margin-bottom: 0.75rem;
-  border-radius: 6px;
-  border: 1px solid var(--border, #ccc);
-  min-height: 120px;
+
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 0.95rem;
 }
 
 .editor-panel button {
   align-self: flex-start;
-  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Delete button */
+.delete-btn {
+  background: transparent;
+  color: #c0392b;
+}
+
+.delete-btn:hover {
+  text-decoration: underline;
 }
