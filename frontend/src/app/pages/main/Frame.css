@@ -1,0 +1,53 @@
+/* ---- Layout Wrapper ---- */
+.frame-wrapper {
+  position: relative;
+  width: 800px;
+  margin: 40px auto;
+}
+
+/* ---- Frame Stage ---- */
+.frame-stage {
+  position: relative;
+  transition:
+    filter 0.35s ease,
+    transform 0.35s ease;
+}
+
+/* Subtle backgrounding — NOT killing it */
+.frame-stage.dimmed {
+  filter: brightness(1.2) saturate(0.9);
+  transform: scale(0.98);
+  opacity: 10%;
+  pointer-events: none;
+}
+
+/* ---- Panel (NOT a classic modal) ---- */
+.frame-panel {
+  position: absolute;
+  top: 30%;
+  width: 420px;
+  max-height: 70%;
+  background: #fdfbf7;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  z-index: 30;
+  pointer-events: auto;
+}
+
+/* ---- Expansion Animation ---- */
+.zoom-panel {
+  animation: zoomInPanel 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: left center;
+}
+
+@keyframes zoomInPanel {
+  from {
+    transform: translateX(-14px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
