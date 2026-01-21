@@ -84,17 +84,19 @@ const Frame: React.FC = () => {
         </Slot>
       </div>
 
+      {activeItem && <div className="frame-shadow-veil" />}
+
       {/* FRAME-ANCHORED PANEL */}
       <Dialog
         open={activeItem !== null}
         onOpenChange={() => setActiveItem(null)}
         modal={false}
       >
-        <DialogContent className="frame-panel zoom-panel">
+        <DialogContent className="frame-panel zoom-panel" data-frame-panel>
           {activeItem === "notes" && (
             <>
-              <DialogHeader>
-                <DialogTitle>Your Notes</DialogTitle>
+              <DialogHeader className="frame-panel-header">
+                <DialogTitle className="dialog-title">Your Notes</DialogTitle>
               </DialogHeader>
 
               <NotesModal frameId={frame.id} />
