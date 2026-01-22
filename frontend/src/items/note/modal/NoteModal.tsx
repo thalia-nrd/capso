@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import {
   getNotes,
   createNote,
@@ -6,6 +7,7 @@ import {
   deleteNote,
 } from "../service/noteService";
 import "../styles/note.css";
+import NoteItem from "../component/Note";
 
 interface Note {
   id: number;
@@ -89,39 +91,49 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId }) => {
   };
 
   return (
-    <div className="notes-modal">
-      <div className="notes-panel">
-        <button onClick={startNewNote}>+ New Note</button>
+    <div className="note-modal-container">
 
-        <ul>
-          {notes.map((note) => (
-            <li
-              key={note.id}
-              onClick={() => selectNote(note.id)}
-              className={selected === note.id ? "active" : ""}
-            >
-              {note.content.slice(0, 20) || "(empty)"}
-            </li>
-          ))}
-        </ul>
+      <DialogPrimitive.Close asChild>
+        <button className="close-button">
+          x
+        </button>
+      </DialogPrimitive.Close>
+
+      <div className="note-modal">
+
+        <div className="editor-panel">
+          <textarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder="Write your note..."
+          />
+
+          <div className="editor-buttons">
+
+            <button onClick={saveNote} disabled={loading || !content.trim()}>
+              {loading ? "Saving..." : "Save"}
+            </button>
+
+            {selected !== null && (
+              <button className="delete-btn" onClick={removeNote}>
+                Delete
+              </button>
+            )}
+
+          </div>
+        </div>
       </div>
 
-      <div className="editor-panel">
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Write your note..."
-        />
-
-        <button onClick={saveNote} disabled={loading || !content.trim()}>
-          {loading ? "Saving..." : "Save"}
-        </button>
-
-        {selected !== null && (
-          <button className="delete-btn" onClick={removeNote}>
-            Delete
-          </button>
-        )}
+      <div className="note-grid">
+        {notes.map((note) => (
+          <NoteItem
+            key={note.id}
+            id={note.id}
+            content={note.content}
+            isActive={selected === note.id}
+            onSelect={selectNote}
+          />
+        ))}
       </div>
     </div>
   );
