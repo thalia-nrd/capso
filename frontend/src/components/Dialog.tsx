@@ -57,19 +57,11 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       data-slot="dialog-content"
-      className="fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95"
+      className="fixed top-6 right-6 z-50 w-full max-w-lg rounded-lg bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95"
       {...props}
     >
       {children}
 
-      {showCloseButton && (
-        <DialogPrimitive.Close
-          data-slot="dialog-close"
-          className="absolute right-4 top-4 opacity-70 transition-opacity hover:opacity-100 focus:outline-none"
-        >
-          <span className="sr-only">Close</span>
-        </DialogPrimitive.Close>
-      )}
     </DialogPrimitive.Content>
   </DialogPortal>
 ));
