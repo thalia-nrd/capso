@@ -1,6 +1,6 @@
 import { keyController } from "./key.controller";
 import { Router } from "express";
-import { verifyKeyAccess } from "./middleware/key.middleware";
+import { requireKeyExists, verifyKeyAccess } from "./middleware/key.middleware";
 
 const router = Router();
 
@@ -9,6 +9,6 @@ router.get("/signature", keyController.getUploadSignature);
 router.post("/", keyController.createKey);
 router.get("/", keyController.getKey);
 router.post("/open", verifyKeyAccess, keyController.openKey);
-router.put("/items", verifyKeyAccess, keyController.addKeyContent);
+router.put("/items", requireKeyExists, keyController.addKeyContent);
 
 export default router;
