@@ -11,6 +11,7 @@ import ClockItem from "../../../items/clock/component/ClockItem";
 import MirrorItem from "../../../items/mirror/component/MirrorItem";
 
 import NotesModal from "../../../items/note/modal/NoteModal";
+import KeyModal from "../../../items/key/modal/KeyModal";
 
 import {
   Dialog,
@@ -22,7 +23,7 @@ import {
 import { getUserFrame, FullFrame } from "../../../services/frame/frameService";
 import "./Frame.css";
 
-type ActiveItem = "notes" | null;
+type ActiveItem = "notes" | "key" | null;
 
 const Frame: React.FC = () => {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ const Frame: React.FC = () => {
         </Slot>
 
         <Slot x={365} y={400} width={80} height={100}>
-          <KeyItem frameId={frame.id} />
+          <KeyItem onOpen={() => setActiveItem("key")} />
         </Slot>
 
         <Slot x={495} y={410} width={100} height={100}>
@@ -93,15 +94,29 @@ const Frame: React.FC = () => {
         modal={false}
       >
         <DialogContent className="frame-panel zoom-panel" data-frame-panel>
-          {activeItem === "notes" && (
-            <>
-              <DialogHeader className="frame-panel-header">
-                <DialogTitle className="dialog-title">Your Notes</DialogTitle>
-              </DialogHeader>
+        {activeItem === "notes" && (
+          <>
+            <DialogHeader className="frame-panel-header">
+              <DialogTitle className="dialog-title">Your Notes</DialogTitle>
+            </DialogHeader>
 
-              <NotesModal frameId={frame.id} />
-            </>
-          )}
+            <NotesModal frameId={frame.id} />
+          </>
+        )}
+
+        {activeItem === "key" && (
+          <>
+            <DialogHeader className="frame-panel-header">
+              <DialogTitle className="dialog-title">Your Keybox</DialogTitle>
+            </DialogHeader>
+
+            <KeyModal
+              frameId={frame.id.toString()}
+              onClose={() => setActiveItem(null)}
+            />
+          </>
+        )}
+
         </DialogContent>
       </Dialog>
     </div>
