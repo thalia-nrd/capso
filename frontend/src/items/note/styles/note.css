@@ -1,5 +1,5 @@
 /* =========================
-   NOTE ITEM (trigger image)
+   Note trigger (post-it)
    ========================= */
 
 .note-base {
@@ -10,113 +10,52 @@
 }
 
 /* =========================
-   DIALOG (MODAL BEHAVIOR)
+   Dialog container override
    ========================= */
 
-/* Overlay (background fade) */
-.dialog-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(2px);
-  z-index: 50;
-}
-
-/* Dialog content (centered modal) */
 .note-dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 90%;
-  max-width: 900px;
-  max-height: 85vh;
-
-  background: #fff;
-  border-radius: 12px;
-  padding: 1.25rem;
-
-  z-index: 51;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
 
-  animation: dialogFadeIn 0.2s ease-out;
-}
+  border-radius: 12px;
+  padding: 1.5rem;
+  transform: translateX(120px) translateY(-50%);
 
-/* Modal open animation */
-@keyframes dialogFadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -48%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
-/* =========================
-   NOTES MODAL LAYOUT
-   ========================= */
-
-.notes-modal {
-  display: flex;
-  gap: 1rem;
-  width: 100%;
-  max-height: 420px;
   overflow: hidden;
 }
 
+/* Optional title spacing */
+.note-dialog h2 {
+  margin-bottom: 1rem;
+}
+
 /* =========================
-   LEFT PANEL (NOTES LIST)
+   Notes modal layout
    ========================= */
 
-.notes-panel {
-  width: 30%;
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  align-self: flex-end;
+  margin-bottom: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.note-modal-container {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--border, #ddd);
-  padding-right: 1rem;
-}
-
-.notes-panel h3 {
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.notes-panel button {
-  margin-bottom: 0.5rem;
-}
-
-/* Notes list */
-.notes-panel ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  overflow-y: auto;
-}
-
-.notes-panel li {
-  cursor: pointer;
-  padding: 0.4rem 0.5rem;
-  border-radius: 4px;
-  transition: background 0.15s;
-  user-select: none;
-}
-
-.notes-panel li:hover {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.notes-panel li.active {
-  font-weight: 600;
-  background: rgba(0, 0, 0, 0.08);
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  max-height: 60vh;
 }
 
 /* =========================
-   RIGHT PANEL (EDITOR)
+   Right panel (editor)
    ========================= */
 
 .editor-panel {
@@ -128,14 +67,73 @@
 .editor-panel textarea {
   flex: 1;
   resize: none;
-  padding: 0.6rem;
+
+  padding: 0.75rem;
   margin-bottom: 0.75rem;
-  border-radius: 6px;
-  border: 1px solid var(--border, #ccc);
-  min-height: 120px;
+
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 0.95rem;
 }
 
 .editor-panel button {
   align-self: flex-start;
-  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.editor-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Delete button */
+.delete-btn {
+  background: transparent;
+  color: #c0392b;
+}
+
+.delete-btn:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   Individual notes
+   ========================= */
+
+.note-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.note-item {
+  width: 120px;
+  height: 120px;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-family: inherit;
+}
+
+.note-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.note-item.active {
+  outline: 2px solid #000;
+}
+
+.note-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  word-break: break-word;
 }
