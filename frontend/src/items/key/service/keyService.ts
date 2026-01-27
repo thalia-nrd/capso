@@ -37,6 +37,7 @@ export interface KeyItems {
   type: string;
   name?: string;
   description?: string;
+  createdAt: string;
   uploadedAt: string;
 }
 
@@ -59,5 +60,5 @@ export const createKey = (passcode: string): Promise<Key> =>
 export const openKey = (frameId: number, passcode: string): Promise<Key> =>
   request<Key>("/frame/key/open", "POST", { frameId, passcode });
 
-export const editKeyItems = (frameId: number, items: KeyItems[], passcode: string): Promise<Key> =>
-  request<Key>("/frame/key/items", "PUT", { frameId, items, passcode });
+export const editKeyItems = (frameId: number, items: KeyItems[]): Promise<Key> =>
+  request<Key>("/frame/key/items", "PUT", { frameId, items });
