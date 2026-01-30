@@ -87,10 +87,10 @@
   margin-bottom: 10px;
 }
 
-.polaroid-modal-header button {
+#polaroid-modal-close-btn {
+  top: 0;
+  right: 0;
   position: absolute;
-  top: 0px;
-  right: 0px;
   background: transparent;
   border: none;
   font-size: 1rem;
@@ -103,6 +103,7 @@
   font-size: 1.1rem;
   text-align: center;
   font-weight: 500;
+  margin-top: 10px;
 }
 
 /* File input */
