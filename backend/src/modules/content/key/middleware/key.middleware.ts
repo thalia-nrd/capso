@@ -48,17 +48,17 @@ export const verifyKeyAccess = async (
 
         const passcode = req.body?.passcode;
         if (!passcode) {
-            return res.status(400).json({ error: "Passcode is required" });
+            return res.status(400).json({ error: "passcode is required" });
         }
 
         const key = await KeyModel.getKeyByFrameId(frameId);
         if (!key) {
-            return res.status(404).json({ error: "Key not found" });
+            return res.status(404).json({ error: "key not found" });
         }
 
         const isValid = await comparePassword(passcode, key.passcode);
         if (!isValid) {
-            return res.status(400).json({ error: "Invalid passcode" });
+            return res.status(400).json({ error: "invalid passcode" });
         }
 
         req.key = key;
