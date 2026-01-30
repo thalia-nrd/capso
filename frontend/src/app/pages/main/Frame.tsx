@@ -74,7 +74,9 @@ const Frame: React.FC = () => {
         </Slot>
 
         <Slot x={495} y={410} width={100} height={100}>
-          <PolaroidItem frameId={frame.id} />
+          <PolaroidItem
+            frameId={frame.id}
+          />
         </Slot>
 
         <Slot x={270} y={545} width={85} height={100}>
@@ -130,7 +132,6 @@ const Frame: React.FC = () => {
             />
           </>
         )}
-
         </DialogContent>
       </Dialog>
     </div>
