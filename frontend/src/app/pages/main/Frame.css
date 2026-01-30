@@ -23,9 +23,8 @@
 /* ---- Panel (NOT a classic modal) ---- */
 .frame-panel {
   position: absolute;
-  top: 28%;
-  max-width: 70%;
-  max-height: 70%;
+  max-width: 80%;
+  max-height: 80%;
   padding: 22px;
 
   background: rgba(253, 251, 247, 0.92);
@@ -92,7 +91,20 @@
 }
 
 .dialog-title {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   opacity: 0.85;
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  background: rgba(0, 0, 0, 0.5); /* optional overlay */
+  z-index: 1000;
 }

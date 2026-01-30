@@ -12,6 +12,7 @@ import MirrorItem from "../../../items/mirror/component/MirrorItem";
 
 import NotesModal from "../../../items/note/modal/NoteModal";
 import KeyModal from "../../../items/key/modal/KeyModal";
+import EnvelopeModal from "../../../items/envelope/modal/EnvelopeModal";
 
 import {
   Dialog,
@@ -23,7 +24,7 @@ import {
 import { getUserFrame, FullFrame } from "../../../services/frame/frameService";
 import "./Frame.css";
 
-type ActiveItem = "notes" | "key" | null;
+type ActiveItem = "notes" | "key" | "envelope" | null;
 
 const Frame: React.FC = () => {
   const navigate = useNavigate();
@@ -65,7 +66,7 @@ const Frame: React.FC = () => {
         </Slot>
 
         <Slot x={200} y={400} width={120} height={100}>
-          <EnvelopeItem frameId={frame.id} />
+          <EnvelopeItem onOpen={() => setActiveItem("envelope")} />
         </Slot>
 
         <Slot x={365} y={400} width={80} height={100}>
@@ -111,6 +112,19 @@ const Frame: React.FC = () => {
             </DialogHeader>
 
             <KeyModal
+              frameId={frame.id.toString()}
+              onClose={() => setActiveItem(null)}
+            />
+          </>
+        )}
+
+        {activeItem === "envelope" && (
+          <>
+            <DialogHeader className="frame-panel-header">
+              <DialogTitle className="dialog-title">Your Envelope</DialogTitle>
+            </DialogHeader>
+
+            <EnvelopeModal
               frameId={frame.id.toString()}
               onClose={() => setActiveItem(null)}
             />

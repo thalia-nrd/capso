@@ -1,24 +1,19 @@
 import React, { useState } from "react";
-import EnvelopeModal from "../modal/EnvelopeModal";
 import "../styles/envelope.css";
 
 interface EnvelopeItemProps {
-  frameId: any;
+  onOpen: () => void;
 }
 
-const EnvelopeItem: React.FC<EnvelopeItemProps> = ({ frameId }) => {
-  const [open, setOpen] = useState(false);
-
+const EnvelopeItem: React.FC<EnvelopeItemProps> = ({ onOpen }) => {
   return (
-    <div className="envelope-wrapper">
-      <img
-        src="/content/envelope.png"
-        alt="envelope"
-        className="envelope-base"
-        onClick={() => setOpen(true)}
-      />
-      {open && <EnvelopeModal frameId={frameId} />}
-    </div>
+    <img
+      src="/content/envelope.png"
+      alt="envelope"
+      className="envelope-base"
+      onClick={onOpen}
+      style={{ cursor: "pointer", width: "100%", height: "100%" }}
+    />
   );
 };
 

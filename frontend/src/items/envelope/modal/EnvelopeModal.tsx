@@ -1,57 +1,81 @@
 import React, { useState, useEffect } from "react";
-import { Journal, JournalEntry, getJournal, createJournal, openJournal, editJournalEntries } from "../service/envelopeService";
+import {
+  Journal,
+  JournalEntry,
+  getJournal,
+  createJournal,
+  openJournal,
+  editJournalEntries,
+} from "../service/envelopeService";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import "../styles/envelope.css";
 
 interface EnvelopeModalProps {
   frameId: string;
+  onClose: () => void;
 }
 
-const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId }) => {
+const groupEntriesByDay = (entries: JournalEntry[]) => {
+  const groups: Record<string, JournalEntry[]> = {};
+
+  entries.forEach((entry) => {
+    const day = new Date(entry.createdAt).toDateString();
+    if (!groups[day]) groups[day] = [];
+    groups[day].push(entry);
+  });
+
+  return Object.entries(groups).sort(
+    ([a], [b]) => new Date(a).getTime() - new Date(b).getTime()
+  );
+};
+
+const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId, onClose }) => {
   const [journal, setJournal] = useState<Journal | null>(null);
   const [loading, setLoading] = useState(false);
   const [passcode, setPasscode] = useState("");
   const [newEntry, setNewEntry] = useState("");
   const [isOpened, setIsOpened] = useState(false);
+  const [currentDayIndex, setCurrentDayIndex] = useState(0);
 
-  // check if journal exists
   useEffect(() => {
-    const fetchJournal = async () => {
+    const loadJournal = async () => {
       setLoading(true);
       try {
         const data = await getJournal(frameId);
         setJournal(data);
-      } catch (err) {
-        console.log("No journal exists yet. Will need to create one.");
+      } catch {
         setJournal(null);
       } finally {
         setLoading(false);
       }
     };
-    fetchJournal();
+
+    loadJournal();
   }, [frameId]);
 
-  const handleCreateJournal = async () => {
+  const handleCreate = async () => {
     if (!passcode.trim()) return;
     setLoading(true);
+
     try {
-      const newJournal = await createJournal(frameId, passcode);
-      setJournal(newJournal);
+      const created = await createJournal(frameId, passcode);
+      setJournal(created);
       setIsOpened(true);
-    } catch (err) {
-      console.error("Failed to create journal:", err);
+      setPasscode("");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleOpenJournal = async () => {
+  const handleOpen = async () => {
     if (!passcode.trim()) return;
     setLoading(true);
+
     try {
       const opened = await openJournal(frameId, passcode);
       setJournal(opened);
       setIsOpened(true);
-    } catch (err) {
-      console.error("Failed to open journal:", err);
+      setPasscode("");
     } finally {
       setLoading(false);
     }
@@ -59,86 +83,132 @@ const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId }) => {
 
   const addEntry = () => {
     if (!newEntry.trim() || !journal) return;
-    const updatedEntries: JournalEntry[] = [
+
+    const updatedEntries = [
       ...journal.entries,
-      { content: newEntry, createdAt: new Date().toISOString() },
+      {
+        content: newEntry,
+        createdAt: new Date().toISOString(),
+      },
     ];
+
     setJournal({ ...journal, entries: updatedEntries });
     setNewEntry("");
+
+    const grouped = groupEntriesByDay(updatedEntries);
+    setCurrentDayIndex(grouped.length - 1);
   };
 
   const saveEntries = async () => {
     if (!journal) return;
     setLoading(true);
+
     try {
-      const updated = await editJournalEntries(frameId, journal.entries);
+      const updated = await editJournalEntries(
+        frameId,
+        journal.entries
+      );
       setJournal(updated);
-    } catch (err) {
-      console.error("Failed to save entries:", err);
     } finally {
       setLoading(false);
     }
   };
 
+  const days = journal ? groupEntriesByDay(journal.entries) : [];
+  const currentDay = days[currentDayIndex];
+
+  const handleClose = () => {
+    setPasscode("");
+    setIsOpened(false);
+    setJournal(null);
+    onClose();
+  };
+
   return (
-    <div className="envelope-modal">
-      <div className="envelope-content">
+    <div className="envelope-modal-container">
+      <DialogPrimitive.Close asChild>
+        <button className="close-button" onClick={handleClose}>
+          x
+        </button>
+      </DialogPrimitive.Close>
+
+      <div className="envelope-modal">
         {loading && <p>Loading...</p>}
 
+        {/* CREATE */}
         {!loading && !journal && (
-          <>
-            <h3>Create Your Journal</h3>
+          <div className="envelope-panel center">
             <input
               type="password"
-              placeholder="Set a passcode"
+              placeholder="set a passcode"
               value={passcode}
               onChange={(e) => setPasscode(e.target.value)}
             />
-            <button onClick={handleCreateJournal} disabled={!passcode.trim()}>
-              {loading ? "Creating..." : "Create Journal"}
-            </button>
-          </>
+            <button onClick={handleCreate}>create</button>
+          </div>
         )}
 
+        {/* LOCKED */}
         {!loading && journal && !isOpened && (
-          <>
-            <h3>Enter Passcode to Open Journal</h3>
+          <div className="envelope-panel center">
             <input
               type="password"
-              placeholder="Enter passcode"
+              placeholder="enter passcode"
               value={passcode}
               onChange={(e) => setPasscode(e.target.value)}
             />
-            <button onClick={handleOpenJournal} disabled={!passcode.trim()}>
-              {loading ? "Opening..." : "Open Journal"}
-            </button>
-          </>
+            <button onClick={handleOpen}>open</button>
+          </div>
         )}
 
+        {/* OPENED */}
         {!loading && journal && isOpened && (
-          <>
-            <h3>Journal Entries</h3>
-            <ul>
-              {journal.entries.map((entry, idx) => (
-                <li key={idx}>
-                  <span>{entry.content}</span>
-                  <small>{new Date(entry.createdAt).toLocaleString()}</small>
-                </li>
+          <div className="envelope-panel">
+            <div className="journal-nav">
+              <button
+                onClick={() =>
+                  setCurrentDayIndex((i) => Math.max(i - 1, 0))
+                }
+                disabled={currentDayIndex === 0}
+              >
+                ←
+              </button>
+
+              <h4>{currentDay?.[0]}</h4>
+
+              <button
+                onClick={() =>
+                  setCurrentDayIndex((i) =>
+                    Math.min(i + 1, days.length - 1)
+                  )
+                }
+                disabled={currentDayIndex === days.length - 1}
+              >
+                →
+              </button>
+            </div>
+
+            <div className="journal-page">
+              {currentDay?.[1].map((entry, idx) => (
+                <p key={idx} className="journal-entry">
+                  {entry.content}
+                </p>
               ))}
-            </ul>
+            </div>
 
             <textarea
               value={newEntry}
               onChange={(e) => setNewEntry(e.target.value)}
-              placeholder="Add new entry..."
+              placeholder="write something..."
             />
-            <button onClick={addEntry} disabled={!newEntry.trim()}>
-              Add Entry
-            </button>
-            <button onClick={saveEntries} disabled={loading}>
-              {loading ? "Saving..." : "Save Journal"}
-            </button>
-          </>
+
+            <div className="journal-actions">
+              <button onClick={addEntry}>add entry</button>
+              <button onClick={saveEntries}>
+                {loading ? "saving..." : "save"}
+              </button>
+            </div>
+          </div>
         )}
       </div>
     </div>
