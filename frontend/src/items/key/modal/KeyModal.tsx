@@ -129,7 +129,6 @@ const KeyModal: React.FC<KeyModalProps> = ({ frameId, onClose }) => {
         {/* CREATE */}
         {!loading && !keyData && (
           <div className="key-panel center">
-            <h3>Create a Key</h3>
             <input
               type="password"
               placeholder="Set a passcode"
