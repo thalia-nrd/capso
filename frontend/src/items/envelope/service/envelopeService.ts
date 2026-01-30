@@ -14,20 +14,19 @@ async function request<T>(
     });
 
     if (!response.ok) {
-      let errorMessage = "Request failed";
+      let error = "Request failed";
       try {
-        const errorBody = await response.json();
-        if (errorBody?.message) errorMessage = errorBody.message;
+        const body = await response.json();
+        if (body?.error) error = body.error;
       } catch {}
-      throw new Error(errorMessage);
+      throw new Error(error);
     }
 
-    // Some endpoints (DELETE) return empty body
     const text = await response.text();
     return text ? JSON.parse(text) : ({} as T);
   } catch (err: any) {
     if (err instanceof TypeError && err.message.includes("Failed to fetch")) {
-      throw new Error("Cannot reach server. Please try again later.");
+      throw new Error("Cannot reach server.");
     }
     throw err;
   }
@@ -42,17 +41,29 @@ export interface Journal {
   id: number;
   frameId: string;
   entries: JournalEntry[];
-  passcode?: string; // optional on frontend
+  passcode?: string;
 }
 
 export const getJournal = (frameId: string): Promise<Journal> =>
-  request<Journal>(`/frame/journal`, "GET");
+  request<Journal>("/frame/journal", "GET");
 
-export const createJournal = (frameId: string, passcode: string): Promise<Journal> =>
-  request<Journal>(`/frame/journal`, "POST", { passcode });
+export const createJournal = (
+  frameId: string,
+  passcode: string
+): Promise<Journal> =>
+  request<Journal>("/frame/journal", "POST", { passcode });
 
-export const openJournal = (frameId: string, passcode: string): Promise<Journal> =>
-  request<Journal>(`/frame/journal/open`, "POST", { passcode });
+export const openJournal = (
+  frameId: string,
+  passcode: string
+): Promise<Journal> =>
+  request<Journal>("/frame/journal/open", "POST", { frameId, passcode });
 
-export const editJournalEntries = (frameId: string, entries: JournalEntry[]): Promise<Journal> =>
-  request<Journal>(`/frame/journal/entries`, "PUT", { entries });
+export const editJournalEntries = (
+  frameId: string,
+  entries: JournalEntry[]
+): Promise<Journal> =>
+  request<Journal>("/frame/journal/entries", "PUT", {
+    frameId,
+    entries,
+  });
