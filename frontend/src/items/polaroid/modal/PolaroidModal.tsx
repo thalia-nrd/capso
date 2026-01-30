@@ -5,6 +5,7 @@ import {
   updatePolaroid,
 } from "../service/polaroidService";
 import { uploadImageToCloudinary } from "../../../utils/uploadImage";
+import "../styles/polaroid.css";
 
 interface PolaroidModalProps {
   frameId: string;
@@ -21,7 +22,7 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
   const [error, setError] = useState("");
   const [existingImage, setExistingImage] = useState<string | null>(null);
 
-  // 1️⃣ Load existing polaroid on mount
+  // Load existing polaroid
   useEffect(() => {
     async function load() {
       try {
@@ -36,9 +37,7 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
     load();
   }, [frameId]);
 
-  const handleImageChange = async (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -57,11 +56,9 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
       setError("");
       setIsUploading(true);
 
-      // 2️⃣ Upload to Cloudinary
       const result = await uploadImageToCloudinary(file, frameId);
       const imageUrl = result.secure_url;
 
-      // 3️⃣ Save to DB
       const polaroids = await getPolaroid(frameId, "");
       if (polaroids.length > 0) {
         await updatePolaroid(frameId, polaroids[0].id.toString(), imageUrl);
@@ -69,10 +66,8 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
         await createPolaroid(frameId, imageUrl);
       }
 
-      // 4️⃣ Update UI
       setExistingImage(imageUrl);
       setUrl(imageUrl);
-
       onClose();
     } catch (err) {
       console.error(err);
@@ -83,18 +78,19 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
   };
 
   return (
-    <div style={styles.overlay}>
-      <div style={styles.modal}>
-        <h2>Upload Polaroid Image</h2>
+    <div className="polaroid-modal-overlay">
+      <div className="polaroid-modal">
+        <div className="polaroid-modal-header">
+          <h2>upload polaroid image</h2>
+          <button onClick={() => onClose()}>x</button>
+        </div>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p className="polaroid-error">{error}</p>}
 
-        {/* 5️⃣ Show current image */}
         {existingImage && (
           <img
             src={existingImage}
-            alt="Current Polaroid"
-            style={{ width: "100%", borderRadius: "6px", marginBottom: "10px" }}
+            alt="current polaroid"
           />
         )}
 
@@ -103,38 +99,12 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
           accept="image/*"
           onChange={handleImageChange}
           disabled={isUploading}
-          style={styles.input}
         />
 
-        {isUploading && <p>Uploading…</p>}
+        {isUploading && <p className="polaroid-uploading">uploading…</p>}
       </div>
     </div>
   );
-};
-
-const styles = {
-  overlay: {
-    position: "fixed" as const,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: "rgba(0,0,0,0.2)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modal: {
-    background: "white",
-    padding: "20px",
-    borderRadius: "8px",
-    minWidth: "300px",
-  },
-  input: {
-    width: "100%",
-    marginBottom: "10px",
-    padding: "6px",
-  },
 };
 
 export default PolaroidModal;

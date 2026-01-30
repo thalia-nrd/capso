@@ -42,7 +42,7 @@ const PolaroidItem: React.FC<PolaroidItemProps> = ({ frameId }) => {
 
         <div className="polaroid-content">
           {loading ? (
-            <p className="polaroid-loading">Loading...</p>
+            <p className="polaroid-loading">loading...</p>
           ) : imageUrl ? (
             <img
               src={imageUrl}
@@ -52,12 +52,11 @@ const PolaroidItem: React.FC<PolaroidItemProps> = ({ frameId }) => {
               style={{ cursor: "pointer" }}
             />
           ) : (
-
             <button
               className="polaroid-upload-btn"
               onClick={() => setOpen(true)}
             >
-              Upload photo
+              upload photo
             </button>
           )}
         </div>
