@@ -54,9 +54,11 @@ export const journalController = {
     try {
       const journal = (req as any).journal;
 
+      const entries = await journalModel.openJournal(journal.id);
+
       res.json({
         id: journal.id,
-        entries: journal.entries,
+        entries: entries?.entries ?? [],
       });
     } catch (err) {
       console.error("OPEN journal error:", err);
