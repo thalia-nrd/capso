@@ -33,7 +33,7 @@ async function request<T>(endpoint: string, data?: any, method: string = "GET"):
 
 export const getMirrorFact = async (frameId: string) => {
   const res = await request<{
-    frameId: string;
+    frameId: any;
     fact: {
       id: string;
       text: string;

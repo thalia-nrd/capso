@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { getMirrorFact } from "../service/mirrorService";
+import "../styles/mirror.css";
 
-interface MirrorModalProps {
-  frameId: string;
+interface MirrorPopoverProps {
+  frameId: any;
+  onClose: () => void;
 }
 
-const MirrorModal: React.FC<MirrorModalProps> = ({ frameId }) => {
+const MirrorPopover: React.FC<MirrorPopoverProps> = ({ frameId, onClose }) => {
   const [fact, setFact] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -13,27 +15,30 @@ const MirrorModal: React.FC<MirrorModalProps> = ({ frameId }) => {
     setLoading(true);
     try {
       const res = await getMirrorFact(frameId);
-      setFact(res.fact); // only the text
-    } catch (error) {
-      console.error("Your magic mirror is asleep", error);
-      setFact("Could not fetch a fact right now.");
+      setFact(res.fact);
+    } catch {
+      setFact("the mirror is silent today…");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="mirror-modal">
+    <div className="mirror-popover">
+      <button className="mirror-close" onClick={onClose}>×</button>
+      
       <div className="mirror-content">
-        <button onClick={fetchFact}>
-          mirror mirror on the wall...
+        <span className="mirror-sparkle">✦</span>
+
+        <button className="mirror-ask" onClick={fetchFact}>
+          mirror mirror on the wall…
         </button>
 
-        {loading && <p>✨ consulting the magic mirror...</p>}
-        {!loading && fact && <p>{fact}</p>}
+        <span className="mirror-sparkle">✧</span>
       </div>
+      {!loading && fact && <p className="mirror-fact">{fact}</p>}
     </div>
   );
 };
 
-export default MirrorModal;
+export default MirrorPopover;
