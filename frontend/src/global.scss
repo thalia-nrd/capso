@@ -22,3 +22,23 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-title);
   text-transform: lowercase;
 }
+
+p {
+  text-transform: lowercase;
+}
+
+button {
+  font-family: var(--font-body);
+  text-transform: lowercase;
+  text-align: center;
+}
+
+
+input, textarea, select {
+  font-family: var(--font-body);
+  text-transform: lowercase;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

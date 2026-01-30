@@ -1,20 +1,27 @@
+/* =========================
+   Polaroid trigger wrapper
+   ========================= */
+
 .polaroid-wrapper {
   position: relative;
   width: 110px;
   height: 130px;
+  cursor: pointer;
 }
 
+/* Base polaroid image */
 .polaroid-base {
   width: 100%;
   height: 100%;
   display: block;
 }
 
+/* Inner content (photo or upload button) */
 .polaroid-content {
   position: absolute;
   top: 25px;
   left: 21px;
-  rotate: calc(5deg);
+  rotate: 5deg;
   max-width: 68px;
   max-height: 80px;
 
@@ -24,27 +31,105 @@
   justify-content: center;
 }
 
+/* Uploaded photo */
 .polaroid-photo {
-  position: static;
-  width: fit-content;
-  height: fit-content;
-  max-width: 100%;
-  max-height: 100%;
-
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
+/* Upload button inside polaroid */
 .polaroid-upload-btn {
-  padding: 8px 12px;
-  font-size: 14px;
+  position: relative;
+  top: 8px;
+  padding: 6px 10px;
+  font-size: 13px;
   cursor: pointer;
   border: none;
-  border-radius: 4px;
-  background: white;
-  opacity: 0.9;
+  background: transparent;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
 }
 
 .polaroid-upload-btn:hover {
   opacity: 1;
+}
+
+/* =========================
+   Polaroid modal overlay
+   ========================= */
+
+.polaroid-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+/* Modal content */
+.polaroid-modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.polaroid-modal-header {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.polaroid-modal-header button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Modal header */
+.polaroid-modal h2 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* File input */
+.polaroid-modal input[type="file"] {
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+/* Display current image inside modal */
+.polaroid-modal img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* Error text */
+.polaroid-error {
+  color: red;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Uploading text */
+.polaroid-uploading {
+  font-size: 0.85rem;
+  text-align: center;
+  font-style: italic;
 }
