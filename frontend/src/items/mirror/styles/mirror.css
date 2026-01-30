@@ -4,3 +4,116 @@
   display: block;
   cursor: pointer;
 }
+
+.mirror-wrapper {
+  position: relative;
+}
+
+.mirror-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+}
+
+.mirror-popover {
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.96);
+
+  width: 230px;
+  padding: 14px 16px;
+
+  background: radial-gradient(
+    circle at top,
+    rgba(255,255,255,0.95),
+    rgba(245,240,230,0.92)
+  );
+
+  border-radius: 18px 18px 22px 22px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.4),
+    0 12px 30px rgba(0,0,0,0.25),
+    0 0 25px rgba(180, 160, 255, 0.25);
+
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 40;
+}
+
+.mirror-ask {
+  background: none;
+  border: none;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.mirror-fact {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: center;
+
+  color: rgba(11, 8, 16, 0.85);
+}
+
+.mirror-sparkle {
+  display: inline-block;
+  font-size: 0.9rem;
+  margin: 0 6px;
+
+  background: linear-gradient(
+  90deg,
+  #ff4da6,
+  #ff3c38,
+  #ff8c42,
+  #48ff00,
+  #4d7cff,
+  #7a00ff,
+  #7a00ff,
+  #ff4da6
+);
+
+  background-size: 300% 300%; /* 🔑 tighter */
+  background-position: 0% 100%;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  animation: sparkle-pulse 3s ease-in-out infinite;
+}
+
+.mirror-sparkle:first-of-type {
+  animation-delay: 0s;
+}
+
+.mirror-sparkle:last-of-type {
+  animation-delay: 1.5s;
+}
+
+@keyframes sparkle-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.95);
+    background-position: 0% 50%;
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.15);
+    background-position: 100% 50%;
+  }
+}
+
+.mirror-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
