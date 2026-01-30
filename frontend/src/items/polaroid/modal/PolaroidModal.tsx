@@ -81,8 +81,13 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
     <div className="polaroid-modal-overlay">
       <div className="polaroid-modal">
         <div className="polaroid-modal-header">
+          <button
+            id="polaroid-modal-close-btn"
+            onClick={() => onClose()}>
+              x
+          </button>
+
           <h2>upload polaroid image</h2>
-          <button onClick={() => onClose()}>x</button>
         </div>
 
         {error && <p className="polaroid-error">{error}</p>}
