@@ -21,9 +21,9 @@
   position: absolute;
   top: 25px;
   left: 21px;
-  rotate: 5deg;
+  rotate: 3.8deg;
   max-width: 68px;
-  max-height: 80px;
+  max-height: 68px;
 
   overflow: hidden;
   display: flex;
