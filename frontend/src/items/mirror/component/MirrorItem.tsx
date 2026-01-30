@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import MirrorModal from "../modal/MirrorModal";
+import React, { useState, useRef } from "react";
+import MirrorPopover from "../modal/MirrorModal";
 import "../styles/mirror.css";
 
 interface MirrorItemProps {
@@ -8,20 +8,24 @@ interface MirrorItemProps {
 
 const MirrorItem: React.FC<MirrorItemProps> = ({ frameId }) => {
   const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <>
+    <div className="mirror-wrapper" ref={ref}>
       <img
         src="/content/mirror.png"
         alt="mirror"
         className="mirror-base"
-        onClick={() => setOpen(true)}
+        onClick={() => setOpen((v) => !v)}
       />
 
       {open && (
-        <MirrorModal frameId={frameId} />
+        <MirrorPopover
+          frameId={frameId}
+          onClose={() => setOpen(false)}
+        />
       )}
-    </>
+    </div>
   );
 };
 
