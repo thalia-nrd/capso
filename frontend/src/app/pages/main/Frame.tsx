@@ -41,7 +41,7 @@ const Frame: React.FC = () => {
   }, [navigate]);
 
   if (loading || !frame) {
-    return <div>Loading...</div>;
+    return <div>loading...</div>;
   }
 
   return (
