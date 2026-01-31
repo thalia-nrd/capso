@@ -8,7 +8,7 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './modules/auth/auth.routes';
 import frameRoutes from './modules/frame/frame.routes';
 import notesRoutes from './modules/content/notes/notes.routes';
-import checklistRoutes from './modules/content/checklist/checklist.routes';
+import duckRoutes from './modules/content/duck/duck.routes';
 import journalRoutes from './modules/content/journal/journal.routes';
 import polaroidRoutes from './modules/content/polaroid/polaroid.routes';
 import keyRoutes from './modules/content/key/key.routes';
@@ -38,7 +38,7 @@ app.use('/frame', requireAuth, attachFrameId);
 // routes
 app.use('/frame', frameRoutes);
 app.use('/frame/notes', notesRoutes);
-app.use('/frame/checklists', checklistRoutes);
+app.use('/frame/duck', duckRoutes);
 app.use('/frame/journal', journalRoutes);
 app.use('/frame/polaroid', polaroidRoutes);
 app.use('/frame/key', keyRoutes);
