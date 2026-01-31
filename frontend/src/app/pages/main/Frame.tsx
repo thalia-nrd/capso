@@ -74,12 +74,10 @@ const Frame: React.FC = () => {
         </Slot>
 
         <Slot x={495} y={410} width={100} height={100}>
-          <PolaroidItem
-            frameId={frame.id}
-          />
+          <PolaroidItem frameId={frame.id}/>
         </Slot>
 
-        <Slot x={220} y={545} width={180} height={100}>
+        <Slot x={220} y={548} width={180} height={100}>
           <DuckItem frameId={frame.id} />
         </Slot>
 
