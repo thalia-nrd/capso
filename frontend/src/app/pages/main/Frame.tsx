@@ -57,7 +57,7 @@ const Frame: React.FC = () => {
           backgroundPosition: "center",
         }}
       >
-        <Slot x={250} y={220} width={120} height={140}>
+        <Slot x={250} y={220} width={130} height={150}>
           <ClockItem frameId={frame.id} />
         </Slot>
 
