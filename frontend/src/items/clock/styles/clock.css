@@ -3,30 +3,36 @@
   height: 100%;
   object-fit: contain;
   pointer-events: none;
+
+  /* subtle drop shadow for depth */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .clock-hand {
   position: absolute;
   left: 50%;
-  bottom: 55%;
+  bottom: 53%;
   transform-origin: bottom center;
   border-radius: 4px;
 }
 
 .hour-hand {
-  width: 3px;
+  width: 4px;
   height: 10%;
-  background: #4b3f34;
+  background: linear-gradient(to top, #5c4b3c, #3e3328);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
 }
 
 .minute-hand {
-  width: 2px;
-  height: 17%;
-  background: #3e342e;
+  width: 2.5px;
+  height: 16%;
+  background: linear-gradient(to top, #4a3c31, #2e251e);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
 }
 
 .second-hand {
-  width: 1px;
-  height: 25%;
-  background: #b43f3f;
+  width: 1.5px;
+  height: 24%;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
 }

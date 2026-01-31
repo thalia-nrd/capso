@@ -13,6 +13,14 @@ const ClockItem: React.FC<ClockItemProps> = ({ frameId }) => {
     seconds: 0,
   });
 
+  const [secondColor, setSecondColor] = useState("#FF0000");
+
+  // generate a smooth 60-color rainbow gradient
+  const colors = Array.from({ length: 60 }, (_, i) => {
+    const hue = Math.floor((i / 60) * 360); // 0-360 degrees around color wheel
+    return `hsl(${hue}, 90%, 50%)`; // bright, saturated rainbow
+  });
+
   useEffect(() => {
     let interval: any;
 
@@ -24,6 +32,10 @@ const ClockItem: React.FC<ClockItemProps> = ({ frameId }) => {
           minutes: t.minutes,
           seconds: t.seconds,
         });
+
+        // set color based on current minute (0-59)
+        setSecondColor(colors[t.minutes % colors.length]);
+
       } catch (err) {
         console.error("Clock load error", err);
       }
@@ -31,11 +43,9 @@ const ClockItem: React.FC<ClockItemProps> = ({ frameId }) => {
 
     loadTime();
     interval = setInterval(loadTime, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
-  // Pointer rotation angles
   const hourRotation = (time.hours % 12) * 30 + time.minutes * 0.5;
   const minuteRotation = time.minutes * 6;
   const secondRotation = time.seconds * 6;
@@ -58,8 +68,13 @@ const ClockItem: React.FC<ClockItemProps> = ({ frameId }) => {
       />
       <div
         className="clock-hand second-hand"
-        style={{ transform: `rotate(${secondRotation}deg)` }}
+        style={{
+          transform: `rotate(${secondRotation}deg)`,
+          background: secondColor,
+        }}
       />
+
+      <div className="clock-center" />
     </div>
   );
 };
