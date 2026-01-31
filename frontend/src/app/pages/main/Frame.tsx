@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Slot from "../../../layout/Slot";
-import ChecklistItem from "../../../items/checklist/component/ChecklistItem";
+import DuckItem from "../../../items/checklist/component/DuckItem";
 import NoteItem from "../../../items/note/component/NoteItem";
 import EnvelopeItem from "../../../items/envelope/component/EnvelopeItem";
 import KeyItem from "../../../items/key/component/KeyItem";
@@ -79,8 +79,8 @@ const Frame: React.FC = () => {
           />
         </Slot>
 
-        <Slot x={270} y={545} width={85} height={100}>
-          <ChecklistItem frameId={frame.id} />
+        <Slot x={220} y={545} width={180} height={100}>
+          <DuckItem frameId={frame.id} />
         </Slot>
 
         <Slot x={450} y={550} width={100} height={100}>
