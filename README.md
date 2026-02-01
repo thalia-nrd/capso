@@ -9,12 +9,9 @@ A cozy digital frame where users can personalize their own space 🌸 Add photos
 - 📝 **Sticky Notes & To-Do Lists** – quickly jot down reminders, tasks, or thoughts.
 - 📓 **Diary / Journal (Envelope)** – write password-protected entries and organize them by day.
 - 🖼️ **Photo Frames (Polaroid)** – upload favorite photos, automatically cropped to fit the frame.
-- 🕒 **Digital or Vintage Clock** – choose your preferred style to display time.
-- 🗓️ **Calendar** – track days, events, and special occasions.
-- 🎧 **MP3 Player (Spotify Integration)** – play background music while organizing your frame.
-- 🪞 **Magic Mirror** – displays random quotes, affirmations, or surprises.
-- 🪴 **Decor Elements** – drag-and-drop items like plants, books, and trinkets to customize your space.
-- 🎨 **Custom Layouts** – design, arrange, and save your personalized frame layout.
+- 🕒 **Vintage Clock** – a stylish clock for your frame.
+- 🦆 **Duck / Throw Bread** – interact with a cute random duck for a little fun.
+- 🪞 **Magic Mirror** – displays random fun facts or quotes.
 
 ---
 
@@ -23,8 +20,7 @@ A cozy digital frame where users can personalize their own space 🌸 Add photos
 **Frontend**
 - React + TypeScript
 - Zustand (state management)
-- TailwindCSS (styling)
-- Framer Motion (animations)
+- SCSS/CSS (styling)
 - React DnD (drag-and-drop support)
 
 **Backend**
