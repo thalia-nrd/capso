@@ -22,7 +22,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: [
+      'http://localhost:3000',
+      'https://capso.onrender.com',
+    ],
     credentials: true,
   }),
 );
@@ -36,14 +39,14 @@ app.use('/auth', authRoutes);
 app.use('/frame', requireAuth, attachFrameId);
 
 // routes
-app.use('/frame', frameRoutes);
-app.use('/frame/notes', notesRoutes);
-app.use('/frame/duck', duckRoutes);
-app.use('/frame/journal', journalRoutes);
-app.use('/frame/polaroid', polaroidRoutes);
-app.use('/frame/key', keyRoutes);
-app.use('/frame/mirror', mirrorRoutes);
-app.use('/frame/clock', clockRoutes);
+app.use('/frame', requireAuth, frameRoutes);
+app.use('/frame/notes', requireAuth, notesRoutes);
+app.use('/frame/duck', requireAuth, duckRoutes);
+app.use('/frame/journal', requireAuth, journalRoutes);
+app.use('/frame/polaroid', requireAuth, polaroidRoutes);
+app.use('/frame/key', requireAuth, keyRoutes);
+app.use('/frame/mirror', requireAuth, mirrorRoutes);
+app.use('/frame/clock', requireAuth, clockRoutes);
 
 app.get('/', (_req, res) => {
   res.send('Cabinna backend is running!');
