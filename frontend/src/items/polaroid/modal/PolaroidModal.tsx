@@ -43,12 +43,12 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
 
     const validTypes = ["image/jpeg", "image/png", "image/gif"];
     if (!validTypes.includes(file.type)) {
-      setError("Please upload a valid image (JPEG, PNG, GIF).");
+      setError("please upload a valid image (JPEG, PNG, GIF).");
       return;
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      setError("Image size must be less than 5MB.");
+      setError("image size must be less than 5MB.");
       return;
     }
 
@@ -71,7 +71,7 @@ const PolaroidModal: React.FC<PolaroidModalProps> = ({
       onClose();
     } catch (err) {
       console.error(err);
-      setError("Failed to upload image. Please try again.");
+      setError("failed to upload image. please try again.");
     } finally {
       setIsUploading(false);
     }
