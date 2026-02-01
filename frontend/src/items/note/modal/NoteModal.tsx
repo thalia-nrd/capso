@@ -24,7 +24,7 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId }) => {
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // ✅ Load notes when modal opens
+  // Load notes when modal opens
   useEffect(() => {
     const loadNotes = async () => {
       try {
@@ -39,6 +39,13 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId }) => {
   }, [frameId]);
 
   const selectNote = (id: number) => {
+    if (selected === id) {
+      // Clicking the selected note unselects it
+      setSelected(null);
+      setContent("");
+      return;
+    }
+
     const note = notes.find((n) => n.id === id);
     if (!note) return;
     setSelected(id);
@@ -56,11 +63,7 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId }) => {
 
     try {
       if (selected !== null) {
-        const updated = await updateNote(
-          frameId,
-          selected.toString(),
-          content
-        );
+        const updated = await updateNote(frameId, selected.toString(), content);
         setNotes((prev) =>
           prev.map((n) =>
             n.id === selected ? { ...n, content: updated.content } : n
@@ -69,8 +72,9 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId }) => {
       } else {
         const created = await createNote(frameId, content);
         setNotes((prev) => [...prev, created]);
-        setSelected(created.id);
       }
+      // Always deselect after saving
+      startNewNote();
     } catch (err) {
       console.error("Failed to save note:", err);
     } finally {
@@ -92,15 +96,11 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId }) => {
 
   return (
     <div className="note-modal-container">
-
       <DialogPrimitive.Close asChild>
-        <button className="close-button">
-          x
-        </button>
+        <button className="close-button">x</button>
       </DialogPrimitive.Close>
 
       <div className="note-modal">
-
         <div className="editor-panel">
           <textarea
             value={content}
@@ -109,7 +109,6 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId }) => {
           />
 
           <div className="editor-buttons">
-
             <button onClick={saveNote} disabled={loading || !content.trim()}>
               {loading ? "Saving..." : "Save"}
             </button>
@@ -119,7 +118,6 @@ const NotesModal: React.FC<NotesModalProps> = ({ frameId }) => {
                 Delete
               </button>
             )}
-
           </div>
         </div>
       </div>
