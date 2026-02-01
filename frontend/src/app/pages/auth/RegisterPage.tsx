@@ -37,6 +37,7 @@ const Register = () => {
   };
 
   return (
+    <>
     <FormProvider {...form}>
       <div className="wrapper">
         <form onSubmit={form.handleSubmit(submitRegister)} className="form">
@@ -73,6 +74,22 @@ const Register = () => {
         </form>
       </div>
     </FormProvider>
+    <footer
+      style={{
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        width: "100%",
+        fontSize: "0.7rem",
+        opacity: 0.6,
+        textAlign: "center",
+        padding: "0.5rem 0",
+        pointerEvents: "none"
+      }}
+    >
+      &copy; 2025 NRD. MIT License.
+    </footer>
+    </>
   );
 }
 

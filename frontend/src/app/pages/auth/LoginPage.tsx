@@ -34,6 +34,7 @@ const Login: React.FC = () => {
   };
 
   return (
+    <>
     <FormProvider {...form}>
       <div className="wrapper">
         <form onSubmit={form.handleSubmit(submitLogin)} className="form">
@@ -65,6 +66,22 @@ const Login: React.FC = () => {
         </form>
       </div>
     </FormProvider>
+    <footer
+      style={{
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        width: "100%",       // make it full width
+        fontSize: "0.7rem",
+        opacity: 0.6,
+        textAlign: "center",
+        padding: "0.5rem 0", // optional spacing
+        pointerEvents: "none" // so it doesn’t block clicks
+      }}
+    >
+      &copy; 2025 NRD. MIT License.
+    </footer>
+    </>
   );
 };
 
