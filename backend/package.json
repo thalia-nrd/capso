@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "ts-node src/server.ts",
     "format": "prettier --write 'src/**/*.{ts,js,json,md}'",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev"
@@ -52,6 +52,7 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "react-router-dom": "^7.10.1",
+    "ts-node": "^10.9.2",
     "zod": "^4.1.12"
   }
 }
