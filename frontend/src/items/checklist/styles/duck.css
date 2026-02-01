@@ -11,7 +11,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(255, 255, 230, 0.79);
+  background: rgba(253, 251, 247, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +37,7 @@
   background: #ffd966;
   border: none;
   padding: 16px 32px;
-  border-radius: 999px;
+  border-radius: 20px;
   font-weight: 700;
   font-size: 20px;
   cursor: pointer;
