@@ -48,7 +48,7 @@ app.use('/frame/mirror', requireAuth, mirrorRoutes);
 app.use('/frame/clock', requireAuth, clockRoutes);
 
 app.get('/', (_req, res) => {
-  res.send('Cabinna backend is running!');
+  res.send('capso backend is running!');
 });
 
 const PORT = Number(process.env.PORT) || 5000; // fallback for local dev
