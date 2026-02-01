@@ -26,16 +26,63 @@ import "./Frame.css";
 
 type ActiveItem = "notes" | "key" | "envelope" | null;
 
+const CapsoIntro: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+  return (
+    <div className="capsule-intro-overlay">
+      <div className="capsule-intro-card">
+        <h2>Welcome to Capso</h2>
+        <p>This is your frame :) a little magical capsule to keep things you care about</p>
+        <ul className="capsule-intro-list">
+          <li>
+            <span className="item-name">clock</span>
+          </li>
+          <li>
+            <span className="item-name">notes</span> — jot down quick thoughts anytime.
+          </li>
+          <li>
+            <span className="item-name">mirror</span> — talk to the mirror, and it might tell you something
+          </li>
+          <li>
+            <span className="item-name">key</span> — lock away files and images you want safe.
+          </li>
+          <li>
+            <span className="item-name">polaroid</span> — pin a single image to your frame as a memory.
+          </li>
+          <li>
+            <span className="item-name">envelope</span> — your private journal, sealed with a passcode.
+          </li>
+          <li>
+            <span className="item-name">quack</span>
+          </li>
+        </ul>
+        <button onClick={onClose}>Got it!</button>
+      </div>
+    </div>
+  );
+};
+
 const Frame: React.FC = () => {
   const navigate = useNavigate();
 
   const [frame, setFrame] = useState<FullFrame | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeItem, setActiveItem] = useState<ActiveItem>(null);
+  const [showIntro, setShowIntro] = useState(false);
+
+  // Load the frame and check intro
+
+  useEffect(() => {
+    const seenIntro = localStorage.getItem("hasSeenCapsoIntro");
+    if (seenIntro !== "true") { // show intro if not "true"
+      setShowIntro(true);
+    }
+  }, []);
 
   useEffect(() => {
     getUserFrame()
-      .then(setFrame)
+      .then((data) => {
+        setFrame(data);
+      })
       .catch(() => navigate("/login"))
       .finally(() => setLoading(false));
   }, [navigate]);
@@ -46,6 +93,16 @@ const Frame: React.FC = () => {
 
   return (
     <div className="frame-wrapper">
+      {/* CAPSO INTRO */}
+      {showIntro && (
+        <CapsoIntro
+          onClose={() => {
+            localStorage.setItem("hasSeenCapsoIntro", "true");
+            setShowIntro(false);
+          }}
+        />
+      )}
+
       {/* FRAME STAGE */}
       <div
         className={`frame-stage ${activeItem ? "dimmed" : ""}`}
@@ -65,8 +122,8 @@ const Frame: React.FC = () => {
           <NoteItem onOpen={() => setActiveItem("notes")} />
         </Slot>
 
-        <Slot x={200} y={400} width={120} height={100}>
-          <EnvelopeItem onOpen={() => setActiveItem("envelope")} />
+        <Slot x={210} y={400} width={105} height={100}>
+          <MirrorItem frameId={frame.id} />
         </Slot>
 
         <Slot x={365} y={400} width={80} height={100}>
@@ -74,15 +131,15 @@ const Frame: React.FC = () => {
         </Slot>
 
         <Slot x={495} y={410} width={100} height={100}>
-          <PolaroidItem frameId={frame.id}/>
+          <PolaroidItem frameId={frame.id} />
         </Slot>
 
-        <Slot x={220} y={548} width={180} height={100}>
+        <Slot x={260} y={548} width={122} height={100}>
+          <EnvelopeItem onOpen={() => setActiveItem("envelope")} />
+        </Slot>
+
+        <Slot x={410} y={550} width={175} height={100}>
           <DuckItem frameId={frame.id} />
-        </Slot>
-
-        <Slot x={450} y={550} width={100} height={100}>
-          <MirrorItem frameId={frame.id} />
         </Slot>
       </div>
 
@@ -95,41 +152,41 @@ const Frame: React.FC = () => {
         modal={false}
       >
         <DialogContent className="frame-panel zoom-panel" data-frame-panel>
-        {activeItem === "notes" && (
-          <>
-            <DialogHeader className="frame-panel-header">
-              <DialogTitle className="dialog-title">Your Notes</DialogTitle>
-            </DialogHeader>
+          {activeItem === "notes" && (
+            <>
+              <DialogHeader className="frame-panel-header">
+                <DialogTitle className="dialog-title">Your Notes</DialogTitle>
+              </DialogHeader>
 
-            <NotesModal frameId={frame.id} />
-          </>
-        )}
+              <NotesModal frameId={frame.id} />
+            </>
+          )}
 
-        {activeItem === "key" && (
-          <>
-            <DialogHeader className="frame-panel-header">
-              <DialogTitle className="dialog-title">Your Keybox</DialogTitle>
-            </DialogHeader>
+          {activeItem === "key" && (
+            <>
+              <DialogHeader className="frame-panel-header">
+                <DialogTitle className="dialog-title">Your Keybox</DialogTitle>
+              </DialogHeader>
 
-            <KeyModal
-              frameId={frame.id.toString()}
-              onClose={() => setActiveItem(null)}
-            />
-          </>
-        )}
+              <KeyModal
+                frameId={frame.id.toString()}
+                onClose={() => setActiveItem(null)}
+              />
+            </>
+          )}
 
-        {activeItem === "envelope" && (
-          <>
-            <DialogHeader className="frame-panel-header">
-              <DialogTitle className="dialog-title">Your Envelope</DialogTitle>
-            </DialogHeader>
+          {activeItem === "envelope" && (
+            <>
+              <DialogHeader className="frame-panel-header">
+                <DialogTitle className="dialog-title">Your Envelope</DialogTitle>
+              </DialogHeader>
 
-            <EnvelopeModal
-              frameId={frame.id.toString()}
-              onClose={() => setActiveItem(null)}
-            />
-          </>
-        )}
+              <EnvelopeModal
+                frameId={frame.id.toString()}
+                onClose={() => setActiveItem(null)}
+              />
+            </>
+          )}
         </DialogContent>
       </Dialog>
     </div>

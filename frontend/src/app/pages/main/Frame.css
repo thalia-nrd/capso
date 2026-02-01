@@ -108,3 +108,39 @@
   background: rgba(0, 0, 0, 0.5); /* optional overlay */
   z-index: 1000;
 }
+
+.capsule-intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.capsule-intro-card {
+  background: #fff8f0;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+}
+
+.capsule-intro-card h2 {
+  font-weight: 500;
+}
+
+.capsule-intro-list {
+  list-style: none;
+  padding: 0;
+}
+
+.capsule-intro-list li {
+  margin: 2px 0;
+}
+
+.item-name {
+  font-family: var(--font-title);
+}
