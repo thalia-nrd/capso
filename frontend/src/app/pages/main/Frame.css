@@ -1,13 +1,22 @@
-/* ---- Layout Wrapper ---- */
 .frame-wrapper {
   position: relative;
-  width: 800px;
-  margin: 40px auto;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #f0f0f0; /* optional */
 }
 
-/* ---- Frame Stage ---- */
 .frame-stage {
   position: relative;
+  width: 90vw;
+  height: 100vh;
+  max-width: 800px;
+  max-height: 900px;
+  background-size: cover;
+  background-position: center;
   transition:
     filter 0.75s ease,
     transform 0.75s ease;
