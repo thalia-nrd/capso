@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { polaroidModel } from "./polaroid.model";
 import { generateUploadSignature } from "../../../lib/cloudinary";
-import type { CloudinarySignature } from "../../../types/cloudinary.types";
+import type { CloudinarySignature } from "../../../cloudTypes/cloudinary.types";
 import type { CreatePolaroidDTO, UpdatePolaroidDTO } from "./types/polaroid.types";
 import { CloudinaryFolders } from "../../../lib/cloudinaryFolders";
 

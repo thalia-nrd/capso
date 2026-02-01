@@ -2,7 +2,7 @@ import { KeyModel } from "./key.model";
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { generateUploadSignature } from "../../../lib/cloudinary";
-import type { CloudinarySignature } from "../../../types/cloudinary.types";
+import type { CloudinarySignature } from "../../../cloudTypes/cloudinary.types";
 import { CloudinaryFolders } from "../../../lib/cloudinaryFolders";
 
 export const keyController = {
