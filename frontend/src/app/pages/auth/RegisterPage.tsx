@@ -58,8 +58,17 @@ const Register = () => {
             <input type="password" className="form-input" {...form.register('password')} />
           </div>
 
-          <div>
-            <button type="submit" className="form-button">Register</button>
+          <div className="form-actions">
+            <button type="submit" className="form-button">register</button>
+
+            <button
+              className="form-link"
+              type="button"
+              onClick={() => navigate("/login")}
+            >
+              login
+            </button>
+
           </div>
         </form>
       </div>

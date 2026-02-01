@@ -50,8 +50,17 @@ const Login: React.FC = () => {
             <input type="password" className="form-input" {...form.register('password')} />
           </div>
 
-          <div>
+          <div className="form-actions">
             <button type="submit" className="form-button">Login</button>
+
+            <button
+              className="form-link"
+              type="button"
+              onClick={() => navigate("/register")}
+            >
+              register
+            </button>
+
           </div>
         </form>
       </div>
