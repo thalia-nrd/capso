@@ -130,15 +130,15 @@ const Frame: React.FC = () => {
           <KeyItem onOpen={() => setActiveItem("key")} />
         </Slot>
 
-        <Slot x={495} y={410} width={100} height={100}>
+        <Slot x={491} y={410} width={112} height={100}>
           <PolaroidItem frameId={frame.id} />
         </Slot>
 
-        <Slot x={260} y={548} width={122} height={100}>
+        <Slot x={260} y={548} width={120} height={100}>
           <EnvelopeItem onOpen={() => setActiveItem("envelope")} />
         </Slot>
 
-        <Slot x={410} y={550} width={175} height={100}>
+        <Slot x={410} y={550} width={180} height={100}>
           <DuckItem frameId={frame.id} />
         </Slot>
       </div>

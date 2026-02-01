@@ -11,8 +11,8 @@
 
 .frame-stage {
   position: relative;
-  width: 90vw;
-  height: 100vh;
+  width: 100%;       /* changed from 90vw */
+  height: 100%;      /* changed from 100vh */
   max-width: 800px;
   max-height: 900px;
   background-size: cover;

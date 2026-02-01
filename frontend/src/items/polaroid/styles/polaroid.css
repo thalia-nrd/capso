@@ -4,8 +4,8 @@
 
 .polaroid-wrapper {
   position: relative;
-  width: 110px;
-  height: 130px;
+  width: 100%;   /* scales with slot */
+  height: 100%;  /* scales with slot */
   cursor: pointer;
 }
 
@@ -19,11 +19,11 @@
 /* Inner content (photo or upload button) */
 .polaroid-content {
   position: absolute;
-  top: 25px;
-  left: 21px;
-  rotate: 3.5deg;
-  width: 69px;       /* fixed size to fill container */
-  height: 67px;      /* fixed size to fill container */
+  top: 19.2%;        /* relative to wrapper */
+  left: 19%;       /* relative to wrapper */
+  width: 63%;      /* fill most of wrapper */
+  height: 52%;     /* fill most of wrapper */
+  rotate: 3.2deg;
   overflow: hidden;
   display: flex;
   align-items: center;
