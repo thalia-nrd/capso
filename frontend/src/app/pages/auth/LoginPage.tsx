@@ -23,9 +23,7 @@ const Login: React.FC = () => {
 
   const submitLogin = async (data: loginSchemaType) => {
     try {
-      const res = await login(data);
-
-      console.log("Login response:", res);
+      await login(data);
 
       navigate(`/frame`);
     } catch (error) {
