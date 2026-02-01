@@ -41,7 +41,7 @@ const DuckModal: React.FC<DuckModalProps> = ({ frameId, onClose }) => {
         <>
           {error && <p className="duck-error">{error}</p>}
           <button className="duck-button" onClick={handleDuckClick} disabled={loading}>
-            {loading ? "what the…" : "Throw bread 🍞"}
+            {loading ? "sound on for the loaf" : "throw bread 🍞"}
           </button>
         </>
       )}
