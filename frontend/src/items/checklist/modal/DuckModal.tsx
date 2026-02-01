@@ -12,9 +12,11 @@ const quackSound = new Audio("/sound/quack.mp3");
 const DuckModal: React.FC<DuckModalProps> = ({ frameId, onClose }) => {
   const [duckUrl, setDuckUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(""); // NEW: error state
 
   const handleDuckClick = async () => {
     setLoading(true);
+    setError(""); // reset previous error
 
     // quack
     quackSound.currentTime = 0;
@@ -23,8 +25,9 @@ const DuckModal: React.FC<DuckModalProps> = ({ frameId, onClose }) => {
     try {
       const res = await getRandomDuck(frameId);
       setDuckUrl(res.duckUrl);
-    } catch (err) {
+    } catch (err: any) {
       console.error("duck failed to arrive", err);
+      setError("oh no! the duck is shy today 🦆✨");
     } finally {
       setLoading(false);
     }
@@ -35,9 +38,12 @@ const DuckModal: React.FC<DuckModalProps> = ({ frameId, onClose }) => {
       <button className="duck-close" onClick={onClose}>×</button>
 
       {!duckUrl && (
-        <button className="duck-button" onClick={handleDuckClick}>
-          {loading ? "do not feed wild animals" : "throw bread"}
-        </button>
+        <>
+          {error && <p className="duck-error">{error}</p>}
+          <button className="duck-button" onClick={handleDuckClick} disabled={loading}>
+            {loading ? "what the…" : "Throw bread 🍞"}
+          </button>
+        </>
       )}
 
       {duckUrl && (
