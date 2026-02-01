@@ -36,6 +36,7 @@ const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId, onClose }) => {
   const [newEntry, setNewEntry] = useState("");
   const [isOpened, setIsOpened] = useState(false);
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
+  const [error, setError] = useState(""); // ERROR STATE
 
   useEffect(() => {
     const loadJournal = async () => {
@@ -54,28 +55,44 @@ const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId, onClose }) => {
   }, [frameId]);
 
   const handleCreate = async () => {
-    if (!passcode.trim()) return;
-    setLoading(true);
+    if (!passcode.trim()) {
+      setError("You need a passcode to open this magical capsule ✨");
+      return;
+    }
+    if (passcode.length < 6) {
+      setError("Your passcode must be at least 6 characters long 🪄");
+      return;
+    }
 
+    setLoading(true);
     try {
       const created = await createJournal(frameId, passcode);
       setJournal(created);
       setIsOpened(true);
       setPasscode("");
+      setError(""); // clear error
+    } catch (err: any) {
+      setError(err?.message || "Hmm… something went wrong 💫");
     } finally {
       setLoading(false);
     }
   };
 
   const handleOpen = async () => {
-    if (!passcode.trim()) return;
-    setLoading(true);
+    if (!passcode.trim()) {
+      setError("Enter your passcode to unlock the magic ✨");
+      return;
+    }
 
+    setLoading(true);
     try {
       const opened = await openJournal(frameId, passcode);
       setJournal(opened);
       setIsOpened(true);
       setPasscode("");
+      setError(""); // clear error
+    } catch (err: any) {
+      setError(err?.message || "Oops! Wrong passcode, try again 🪄");
     } finally {
       setLoading(false);
     }
@@ -104,10 +121,7 @@ const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId, onClose }) => {
     setLoading(true);
 
     try {
-      const updated = await editJournalEntries(
-        frameId,
-        journal.entries
-      );
+      const updated = await editJournalEntries(frameId, journal.entries);
       setJournal(updated);
     } finally {
       setLoading(false);
@@ -121,6 +135,7 @@ const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId, onClose }) => {
     setPasscode("");
     setIsOpened(false);
     setJournal(null);
+    setError("");
     onClose();
   };
 
@@ -138,6 +153,7 @@ const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId, onClose }) => {
         {/* CREATE */}
         {!loading && !journal && (
           <div className="envelope-panel center">
+            {error && <p className="envelope-error">{error}</p>}
             <input
               type="password"
               placeholder="set a passcode"
@@ -151,6 +167,7 @@ const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId, onClose }) => {
         {/* LOCKED */}
         {!loading && journal && !isOpened && (
           <div className="envelope-panel center">
+            {error && <p className="envelope-error">{error}</p>}
             <input
               type="password"
               placeholder="enter passcode"
@@ -166,9 +183,7 @@ const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId, onClose }) => {
           <div className="envelope-panel">
             <div className="journal-nav">
               <button
-                onClick={() =>
-                  setCurrentDayIndex((i) => Math.max(i - 1, 0))
-                }
+                onClick={() => setCurrentDayIndex((i) => Math.max(i - 1, 0))}
                 disabled={currentDayIndex === 0}
               >
                 ←
@@ -178,9 +193,7 @@ const EnvelopeModal: React.FC<EnvelopeModalProps> = ({ frameId, onClose }) => {
 
               <button
                 onClick={() =>
-                  setCurrentDayIndex((i) =>
-                    Math.min(i + 1, days.length - 1)
-                  )
+                  setCurrentDayIndex((i) => Math.min(i + 1, days.length - 1))
                 }
                 disabled={currentDayIndex === days.length - 1}
               >
