@@ -1,7 +1,5 @@
-import { PrismaClient } from '../../../generated/client';
+import { PrismaClient } from "../../../generated/client";
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
 
-import { PrismaPg } from '@prisma/adapter-pg';
-
-const connectionString = process.env.DATABASE_URL!;
-const adapter = new PrismaPg({ connectionString });
-export const prisma = new PrismaClient({ adapter });
+export const prisma = new PrismaClient();
+export const adapter = PrismaAdapter(prisma);
