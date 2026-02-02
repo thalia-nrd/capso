@@ -17,5 +17,5 @@
     "noUncheckedIndexedAccess": true,   // Stricter type checking for object index access
     "exactOptionalPropertyTypes": true  // Strict optional property types
   },
-  "include": ["src/**/*", "src/types/**/*.d.ts"],
+  "include": ["src/**/*", "src/types/*.d.ts"],
 }
