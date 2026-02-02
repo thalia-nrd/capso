@@ -1,3 +1,5 @@
 import { PrismaClient } from '../../../generated/client';
 
-export const prisma = new PrismaClient();
+export const prisma = new PrismaClient({
+  log: ['query', 'info', 'warn', 'error'], // optional, for debugging
+});
