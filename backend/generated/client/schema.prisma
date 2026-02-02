@@ -1,23 +1,21 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "../generated/client"
+  provider      = "prisma-client-js"
+  output        = "../generated/client"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
 }
 
 model User {
-  id             Int             @id @default(autoincrement())
-  name           String
-  email          String          @unique
-  password       String
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  frame          Frame[]
-  spotifyAccount SpotifyAccount?
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  frame     Frame[]
 }
 
 model Frame {
@@ -120,16 +118,4 @@ model DecorItem {
   frameId   Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model SpotifyAccount {
-  id           Int      @id @default(autoincrement())
-  user         User     @relation(fields: [userId], references: [id])
-  userId       Int      @unique
-  accessToken  String
-  refreshToken String
-  scope        String?
-  expiresAt    DateTime
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
 }

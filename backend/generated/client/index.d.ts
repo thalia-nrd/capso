@@ -3,7 +3,7 @@
  * Client
 **/
 
-import * as runtime from './runtime/library.js';
+import * as runtime from './runtime/client.js';
 import $Types = runtime.Types // general types
 import $Public = runtime.Types.Public
 import $Utils = runtime.Types.Utils
@@ -63,11 +63,6 @@ export type Note = $Result.DefaultSelection<Prisma.$NotePayload>
  * 
  */
 export type DecorItem = $Result.DefaultSelection<Prisma.$DecorItemPayload>
-/**
- * Model SpotifyAccount
- * 
- */
-export type SpotifyAccount = $Result.DefaultSelection<Prisma.$SpotifyAccountPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -81,33 +76,31 @@ export type SpotifyAccount = $Result.DefaultSelection<Prisma.$SpotifyAccountPayl
  * ```
  *
  *
- * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+ * Read more in our [docs](https://pris.ly/d/client).
  */
 export class PrismaClient<
   ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
   const U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
   ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
-  [x: string]: any;
-  Mp3Item: any;
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
 
-  /**
- * ##  Prisma Client ʲˢ
- *
- * Type-safe database client for TypeScript & Node.js
- * @example
- * ```
- * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
- * ```
- *
- *
- * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
- */
+    /**
+   * ##  Prisma Client ʲˢ
+   *
+   * Type-safe database client for TypeScript & Node.js
+   * @example
+   * ```
+   * const prisma = new PrismaClient()
+   * // Fetch zero or more Users
+   * const users = await prisma.user.findMany()
+   * ```
+   *
+   *
+   * Read more in our [docs](https://pris.ly/d/client).
+   */
 
-  constructor(optionsArg?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
+  constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
   $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
 
   /**
@@ -120,15 +113,15 @@ export class PrismaClient<
    */
   $disconnect(): $Utils.JsPromise<void>;
 
-  /**
-     * Executes a prepared raw query and returns the number of affected rows.
-     * @example
-     * ```
-     * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
-     * ```
-     *
-     * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
-     */
+/**
+   * Executes a prepared raw query and returns the number of affected rows.
+   * @example
+   * ```
+   * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
+   * ```
+   *
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
+   */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
 
   /**
@@ -139,7 +132,7 @@ export class PrismaClient<
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
 
@@ -150,7 +143,7 @@ export class PrismaClient<
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -162,7 +155,7 @@ export class PrismaClient<
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -184,19 +177,18 @@ export class PrismaClient<
 
   $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => $Utils.JsPromise<R>, options?: { maxWait?: number, timeout?: number, isolationLevel?: Prisma.TransactionIsolationLevel }): $Utils.JsPromise<R>
 
-
   $extends: $Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<ClientOptions>, ExtArgs, $Utils.Call<Prisma.TypeMapCb<ClientOptions>, {
     extArgs: ExtArgs
   }>>
 
-  /**
-* `prisma.user`: Exposes CRUD operations for the **User** model.
-* Example usage:
-* ```ts
-* // Fetch zero or more Users
-* const users = await prisma.user.findMany()
-* ```
-*/
+      /**
+   * `prisma.user`: Exposes CRUD operations for the **User** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Users
+    * const users = await prisma.user.findMany()
+    * ```
+    */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
 
   /**
@@ -288,16 +280,6 @@ export class PrismaClient<
     * ```
     */
   get decorItem(): Prisma.DecorItemDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.spotifyAccount`: Exposes CRUD operations for the **SpotifyAccount** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more SpotifyAccounts
-    * const spotifyAccounts = await prisma.spotifyAccount.findMany()
-    * ```
-    */
-  get spotifyAccount(): Prisma.SpotifyAccountDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -338,14 +320,6 @@ export namespace Prisma {
   export type DecimalJsLike = runtime.DecimalJsLike
 
   /**
-   * Metrics
-   */
-  export type Metrics = runtime.Metrics
-  export type Metric<T> = runtime.Metric<T>
-  export type MetricHistogram = runtime.MetricHistogram
-  export type MetricHistogramBucket = runtime.MetricHistogramBucket
-
-  /**
   * Extensions
   */
   export import Extension = $Extensions.UserArgs
@@ -356,11 +330,12 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.19.0
-   * Query Engine version: 2ba551f319ab1df4bc874a89965d8b3641056773
+   * Prisma Client JS version: 7.3.0
+   * Query Engine version: 9d6ad21cbbceab97458517b147a6a09ff43aa735
    */
   export type PrismaVersion = {
     client: string
+    engine: string
   }
 
   export const prismaVersion: PrismaVersion
@@ -466,7 +441,7 @@ export namespace Prisma {
    * From T, pick a set of properties whose keys are in the union K
    */
   type Prisma__Pick<T, K extends keyof T> = {
-    [P in K]: T[P];
+      [P in K]: T[P];
   };
 
 
@@ -501,8 +476,8 @@ export namespace Prisma {
     (T extends SelectAndInclude
       ? 'Please either choose `select` or `include`.'
       : T extends SelectAndOmit
-      ? 'Please either choose `select` or `omit`.'
-      : {})
+        ? 'Please either choose `select` or `omit`.'
+        : {})
 
   /**
    * Subset + Intersection
@@ -522,7 +497,7 @@ export namespace Prisma {
   type XOR<T, U> =
     T extends object ?
     U extends object ?
-    (Without<T, U> & U) | (Without<U, T> & T)
+      (Without<T, U> & U) | (Without<U, T> & T)
     : U : T
 
 
@@ -530,16 +505,16 @@ export namespace Prisma {
    * Is T a Record?
    */
   type IsObject<T extends any> = T extends Array<any>
-    ? False
-    : T extends Date
-    ? False
-    : T extends Uint8Array
-    ? False
-    : T extends BigInt
-    ? False
-    : T extends object
-    ? True
-    : False
+  ? False
+  : T extends Date
+  ? False
+  : T extends Uint8Array
+  ? False
+  : T extends BigInt
+  ? False
+  : T extends object
+  ? True
+  : False
 
 
   /**
@@ -590,11 +565,11 @@ export namespace Prisma {
     : never
 
   export type Overwrite<O extends object, O1 extends object> = {
-    [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
+      [K in keyof O]: K extends keyof O1 ? O1[K] : O[K];
   } & {};
 
   type _Merge<U extends object> = IntersectOf<Overwrite<U, {
-    [K in keyof U]-?: At<U, K>;
+      [K in keyof U]-?: At<U, K>;
   }>>;
 
   type Key = string | number | symbol;
@@ -602,8 +577,8 @@ export namespace Prisma {
   type AtStrict<O extends object, K extends Key> = O[K & keyof O];
   type AtLoose<O extends object, K extends Key> = O extends unknown ? AtStrict<O, K> : never;
   export type At<O extends object, K extends Key, strict extends Boolean = 1> = {
-    1: AtStrict<O, K>;
-    0: AtLoose<O, K>;
+      1: AtStrict<O, K>;
+      0: AtLoose<O, K>;
   }[strict];
 
   export type ComputeRaw<A extends any> = A extends Function ? A : {
@@ -625,7 +600,7 @@ export namespace Prisma {
   type AtLeast<O extends object, K extends string> = NoExpand<
     O extends unknown
     ? | (K extends keyof O ? { [P in K]: O[P] } & O : O)
-    | { [P in keyof O as P extends K ? P : never]-?: O[P] } & O
+      | {[P in keyof O as P extends K ? P : never]-?: O[P]} & O
     : never>;
 
   type _Strict<U, _U = U> = U extends unknown ? U & OptionalFlat<_Record<Exclude<Keys<_U>, keyof U>, never>> : never;
@@ -690,8 +665,8 @@ export namespace Prisma {
 
   export type GetScalarType<T, O> = O extends object ? {
     [P in keyof T]: P extends keyof O
-    ? O[P]
-    : never
+      ? O[P]
+      : never
   } : never
 
   type FieldPaths<
@@ -704,15 +679,15 @@ export namespace Prisma {
       Or<Extends<'OR', K>, Extends<'AND', K>>,
       Extends<'NOT', K>
     > extends True
-    ? // infer is only needed to not hit TS limit
-    // based on the brilliant idea of Pierre-Antoine Mills
-    // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
-    T[K] extends infer TK
-    ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
-    : never
-    : {} extends FieldPaths<T[K]>
-    ? never
-    : K
+      ? // infer is only needed to not hit TS limit
+        // based on the brilliant idea of Pierre-Antoine Mills
+        // https://github.com/microsoft/TypeScript/issues/30188#issuecomment-478938437
+        T[K] extends infer TK
+        ? GetHavingFields<UnEnumerate<TK> extends object ? Merge<UnEnumerate<TK>> : never>
+        : never
+      : {} extends FieldPaths<T[K]>
+      ? never
+      : K
   }[keyof T]
 
   /**
@@ -748,18 +723,14 @@ export namespace Prisma {
     Media: 'Media',
     Checklist: 'Checklist',
     Note: 'Note',
-    DecorItem: 'DecorItem',
-    SpotifyAccount: 'SpotifyAccount'
+    DecorItem: 'DecorItem'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
 
 
-  export type Datasources = {
-    db?: Datasource
-  }
 
-  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{ extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
+  interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
     returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
   }
 
@@ -768,7 +739,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "frame" | "frameLayout" | "chest" | "journal" | "polaroid" | "media" | "checklist" | "note" | "decorItem" | "spotifyAccount"
+      modelProps: "user" | "frame" | "frameLayout" | "chest" | "journal" | "polaroid" | "media" | "checklist" | "note" | "decorItem"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1512,80 +1483,6 @@ export namespace Prisma {
           }
         }
       }
-      SpotifyAccount: {
-        payload: Prisma.$SpotifyAccountPayload<ExtArgs>
-        fields: Prisma.SpotifyAccountFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.SpotifyAccountFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.SpotifyAccountFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
-          }
-          findFirst: {
-            args: Prisma.SpotifyAccountFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.SpotifyAccountFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
-          }
-          findMany: {
-            args: Prisma.SpotifyAccountFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>[]
-          }
-          create: {
-            args: Prisma.SpotifyAccountCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
-          }
-          createMany: {
-            args: Prisma.SpotifyAccountCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.SpotifyAccountCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>[]
-          }
-          delete: {
-            args: Prisma.SpotifyAccountDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
-          }
-          update: {
-            args: Prisma.SpotifyAccountUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
-          }
-          deleteMany: {
-            args: Prisma.SpotifyAccountDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.SpotifyAccountUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.SpotifyAccountUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>[]
-          }
-          upsert: {
-            args: Prisma.SpotifyAccountUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SpotifyAccountPayload>
-          }
-          aggregate: {
-            args: Prisma.SpotifyAccountAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSpotifyAccount>
-          }
-          groupBy: {
-            args: Prisma.SpotifyAccountGroupByArgs<ExtArgs>
-            result: $Utils.Optional<SpotifyAccountGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.SpotifyAccountCountArgs<ExtArgs>
-            result: $Utils.Optional<SpotifyAccountCountAggregateOutputType> | number
-          }
-        }
-      }
     }
   } & {
     other: {
@@ -1615,14 +1512,6 @@ export namespace Prisma {
   export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
   export interface PrismaClientOptions {
     /**
-     * Overwrites the datasource url from your schema.prisma file
-     */
-    datasources?: Datasources
-    /**
-     * Overwrites the datasource url from your schema.prisma file
-     */
-    datasourceUrl?: string
-    /**
      * @default "colorless"
      */
     errorFormat?: ErrorFormat
@@ -1648,7 +1537,7 @@ export namespace Prisma {
      *  { emit: 'stdout', level: 'error' }
      * 
      * ```
-     * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
+     * Read more in our [docs](https://pris.ly/d/logging).
      */
     log?: (LogLevel | LogDefinition)[]
     /**
@@ -1664,7 +1553,11 @@ export namespace Prisma {
     /**
      * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-planetscale`
      */
-    adapter?: runtime.SqlDriverAdapterFactory | null
+    adapter?: runtime.SqlDriverAdapterFactory
+    /**
+     * Prisma Accelerate URL allowing the client to connect through Accelerate instead of a direct database.
+     */
+    accelerateUrl?: string
     /**
      * Global configuration for omitting model fields by default.
      * 
@@ -1680,6 +1573,22 @@ export namespace Prisma {
      * ```
      */
     omit?: Prisma.GlobalOmitConfig
+    /**
+     * SQL commenter plugins that add metadata to SQL queries as comments.
+     * Comments follow the sqlcommenter format: https://google.github.io/sqlcommenter/
+     * 
+     * @example
+     * ```
+     * const prisma = new PrismaClient({
+     *   adapter,
+     *   comments: [
+     *     traceContext(),
+     *     queryInsights(),
+     *   ],
+     * })
+     * ```
+     */
+    comments?: runtime.SqlCommenterPlugin[]
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
@@ -1692,7 +1601,6 @@ export namespace Prisma {
     checklist?: ChecklistOmit
     note?: NoteOmit
     decorItem?: DecorItemOmit
-    spotifyAccount?: SpotifyAccountOmit
   }
 
   /* Types for Logging */
@@ -2017,11 +1925,11 @@ export namespace Prisma {
   }
 
   export type GetUserAggregateType<T extends UserAggregateArgs> = {
-    [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
-    ? T[P] extends true
-    ? number
-    : GetScalarType<T[P], AggregateUser[P]>
-    : GetScalarType<T[P], AggregateUser[P]>
+        [P in keyof T & keyof AggregateUser]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser[P]>
+      : GetScalarType<T[P], AggregateUser[P]>
   }
 
 
@@ -2058,15 +1966,15 @@ export namespace Prisma {
   type GetUserGroupByPayload<T extends UserGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<UserGroupByOutputType, T['by']> &
-      {
-        [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
-        ? T[P] extends boolean
-        ? number
-        : GetScalarType<T[P], UserGroupByOutputType[P]>
-        : GetScalarType<T[P], UserGroupByOutputType[P]>
-      }
+        {
+          [P in ((keyof T) & (keyof UserGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserGroupByOutputType[P]>
+            : GetScalarType<T[P], UserGroupByOutputType[P]>
+        }
+      >
     >
-  >
 
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2077,7 +1985,6 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     frame?: boolean | User$frameArgs<ExtArgs>
-    spotifyAccount?: boolean | User$spotifyAccountArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2111,7 +2018,6 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     frame?: boolean | User$frameArgs<ExtArgs>
-    spotifyAccount?: boolean | User$spotifyAccountArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2121,7 +2027,6 @@ export namespace Prisma {
     name: "User"
     objects: {
       frame: Prisma.$FramePayload<ExtArgs>[]
-      spotifyAccount: Prisma.$SpotifyAccountPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2402,10 +2307,10 @@ export namespace Prisma {
       args?: Subset<T, UserCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-      ? T['select'] extends true
-      ? number
-      : GetScalarType<T['select'], UserCountAggregateOutputType>
-      : number
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserCountAggregateOutputType>
+        : number
     >
 
     /**
@@ -2459,8 +2364,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-      ? { orderBy: UserGroupByArgs['orderBy'] }
-      : { orderBy?: UserGroupByArgs['orderBy'] },
+        ? { orderBy: UserGroupByArgs['orderBy'] }
+        : { orderBy?: UserGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2471,49 +2376,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-        [P in HavingFields]: P extends ByFields
-        ? never
-        : P extends string
-        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-        : [
-          Error,
-          'Field ',
-          P,
-          ` in "having" needs to be provided in "by"`,
-        ]
-      }[HavingFields]
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "take", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "skip", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
     >(args: SubsetIntersection<T, UserGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-    /**
-     * Fields of the User model
-     */
-    readonly fields: UserFieldRefs;
+  /**
+   * Fields of the User model
+   */
+  readonly fields: UserFieldRefs;
   }
 
   /**
@@ -2525,7 +2430,6 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     frame<T extends User$frameArgs<ExtArgs> = {}>(args?: Subset<T, User$frameArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FramePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    spotifyAccount<T extends User$spotifyAccountArgs<ExtArgs> = {}>(args?: Subset<T, User$spotifyAccountArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2562,7 +2466,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
-
+    
 
   // Custom InputTypes
   /**
@@ -2973,25 +2877,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.spotifyAccount
-   */
-  export type User$spotifyAccountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountInclude<ExtArgs> | null
-    where?: SpotifyAccountWhereInput
-  }
-
-  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3155,11 +3040,11 @@ export namespace Prisma {
   }
 
   export type GetFrameAggregateType<T extends FrameAggregateArgs> = {
-    [P in keyof T & keyof AggregateFrame]: P extends '_count' | 'count'
-    ? T[P] extends true
-    ? number
-    : GetScalarType<T[P], AggregateFrame[P]>
-    : GetScalarType<T[P], AggregateFrame[P]>
+        [P in keyof T & keyof AggregateFrame]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFrame[P]>
+      : GetScalarType<T[P], AggregateFrame[P]>
   }
 
 
@@ -3195,15 +3080,15 @@ export namespace Prisma {
   type GetFrameGroupByPayload<T extends FrameGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<FrameGroupByOutputType, T['by']> &
-      {
-        [P in ((keyof T) & (keyof FrameGroupByOutputType))]: P extends '_count'
-        ? T[P] extends boolean
-        ? number
-        : GetScalarType<T[P], FrameGroupByOutputType[P]>
-        : GetScalarType<T[P], FrameGroupByOutputType[P]>
-      }
+        {
+          [P in ((keyof T) & (keyof FrameGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FrameGroupByOutputType[P]>
+            : GetScalarType<T[P], FrameGroupByOutputType[P]>
+        }
+      >
     >
-  >
 
 
   export type FrameSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3561,10 +3446,10 @@ export namespace Prisma {
       args?: Subset<T, FrameCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-      ? T['select'] extends true
-      ? number
-      : GetScalarType<T['select'], FrameCountAggregateOutputType>
-      : number
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FrameCountAggregateOutputType>
+        : number
     >
 
     /**
@@ -3618,8 +3503,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-      ? { orderBy: FrameGroupByArgs['orderBy'] }
-      : { orderBy?: FrameGroupByArgs['orderBy'] },
+        ? { orderBy: FrameGroupByArgs['orderBy'] }
+        : { orderBy?: FrameGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3630,49 +3515,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-        [P in HavingFields]: P extends ByFields
-        ? never
-        : P extends string
-        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-        : [
-          Error,
-          'Field ',
-          P,
-          ` in "having" needs to be provided in "by"`,
-        ]
-      }[HavingFields]
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "take", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "skip", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
     >(args: SubsetIntersection<T, FrameGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFrameGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-    /**
-     * Fields of the Frame model
-     */
-    readonly fields: FrameFieldRefs;
+  /**
+   * Fields of the Frame model
+   */
+  readonly fields: FrameFieldRefs;
   }
 
   /**
@@ -3727,7 +3612,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"Frame", 'DateTime'>
     readonly ownerId: FieldRef<"Frame", 'Int'>
   }
-
+    
 
   // Custom InputTypes
   /**
@@ -4458,11 +4343,11 @@ export namespace Prisma {
   }
 
   export type GetFrameLayoutAggregateType<T extends FrameLayoutAggregateArgs> = {
-    [P in keyof T & keyof AggregateFrameLayout]: P extends '_count' | 'count'
-    ? T[P] extends true
-    ? number
-    : GetScalarType<T[P], AggregateFrameLayout[P]>
-    : GetScalarType<T[P], AggregateFrameLayout[P]>
+        [P in keyof T & keyof AggregateFrameLayout]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFrameLayout[P]>
+      : GetScalarType<T[P], AggregateFrameLayout[P]>
   }
 
 
@@ -4498,15 +4383,15 @@ export namespace Prisma {
   type GetFrameLayoutGroupByPayload<T extends FrameLayoutGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<FrameLayoutGroupByOutputType, T['by']> &
-      {
-        [P in ((keyof T) & (keyof FrameLayoutGroupByOutputType))]: P extends '_count'
-        ? T[P] extends boolean
-        ? number
-        : GetScalarType<T[P], FrameLayoutGroupByOutputType[P]>
-        : GetScalarType<T[P], FrameLayoutGroupByOutputType[P]>
-      }
+        {
+          [P in ((keyof T) & (keyof FrameLayoutGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FrameLayoutGroupByOutputType[P]>
+            : GetScalarType<T[P], FrameLayoutGroupByOutputType[P]>
+        }
+      >
     >
-  >
 
 
   export type FrameLayoutSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4838,10 +4723,10 @@ export namespace Prisma {
       args?: Subset<T, FrameLayoutCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-      ? T['select'] extends true
-      ? number
-      : GetScalarType<T['select'], FrameLayoutCountAggregateOutputType>
-      : number
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FrameLayoutCountAggregateOutputType>
+        : number
     >
 
     /**
@@ -4895,8 +4780,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-      ? { orderBy: FrameLayoutGroupByArgs['orderBy'] }
-      : { orderBy?: FrameLayoutGroupByArgs['orderBy'] },
+        ? { orderBy: FrameLayoutGroupByArgs['orderBy'] }
+        : { orderBy?: FrameLayoutGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4907,49 +4792,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-        [P in HavingFields]: P extends ByFields
-        ? never
-        : P extends string
-        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-        : [
-          Error,
-          'Field ',
-          P,
-          ` in "having" needs to be provided in "by"`,
-        ]
-      }[HavingFields]
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "take", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "skip", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
     >(args: SubsetIntersection<T, FrameLayoutGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFrameLayoutGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-    /**
-     * Fields of the FrameLayout model
-     */
-    readonly fields: FrameLayoutFieldRefs;
+  /**
+   * Fields of the FrameLayout model
+   */
+  readonly fields: FrameLayoutFieldRefs;
   }
 
   /**
@@ -4996,7 +4881,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"FrameLayout", 'DateTime'>
     readonly updatedAt: FieldRef<"FrameLayout", 'DateTime'>
   }
-
+    
 
   // Custom InputTypes
   /**
@@ -5558,11 +5443,11 @@ export namespace Prisma {
   }
 
   export type GetChestAggregateType<T extends ChestAggregateArgs> = {
-    [P in keyof T & keyof AggregateChest]: P extends '_count' | 'count'
-    ? T[P] extends true
-    ? number
-    : GetScalarType<T[P], AggregateChest[P]>
-    : GetScalarType<T[P], AggregateChest[P]>
+        [P in keyof T & keyof AggregateChest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateChest[P]>
+      : GetScalarType<T[P], AggregateChest[P]>
   }
 
 
@@ -5600,15 +5485,15 @@ export namespace Prisma {
   type GetChestGroupByPayload<T extends ChestGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<ChestGroupByOutputType, T['by']> &
-      {
-        [P in ((keyof T) & (keyof ChestGroupByOutputType))]: P extends '_count'
-        ? T[P] extends boolean
-        ? number
-        : GetScalarType<T[P], ChestGroupByOutputType[P]>
-        : GetScalarType<T[P], ChestGroupByOutputType[P]>
-      }
+        {
+          [P in ((keyof T) & (keyof ChestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ChestGroupByOutputType[P]>
+            : GetScalarType<T[P], ChestGroupByOutputType[P]>
+        }
+      >
     >
-  >
 
 
   export type ChestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5950,10 +5835,10 @@ export namespace Prisma {
       args?: Subset<T, ChestCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-      ? T['select'] extends true
-      ? number
-      : GetScalarType<T['select'], ChestCountAggregateOutputType>
-      : number
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ChestCountAggregateOutputType>
+        : number
     >
 
     /**
@@ -6007,8 +5892,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-      ? { orderBy: ChestGroupByArgs['orderBy'] }
-      : { orderBy?: ChestGroupByArgs['orderBy'] },
+        ? { orderBy: ChestGroupByArgs['orderBy'] }
+        : { orderBy?: ChestGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6019,49 +5904,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-        [P in HavingFields]: P extends ByFields
-        ? never
-        : P extends string
-        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-        : [
-          Error,
-          'Field ',
-          P,
-          ` in "having" needs to be provided in "by"`,
-        ]
-      }[HavingFields]
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "take", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "skip", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
     >(args: SubsetIntersection<T, ChestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-    /**
-     * Fields of the Chest model
-     */
-    readonly fields: ChestFieldRefs;
+  /**
+   * Fields of the Chest model
+   */
+  readonly fields: ChestFieldRefs;
   }
 
   /**
@@ -6110,7 +5995,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Chest", 'DateTime'>
     readonly updatedAt: FieldRef<"Chest", 'DateTime'>
   }
-
+    
 
   // Custom InputTypes
   /**
@@ -6672,11 +6557,11 @@ export namespace Prisma {
   }
 
   export type GetJournalAggregateType<T extends JournalAggregateArgs> = {
-    [P in keyof T & keyof AggregateJournal]: P extends '_count' | 'count'
-    ? T[P] extends true
-    ? number
-    : GetScalarType<T[P], AggregateJournal[P]>
-    : GetScalarType<T[P], AggregateJournal[P]>
+        [P in keyof T & keyof AggregateJournal]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateJournal[P]>
+      : GetScalarType<T[P], AggregateJournal[P]>
   }
 
 
@@ -6714,15 +6599,15 @@ export namespace Prisma {
   type GetJournalGroupByPayload<T extends JournalGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<JournalGroupByOutputType, T['by']> &
-      {
-        [P in ((keyof T) & (keyof JournalGroupByOutputType))]: P extends '_count'
-        ? T[P] extends boolean
-        ? number
-        : GetScalarType<T[P], JournalGroupByOutputType[P]>
-        : GetScalarType<T[P], JournalGroupByOutputType[P]>
-      }
+        {
+          [P in ((keyof T) & (keyof JournalGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], JournalGroupByOutputType[P]>
+            : GetScalarType<T[P], JournalGroupByOutputType[P]>
+        }
+      >
     >
-  >
 
 
   export type JournalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7064,10 +6949,10 @@ export namespace Prisma {
       args?: Subset<T, JournalCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-      ? T['select'] extends true
-      ? number
-      : GetScalarType<T['select'], JournalCountAggregateOutputType>
-      : number
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], JournalCountAggregateOutputType>
+        : number
     >
 
     /**
@@ -7121,8 +7006,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-      ? { orderBy: JournalGroupByArgs['orderBy'] }
-      : { orderBy?: JournalGroupByArgs['orderBy'] },
+        ? { orderBy: JournalGroupByArgs['orderBy'] }
+        : { orderBy?: JournalGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -7133,49 +7018,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-        [P in HavingFields]: P extends ByFields
-        ? never
-        : P extends string
-        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-        : [
-          Error,
-          'Field ',
-          P,
-          ` in "having" needs to be provided in "by"`,
-        ]
-      }[HavingFields]
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "take", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "skip", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
     >(args: SubsetIntersection<T, JournalGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetJournalGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-    /**
-     * Fields of the Journal model
-     */
-    readonly fields: JournalFieldRefs;
+  /**
+   * Fields of the Journal model
+   */
+  readonly fields: JournalFieldRefs;
   }
 
   /**
@@ -7224,7 +7109,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Journal", 'DateTime'>
     readonly updatedAt: FieldRef<"Journal", 'DateTime'>
   }
-
+    
 
   // Custom InputTypes
   /**
@@ -7790,11 +7675,11 @@ export namespace Prisma {
   }
 
   export type GetPolaroidAggregateType<T extends PolaroidAggregateArgs> = {
-    [P in keyof T & keyof AggregatePolaroid]: P extends '_count' | 'count'
-    ? T[P] extends true
-    ? number
-    : GetScalarType<T[P], AggregatePolaroid[P]>
-    : GetScalarType<T[P], AggregatePolaroid[P]>
+        [P in keyof T & keyof AggregatePolaroid]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePolaroid[P]>
+      : GetScalarType<T[P], AggregatePolaroid[P]>
   }
 
 
@@ -7832,15 +7717,15 @@ export namespace Prisma {
   type GetPolaroidGroupByPayload<T extends PolaroidGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<PolaroidGroupByOutputType, T['by']> &
-      {
-        [P in ((keyof T) & (keyof PolaroidGroupByOutputType))]: P extends '_count'
-        ? T[P] extends boolean
-        ? number
-        : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
-        : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
-      }
+        {
+          [P in ((keyof T) & (keyof PolaroidGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
+            : GetScalarType<T[P], PolaroidGroupByOutputType[P]>
+        }
+      >
     >
-  >
 
 
   export type PolaroidSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8182,10 +8067,10 @@ export namespace Prisma {
       args?: Subset<T, PolaroidCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-      ? T['select'] extends true
-      ? number
-      : GetScalarType<T['select'], PolaroidCountAggregateOutputType>
-      : number
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PolaroidCountAggregateOutputType>
+        : number
     >
 
     /**
@@ -8239,8 +8124,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-      ? { orderBy: PolaroidGroupByArgs['orderBy'] }
-      : { orderBy?: PolaroidGroupByArgs['orderBy'] },
+        ? { orderBy: PolaroidGroupByArgs['orderBy'] }
+        : { orderBy?: PolaroidGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -8251,49 +8136,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-        [P in HavingFields]: P extends ByFields
-        ? never
-        : P extends string
-        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-        : [
-          Error,
-          'Field ',
-          P,
-          ` in "having" needs to be provided in "by"`,
-        ]
-      }[HavingFields]
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "take", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "skip", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
     >(args: SubsetIntersection<T, PolaroidGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPolaroidGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-    /**
-     * Fields of the Polaroid model
-     */
-    readonly fields: PolaroidFieldRefs;
+  /**
+   * Fields of the Polaroid model
+   */
+  readonly fields: PolaroidFieldRefs;
   }
 
   /**
@@ -8342,7 +8227,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Polaroid", 'DateTime'>
     readonly updatedAt: FieldRef<"Polaroid", 'DateTime'>
   }
-
+    
 
   // Custom InputTypes
   /**
@@ -8908,11 +8793,11 @@ export namespace Prisma {
   }
 
   export type GetMediaAggregateType<T extends MediaAggregateArgs> = {
-    [P in keyof T & keyof AggregateMedia]: P extends '_count' | 'count'
-    ? T[P] extends true
-    ? number
-    : GetScalarType<T[P], AggregateMedia[P]>
-    : GetScalarType<T[P], AggregateMedia[P]>
+        [P in keyof T & keyof AggregateMedia]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMedia[P]>
+      : GetScalarType<T[P], AggregateMedia[P]>
   }
 
 
@@ -8950,15 +8835,15 @@ export namespace Prisma {
   type GetMediaGroupByPayload<T extends MediaGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<MediaGroupByOutputType, T['by']> &
-      {
-        [P in ((keyof T) & (keyof MediaGroupByOutputType))]: P extends '_count'
-        ? T[P] extends boolean
-        ? number
-        : GetScalarType<T[P], MediaGroupByOutputType[P]>
-        : GetScalarType<T[P], MediaGroupByOutputType[P]>
-      }
+        {
+          [P in ((keyof T) & (keyof MediaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MediaGroupByOutputType[P]>
+            : GetScalarType<T[P], MediaGroupByOutputType[P]>
+        }
+      >
     >
-  >
 
 
   export type MediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -9300,10 +9185,10 @@ export namespace Prisma {
       args?: Subset<T, MediaCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-      ? T['select'] extends true
-      ? number
-      : GetScalarType<T['select'], MediaCountAggregateOutputType>
-      : number
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MediaCountAggregateOutputType>
+        : number
     >
 
     /**
@@ -9357,8 +9242,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-      ? { orderBy: MediaGroupByArgs['orderBy'] }
-      : { orderBy?: MediaGroupByArgs['orderBy'] },
+        ? { orderBy: MediaGroupByArgs['orderBy'] }
+        : { orderBy?: MediaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -9369,49 +9254,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-        [P in HavingFields]: P extends ByFields
-        ? never
-        : P extends string
-        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-        : [
-          Error,
-          'Field ',
-          P,
-          ` in "having" needs to be provided in "by"`,
-        ]
-      }[HavingFields]
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "take", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "skip", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
     >(args: SubsetIntersection<T, MediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-    /**
-     * Fields of the Media model
-     */
-    readonly fields: MediaFieldRefs;
+  /**
+   * Fields of the Media model
+   */
+  readonly fields: MediaFieldRefs;
   }
 
   /**
@@ -9460,7 +9345,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Media", 'DateTime'>
     readonly updatedAt: FieldRef<"Media", 'DateTime'>
   }
-
+    
 
   // Custom InputTypes
   /**
@@ -10022,11 +9907,11 @@ export namespace Prisma {
   }
 
   export type GetChecklistAggregateType<T extends ChecklistAggregateArgs> = {
-    [P in keyof T & keyof AggregateChecklist]: P extends '_count' | 'count'
-    ? T[P] extends true
-    ? number
-    : GetScalarType<T[P], AggregateChecklist[P]>
-    : GetScalarType<T[P], AggregateChecklist[P]>
+        [P in keyof T & keyof AggregateChecklist]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateChecklist[P]>
+      : GetScalarType<T[P], AggregateChecklist[P]>
   }
 
 
@@ -10064,15 +9949,15 @@ export namespace Prisma {
   type GetChecklistGroupByPayload<T extends ChecklistGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<ChecklistGroupByOutputType, T['by']> &
-      {
-        [P in ((keyof T) & (keyof ChecklistGroupByOutputType))]: P extends '_count'
-        ? T[P] extends boolean
-        ? number
-        : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
-        : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
-      }
+        {
+          [P in ((keyof T) & (keyof ChecklistGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
+            : GetScalarType<T[P], ChecklistGroupByOutputType[P]>
+        }
+      >
     >
-  >
 
 
   export type ChecklistSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10414,10 +10299,10 @@ export namespace Prisma {
       args?: Subset<T, ChecklistCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-      ? T['select'] extends true
-      ? number
-      : GetScalarType<T['select'], ChecklistCountAggregateOutputType>
-      : number
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ChecklistCountAggregateOutputType>
+        : number
     >
 
     /**
@@ -10471,8 +10356,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-      ? { orderBy: ChecklistGroupByArgs['orderBy'] }
-      : { orderBy?: ChecklistGroupByArgs['orderBy'] },
+        ? { orderBy: ChecklistGroupByArgs['orderBy'] }
+        : { orderBy?: ChecklistGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -10483,49 +10368,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-        [P in HavingFields]: P extends ByFields
-        ? never
-        : P extends string
-        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-        : [
-          Error,
-          'Field ',
-          P,
-          ` in "having" needs to be provided in "by"`,
-        ]
-      }[HavingFields]
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "take", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "skip", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
     >(args: SubsetIntersection<T, ChecklistGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChecklistGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-    /**
-     * Fields of the Checklist model
-     */
-    readonly fields: ChecklistFieldRefs;
+  /**
+   * Fields of the Checklist model
+   */
+  readonly fields: ChecklistFieldRefs;
   }
 
   /**
@@ -10574,7 +10459,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Checklist", 'DateTime'>
     readonly updatedAt: FieldRef<"Checklist", 'DateTime'>
   }
-
+    
 
   // Custom InputTypes
   /**
@@ -11134,11 +11019,11 @@ export namespace Prisma {
   }
 
   export type GetNoteAggregateType<T extends NoteAggregateArgs> = {
-    [P in keyof T & keyof AggregateNote]: P extends '_count' | 'count'
-    ? T[P] extends true
-    ? number
-    : GetScalarType<T[P], AggregateNote[P]>
-    : GetScalarType<T[P], AggregateNote[P]>
+        [P in keyof T & keyof AggregateNote]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNote[P]>
+      : GetScalarType<T[P], AggregateNote[P]>
   }
 
 
@@ -11175,15 +11060,15 @@ export namespace Prisma {
   type GetNoteGroupByPayload<T extends NoteGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<NoteGroupByOutputType, T['by']> &
-      {
-        [P in ((keyof T) & (keyof NoteGroupByOutputType))]: P extends '_count'
-        ? T[P] extends boolean
-        ? number
-        : GetScalarType<T[P], NoteGroupByOutputType[P]>
-        : GetScalarType<T[P], NoteGroupByOutputType[P]>
-      }
+        {
+          [P in ((keyof T) & (keyof NoteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NoteGroupByOutputType[P]>
+            : GetScalarType<T[P], NoteGroupByOutputType[P]>
+        }
+      >
     >
-  >
 
 
   export type NoteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11520,10 +11405,10 @@ export namespace Prisma {
       args?: Subset<T, NoteCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-      ? T['select'] extends true
-      ? number
-      : GetScalarType<T['select'], NoteCountAggregateOutputType>
-      : number
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NoteCountAggregateOutputType>
+        : number
     >
 
     /**
@@ -11577,8 +11462,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-      ? { orderBy: NoteGroupByArgs['orderBy'] }
-      : { orderBy?: NoteGroupByArgs['orderBy'] },
+        ? { orderBy: NoteGroupByArgs['orderBy'] }
+        : { orderBy?: NoteGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -11589,49 +11474,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-        [P in HavingFields]: P extends ByFields
-        ? never
-        : P extends string
-        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-        : [
-          Error,
-          'Field ',
-          P,
-          ` in "having" needs to be provided in "by"`,
-        ]
-      }[HavingFields]
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "take", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "skip", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
     >(args: SubsetIntersection<T, NoteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNoteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-    /**
-     * Fields of the Note model
-     */
-    readonly fields: NoteFieldRefs;
+  /**
+   * Fields of the Note model
+   */
+  readonly fields: NoteFieldRefs;
   }
 
   /**
@@ -11679,7 +11564,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Note", 'DateTime'>
     readonly updatedAt: FieldRef<"Note", 'DateTime'>
   }
-
+    
 
   // Custom InputTypes
   /**
@@ -12239,11 +12124,11 @@ export namespace Prisma {
   }
 
   export type GetDecorItemAggregateType<T extends DecorItemAggregateArgs> = {
-    [P in keyof T & keyof AggregateDecorItem]: P extends '_count' | 'count'
-    ? T[P] extends true
-    ? number
-    : GetScalarType<T[P], AggregateDecorItem[P]>
-    : GetScalarType<T[P], AggregateDecorItem[P]>
+        [P in keyof T & keyof AggregateDecorItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDecorItem[P]>
+      : GetScalarType<T[P], AggregateDecorItem[P]>
   }
 
 
@@ -12280,15 +12165,15 @@ export namespace Prisma {
   type GetDecorItemGroupByPayload<T extends DecorItemGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<DecorItemGroupByOutputType, T['by']> &
-      {
-        [P in ((keyof T) & (keyof DecorItemGroupByOutputType))]: P extends '_count'
-        ? T[P] extends boolean
-        ? number
-        : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
-        : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
-      }
+        {
+          [P in ((keyof T) & (keyof DecorItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
+            : GetScalarType<T[P], DecorItemGroupByOutputType[P]>
+        }
+      >
     >
-  >
 
 
   export type DecorItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -12625,10 +12510,10 @@ export namespace Prisma {
       args?: Subset<T, DecorItemCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
-      ? T['select'] extends true
-      ? number
-      : GetScalarType<T['select'], DecorItemCountAggregateOutputType>
-      : number
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DecorItemCountAggregateOutputType>
+        : number
     >
 
     /**
@@ -12682,8 +12567,8 @@ export namespace Prisma {
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-      ? { orderBy: DecorItemGroupByArgs['orderBy'] }
-      : { orderBy?: DecorItemGroupByArgs['orderBy'] },
+        ? { orderBy: DecorItemGroupByArgs['orderBy'] }
+        : { orderBy?: DecorItemGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -12694,49 +12579,49 @@ export namespace Prisma {
       ? `Error: "by" must not be empty.`
       : HavingValid extends False
       ? {
-        [P in HavingFields]: P extends ByFields
-        ? never
-        : P extends string
-        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-        : [
-          Error,
-          'Field ',
-          P,
-          ` in "having" needs to be provided in "by"`,
-        ]
-      }[HavingFields]
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
       : 'take' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "take", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
       : 'skip' extends Keys<T>
       ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "skip", you also need to provide "orderBy"'
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
       : ByValid extends True
       ? {}
       : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
     >(args: SubsetIntersection<T, DecorItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDecorItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-    /**
-     * Fields of the DecorItem model
-     */
-    readonly fields: DecorItemFieldRefs;
+  /**
+   * Fields of the DecorItem model
+   */
+  readonly fields: DecorItemFieldRefs;
   }
 
   /**
@@ -12784,7 +12669,7 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"DecorItem", 'DateTime'>
     readonly updatedAt: FieldRef<"DecorItem", 'DateTime'>
   }
-
+    
 
   // Custom InputTypes
   /**
@@ -13198,1141 +13083,6 @@ export namespace Prisma {
 
 
   /**
-   * Model SpotifyAccount
-   */
-
-  export type AggregateSpotifyAccount = {
-    _count: SpotifyAccountCountAggregateOutputType | null
-    _avg: SpotifyAccountAvgAggregateOutputType | null
-    _sum: SpotifyAccountSumAggregateOutputType | null
-    _min: SpotifyAccountMinAggregateOutputType | null
-    _max: SpotifyAccountMaxAggregateOutputType | null
-  }
-
-  export type SpotifyAccountAvgAggregateOutputType = {
-    id: number | null
-    userId: number | null
-  }
-
-  export type SpotifyAccountSumAggregateOutputType = {
-    id: number | null
-    userId: number | null
-  }
-
-  export type SpotifyAccountMinAggregateOutputType = {
-    id: number | null
-    userId: number | null
-    accessToken: string | null
-    refreshToken: string | null
-    scope: string | null
-    expiresAt: Date | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type SpotifyAccountMaxAggregateOutputType = {
-    id: number | null
-    userId: number | null
-    accessToken: string | null
-    refreshToken: string | null
-    scope: string | null
-    expiresAt: Date | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type SpotifyAccountCountAggregateOutputType = {
-    id: number
-    userId: number
-    accessToken: number
-    refreshToken: number
-    scope: number
-    expiresAt: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type SpotifyAccountAvgAggregateInputType = {
-    id?: true
-    userId?: true
-  }
-
-  export type SpotifyAccountSumAggregateInputType = {
-    id?: true
-    userId?: true
-  }
-
-  export type SpotifyAccountMinAggregateInputType = {
-    id?: true
-    userId?: true
-    accessToken?: true
-    refreshToken?: true
-    scope?: true
-    expiresAt?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type SpotifyAccountMaxAggregateInputType = {
-    id?: true
-    userId?: true
-    accessToken?: true
-    refreshToken?: true
-    scope?: true
-    expiresAt?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type SpotifyAccountCountAggregateInputType = {
-    id?: true
-    userId?: true
-    accessToken?: true
-    refreshToken?: true
-    scope?: true
-    expiresAt?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type SpotifyAccountAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which SpotifyAccount to aggregate.
-     */
-    where?: SpotifyAccountWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SpotifyAccounts to fetch.
-     */
-    orderBy?: SpotifyAccountOrderByWithRelationInput | SpotifyAccountOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: SpotifyAccountWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SpotifyAccounts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SpotifyAccounts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned SpotifyAccounts
-    **/
-    _count?: true | SpotifyAccountCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: SpotifyAccountAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: SpotifyAccountSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: SpotifyAccountMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: SpotifyAccountMaxAggregateInputType
-  }
-
-  export type GetSpotifyAccountAggregateType<T extends SpotifyAccountAggregateArgs> = {
-    [P in keyof T & keyof AggregateSpotifyAccount]: P extends '_count' | 'count'
-    ? T[P] extends true
-    ? number
-    : GetScalarType<T[P], AggregateSpotifyAccount[P]>
-    : GetScalarType<T[P], AggregateSpotifyAccount[P]>
-  }
-
-
-
-
-  export type SpotifyAccountGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SpotifyAccountWhereInput
-    orderBy?: SpotifyAccountOrderByWithAggregationInput | SpotifyAccountOrderByWithAggregationInput[]
-    by: SpotifyAccountScalarFieldEnum[] | SpotifyAccountScalarFieldEnum
-    having?: SpotifyAccountScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: SpotifyAccountCountAggregateInputType | true
-    _avg?: SpotifyAccountAvgAggregateInputType
-    _sum?: SpotifyAccountSumAggregateInputType
-    _min?: SpotifyAccountMinAggregateInputType
-    _max?: SpotifyAccountMaxAggregateInputType
-  }
-
-  export type SpotifyAccountGroupByOutputType = {
-    id: number
-    userId: number
-    accessToken: string
-    refreshToken: string
-    scope: string | null
-    expiresAt: Date
-    createdAt: Date
-    updatedAt: Date
-    _count: SpotifyAccountCountAggregateOutputType | null
-    _avg: SpotifyAccountAvgAggregateOutputType | null
-    _sum: SpotifyAccountSumAggregateOutputType | null
-    _min: SpotifyAccountMinAggregateOutputType | null
-    _max: SpotifyAccountMaxAggregateOutputType | null
-  }
-
-  type GetSpotifyAccountGroupByPayload<T extends SpotifyAccountGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<SpotifyAccountGroupByOutputType, T['by']> &
-      {
-        [P in ((keyof T) & (keyof SpotifyAccountGroupByOutputType))]: P extends '_count'
-        ? T[P] extends boolean
-        ? number
-        : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
-        : GetScalarType<T[P], SpotifyAccountGroupByOutputType[P]>
-      }
-    >
-  >
-
-
-  export type SpotifyAccountSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    userId?: boolean
-    accessToken?: boolean
-    refreshToken?: boolean
-    scope?: boolean
-    expiresAt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["spotifyAccount"]>
-
-  export type SpotifyAccountSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    userId?: boolean
-    accessToken?: boolean
-    refreshToken?: boolean
-    scope?: boolean
-    expiresAt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["spotifyAccount"]>
-
-  export type SpotifyAccountSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    userId?: boolean
-    accessToken?: boolean
-    refreshToken?: boolean
-    scope?: boolean
-    expiresAt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["spotifyAccount"]>
-
-  export type SpotifyAccountSelectScalar = {
-    id?: boolean
-    userId?: boolean
-    accessToken?: boolean
-    refreshToken?: boolean
-    scope?: boolean
-    expiresAt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type SpotifyAccountOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "accessToken" | "refreshToken" | "scope" | "expiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["spotifyAccount"]>
-  export type SpotifyAccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type SpotifyAccountIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type SpotifyAccountIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-
-  export type $SpotifyAccountPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "SpotifyAccount"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      userId: number
-      accessToken: string
-      refreshToken: string
-      scope: string | null
-      expiresAt: Date
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["spotifyAccount"]>
-    composites: {}
-  }
-
-  type SpotifyAccountGetPayload<S extends boolean | null | undefined | SpotifyAccountDefaultArgs> = $Result.GetResult<Prisma.$SpotifyAccountPayload, S>
-
-  type SpotifyAccountCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SpotifyAccountFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: SpotifyAccountCountAggregateInputType | true
-    }
-
-  export interface SpotifyAccountDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SpotifyAccount'], meta: { name: 'SpotifyAccount' } }
-    /**
-     * Find zero or one SpotifyAccount that matches the filter.
-     * @param {SpotifyAccountFindUniqueArgs} args - Arguments to find a SpotifyAccount
-     * @example
-     * // Get one SpotifyAccount
-     * const spotifyAccount = await prisma.spotifyAccount.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends SpotifyAccountFindUniqueArgs>(args: SelectSubset<T, SpotifyAccountFindUniqueArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one SpotifyAccount that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {SpotifyAccountFindUniqueOrThrowArgs} args - Arguments to find a SpotifyAccount
-     * @example
-     * // Get one SpotifyAccount
-     * const spotifyAccount = await prisma.spotifyAccount.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends SpotifyAccountFindUniqueOrThrowArgs>(args: SelectSubset<T, SpotifyAccountFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first SpotifyAccount that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SpotifyAccountFindFirstArgs} args - Arguments to find a SpotifyAccount
-     * @example
-     * // Get one SpotifyAccount
-     * const spotifyAccount = await prisma.spotifyAccount.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends SpotifyAccountFindFirstArgs>(args?: SelectSubset<T, SpotifyAccountFindFirstArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first SpotifyAccount that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SpotifyAccountFindFirstOrThrowArgs} args - Arguments to find a SpotifyAccount
-     * @example
-     * // Get one SpotifyAccount
-     * const spotifyAccount = await prisma.spotifyAccount.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends SpotifyAccountFindFirstOrThrowArgs>(args?: SelectSubset<T, SpotifyAccountFindFirstOrThrowArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more SpotifyAccounts that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SpotifyAccountFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all SpotifyAccounts
-     * const spotifyAccounts = await prisma.spotifyAccount.findMany()
-     * 
-     * // Get first 10 SpotifyAccounts
-     * const spotifyAccounts = await prisma.spotifyAccount.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const spotifyAccountWithIdOnly = await prisma.spotifyAccount.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends SpotifyAccountFindManyArgs>(args?: SelectSubset<T, SpotifyAccountFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a SpotifyAccount.
-     * @param {SpotifyAccountCreateArgs} args - Arguments to create a SpotifyAccount.
-     * @example
-     * // Create one SpotifyAccount
-     * const SpotifyAccount = await prisma.spotifyAccount.create({
-     *   data: {
-     *     // ... data to create a SpotifyAccount
-     *   }
-     * })
-     * 
-     */
-    create<T extends SpotifyAccountCreateArgs>(args: SelectSubset<T, SpotifyAccountCreateArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many SpotifyAccounts.
-     * @param {SpotifyAccountCreateManyArgs} args - Arguments to create many SpotifyAccounts.
-     * @example
-     * // Create many SpotifyAccounts
-     * const spotifyAccount = await prisma.spotifyAccount.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends SpotifyAccountCreateManyArgs>(args?: SelectSubset<T, SpotifyAccountCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many SpotifyAccounts and returns the data saved in the database.
-     * @param {SpotifyAccountCreateManyAndReturnArgs} args - Arguments to create many SpotifyAccounts.
-     * @example
-     * // Create many SpotifyAccounts
-     * const spotifyAccount = await prisma.spotifyAccount.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many SpotifyAccounts and only return the `id`
-     * const spotifyAccountWithIdOnly = await prisma.spotifyAccount.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends SpotifyAccountCreateManyAndReturnArgs>(args?: SelectSubset<T, SpotifyAccountCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a SpotifyAccount.
-     * @param {SpotifyAccountDeleteArgs} args - Arguments to delete one SpotifyAccount.
-     * @example
-     * // Delete one SpotifyAccount
-     * const SpotifyAccount = await prisma.spotifyAccount.delete({
-     *   where: {
-     *     // ... filter to delete one SpotifyAccount
-     *   }
-     * })
-     * 
-     */
-    delete<T extends SpotifyAccountDeleteArgs>(args: SelectSubset<T, SpotifyAccountDeleteArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one SpotifyAccount.
-     * @param {SpotifyAccountUpdateArgs} args - Arguments to update one SpotifyAccount.
-     * @example
-     * // Update one SpotifyAccount
-     * const spotifyAccount = await prisma.spotifyAccount.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends SpotifyAccountUpdateArgs>(args: SelectSubset<T, SpotifyAccountUpdateArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more SpotifyAccounts.
-     * @param {SpotifyAccountDeleteManyArgs} args - Arguments to filter SpotifyAccounts to delete.
-     * @example
-     * // Delete a few SpotifyAccounts
-     * const { count } = await prisma.spotifyAccount.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends SpotifyAccountDeleteManyArgs>(args?: SelectSubset<T, SpotifyAccountDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more SpotifyAccounts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SpotifyAccountUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many SpotifyAccounts
-     * const spotifyAccount = await prisma.spotifyAccount.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends SpotifyAccountUpdateManyArgs>(args: SelectSubset<T, SpotifyAccountUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more SpotifyAccounts and returns the data updated in the database.
-     * @param {SpotifyAccountUpdateManyAndReturnArgs} args - Arguments to update many SpotifyAccounts.
-     * @example
-     * // Update many SpotifyAccounts
-     * const spotifyAccount = await prisma.spotifyAccount.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more SpotifyAccounts and only return the `id`
-     * const spotifyAccountWithIdOnly = await prisma.spotifyAccount.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends SpotifyAccountUpdateManyAndReturnArgs>(args: SelectSubset<T, SpotifyAccountUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one SpotifyAccount.
-     * @param {SpotifyAccountUpsertArgs} args - Arguments to update or create a SpotifyAccount.
-     * @example
-     * // Update or create a SpotifyAccount
-     * const spotifyAccount = await prisma.spotifyAccount.upsert({
-     *   create: {
-     *     // ... data to create a SpotifyAccount
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the SpotifyAccount we want to update
-     *   }
-     * })
-     */
-    upsert<T extends SpotifyAccountUpsertArgs>(args: SelectSubset<T, SpotifyAccountUpsertArgs<ExtArgs>>): Prisma__SpotifyAccountClient<$Result.GetResult<Prisma.$SpotifyAccountPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of SpotifyAccounts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SpotifyAccountCountArgs} args - Arguments to filter SpotifyAccounts to count.
-     * @example
-     * // Count the number of SpotifyAccounts
-     * const count = await prisma.spotifyAccount.count({
-     *   where: {
-     *     // ... the filter for the SpotifyAccounts we want to count
-     *   }
-     * })
-    **/
-    count<T extends SpotifyAccountCountArgs>(
-      args?: Subset<T, SpotifyAccountCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-      ? T['select'] extends true
-      ? number
-      : GetScalarType<T['select'], SpotifyAccountCountAggregateOutputType>
-      : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a SpotifyAccount.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SpotifyAccountAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends SpotifyAccountAggregateArgs>(args: Subset<T, SpotifyAccountAggregateArgs>): Prisma.PrismaPromise<GetSpotifyAccountAggregateType<T>>
-
-    /**
-     * Group by SpotifyAccount.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SpotifyAccountGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends SpotifyAccountGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-      ? { orderBy: SpotifyAccountGroupByArgs['orderBy'] }
-      : { orderBy?: SpotifyAccountGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-        [P in HavingFields]: P extends ByFields
-        ? never
-        : P extends string
-        ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-        : [
-          Error,
-          'Field ',
-          P,
-          ` in "having" needs to be provided in "by"`,
-        ]
-      }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-      ? ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-      : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-        [P in OrderFields]: P extends ByFields
-        ? never
-        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-      }[OrderFields]
-    >(args: SubsetIntersection<T, SpotifyAccountGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSpotifyAccountGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-    /**
-     * Fields of the SpotifyAccount model
-     */
-    readonly fields: SpotifyAccountFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for SpotifyAccount.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__SpotifyAccountClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the SpotifyAccount model
-   */
-  interface SpotifyAccountFieldRefs {
-    readonly id: FieldRef<"SpotifyAccount", 'Int'>
-    readonly userId: FieldRef<"SpotifyAccount", 'Int'>
-    readonly accessToken: FieldRef<"SpotifyAccount", 'String'>
-    readonly refreshToken: FieldRef<"SpotifyAccount", 'String'>
-    readonly scope: FieldRef<"SpotifyAccount", 'String'>
-    readonly expiresAt: FieldRef<"SpotifyAccount", 'DateTime'>
-    readonly createdAt: FieldRef<"SpotifyAccount", 'DateTime'>
-    readonly updatedAt: FieldRef<"SpotifyAccount", 'DateTime'>
-  }
-
-
-  // Custom InputTypes
-  /**
-   * SpotifyAccount findUnique
-   */
-  export type SpotifyAccountFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountInclude<ExtArgs> | null
-    /**
-     * Filter, which SpotifyAccount to fetch.
-     */
-    where: SpotifyAccountWhereUniqueInput
-  }
-
-  /**
-   * SpotifyAccount findUniqueOrThrow
-   */
-  export type SpotifyAccountFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountInclude<ExtArgs> | null
-    /**
-     * Filter, which SpotifyAccount to fetch.
-     */
-    where: SpotifyAccountWhereUniqueInput
-  }
-
-  /**
-   * SpotifyAccount findFirst
-   */
-  export type SpotifyAccountFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountInclude<ExtArgs> | null
-    /**
-     * Filter, which SpotifyAccount to fetch.
-     */
-    where?: SpotifyAccountWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SpotifyAccounts to fetch.
-     */
-    orderBy?: SpotifyAccountOrderByWithRelationInput | SpotifyAccountOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for SpotifyAccounts.
-     */
-    cursor?: SpotifyAccountWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SpotifyAccounts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SpotifyAccounts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of SpotifyAccounts.
-     */
-    distinct?: SpotifyAccountScalarFieldEnum | SpotifyAccountScalarFieldEnum[]
-  }
-
-  /**
-   * SpotifyAccount findFirstOrThrow
-   */
-  export type SpotifyAccountFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountInclude<ExtArgs> | null
-    /**
-     * Filter, which SpotifyAccount to fetch.
-     */
-    where?: SpotifyAccountWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SpotifyAccounts to fetch.
-     */
-    orderBy?: SpotifyAccountOrderByWithRelationInput | SpotifyAccountOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for SpotifyAccounts.
-     */
-    cursor?: SpotifyAccountWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SpotifyAccounts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SpotifyAccounts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of SpotifyAccounts.
-     */
-    distinct?: SpotifyAccountScalarFieldEnum | SpotifyAccountScalarFieldEnum[]
-  }
-
-  /**
-   * SpotifyAccount findMany
-   */
-  export type SpotifyAccountFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountInclude<ExtArgs> | null
-    /**
-     * Filter, which SpotifyAccounts to fetch.
-     */
-    where?: SpotifyAccountWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SpotifyAccounts to fetch.
-     */
-    orderBy?: SpotifyAccountOrderByWithRelationInput | SpotifyAccountOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing SpotifyAccounts.
-     */
-    cursor?: SpotifyAccountWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SpotifyAccounts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SpotifyAccounts.
-     */
-    skip?: number
-    distinct?: SpotifyAccountScalarFieldEnum | SpotifyAccountScalarFieldEnum[]
-  }
-
-  /**
-   * SpotifyAccount create
-   */
-  export type SpotifyAccountCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountInclude<ExtArgs> | null
-    /**
-     * The data needed to create a SpotifyAccount.
-     */
-    data: XOR<SpotifyAccountCreateInput, SpotifyAccountUncheckedCreateInput>
-  }
-
-  /**
-   * SpotifyAccount createMany
-   */
-  export type SpotifyAccountCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many SpotifyAccounts.
-     */
-    data: SpotifyAccountCreateManyInput | SpotifyAccountCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * SpotifyAccount createManyAndReturn
-   */
-  export type SpotifyAccountCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * The data used to create many SpotifyAccounts.
-     */
-    data: SpotifyAccountCreateManyInput | SpotifyAccountCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * SpotifyAccount update
-   */
-  export type SpotifyAccountUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountInclude<ExtArgs> | null
-    /**
-     * The data needed to update a SpotifyAccount.
-     */
-    data: XOR<SpotifyAccountUpdateInput, SpotifyAccountUncheckedUpdateInput>
-    /**
-     * Choose, which SpotifyAccount to update.
-     */
-    where: SpotifyAccountWhereUniqueInput
-  }
-
-  /**
-   * SpotifyAccount updateMany
-   */
-  export type SpotifyAccountUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update SpotifyAccounts.
-     */
-    data: XOR<SpotifyAccountUpdateManyMutationInput, SpotifyAccountUncheckedUpdateManyInput>
-    /**
-     * Filter which SpotifyAccounts to update
-     */
-    where?: SpotifyAccountWhereInput
-    /**
-     * Limit how many SpotifyAccounts to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * SpotifyAccount updateManyAndReturn
-   */
-  export type SpotifyAccountUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * The data used to update SpotifyAccounts.
-     */
-    data: XOR<SpotifyAccountUpdateManyMutationInput, SpotifyAccountUncheckedUpdateManyInput>
-    /**
-     * Filter which SpotifyAccounts to update
-     */
-    where?: SpotifyAccountWhereInput
-    /**
-     * Limit how many SpotifyAccounts to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * SpotifyAccount upsert
-   */
-  export type SpotifyAccountUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountInclude<ExtArgs> | null
-    /**
-     * The filter to search for the SpotifyAccount to update in case it exists.
-     */
-    where: SpotifyAccountWhereUniqueInput
-    /**
-     * In case the SpotifyAccount found by the `where` argument doesn't exist, create a new SpotifyAccount with this data.
-     */
-    create: XOR<SpotifyAccountCreateInput, SpotifyAccountUncheckedCreateInput>
-    /**
-     * In case the SpotifyAccount was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<SpotifyAccountUpdateInput, SpotifyAccountUncheckedUpdateInput>
-  }
-
-  /**
-   * SpotifyAccount delete
-   */
-  export type SpotifyAccountDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountInclude<ExtArgs> | null
-    /**
-     * Filter which SpotifyAccount to delete.
-     */
-    where: SpotifyAccountWhereUniqueInput
-  }
-
-  /**
-   * SpotifyAccount deleteMany
-   */
-  export type SpotifyAccountDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which SpotifyAccounts to delete
-     */
-    where?: SpotifyAccountWhereInput
-    /**
-     * Limit how many SpotifyAccounts to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * SpotifyAccount without action
-   */
-  export type SpotifyAccountDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SpotifyAccount
-     */
-    select?: SpotifyAccountSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SpotifyAccount
-     */
-    omit?: SpotifyAccountOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SpotifyAccountInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Enums
    */
 
@@ -14469,20 +13219,6 @@ export namespace Prisma {
   export type DecorItemScalarFieldEnum = (typeof DecorItemScalarFieldEnum)[keyof typeof DecorItemScalarFieldEnum]
 
 
-  export const SpotifyAccountScalarFieldEnum: {
-    id: 'id',
-    userId: 'userId',
-    accessToken: 'accessToken',
-    refreshToken: 'refreshToken',
-    scope: 'scope',
-    expiresAt: 'expiresAt',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type SpotifyAccountScalarFieldEnum = (typeof SpotifyAccountScalarFieldEnum)[keyof typeof SpotifyAccountScalarFieldEnum]
-
-
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -14540,70 +13276,70 @@ export namespace Prisma {
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-
+    
 
 
   /**
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-
+    
 
 
   /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-
+    
 
 
   /**
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-
+    
 
 
   /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-
+    
 
 
   /**
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-
+    
 
 
   /**
    * Reference to a field of type 'Json'
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-
+    
 
 
   /**
    * Reference to a field of type 'QueryMode'
    */
   export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-
+    
 
 
   /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-
+    
 
 
   /**
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-
+    
   /**
    * Deep Input Types
    */
@@ -14620,7 +13356,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     frame?: FrameListRelationFilter
-    spotifyAccount?: XOR<SpotifyAccountNullableScalarRelationFilter, SpotifyAccountWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -14631,7 +13366,6 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     frame?: FrameOrderByRelationAggregateInput
-    spotifyAccount?: SpotifyAccountOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -14645,7 +13379,6 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     frame?: FrameListRelationFilter
-    spotifyAccount?: XOR<SpotifyAccountNullableScalarRelationFilter, SpotifyAccountWhereInput> | null
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -15271,78 +14004,6 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"DecorItem"> | Date | string
   }
 
-  export type SpotifyAccountWhereInput = {
-    AND?: SpotifyAccountWhereInput | SpotifyAccountWhereInput[]
-    OR?: SpotifyAccountWhereInput[]
-    NOT?: SpotifyAccountWhereInput | SpotifyAccountWhereInput[]
-    id?: IntFilter<"SpotifyAccount"> | number
-    userId?: IntFilter<"SpotifyAccount"> | number
-    accessToken?: StringFilter<"SpotifyAccount"> | string
-    refreshToken?: StringFilter<"SpotifyAccount"> | string
-    scope?: StringNullableFilter<"SpotifyAccount"> | string | null
-    expiresAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
-    createdAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
-    updatedAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }
-
-  export type SpotifyAccountOrderByWithRelationInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    accessToken?: SortOrder
-    refreshToken?: SortOrder
-    scope?: SortOrderInput | SortOrder
-    expiresAt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
-  }
-
-  export type SpotifyAccountWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    userId?: number
-    AND?: SpotifyAccountWhereInput | SpotifyAccountWhereInput[]
-    OR?: SpotifyAccountWhereInput[]
-    NOT?: SpotifyAccountWhereInput | SpotifyAccountWhereInput[]
-    accessToken?: StringFilter<"SpotifyAccount"> | string
-    refreshToken?: StringFilter<"SpotifyAccount"> | string
-    scope?: StringNullableFilter<"SpotifyAccount"> | string | null
-    expiresAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
-    createdAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
-    updatedAt?: DateTimeFilter<"SpotifyAccount"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id" | "userId">
-
-  export type SpotifyAccountOrderByWithAggregationInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    accessToken?: SortOrder
-    refreshToken?: SortOrder
-    scope?: SortOrderInput | SortOrder
-    expiresAt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: SpotifyAccountCountOrderByAggregateInput
-    _avg?: SpotifyAccountAvgOrderByAggregateInput
-    _max?: SpotifyAccountMaxOrderByAggregateInput
-    _min?: SpotifyAccountMinOrderByAggregateInput
-    _sum?: SpotifyAccountSumOrderByAggregateInput
-  }
-
-  export type SpotifyAccountScalarWhereWithAggregatesInput = {
-    AND?: SpotifyAccountScalarWhereWithAggregatesInput | SpotifyAccountScalarWhereWithAggregatesInput[]
-    OR?: SpotifyAccountScalarWhereWithAggregatesInput[]
-    NOT?: SpotifyAccountScalarWhereWithAggregatesInput | SpotifyAccountScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"SpotifyAccount"> | number
-    userId?: IntWithAggregatesFilter<"SpotifyAccount"> | number
-    accessToken?: StringWithAggregatesFilter<"SpotifyAccount"> | string
-    refreshToken?: StringWithAggregatesFilter<"SpotifyAccount"> | string
-    scope?: StringNullableWithAggregatesFilter<"SpotifyAccount"> | string | null
-    expiresAt?: DateTimeWithAggregatesFilter<"SpotifyAccount"> | Date | string
-    createdAt?: DateTimeWithAggregatesFilter<"SpotifyAccount"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"SpotifyAccount"> | Date | string
-  }
-
   export type UserCreateInput = {
     name: string
     email: string
@@ -15350,7 +14011,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     frame?: FrameCreateNestedManyWithoutOwnerInput
-    spotifyAccount?: SpotifyAccountCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -15361,7 +14021,6 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     frame?: FrameUncheckedCreateNestedManyWithoutOwnerInput
-    spotifyAccount?: SpotifyAccountUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -15371,7 +14030,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     frame?: FrameUpdateManyWithoutOwnerNestedInput
-    spotifyAccount?: SpotifyAccountUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -15382,7 +14040,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     frame?: FrameUncheckedUpdateManyWithoutOwnerNestedInput
-    spotifyAccount?: SpotifyAccountUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -15995,79 +14652,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SpotifyAccountCreateInput = {
-    accessToken: string
-    refreshToken: string
-    scope?: string | null
-    expiresAt: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutSpotifyAccountInput
-  }
-
-  export type SpotifyAccountUncheckedCreateInput = {
-    id?: number
-    userId: number
-    accessToken: string
-    refreshToken: string
-    scope?: string | null
-    expiresAt: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SpotifyAccountUpdateInput = {
-    accessToken?: StringFieldUpdateOperationsInput | string
-    refreshToken?: StringFieldUpdateOperationsInput | string
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSpotifyAccountNestedInput
-  }
-
-  export type SpotifyAccountUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
-    accessToken?: StringFieldUpdateOperationsInput | string
-    refreshToken?: StringFieldUpdateOperationsInput | string
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SpotifyAccountCreateManyInput = {
-    id?: number
-    userId: number
-    accessToken: string
-    refreshToken: string
-    scope?: string | null
-    expiresAt: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SpotifyAccountUpdateManyMutationInput = {
-    accessToken?: StringFieldUpdateOperationsInput | string
-    refreshToken?: StringFieldUpdateOperationsInput | string
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SpotifyAccountUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
-    accessToken?: StringFieldUpdateOperationsInput | string
-    refreshToken?: StringFieldUpdateOperationsInput | string
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -16109,11 +14693,6 @@ export namespace Prisma {
     every?: FrameWhereInput
     some?: FrameWhereInput
     none?: FrameWhereInput
-  }
-
-  export type SpotifyAccountNullableScalarRelationFilter = {
-    is?: SpotifyAccountWhereInput | null
-    isNot?: SpotifyAccountWhereInput | null
   }
 
   export type FrameOrderByRelationAggregateInput = {
@@ -16308,9 +14887,9 @@ export namespace Prisma {
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
-      Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
-      Required<JsonFilterBase<$PrismaModel>>
-    >
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
     | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonFilterBase<$PrismaModel = never> = {
@@ -16368,9 +14947,9 @@ export namespace Prisma {
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
-      Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-      Required<JsonWithAggregatesFilterBase<$PrismaModel>>
-    >
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
     | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
@@ -16394,9 +14973,9 @@ export namespace Prisma {
   }
   export type JsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
-      Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-      Required<JsonNullableFilterBase<$PrismaModel>>
-    >
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
     | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonNullableFilterBase<$PrismaModel = never> = {
@@ -16458,9 +15037,9 @@ export namespace Prisma {
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
-      Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-      Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-    >
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
     | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
 
   export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
@@ -16734,49 +15313,6 @@ export namespace Prisma {
     frameId?: SortOrder
   }
 
-  export type SpotifyAccountCountOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    accessToken?: SortOrder
-    refreshToken?: SortOrder
-    scope?: SortOrder
-    expiresAt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type SpotifyAccountAvgOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type SpotifyAccountMaxOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    accessToken?: SortOrder
-    refreshToken?: SortOrder
-    scope?: SortOrder
-    expiresAt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type SpotifyAccountMinOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-    accessToken?: SortOrder
-    refreshToken?: SortOrder
-    scope?: SortOrder
-    expiresAt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type SpotifyAccountSumOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-  }
-
   export type FrameCreateNestedManyWithoutOwnerInput = {
     create?: XOR<FrameCreateWithoutOwnerInput, FrameUncheckedCreateWithoutOwnerInput> | FrameCreateWithoutOwnerInput[] | FrameUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: FrameCreateOrConnectWithoutOwnerInput | FrameCreateOrConnectWithoutOwnerInput[]
@@ -16784,23 +15320,11 @@ export namespace Prisma {
     connect?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
   }
 
-  export type SpotifyAccountCreateNestedOneWithoutUserInput = {
-    create?: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
-    connectOrCreate?: SpotifyAccountCreateOrConnectWithoutUserInput
-    connect?: SpotifyAccountWhereUniqueInput
-  }
-
   export type FrameUncheckedCreateNestedManyWithoutOwnerInput = {
     create?: XOR<FrameCreateWithoutOwnerInput, FrameUncheckedCreateWithoutOwnerInput> | FrameCreateWithoutOwnerInput[] | FrameUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: FrameCreateOrConnectWithoutOwnerInput | FrameCreateOrConnectWithoutOwnerInput[]
     createMany?: FrameCreateManyOwnerInputEnvelope
     connect?: FrameWhereUniqueInput | FrameWhereUniqueInput[]
-  }
-
-  export type SpotifyAccountUncheckedCreateNestedOneWithoutUserInput = {
-    create?: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
-    connectOrCreate?: SpotifyAccountCreateOrConnectWithoutUserInput
-    connect?: SpotifyAccountWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -16825,16 +15349,6 @@ export namespace Prisma {
     deleteMany?: FrameScalarWhereInput | FrameScalarWhereInput[]
   }
 
-  export type SpotifyAccountUpdateOneWithoutUserNestedInput = {
-    create?: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
-    connectOrCreate?: SpotifyAccountCreateOrConnectWithoutUserInput
-    upsert?: SpotifyAccountUpsertWithoutUserInput
-    disconnect?: SpotifyAccountWhereInput | boolean
-    delete?: SpotifyAccountWhereInput | boolean
-    connect?: SpotifyAccountWhereUniqueInput
-    update?: XOR<XOR<SpotifyAccountUpdateToOneWithWhereWithoutUserInput, SpotifyAccountUpdateWithoutUserInput>, SpotifyAccountUncheckedUpdateWithoutUserInput>
-  }
-
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -16855,16 +15369,6 @@ export namespace Prisma {
     update?: FrameUpdateWithWhereUniqueWithoutOwnerInput | FrameUpdateWithWhereUniqueWithoutOwnerInput[]
     updateMany?: FrameUpdateManyWithWhereWithoutOwnerInput | FrameUpdateManyWithWhereWithoutOwnerInput[]
     deleteMany?: FrameScalarWhereInput | FrameScalarWhereInput[]
-  }
-
-  export type SpotifyAccountUncheckedUpdateOneWithoutUserNestedInput = {
-    create?: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
-    connectOrCreate?: SpotifyAccountCreateOrConnectWithoutUserInput
-    upsert?: SpotifyAccountUpsertWithoutUserInput
-    disconnect?: SpotifyAccountWhereInput | boolean
-    delete?: SpotifyAccountWhereInput | boolean
-    connect?: SpotifyAccountWhereUniqueInput
-    update?: XOR<XOR<SpotifyAccountUpdateToOneWithWhereWithoutUserInput, SpotifyAccountUpdateWithoutUserInput>, SpotifyAccountUncheckedUpdateWithoutUserInput>
   }
 
   export type UserCreateNestedOneWithoutFrameInput = {
@@ -17303,20 +15807,6 @@ export namespace Prisma {
     update?: XOR<XOR<FrameUpdateToOneWithWhereWithoutDecorItemsInput, FrameUpdateWithoutDecorItemsInput>, FrameUncheckedUpdateWithoutDecorItemsInput>
   }
 
-  export type UserCreateNestedOneWithoutSpotifyAccountInput = {
-    create?: XOR<UserCreateWithoutSpotifyAccountInput, UserUncheckedCreateWithoutSpotifyAccountInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSpotifyAccountInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type UserUpdateOneRequiredWithoutSpotifyAccountNestedInput = {
-    create?: XOR<UserCreateWithoutSpotifyAccountInput, UserUncheckedCreateWithoutSpotifyAccountInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSpotifyAccountInput
-    upsert?: UserUpsertWithoutSpotifyAccountInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSpotifyAccountInput, UserUpdateWithoutSpotifyAccountInput>, UserUncheckedUpdateWithoutSpotifyAccountInput>
-  }
-
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -17412,9 +15902,9 @@ export namespace Prisma {
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
-      Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
-      Required<NestedJsonFilterBase<$PrismaModel>>
-    >
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
     | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
 
   export type NestedJsonFilterBase<$PrismaModel = never> = {
@@ -17446,9 +15936,9 @@ export namespace Prisma {
   }
   export type NestedJsonNullableFilter<$PrismaModel = never> =
     | PatchUndefined<
-      Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-      Required<NestedJsonNullableFilterBase<$PrismaModel>>
-    >
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
     | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
   export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
@@ -17538,30 +16028,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type SpotifyAccountCreateWithoutUserInput = {
-    accessToken: string
-    refreshToken: string
-    scope?: string | null
-    expiresAt: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SpotifyAccountUncheckedCreateWithoutUserInput = {
-    id?: number
-    accessToken: string
-    refreshToken: string
-    scope?: string | null
-    expiresAt: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type SpotifyAccountCreateOrConnectWithoutUserInput = {
-    where: SpotifyAccountWhereUniqueInput
-    create: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
-  }
-
   export type FrameUpsertWithWhereUniqueWithoutOwnerInput = {
     where: FrameWhereUniqueInput
     update: XOR<FrameUpdateWithoutOwnerInput, FrameUncheckedUpdateWithoutOwnerInput>
@@ -17589,43 +16055,12 @@ export namespace Prisma {
     ownerId?: IntFilter<"Frame"> | number
   }
 
-  export type SpotifyAccountUpsertWithoutUserInput = {
-    update: XOR<SpotifyAccountUpdateWithoutUserInput, SpotifyAccountUncheckedUpdateWithoutUserInput>
-    create: XOR<SpotifyAccountCreateWithoutUserInput, SpotifyAccountUncheckedCreateWithoutUserInput>
-    where?: SpotifyAccountWhereInput
-  }
-
-  export type SpotifyAccountUpdateToOneWithWhereWithoutUserInput = {
-    where?: SpotifyAccountWhereInput
-    data: XOR<SpotifyAccountUpdateWithoutUserInput, SpotifyAccountUncheckedUpdateWithoutUserInput>
-  }
-
-  export type SpotifyAccountUpdateWithoutUserInput = {
-    accessToken?: StringFieldUpdateOperationsInput | string
-    refreshToken?: StringFieldUpdateOperationsInput | string
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SpotifyAccountUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    accessToken?: StringFieldUpdateOperationsInput | string
-    refreshToken?: StringFieldUpdateOperationsInput | string
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
-    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type UserCreateWithoutFrameInput = {
     name: string
     email: string
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    spotifyAccount?: SpotifyAccountCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutFrameInput = {
@@ -17635,7 +16070,6 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    spotifyAccount?: SpotifyAccountUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutFrameInput = {
@@ -17853,7 +16287,6 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    spotifyAccount?: SpotifyAccountUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFrameInput = {
@@ -17863,7 +16296,6 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    spotifyAccount?: SpotifyAccountUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type FrameLayoutUpsertWithoutFrameInput = {
@@ -18679,60 +17111,6 @@ export namespace Prisma {
     media?: MediaUncheckedUpdateManyWithoutFrameNestedInput
     checklist?: ChecklistUncheckedUpdateManyWithoutFrameNestedInput
     notes?: NoteUncheckedUpdateManyWithoutFrameNestedInput
-  }
-
-  export type UserCreateWithoutSpotifyAccountInput = {
-    name: string
-    email: string
-    password: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    frame?: FrameCreateNestedManyWithoutOwnerInput
-  }
-
-  export type UserUncheckedCreateWithoutSpotifyAccountInput = {
-    id?: number
-    name: string
-    email: string
-    password: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    frame?: FrameUncheckedCreateNestedManyWithoutOwnerInput
-  }
-
-  export type UserCreateOrConnectWithoutSpotifyAccountInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSpotifyAccountInput, UserUncheckedCreateWithoutSpotifyAccountInput>
-  }
-
-  export type UserUpsertWithoutSpotifyAccountInput = {
-    update: XOR<UserUpdateWithoutSpotifyAccountInput, UserUncheckedUpdateWithoutSpotifyAccountInput>
-    create: XOR<UserCreateWithoutSpotifyAccountInput, UserUncheckedCreateWithoutSpotifyAccountInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutSpotifyAccountInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSpotifyAccountInput, UserUncheckedUpdateWithoutSpotifyAccountInput>
-  }
-
-  export type UserUpdateWithoutSpotifyAccountInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    frame?: FrameUpdateManyWithoutOwnerNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutSpotifyAccountInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    frame?: FrameUncheckedUpdateManyWithoutOwnerNestedInput
   }
 
   export type FrameCreateManyOwnerInput = {
