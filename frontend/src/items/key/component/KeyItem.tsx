@@ -8,7 +8,7 @@ interface KeyItemProps {
 const KeyItem: React.FC<KeyItemProps> = ({ onOpen }) => {
   return (
     <img
-      src="/content/key.png"
+      src="/content/keyImg.png"
       alt="key"
       className="key-base"
       onClick={onOpen}

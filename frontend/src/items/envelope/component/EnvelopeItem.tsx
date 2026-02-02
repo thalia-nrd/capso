@@ -8,7 +8,7 @@ interface EnvelopeItemProps {
 const EnvelopeItem: React.FC<EnvelopeItemProps> = ({ onOpen }) => {
   return (
     <img
-      src="/content/envelope.png"
+      src="/content/envelopeImg.png"
       alt="envelope"
       className="envelope-base"
       onClick={onOpen}

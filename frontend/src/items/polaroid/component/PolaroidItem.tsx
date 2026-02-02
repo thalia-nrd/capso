@@ -35,7 +35,7 @@ const PolaroidItem: React.FC<PolaroidItemProps> = ({ frameId }) => {
     <>
       <div className="polaroid-wrapper">
         <img
-          src="/content/polaroid.png"
+          src="/content/polaroidImg.png"
           alt="polaroid"
           className="polaroid-base"
         />

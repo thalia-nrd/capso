@@ -13,7 +13,7 @@ const MirrorItem: React.FC<MirrorItemProps> = ({ frameId }) => {
   return (
     <div className="mirror-wrapper" ref={ref}>
       <img
-        src="/content/mirror.png"
+        src="/content/mirrorImg.png"
         alt="mirror"
         className="mirror-base"
         onClick={() => setOpen((v) => !v)}
