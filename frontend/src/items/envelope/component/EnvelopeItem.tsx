@@ -12,7 +12,6 @@ const EnvelopeItem: React.FC<EnvelopeItemProps> = ({ onOpen }) => {
       alt="envelope"
       className="envelope-base"
       onClick={onOpen}
-      style={{ cursor: "pointer", width: "100%", height: "100%" }}
     />
   );
 };

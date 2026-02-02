@@ -11,7 +11,6 @@ const KeyItem: React.FC<KeyItemProps> = ({ onOpen }) => {
       src="/content/key.png"
       alt="key"
       className="key-base"
-      style={{ cursor: "pointer", width: "100%", height: "100%" }}
       onClick={onOpen}
     />
   );

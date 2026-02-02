@@ -1,6 +1,8 @@
 .envelope-base {
   width: 100%;
   height: 100%;
+  display: block;
+  cursor: pointer;
 }
 
 .envelope-modal-container {

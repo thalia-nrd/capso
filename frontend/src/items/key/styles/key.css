@@ -1,6 +1,12 @@
 /* =========================
    Key modal layout
    ========================= */
+.key-base {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+}
 
 .key-modal-container {
   display: flex;
