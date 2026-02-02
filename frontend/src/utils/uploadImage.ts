@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "";
+
 const CLOUD_NAME = "dcgepz9ge";
 
 interface CloudinarySignature {
@@ -19,7 +21,7 @@ export const uploadImageToCloudinary = async (
 ): Promise<CloudinaryUploadResponse> => {
   // 1️⃣ Get signature from backend
   const sigRes = await axios.get<CloudinarySignature>(
-    `http://localhost:5000/frame/polaroid/signature`,
+    `${API_URL}/frame/polaroid/signature`,
     {
       params: {
         folder: "polaroid",

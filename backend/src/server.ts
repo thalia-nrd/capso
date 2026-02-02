@@ -24,7 +24,15 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://capso.onrender.com',
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      const allowed = ['http://localhost:3000', 'https://capso.onrender.com'];
+      if (allowed.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   }),
 );
