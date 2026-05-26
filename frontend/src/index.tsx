@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+// @ts-ignore: SCSS side-effect import has no type declarations in this project setup
 import './global.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';

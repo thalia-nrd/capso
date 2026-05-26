@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+// @ts-ignore
 import './App.scss';
 import Register from './app/pages/auth/RegisterPage';
 import Login from './app/pages/auth/LoginPage';
