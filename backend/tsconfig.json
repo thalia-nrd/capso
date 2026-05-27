@@ -1,15 +1,21 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "outDir": "dist",
-    "rootDir": "src",
-    "sourceMap": true,
-    "types": ["node"]
+    "target": "ES2020",                 // Modern JS output
+    "module": "CommonJS",               // Matches your package.json
+    "moduleResolution": "Node",         // Node module resolution
+    "esModuleInterop": true,            // Allows default import syntax for CommonJS modules
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,                     // Enables all strict type-checking options
+    "skipLibCheck": true,               // Skips type checking of node_modules
+    "outDir": "dist",                   // Compiled JS output
+    "rootDir": "src",   
+    "typeRoots": ["./src/types", "./node_modules/@types"],                // Root TS files
+    "sourceMap": true,                  // Useful for debugging
+    "declaration": true,                // Generate .d.ts files
+    "declarationMap": true,             // Map for .d.ts
+    "isolatedModules": true,            // Safe for transpile-only mode
+    "noUncheckedIndexedAccess": true,   // Stricter type checking for object index access
+    "exactOptionalPropertyTypes": true  // Strict optional property types
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "src/types/*.d.ts"],
 }
